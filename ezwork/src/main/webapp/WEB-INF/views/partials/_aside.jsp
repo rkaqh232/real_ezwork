@@ -6,7 +6,7 @@
          <!--begin::Brand-->
          <div class="brand flex-column-auto" id="kt_brand">
             <!--begin::Logo-->
-            <br> <a href="index.html" class="brand-logo"> 
+            <br> <a href="index.jsp" class="brand-logo"> 
             <img
                alt="Logo" src="resources/assets/media/logos/ezlogo.png" width="80%" style="margin:20px 0 0 30px;" />
             </a>
@@ -45,7 +45,7 @@
                <!--begin::Menu Nav-->
                <ul class="menu-nav">
                   <li class="menu-item menu-item-active" aria-haspopup="true">
-                     <a href="index.html" class="menu-link"> <span
+                     <a href="index.jsp" class="menu-link"> <span
                         class="svg-icon menu-icon"> <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg"
                               xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -255,7 +255,7 @@
 
    <!-- -===================================================================================================================================== -->               
                   <li class="menu-item menu-item-active" aria-haspopup="true">
-                     <a href="index.html" class="menu-link"> <span
+                     <a href="index.jsp" class="menu-link"> <span
                         class="svg-icon menu-icon"> <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg"
                               xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"

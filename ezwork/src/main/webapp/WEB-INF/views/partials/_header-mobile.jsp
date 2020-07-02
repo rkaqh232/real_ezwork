@@ -4,7 +4,7 @@
 
 			<!--begin::Logo-->
 			<a href="index.jsp">
-				<img alt="Logo" src="resources/assets/media/logos/ezlogo.png" style="height:50px;" />
+				<img alt="Logo" src="resources/assets/media/logos/ezlogo.png" style="height:40px;" />
 			</a>
 
 			<!--end::Logo-->

@@ -7,6 +7,6 @@
 <title>받은 메일함</title>
 </head>
 <body>
-
+inbox 한글
 </body>
 </html>

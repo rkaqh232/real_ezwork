@@ -14,19 +14,15 @@
 		<property name="username" value="scott"/>
 		<property name="password" value="tiger"/>	
 	</bean>
-	<!-- 
+	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property ref="dataSource" name="dataSource"/>
 		<property name="configLocation" value="classpath:util/SqlMapConfig.xml"/>
 	</bean>
 	
-	SqlSessionTemplate은 마이바티스 스프링 연동 모듈의 핵심이다.
-		 SqlSessionTemplate은 SqlSession을 구현하고 코드에서 SqlSession을 대체하는 역할을 한다.
-		 SqlSessionTemplate은 쓰레드에 안전하고, 여러개의 DAO나 매퍼에서 공유할 수 있고, 필요한 시점에 세션을 닫고
-		 커핏하서나 롤백하는 것을 포함한 세션의 생명주기를 관리한다.
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" index="0"/>
-	</bean> -->
+	</bean>
 	
 	<!-- 빈의 이름이 정해져 있다. -->
 	<!-- 파일 업로드 설정 id 값 꼭 일치시켜야 한다.
@@ -43,8 +39,5 @@
 		 name = "maxUploadSize"를 지정하지 않으면 기본적으로 "-1"이 설정되는데, 
 		 페일 크기가 무제한이라는 의미이다.
 		 최대 업로드 가능한 바이트 크기, -1은 제한이 없음을 의미, 기본값은 -1 		 -->
-	
-	
-	
-		 
+
 </beans>

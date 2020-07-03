@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 민혁 - 사원조회 -->
+<mapper namespace="Members">
+	<select id="searchcount" parameterType="map" resultType="int">
+		select count(*) from member where empnum != '1'
+		<if test="search_field!=null">
+			and
+			<choose>
+				<when test="search_field=='empnum'">empnum</when>
+				<when test="search_field=='department'">department</when>
+				<when test="search_field=='name'">name</when>
+				<when test="search_field=='rank'">rank</when>
+			</choose>
+			like #{search_word}
+		</if>
+	</select>
+
+	<select id="getSearchList" parameterType="map"
+		resultType="member">
+		select *
+		from ( select rownum rnum, b.*
+		from (select * from member where
+		empnum != 1
+		<if test="search_field!=null">
+			and
+			<choose>
+				<when test="search_field=='empnum'">empnum</when>
+				<when test="search_field=='department'">department</when>
+				<when test="search_field=='name'">name</when>
+				<when test="search_field=='rank'">rank</when>
+			</choose>
+			like #{search_word}
+		</if>
+		order by empnum
+		)b
+		)
+		where rnum &gt; = #{start} and rnum &lt; = #{end}
+	</select>
+
+	<select id="EmpCheck" resultType="member" parameterType="int">
+		select *
+		from member where empnum = #{empnum}
+	</select>
+</mapper>

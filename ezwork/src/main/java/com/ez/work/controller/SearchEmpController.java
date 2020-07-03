@@ -29,17 +29,11 @@ public class SearchEmpController {
 		int listcount = 0;
 
 		list = memberservice.getSearchList(index, search_word, page, limit);
-		listcount = memberservice.getSearchListCount(index, search_word); // 총 리스트 수를 받아옴
+		listcount = memberservice.getSearchListCount(index, search_word);
 
-		// 총 페이지 수
 		int maxpage = (listcount + limit - 1) / limit;
-
-		// 현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
 		int startpage = ((page - 1) / 10) * 10 + 1;
-
-		// 현재 페이지에 보여줄 마지막 페이지 수 (10, 20, 30 등...)
 		int endpage = startpage + 10 - 1;
-
 		if (endpage > maxpage)
 			endpage = maxpage;
 
@@ -57,8 +51,8 @@ public class SearchEmpController {
 	}
 
 	@RequestMapping(value = "/member_info", method = RequestMethod.GET)
-	public ModelAndView member_info(@RequestParam("empnum") int empnum, ModelAndView mv) throws Exception {
-		Member m = memberservice.member_info(empnum);
+	public ModelAndView member_info(@RequestParam("M_CODE") String M_CODE, ModelAndView mv) throws Exception {
+		Member m = memberservice.member_info(M_CODE);
 		mv.setViewName("Search/DetailEmp");
 		mv.addObject("memberinfo", m);
 		return mv;

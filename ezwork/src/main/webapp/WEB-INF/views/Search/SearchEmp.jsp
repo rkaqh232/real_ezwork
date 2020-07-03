@@ -6,6 +6,9 @@
 <head>
 <meta charset="EUC-KR">
 <title>ezWork 사원 검색 페이지</title>
+<jsp:include page="/WEB-INF/views/partials/_aside.jsp" />
+<jsp:include page="/WEB-INF/views/partials/_header.jsp" />
+
 <style>
 table caption {
 	caption-side: top;
@@ -89,10 +92,10 @@ td:nth-child(1) {
 				<tbody>
 					<c:forEach var="m" items="${memberlist}">
 						<tr>
-							<td><a href="member_info?empnum=${m.empnum}">${m.empnum}</a></td>
-							<td>${m.department}</td>
-							<td>${m.name}</td>
-							<td>${m.rank}</td>
+							<td><a href="member_info?m_code=${m.m_CODE}">${m.m_CODE}</a></td>
+							<td>${m.m_PART_C}</td>
+							<td>${m.m_NAME}</td>
+							<td>${m.m_LEVEL}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

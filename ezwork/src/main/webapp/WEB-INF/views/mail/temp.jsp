@@ -24,7 +24,7 @@
 						<div class="navi navi-hover navi-active navi-link-rounded navi-bold navi-icon-center navi-light-icon">
 							<!--begin::Item-->
 							<div class="navi-item my-2">
-								<a href="inbox.mail" class="navi-link active">
+								<a href="inbox.mail" class="navi-link">
 									<span class="navi-icon mr-4">
 										<span class="svg-icon svg-icon-lg">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-heart.svg-->
@@ -47,7 +47,7 @@
 							<!--end::Item-->
 							<!--begin::Item-->
 							<div class="navi-item my-2">
-								<a href="temp.mail" class="navi-link">
+								<a href="temp.mail" class="navi-link active">
 									<span class="navi-icon mr-4">
 										<span class="svg-icon svg-icon-lg">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/PenAndRuller.svg-->

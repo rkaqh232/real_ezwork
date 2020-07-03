@@ -28,14 +28,14 @@ var KTLogin = function() {
 					username: {
 						validators: {
 							notEmpty: {
-								message: 'Username is required'
+								message: '사원번호를 입력해주세요'
 							}
 						}
 					},
 					password: {
 						validators: {
 							notEmpty: {
-								message: 'Password is required'
+								message: '비밀번호를 입력해주세요'
 							}
 						}
 					}
@@ -53,24 +53,15 @@ var KTLogin = function() {
             e.preventDefault();
 
             validation.validate().then(function(status) {
-		        if (status == 'Valid') {
-                    swal.fire({
-		                text: "All is cool! Now you submit this form",
-		                icon: "success",
-		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
-                        customClass: {
-    						confirmButton: "btn font-weight-bold btn-light-primary"
-    					}
-		            }).then(function() {
-						KTUtil.scrollTop();
-					});
+		      
+            	if (status == 'Valid') {
+            		location.href="home";
 				} else {
-					swal.fire({
-		                text: "Sorry, looks like there are some errors detected, please try again.",
+					swal.fire({ // alert 디자인
+		                text: "죄송합니다. 빈칸을 모두 입력 후 다시 시도해주세요.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+		                confirmButtonText: "확인",
                         customClass: {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}

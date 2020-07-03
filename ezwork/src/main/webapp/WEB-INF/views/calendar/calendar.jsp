@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은 메일함</title>
+<title>Insert title here</title>
 </head>
 <body>
-inbox 한글
+
 </body>
 </html>

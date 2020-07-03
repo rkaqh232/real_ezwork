@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>
 <head>
 		<base href="">
 		<meta charset="utf-8" />
-		<title>Metronic | Dashboard</title>
+		<title>EZWORK</title>
 		<meta name="description" content="Updates and statistics" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -34,7 +34,7 @@
 		<link href="resources/assets/css/themes/layout/aside/dark.css?v=7.0.5" rel="stylesheet" type="text/css" />
 
 		<!--end::Layout Themes-->
-		<link rel="shortcut icon" href="resources/assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="resources/assets/media/logos/tlogo.png" />
 	</head>
 
 	<!--end::Head-->

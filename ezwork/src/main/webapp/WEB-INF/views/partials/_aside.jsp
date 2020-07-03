@@ -485,7 +485,7 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="monthly.sch" class="menu-link">
+                                       href="calendar.sche" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">월간보기</span>
                                     </a></li>

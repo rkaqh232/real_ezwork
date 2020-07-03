@@ -106,18 +106,18 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
+                                       href="insert.hr" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">사원등록</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
+                                       href="list.hr"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">사원명부/조회</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="update.hr"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">사원기본정보관리</span>
@@ -175,35 +175,35 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
+                                       href="in.att" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">출근 등록</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
+                                       href="out.att"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">퇴근 등록</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="view.att"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">개인 근태 조회</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-2.html"
+                                       href="all.att"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">전사원 근태 조회</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/add-user.html" class="menu-link">
+                                       href="check.att" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">근무시간진단</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/add-user.html" class="menu-link">
+                                       href="monthly.att" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">월별 근태 조회</span>
                                     </a></li>
@@ -223,18 +223,18 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
+                                       href="list.holi" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">부서 휴가 신청현황 조회</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
+                                       href="request.holi"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">휴가신청</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="view.holi"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">휴가사용현황</span>
@@ -333,25 +333,19 @@
                                        </i> <span class="menu-text">받은 메일함</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">내게 쓴 메일함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="outbox.mail"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">보낸 메일함</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-2.html"
+                                       href="temp.mail"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">임시 보관함</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/add-user.html" class="menu-link">
+                                       href="bin.mail" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">휴지통</span>
                                     </a></li>
@@ -406,35 +400,6 @@
                               <span class="menu-link"> <span class="menu-text">Applications</span>
                            </span>
                            </li>
-                           <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
-                              class="menu-link menu-toggle"> <i
-                                 class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">기안</span> <i class="menu-arrow"></i>
-                           </a>
-                              <div class="menu-submenu">
-                                 <i class="menu-arrow"></i>
-                                 <ul class="menu-subnav">
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
-                                          <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">기안문 작성</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">결재요청함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">임시저장함</span>
-                                    </a></li>
-
-                                 </ul>
-                              </div></li>
 
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
                               data-menu-toggle="hover"><a href="javascript:;"
@@ -446,24 +411,24 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
+                                       href="wait.appr" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">결재대기함</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
+                                       href="ongoing.appr"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">결재진행함</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="finished.appr"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">완료문서함</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="return.appr"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">반려문서함</span>
@@ -520,30 +485,30 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
+                                       href="monthly.sch" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">월간보기</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
+                                       href="weekly.sch"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">주간보기</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="daily.sch"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">일간보기</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="list.sch"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">목록보기</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-columns-1.html"
+                                       href="view.sch"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">일정상세조회</span>
@@ -597,17 +562,10 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
+                                       href="meeting.res" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">회의실 예약</span>
                                     </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">공용 차량 예약</span>
-                                    </a></li>
-
 
                                  </ul>
                               </div></li>
@@ -658,13 +616,12 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-default.html" class="menu-link">
+                                       href="search.org" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">직원검색</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="custom/apps/user/list-datatable.html"
-                                       class="menu-link"> <i
+                                       href="tree.org" class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">사내 조직도</span>
                                     </a></li>
@@ -711,19 +668,19 @@
                            </span>
                            </li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
+                              data-menu-toggle="hover"><a href="notice.bo"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
                               </i> <span class="menu-text">공지게시판</span> <i class="menu-arrow"></i>
                            </a></li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
+                              data-menu-toggle="hover"><a href="material.bo"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
                               </i> <span class="menu-text">자료실</span> <i class="menu-arrow"></i>
                            </a></li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
+                              data-menu-toggle="hover"><a href="free.bo"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
                               </i> <span class="menu-text">임직원 게시판</span> <i class="menu-arrow"></i>
@@ -763,7 +720,7 @@
                            </span>
                            </li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
+                              data-menu-toggle="hover"><a href="view.chat"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
                               </i> <span class="menu-text">채팅</span> <i class="menu-arrow"></i>

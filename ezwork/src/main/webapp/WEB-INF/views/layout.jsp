@@ -20,10 +20,13 @@
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 					
+					
+					
 					<c:if test="${empty page}">
 						<jsp:include page="partials/_content.jsp"/>
 					</c:if>
 						<jsp:include page="${page}"/>
+						
 					</div>
 					
 					<!--end::Content-->

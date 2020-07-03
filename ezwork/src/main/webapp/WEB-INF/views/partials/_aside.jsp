@@ -282,8 +282,8 @@
 <!--  메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일      메일     -->
 
                   <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                     data-menu-toggle="hover"><a href="javascript:;"
-                     class="menu-link menu-toggle"> <span
+                     data-menu-toggle="hover"><a href="inbox.mail"
+                     class="menu-link"> <span
                         class="svg-icon menu-icon"> <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
                            <svg xmlns="http://www.w3.org/2000/svg"
                               xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -300,71 +300,10 @@
                                  </svg> <!--end::Svg Icon-->
                      </span> <span class="menu-text">메일</span> 
                      <span class="menu-label">
-                     <span class="label label-danger label-inline"> New </span> <!--  new 배너  -->
+                     <span class="label label-danger label-inline">3</span> <!-- 안읽은 메일 갯수  -->
                      </span><i class="menu-arrow"></i>
-
-
                   </a>
-
-               <!----------------------------------     하위 탭     ------------------------------------------>
-                  
-                     <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                           <li class="menu-item menu-item-parent" aria-haspopup="true">
-                              <span class="menu-link"> <span class="menu-text">Applications</span>
-                           </span>
-                           </li>
-                           <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
-                              class="menu-link menu-toggle"> <i
-                                 class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">전체 메일함</span> <span
-                                 class="menu-label"> <span
-                                    class="label label-rounded label-primary">6</span>
-                              </span> <i class="menu-arrow"></i>
-                           </a>
-                              <div class="menu-submenu">
-                                 <i class="menu-arrow"></i>
-                                 <ul class="menu-subnav">
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="inbox.mail" class="menu-link">
-                                          <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">받은 메일함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="outbox.mail"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">보낸 메일함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="temp.mail"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">임시 보관함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="bin.mail" class="menu-link">
-                                          <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">휴지통</span>
-                                    </a></li>
-
-
-                                 </ul>
-                              </div></li>
-
-                           <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
-                              class="menu-link menu-toggle"> <i
-                                 class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">환경설정</span> <i class="menu-arrow"></i>
-                           </a></li>
-
-
-
-                        </ul>
-                     </div></li>
+               </li>
                      
                      
                      
@@ -485,7 +424,7 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="monthly.sch" class="menu-link">
+                                       href="calendar.sche" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">월간보기</span>
                                     </a></li>
@@ -616,7 +555,7 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="search.org" class="menu-link">
+                                       href="member_list" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">직원검색</span>
                                     </a></li>

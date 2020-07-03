@@ -24,5 +24,4 @@ create table member(
 );
 
  	
- 	
  

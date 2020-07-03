@@ -14,4 +14,22 @@ public class MailController {
 		m.addAttribute("page","mail/inbox.jsp");
 		return "home";
 	}
+	
+	@GetMapping(value="/outbox.mail")
+	public String outbox(HttpServletRequest request, Model m) {
+		m.addAttribute("page","mail/outbox.jsp");
+		return "home";
+	}
+	
+	@GetMapping(value="/temp.mail")
+	public String temp(HttpServletRequest request, Model m) {
+		m.addAttribute("page","mail/temp.jsp");
+		return "home";
+	}
+	
+	@GetMapping(value="/bin.mail")
+	public String bin(HttpServletRequest request, Model m) {
+		m.addAttribute("page","mail/bin.jsp");
+		return "home";
+	}
 }

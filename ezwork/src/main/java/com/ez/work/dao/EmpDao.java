@@ -23,8 +23,8 @@ public class EmpDao {
 		return sqlSession.selectOne("Members.searchcount", map);
 	}
 
-	public Member getSearchMemberInfo(int empnum) {
-		return sqlSession.selectOne("Members.EmpCheck", empnum);
+	public Member getSearchMemberInfo(String M_CODE) {
+		return sqlSession.selectOne("Members.EmpCheck", M_CODE);
 	}
 
 }

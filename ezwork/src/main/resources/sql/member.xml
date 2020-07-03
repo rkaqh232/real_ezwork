@@ -5,14 +5,14 @@
 <!-- 민혁 - 사원조회 -->
 <mapper namespace="Members">
 	<select id="searchcount" parameterType="map" resultType="int">
-		select count(*) from member where empnum != '1'
+		select count(*) from member where M_CODE != 'admin'
 		<if test="search_field!=null">
 			and
 			<choose>
-				<when test="search_field=='empnum'">empnum</when>
-				<when test="search_field=='department'">department</when>
-				<when test="search_field=='name'">name</when>
-				<when test="search_field=='rank'">rank</when>
+				<when test="search_field=='M_CODE'">M_CODE</when>
+				<when test="search_field=='M_PART_C'">M_PART_C</when>
+				<when test="search_field=='M_NAME'">M_NAME</when>
+				<when test="search_field=='M_LEVEL'">M_LEVEL</when>
 			</choose>
 			like #{search_word}
 		</if>
@@ -23,25 +23,25 @@
 		select *
 		from ( select rownum rnum, b.*
 		from (select * from member where
-		empnum != 1
+		M_CODE != 'admin'
 		<if test="search_field!=null">
 			and
 			<choose>
-				<when test="search_field=='empnum'">empnum</when>
-				<when test="search_field=='department'">department</when>
-				<when test="search_field=='name'">name</when>
-				<when test="search_field=='rank'">rank</when>
+				<when test="search_field=='M_CODE'">M_CODE</when>
+				<when test="search_field=='M_PART_C'">M_PART_C</when>
+				<when test="search_field=='M_NAME'">M_NAME</when>
+				<when test="search_field=='M_LEVEL'">M_LEVEL</when>
 			</choose>
 			like #{search_word}
 		</if>
-		order by empnum
+		order by M_CODE
 		)b
 		)
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
 
-	<select id="EmpCheck" resultType="member" parameterType="int">
+	<select id="EmpCheck" resultType="member" parameterType="String">
 		select *
-		from member where empnum = #{empnum}
+		from member where M_CODE = #{M_CODE}
 	</select>
 </mapper>

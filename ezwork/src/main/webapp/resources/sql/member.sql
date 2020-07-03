@@ -23,5 +23,11 @@ create table member(
 	M_RESIGN_DATE  		    date                   -- í‡´ì‚¬ì¼	
 );
 
+insert into member
+values ('Ca', 'park', 300, 'Ca', 2, '¹Ú¹ÎÇõ', 'PARKMINHYEOK', 9106231, '³²', sysdate, 'Y', 'N', 'qq', 'qq', 'park@park.com', '¼­¿ï½Ã', sysdate, sysdate);
+		
+select *
+from member;
+
  	
  

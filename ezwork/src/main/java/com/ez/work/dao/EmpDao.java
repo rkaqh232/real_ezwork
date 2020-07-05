@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ez.work.domain.Member;
-//¹ÎÇõ
+//Â¹ÃŽÃ‡Ãµ
 @Repository
 public class EmpDao {
 	@Autowired
@@ -23,8 +23,8 @@ public class EmpDao {
 		return sqlSession.selectOne("Members.searchcount", map);
 	}
 
-	public Member getSearchMemberInfo(int empnum) {
-		return sqlSession.selectOne("Members.EmpCheck", empnum);
+	public Member getSearchMemberInfo(String M_CODE) {
+		return sqlSession.selectOne("Members.EmpCheck", M_CODE);
 	}
 
 }

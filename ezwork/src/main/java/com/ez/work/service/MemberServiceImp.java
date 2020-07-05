@@ -1,5 +1,5 @@
 package com.ez.work.service;
-//¹ÎÇõ - »ç¿ø Á¶È¸
+//Â¹ÃÃ‡Ãµ - Â»Ã§Â¿Ã¸ ÃÂ¶ÃˆÂ¸
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class MemberServiceImp implements MemberService {
 	public List<Member> getSearchList(int index, String search_word, int page, int limit) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		if (index != -1) {
-			String[] search_field = new String[] { "empnum", "department", "name", "rank" };
+			String[] search_field = new String[] { "M_CODE", "M_PART_C", "M_NAME", "M_LEVEL" };
 			map.put("search_field", search_field[index]);
 			map.put("search_word", "%" + search_word + "%");
 		}
@@ -35,7 +35,7 @@ public class MemberServiceImp implements MemberService {
 	public int getSearchListCount(int index, String search_word) {
 		Map<String, String> map = new HashMap<String, String>();
 		if (index != -1) {
-			String[] search_field = new String[] { "empnum", "department", "name", "rank" };
+			String[] search_field = new String[] { "M_CODE", "M_PART_C", "M_NAME", "M_LEVEL" };
 			map.put("search_field", search_field[index]);
 			map.put("search_word", "%" + search_word + "%");
 		}
@@ -43,8 +43,8 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public Member member_info(int empnum) {
-		return dao.getSearchMemberInfo(empnum);
+	public Member member_info(String M_CODE) {
+		return dao.getSearchMemberInfo(M_CODE);
 	}
 
 }

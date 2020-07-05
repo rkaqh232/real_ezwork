@@ -1455,7 +1455,7 @@
 					<form id="kt_inbox_compose_form">
 						<!--begin::Header-->
 						<div class="d-flex align-items-center justify-content-between py-5 pl-8 pr-5 border-bottom">
-							<h5 class="font-weight-bold m-0">Compose</h5>
+							<h5 class="font-weight-bold m-0">메일 쓰기</h5>
 							<div class="d-flex ml-2">
 								<span class="btn btn-clean btn-sm btn-icon mr-2">
 									<i class="flaticon2-arrow-1 icon-1x"></i>
@@ -1544,7 +1544,7 @@
 							<div class="d-flex align-items-center mr-3">
 								<!--begin::Send-->
 								<div class="btn-group mr-4">
-									<span class="btn btn-primary font-weight-bold px-6">Send</span>
+									<span class="btn btn-primary font-weight-bold px-6">보내기</span>
 									<span class="btn btn-primary font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 									<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 										<ul class="navi py-3">

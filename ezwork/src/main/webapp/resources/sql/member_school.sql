@@ -1,6 +1,6 @@
 DROP TABLE member;
 -- 혜쩡
---학력정보 테이블
+-- 학력정보 테이블
 create table MEM_SCHOOL(
 
 SC_NAME  		VARCARH2(50) PRIMARY KEY, -- 학교명

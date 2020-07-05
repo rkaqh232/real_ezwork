@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
-/* ÇýÁ¤  */
-/* ÇýÁ¤  */
-/* ÇýÁ¤  */
-/* ÇýÁ¤  */
+/* í˜œì •  */
+/* í˜œì •  */
+/* í˜œì •  */
+/* í˜œì • */
 
 @Controller
 public class MemberController {
 	
 	
-	//·Î±×ÀÎ
+	//ï¿½Î±ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/login.net")
 	public ModelAndView login(ModelAndView mv, @CookieValue(value = "saveid", required = false) Cookie readCookie)
 			throws Exception {
@@ -36,7 +36,7 @@ public class MemberController {
 	}
 	
 	
-	//»ç¿øµî·Ï
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@GetMapping(value="/insert.hr")
 	public String joinForm(HttpServletRequest request, Model m) {
 		m.addAttribute("page","member/joinForm.jsp");

@@ -2,8 +2,29 @@
 <!-- SQL 맵퍼 파일은 xml이기 때문에 제일 먼저 xml 선언이 옵니다. -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <!-- 민혁 - 사원조회 -->
+<!-- 혜정 - 사원등록 -->
+
 <mapper namespace="Members">
+
+
+
+ 	<!-- 혜정 - 사원등록 -->
+    <insert id="insert" parameterType="member">
+   	  insert into member
+      values
+      	(#{id}, #{password}, #{name}, #{age}, #{gender}, #{email})   
+    </insert> <!--  만들고 작성하기  -->
+    
+    
+    <!--  혜정 - id 체크   -->
+	<select id="idcheck" resultType="member" parameterType="String">
+		select * from member where id = #{id}
+	</select>
+    
+    
+    
 	<select id="searchcount" parameterType="map" resultType="int">
 		select count(*) from member where M_CODE != 'admin'
 		<if test="search_field!=null">
@@ -17,6 +38,9 @@
 			like #{search_word}
 		</if>
 	</select>
+
+
+
 
 	<select id="getSearchList" parameterType="map"
 		resultType="member">
@@ -39,6 +63,10 @@
 		)
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
+
+
+
+
 	<select id="EmpCheck" resultType="member" parameterType="String">
 		select *
 		from member where M_CODE = #{M_CODE}

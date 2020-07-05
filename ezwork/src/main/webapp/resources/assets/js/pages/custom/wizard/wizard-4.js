@@ -29,10 +29,10 @@ var KTWizard4 = function () {
 					KTUtil.scrollTop();
 				} else {
 					Swal.fire({
-						text: "Sorry, looks like there are some errors detected, please try again.",
+						text: "필수사항을 모두 입력해주세요.",
 						icon: "error",
 						buttonsStyling: false,
-						confirmButtonText: "Ok, got it!",
+						confirmButtonText: "확인",
 						customClass: {
 							confirmButton: "btn font-weight-bold btn-light"
 						}

@@ -31,7 +31,7 @@
       -ms-flex: 0 0 calc(25% - 0.25rem);
       flex: 0 0 calc(25% - 0.25rem);
       width: calc(25% - 0.25rem);
-      background-color: #F3F6F9;
+      background-color: #C49DD6;
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem; }
       .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
@@ -66,7 +66,7 @@
           -ms-flex-pack: center;
           justify-content: center;
           background-color: rgba(54, 153, 255, 0.08);
-          color: #3699FF;
+          color: #ffffff;
           margin-right: 1rem;
           border-radius: 0.5rem; }
         .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-label {
@@ -79,14 +79,14 @@
           flex-direction: column; }
           .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-label .wizard-title {
             font-size: 1.1rem;
-            font-weight: 600; }
+            font-weight: 500; }
       .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="current"] {
         background-color: #ffffff; }
         .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-number {
           color: #ffffff;
-          background-color: #3699FF; }
+          background-color: #C49DD6; }
         .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-title {
-          color: #3699FF; }
+          color: #7030A0; }
 
 @media (max-width: 1399.98px) {
   .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {

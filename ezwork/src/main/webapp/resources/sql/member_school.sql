@@ -1,15 +1,15 @@
 DROP TABLE member;
--- ÇýÂÄ
--- ÇÐ·ÂÁ¤º¸ Å×ÀÌºí
+-- í–¬ì •
+-- í•™ë ¥ì •ë³´
 create table MEM_SCHOOL(
 
-SC_NAME  		VARCARH2(50) PRIMARY KEY, -- ÇÐ±³¸í
-M_CODE   		VARCARH2(20),			  -- »ç¿ø¹øÈ£
-SC_MAJOR 		VARCARH2(20), 			  -- Àü°ø
-SC_DEGREE 		VARCARH2(20), 			  -- ÇÐÀ§
-SC_ADDRESS 		VARCARH2(50), 			  -- ¼ÒÀçÁö
-SC_ENT_DAY 		DATE, 					  -- ÀÔÇÐÀÏÀÚ
-SC__GRAD_DAY 	DATE  					  -- Á¹¾÷ÀÏÀÚ
+SC_NAME  		VARCARH2(50) PRIMARY KEY, -- í•™êµëª…
+M_CODE   		VARCARH2(20),			  -- ì‚¬ì›ë²ˆí˜¸(ì‚­ì œì˜ˆì •)
+SC_MAJOR 		VARCARH2(20), 			  -- ì „ê³µ
+SC_DEGREE 		VARCARH2(20), 			  -- í•™ìœ„
+SC_ADDRESS 		VARCARH2(50), 			  -- ì†Œìž¬ì§€
+SC_ENT_DAY 		DATE, 					  -- ìž…í•™ì¼ìž(ì‚­ì œì˜ˆì •)
+SC__GRAD_DAY 	DATE  					  -- ì¡¸ì—…ì¼ìž
 );
 
 

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ez.work.domain.Member;
-//¹ÎÇõ
+//민혁
 @Repository
 public class EmpDao {
 	@Autowired

@@ -13,7 +13,7 @@ var KTAddUser = function () {
 	var _initWizard = function () {
 		// Initialize form wizard
 		_wizard = new KTWizard(_wizardEl, {
-			startStep: 1, // initial active step number
+			startStep: 1, // initial active step number 시작페이지
 			clickableSteps: true  // allow step clicking
 		});
 
@@ -25,15 +25,15 @@ var KTAddUser = function () {
 			// Validate form
 			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
 			validator.validate().then(function (status) {
-		        if (status == 'Valid') {
+		        if (status == 'null') {
 					_wizard.goNext();
 					KTUtil.scrollTop();
 				} else {
 					Swal.fire({
-		                text: "Sorry, looks like there are some errors detected, please try again.",
+		                text: "필수 항목을 모두 입력해주세요.",
 		                icon: "error",
 		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
+		                confirmButtonText: "확인",
 						customClass: {
 							confirmButton: "btn font-weight-bold btn-light"
 						}
@@ -61,21 +61,21 @@ var KTAddUser = function () {
 					firstname: {
 						validators: {
 							notEmpty: {
-								message: 'First Name is required'
+								message: '사원번호는 필수항목입니다. '
 							}
 						}
 					},
 					lastname: {
 						validators: {
 							notEmpty: {
-								message: 'Last Name is required'
+								message: '계약코드는 필수항목입니다.'
 							}
 						}
 					},
 					companyname: {
 						validators: {
 							notEmpty: {
-								message: 'Company Name is required'
+								message: '부서코드는 필수항목입니다.'
 							}
 						}
 					},

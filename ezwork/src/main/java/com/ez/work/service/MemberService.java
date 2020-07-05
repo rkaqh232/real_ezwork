@@ -1,5 +1,5 @@
 package com.ez.work.service;
-//¹ÎÇõ - »ç¿ø Á¶È¸
+//Â¹ÃÃ‡Ãµ - Â»Ã§Â¿Ã¸ ÃÂ¶ÃˆÂ¸
 import java.util.List;
 
 import com.ez.work.domain.Member;

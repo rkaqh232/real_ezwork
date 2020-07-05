@@ -2,7 +2,7 @@ package com.ez.work.domain;
 
 import java.sql.Date;
 
-//ÇıÁ¤, ¹ÎÇõ
+//Ã‡Ã½ÃÂ¤, Â¹ÃÃ‡Ãµ
 public class Member {
 	private String M_CODE;   			
 	private String M_PASS;       		 

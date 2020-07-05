@@ -39,7 +39,6 @@
 		)
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
-
 	<select id="EmpCheck" resultType="member" parameterType="String">
 		select *
 		from member where M_CODE = #{M_CODE}

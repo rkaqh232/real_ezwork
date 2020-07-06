@@ -31,6 +31,7 @@
 					<div class="wizard wizard-4" id="kt_wizard"
 						data-wizard-state="step-first" data-wizard-clickable="true">
 						<!--begin::Wizard Nav-->
+						<!-- 탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  -->
 						<div class="wizard-nav">
 							<div class="wizard-steps">
 								<div class="wizard-step" data-wizard-type="step"
@@ -84,8 +85,11 @@
 
 							</div>
 						</div>
+						<!-- 탭메뉴  종료  탭메뉴   종료    탭메뉴   종료   탭메뉴  종료  탭메뉴  종료  탭메뉴   종료 탭메뉴   종료  탭메뉴   종료  탭메뉴   종료 탭메뉴  -->
 						<!--end::Wizard Nav-->
 						<!--begin::Card-->
+
+						<!--  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작 -->
 						<div class="card card-custom card-shadowless rounded-top-0">
 							<!--begin::Body-->
 							<div class="card-body p-0">
@@ -97,9 +101,11 @@
 											<div class="row justify-content-center">
 												<div class="col-xl-9">
 													<!--begin::Wizard Step 1-->
+													<!--  Step 1 사원등록 Step 1 사원등록 Step 1 사원등록 Step 1 사원등록  Step 1 사원등록-->
 													<div class="my-5 step" data-wizard-type="step-content"
 														data-wizard-state="current">
-														<h3 class="text-dark font-weight-bold mb-10" font-weight="bold";>사원 등록</h3>
+														<h3 class="text-dark font-weight-bold mb-10"
+															font-weight="bold";>사원 등록</h3>
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
@@ -246,7 +252,7 @@
 																결혼여부 </label>
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info"> <input
-																	type="radio" name="marry" checked="checked"/> 기혼 <span></span>
+																	type="radio" name="marry" checked="checked" /> 기혼 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																</label> <label class="radio radio-rounded radio-info">
 																	<input type="radio" name="marry" /> 미혼 <span></span>
@@ -260,7 +266,7 @@
 																군필여부 </label>
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info"> <input
-																	type="radio" name="army" checked="checked"/> 군필 <span></span>
+																	type="radio" name="army" checked="checked" /> 군필 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																</label> <label class="radio radio-rounded radio-info">
 																	<input type="radio" name="army" /> 면제 <span></span>
@@ -346,31 +352,34 @@
 														<!--begin::Group-->
 
 
-								<!--  주소 API  주소 API  주소 API  주소 API    주소 API  주소 API  주소 API  주소 API   주소 API  주소 API  주소 API  주소 API -->
-													
+														<!--  주소 API  주소 API  주소 API  주소 API    주소 API  주소 API  주소 API  주소 API   주소 API  주소 API  주소 API  주소 API -->
+
 														<!--  우편번호  -->
 														<div class="row">
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
-																	<label>우편번호</label> 
-																	<input type="text" class="form-control form-control-solid form-control-lg"
-																		name="postcode" placeholder="Postcode" id="sample6_postcode" onclick="sample6_execDaumPostcode()"/>
-																		<span class="form-text text-muted"> 버튼을 눌러 검색해주세요.</span>
+																	<label>우편번호</label> <input type="text"
+																		class="form-control form-control-solid form-control-lg"
+																		name="postcode" placeholder="Postcode"
+																		id="sample6_postcode"
+																		onclick="sample6_execDaumPostcode()" /> <span
+																		class="form-text text-muted"> 버튼을 눌러 검색해주세요.</span>
 																</div>
 															</div>
-															
+
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
-																<label>&nbsp;</label> <br>
-																	<input type="button" class="btn btn-outline-info" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"/>
-																		
-																	
+																	<label>&nbsp;</label> <br> <input type="button"
+																		class="btn btn-outline-info"
+																		onclick="sample6_execDaumPostcode()" value="우편번호 찾기" />
+
+
 																</div>
 															</div>
 														</div>
-	
+
 
 														<div class="form-group">
 															<label> 주소 </label> <input type="text"
@@ -390,8 +399,9 @@
 																<div class="form-group">
 																	<label> 상세주소 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="address2" placeholder="상세주소" id="sample6_detailAddress" />
-																	
+																		name="address2" placeholder="상세주소"
+																		id="sample6_detailAddress" />
+
 																</div>
 															</div>
 															<!--end::Group-->
@@ -400,38 +410,28 @@
 																<div class="form-group">
 																	<label>상세주소 2 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="address3" placeholder="참고항목" id="sample6_extraAddress"/>
+																		name="address3" placeholder="참고항목"
+																		id="sample6_extraAddress" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-
-
 													</div>
-													
-					<!--  END  주소 API  주소 API  주소 API  END  주소 API  주소 API  주소 API  주소 API   주소 API END  주소 API  주소 API  주소 API  END-->
-								
-					<!--  1단계 인적사항 끝  1단계 인적사항 끝                                                                       1단계 인적사항 끝  1단계 인적사항 끝  1단계 인적사항 끝  -->
 
+													<!--  Step 1 사원등록 종료 Step 1 사원등록 종료 Step 1 사원등록 종료 Step 1 사원등록 종료 Step 1 사원등록 종료-->
 
-
-
-
-
-
-
-
+													<!--  END  주소 API  주소 API  주소 API  END  주소 API  주소 API  주소 API  주소 API   주소 API END  주소 API  주소 API  주소 API  END-->
 
 
 													<!--end::Wizard Step 1-->
 													<!--begin::Wizard Step 2-->
 													<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="text-dark font-weight-bold mb-10 mt-5"> 발령정보 </h5>
+														<h5 class="text-dark font-weight-bold mb-10 mt-5">
+															발령정보</h5>
 														<!--begin::Group-->
-														
+
 														<div class="form-group row">
-															<label class="col-xl-6 col-form-label">
-																발령일자 </label>
+															<label class="col-xl-6 col-form-label"> 발령일자 </label>
 															<div class="col-xl-6">
 																<div class="input-group date">
 																	<input type="text" class="form-control" readonly
@@ -444,49 +444,50 @@
 																</div>
 															</div>
 														</div>
-														
-														
-														
+
+
+
 														<div class="row">
-														
-														
-														
-														
+
+
+
+
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
 																	<label> 발령구분 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
 																		name="date" placeholder="발령구분" id="ap_date" />
-																	
+
 																</div>
 															</div>
-															
-															
-															
-															
-															
+
+
+
+
+
 															<!--end::Group-->
 															<!--begin::Group-->
 															<div class="col-xl-6">
 																<div class="form-group">
 																	<label>발령직급 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="level" placeholder="직급을 입력하세요." id="ap_level"/>
+																		name="level" placeholder="직급을 입력하세요." id="ap_level" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-														
-														
+
+
 														<div class="row">
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
 																	<label> 발령내용 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요." id="ap_content" />
-																	
+																		name="content" placeholder="내용을 입력하세요."
+																		id="ap_content" />
+
 																</div>
 															</div>
 															<!--end::Group-->
@@ -495,39 +496,42 @@
 																<div class="form-group">
 																	<label> 기타사항 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc"/>
+																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-														
-														
-														
-														
-														
-														
-														
-													<!--end::Group-->
+
+
+
+
+
+
+
+														<!--end::Group-->
 													</div>
-													
-													
-													<!-- 발령정보 END  발령정보 END  발령정보 END  발령정보 END  발령정보 END  -->
-													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
+
+													<!-- Step2 발령정보 END  Step2 발령정보 END  Step2 발령정보 END Step2  발령정보 END  Step2발령정보 END  -->
+
 													<!--end::Wizard Step 2-->
+
+
 													<!--begin::Wizard Step 3-->
+													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
 													<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark"> 학력정보</h5>
+														<h5 class="mb-10 font-weight-bold text-dark">학력정보</h5>
 														<!--begin::Group-->
-														
-														
+
+
 														<div class="row">
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
 																	<label> 학교명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요." id="ap_content" />
-																	
+																		name="content" placeholder="내용을 입력하세요."
+																		id="ap_content" />
+
 																</div>
 															</div>
 															<!--end::Group-->
@@ -536,23 +540,24 @@
 																<div class="form-group">
 																	<label> 전공 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc"/>
+																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-														
-														
-														
-														
+
+
+
+
 														<div class="row">
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
 																	<label> 학위 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요." id="ap_content" />
-																	
+																		name="content" placeholder="내용을 입력하세요."
+																		id="ap_content" />
+
 																</div>
 															</div>
 															<!--end::Group-->
@@ -561,17 +566,16 @@
 																<div class="form-group">
 																	<label> 소재지 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc"/>
+																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-														
-														
-														
+
+
+
 														<div class="form-group row">
-															<label class="col-xl-6 col-form-label">
-																졸업일자 </label>
+															<label class="col-xl-6 col-form-label"> 졸업일자 </label>
 															<div class="col-xl-6">
 																<div class="input-group date">
 																	<input type="text" class="form-control" readonly
@@ -584,42 +588,38 @@
 																</div>
 															</div>
 														</div>
-														
-														
-														
-														
-														
-														
-														
-														
+
+
+
+
+
+
+
+
 													</div>
-													
-													
-													<!-- 학력정보 END  학력정보 END  학력정보 END  학력정보 END  학력정보 END  -->
-													<!--  step 4 시작  step 4 시작  step 4 시작 step 4 시작 step 4 시작 step 4 시작 step 4 시작 -->
-													
-													
-													
-													
-													
+
+
+													<!-- step3 학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  -->
+
 													<!--end::Wizard Step 3-->
 													<!--begin::Wizard Step 4-->
-												
-														
-														
-														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark"> 어학정보 </h5>
+													<!--  step 4 어학정보 시작  step 4 어학정보시작  step 4 어학정보시작 step 4 어학정보시작 -->
+
+
+													<div class="my-5 step" data-wizard-type="step-content">
+														<h5 class="mb-10 font-weight-bold text-dark">어학정보</h5>
 														<!--begin::Group-->
-														
-														
+
+
 														<div class="row">
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
 																	<label> 외국어명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요." id="ap_content" />
-																	
+																		name="content" placeholder="내용을 입력하세요."
+																		id="ap_content" />
+
 																</div>
 															</div>
 															<!--end::Group-->
@@ -628,23 +628,24 @@
 																<div class="form-group">
 																	<label> 시험명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc"/>
+																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-														
-														
-														
-														
+
+
+
+
 														<div class="row">
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
 																	<label> 시험점수 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요." id="ap_content" />
-																	
+																		name="content" placeholder="내용을 입력하세요."
+																		id="ap_content" />
+
 																</div>
 															</div>
 															<!--end::Group-->
@@ -653,17 +654,14 @@
 																<div class="form-group">
 																	<label> 발급처 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc"/>
+																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-														
-														
-														
+
 														<div class="form-group row">
-															<label class="col-xl-6 col-form-label">
-																발급일자 </label>
+															<label class="col-xl-6 col-form-label"> 발급일자 </label>
 															<div class="col-xl-6">
 																<div class="input-group date">
 																	<input type="text" class="form-control" readonly
@@ -676,16 +674,18 @@
 																</div>
 															</div>
 														</div>
-														
-														
-														
-														
-														
-														
-														
-														
+
+
+
+
+
+
+
+
 													</div>
-													
+													<!-- step4 어학정보 END  step4 어학정보 END step4 어학정보 END step4 어학정보 END-->
+
+
 													<div
 														class="d-flex justify-content-between border-top pt-10 mt-15">
 														<div class="mr-2">
@@ -702,6 +702,7 @@
 																data-wizard-type="action-next">Next</button>
 														</div>
 													</div>
+
 													<!--end::Wizard Actions-->
 												</div>
 											</div>

@@ -15,6 +15,7 @@ var KTCalendarBasic = function() {
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list' ],
                 themeSystem: 'bootstrap',
+                locale:'ko',
 
                 isRTL: KTUtil.isRTL(),
 
@@ -164,6 +165,6 @@ var KTCalendarBasic = function() {
     };
 }();
 
-jQuery(document).ready(function() {
+$(document).ready(function() {
     KTCalendarBasic.init();
 });

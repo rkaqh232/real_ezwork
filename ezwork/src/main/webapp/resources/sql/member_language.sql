@@ -1,11 +1,11 @@
--- ÇýÂÄ
--- ¾îÇÐÁ¤º¸ Å×ÀÌºí
+-- í˜œì •
+-- ì–´í•™í…Œì´ë¸”
 create table MEM_LANGUAGE(
 
-LG_NAME 	VARCHAR2(20) PRIMARY KEY, --¿Ü±¹¾î¸í
-LG_TEST 	VARCHAR2(20),			  -- ½ÃÇè¸í
-LG_GRADE 	VARCHAR2(20), 			  --½ÃÇèÁ¡¼ö
-LG_DATE 	DATE, 					  --¹ß±ÞÀÏÀÚ
-LG_ORGAN 	VARCHAR2(20) 			  -- ¹ß±ÞÃ³
+LG_NAME 	VARCHAR2(20) PRIMARY KEY, -- ì™¸êµ­ì–´ëª…
+LG_TEST 	VARCHAR2(20),			  -- ì‹œí—˜ëª…
+LG_GRADE 	VARCHAR2(20), 			  -- ì‹œí—˜ì ìˆ˜
+LG_DATE 	DATE, 					  -- ë°œê¸‰ì¼ìž
+LG_ORGAN 	VARCHAR2(20) 			  -- ë°œê¸‰ì²˜
 
 );

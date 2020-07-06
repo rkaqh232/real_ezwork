@@ -2,7 +2,7 @@ package com.ez.work.domain;
 
 import java.sql.Date;
 
-//ÇýÁ¤, ¹ÎÇõ
+//혜정, 민혁
 public class Member {
 	private String M_CODE;   			
 	private String M_PASS;       		 

@@ -1,5 +1,5 @@
 package com.ez.work.service;
-//¹ÎÇõ - »ç¿ø Á¶È¸
+//민혁
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,5 +46,6 @@ public class MemberServiceImp implements MemberService {
 	public Member member_info(String M_CODE) {
 		return dao.getSearchMemberInfo(M_CODE);
 	}
+
 
 }

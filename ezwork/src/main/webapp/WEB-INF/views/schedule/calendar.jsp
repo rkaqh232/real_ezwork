@@ -146,7 +146,6 @@
             </div>
         </div>
         <!-- /.filter panel -->
-    </div>
     <!-- /.container -->
 
     <script src="resources/js/fullcalendar/jquery.min.js"></script>

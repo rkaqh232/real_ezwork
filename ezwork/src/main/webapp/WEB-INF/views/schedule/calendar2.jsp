@@ -130,20 +130,6 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-		<br>
-        <div class="panel panel-default">
-
-            <div class="panel-heading">
-                <h3 class="panel-title">검색</h3>
-            </div>
-
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <input class="checkbox-inline"><button>검색</button>
-                    </div>
-                </div>
-
-            </div>
         </div>
         <!-- /.filter panel -->
     <!-- /.container -->

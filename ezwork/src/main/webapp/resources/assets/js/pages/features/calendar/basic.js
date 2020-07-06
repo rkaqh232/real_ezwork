@@ -15,10 +15,7 @@ var KTCalendarBasic = function() {
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list' ],
                 themeSystem: 'bootstrap',
-                locale:'ko',
-
                 isRTL: KTUtil.isRTL(),
-
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -44,6 +41,7 @@ var KTCalendarBasic = function() {
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 navLinks: true,
+                locale:'ko',
                 events: [
                     {
                         title: 'All Day Event',

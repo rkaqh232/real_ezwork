@@ -19,4 +19,7 @@
 		 #{MAIL_RCHECK}, sysdate)
 	</insert>
 	
+	<select id="count" parameterType="int">
+		select count(*) from email
+	</select>
 </mapper>

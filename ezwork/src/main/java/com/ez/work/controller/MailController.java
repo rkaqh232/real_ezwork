@@ -2,23 +2,34 @@ package com.ez.work.controller;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ez.work.domain.Mail;
+import com.ez.work.service.MailService;
 
 /*수진*/
 
 @Controller
 public class MailController {
+	@Autowired
+	private MailService mailService;
+	
 	@Value("${mailsavefoldername}")
 	private String mailsaveFolder;	
 	
@@ -79,4 +90,33 @@ public class MailController {
 		}
 		return "";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/MailListAjax.mail")
+	public Map<String, Object> mailListAjax(
+			@RequestParam(value="page", defaultValue="1", required=false) int page,
+			@RequestParam(value="limit", defaultValue="10", required=false) int limit)
+	{
+		int listcount=mailService.getListCount();
+		int maxpage = (listcount+limit-1)/limit;
+		int startpage = ((page-1)/10)*10+1;
+		int endpage = startpage+10-1;
+		
+		if(endpage>maxpage)
+			endpage = maxpage;
+		
+		List<Mail> maillist = mailService.getMailList(page, limit);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page",page);
+		map.put("maxpage",maxpage);
+		map.put("startpage",startpage);
+		map.put("endpage",endpage);
+		map.put("listcount",listcount);
+		map.put("maillist",maillist);
+		map.put("limit",limit);
+		return map;
+	}
+	
+	
 }

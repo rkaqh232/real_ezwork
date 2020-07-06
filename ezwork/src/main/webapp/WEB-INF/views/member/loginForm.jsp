@@ -26,7 +26,7 @@ body {
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 
-<!--begin::Fonts-->a
+<!--begin::Fonts-->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 <!--end::Fonts-->
@@ -56,15 +56,16 @@ body {
 
 <link rel="shortcut icon"
 	href="resources/assets/media/logos/favicon.ico" />
+<script src="resources/js/jquery-3.5.0.js"></script>
+<script>
+/* $(function(){
+   $(".kt_login_signin_submit").click(function(){
+      location.href="loginProcess.net";
+   });
+}); */
+</script>
 </head>
 
-<!-- <script>
-$(function(){
-   $(".kt_login_signin_submit").click(function(){
-      location.href="main";
-   });
-});
-</script> -->
 
 
 <!--end::Head-->
@@ -101,11 +102,11 @@ $(function(){
 								<h3>Sign In To Admin</h3>
 								<p class="opacity-60 font-weight-bold">Enter your details to login to your account:</p>
 							</div> -->
-						<form class="form" id="kt_login_signin_form">
+						<form class="form" action="loginProcess.net" method="post" id="kt_login_signin_form">
 							<div class="form-group">
 								<input
 									class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5"
-									type="text" placeholder="사번" name="username" id="M_CODE" autocomplete="off"
+									type="text" placeholder="사번" name="id" id="M_CODE" autocomplete="off"
 									 <c:if test="${!empty saveid }">
      									 value="${saveid }"
      									 </c:if>
@@ -129,8 +130,7 @@ $(function(){
 									class="text-white font-weight-bold"> ▶ 비밀번호 찾기 </a>
 							</div>
 							<div class="form-group text-center mt-10">
-								<button id="kt_login_signin_submit"
-									class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">
+								<button id="kt_login_signin_submit" class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">
 									Login</button>
 							</div>
 						</form>
@@ -142,6 +142,16 @@ $(function(){
 						<!--  삭제    -->
 					</div>
 					<!--end::Login Sign in form-->
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					<!--begin::Login Sign up form-->
 					<div class="login-signup">
 						<div class="mb-20">
@@ -287,10 +297,11 @@ $(function(){
 	<script src="resources/assets/js/scripts.bundle.js?v=7.0.4"></script>
 	<!--end::Global Theme Bundle-->
 	<!--begin::Page Scripts(used by this page)-->
-	<script
-		src="resources/assets/js/pages/custom/login/login-general.js?v=7.0.4"></script>
+	<!--  <script
+		src="resources/assets/js/pages/custom/login/login-general.js?v=7.0.4"></script> -->
 		<!--  로그인 자바스크립트  -->
 	<!--end::Page Scripts-->
+
 </body>
 <!--end::Body-->
 </html>

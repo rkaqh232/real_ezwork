@@ -26,7 +26,7 @@ body {
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 
-<!--begin::Fonts-->
+<!--begin::Fonts-->a
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 <!--end::Fonts-->
@@ -105,19 +105,27 @@ $(function(){
 							<div class="form-group">
 								<input
 									class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5"
-									type="text" placeholder="사번" name="username" autocomplete="off" />
+									type="text" placeholder="사번" name="username" id="M_CODE" autocomplete="off"
+									 <c:if test="${!empty saveid }">
+     									 value="${saveid }"
+     									 </c:if>
+     									 >
 							</div>
 							<div class="form-group">
 								<input
 									class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5"
-									type="password" placeholder="비밀번호" name="password" />
+									type="password" placeholder="비밀번호" name="password" id="M_PASS" />
 							</div>
 							<div
 								class="form-group d-flex flex-wrap justify-content-between align-items-center px-8">
 								<label
 									class="checkbox checkbox-outline checkbox-white text-white m-0">
-									<input type="checkbox" name="remember" /> 사번 저장 <span></span>
-								</label> <a href="javascript:;" id="kt_login_forgot"
+									<input type="checkbox" name="remember" 
+									<c:if test="${!empty saveid}">
+    								  checked
+     								 </c:if>/> 사번 저장 <span></span>
+								</label> 
+								<a href="javascript:;" id="kt_login_forgot"
 									class="text-white font-weight-bold"> ▶ 비밀번호 찾기 </a>
 							</div>
 							<div class="form-group text-center mt-10">

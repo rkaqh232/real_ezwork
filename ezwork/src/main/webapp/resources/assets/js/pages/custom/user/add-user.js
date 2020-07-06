@@ -13,7 +13,7 @@ var KTAddUser = function () {
 	var _initWizard = function () {
 		// Initialize form wizard
 		_wizard = new KTWizard(_wizardEl, {
-			startStep: 1, // initial active step number 시작페이지
+			startStep: 4, // initial active step number 시작페이지
 			clickableSteps: true  // allow step clicking
 		});
 
@@ -25,7 +25,7 @@ var KTAddUser = function () {
 			// Validate form
 			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
 			validator.validate().then(function (status) {
-		        if (status == 'null') {
+		        if (status == 'Valid') {
 					_wizard.goNext();
 					KTUtil.scrollTop();
 				} else {

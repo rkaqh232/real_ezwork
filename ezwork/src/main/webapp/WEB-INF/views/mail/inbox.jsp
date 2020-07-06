@@ -1478,7 +1478,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<!--begin::Form-->
-					<form id="kt_inbox_compose_form">
+					<form id="kt_inbox_compose_form" name="mailform" action="MailAddaction.mail" method="post">
 						<!--begin::Header-->
 						<div class="d-flex align-items-center justify-content-between py-5 pl-8 pr-5 border-bottom">
 							<h5 class="font-weight-bold m-0">메일 쓰기</h5>
@@ -1498,11 +1498,11 @@
 							<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-45px">
 								<div class="text-dark-50 w-75px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_to" value="Chris Muller, Lina Nilson" />
+									<input type="text" name="MAIL_SENDER" value="${M_CODE}" style="display:none"/>
+									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT"/>
 								</div>
 								<div class="ml-2">
 									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary mr-2" data-inbox="cc-show">Cc</span>
-									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary" data-inbox="bcc-show">Bcc</span>
 								</div>
 							</div>
 							<!--end::To-->
@@ -1517,24 +1517,15 @@
 								</span>
 							</div>
 							<!--end::CC-->
-							<!--begin::BCC-->
-							<div class="d-none align-items-center border-bottom inbox-to-bcc pl-8 pr-5 min-h-45px">
-								<div class="text-dark-50 w-75px">Bcc:</div>
-								<div class="flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_bcc" value="" />
-								</div>
-								<span class="btn btn-clean btn-xs btn-icon" data-inbox="bcc-hide">
-									<i class="la la-close"></i>
-								</span>
-							</div>
-							<!--end::BCC-->
 							<!--begin::Subject-->
 							<div class="border-bottom">
-								<input class="form-control border-0 px-8 min-h-45px" name="compose_subject" placeholder="Subject" />
+								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" />
 							</div>
 							<!--end::Subject-->
 							<!--begin::Message-->
-							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px"></div>
+							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px">
+							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none"></textarea>
+							</div>
 							<!--end::Message-->
 							<!--begin::Attachments-->
 							<div class="dropzone dropzone-multi px-8 py-4" id="kt_inbox_compose_attachments">
@@ -1577,25 +1568,9 @@
 											<li class="navi-item">
 												<a href="#" class="navi-link">
 													<span class="navi-icon">
-														<i class="flaticon2-writing"></i>
-													</span>
-													<span class="navi-text">Schedule Send</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
 														<i class="flaticon2-medical-records"></i>
 													</span>
-													<span class="navi-text">Save &amp; archive</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
-														<i class="flaticon2-hourglass-1"></i>
-													</span>
-													<span class="navi-text">Cancel</span>
+													<span class="navi-text">임시 보관</span>
 												</a>
 											</li>
 										</ul>
@@ -1606,17 +1581,11 @@
 								<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_compose_attachments_select">
 									<i class="flaticon2-clip-symbol"></i>
 								</span>
-								<span class="btn btn-icon btn-sm btn-clean">
-									<i class="flaticon2-pin"></i>
-								</span>
 								<!--end::Other-->
 							</div>
 							<!--end::Actions-->
 							<!--begin::Toolbar-->
 							<div class="d-flex align-items-center">
-								<span class="btn btn-icon btn-sm btn-clean mr-2" data-toggle="tooltip" title="More actions">
-									<i class="flaticon2-settings"></i>
-								</span>
 								<span class="btn btn-icon btn-sm btn-clean" data-inbox="dismiss" data-toggle="tooltip" title="Dismiss reply">
 									<i class="flaticon2-rubbish-bin-delete-button"></i>
 								</span>

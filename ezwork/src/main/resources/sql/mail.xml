@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 수진 - 메일 기능 -->
+
+<mapper namespace="Mails">
+
+    <insert id="insert" parameterType="mail">
+   	  <selectKey resultType="int" order="BEFORE" keyProperty="MAIL_NUM">
+		 select nvl(max(MAIL_NUM),0)+1 from email
+	  </selectKey>
+		insert into email
+		(MAIL_NUM, MAIL_SENDER, MAIL_RECIPIENT, MAIL_SUBJECT,
+		   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
+		   MAIL_RCHECK, MAIL_DATE)
+		 values(#{MAIL_NUM}, #{MAIL_SENDER}, #{MAIL_RECIPIENT}, #{MAIL_SUBJECT}, #{MAIL_CONTENT},
+		 #{MAIL_FILE, jdbcType=VARCHAR}, #{MAIL_ORIGINAL, jdbcType=VARCHAR},
+		 #{MAIL_RCHECK}, sysdate)
+	</insert>
+	
+</mapper>

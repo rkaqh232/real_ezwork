@@ -1,163 +1,142 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EZWORK - 일정관리</title>
-
- <link rel="stylesheet" href="resources/assets/css/fullcalendar/fullcalendar.min.css" />
-   <link rel="stylesheet" href="resources/assets/css/fullcalendar/bootstrap.min.css"> 
-    <link rel="stylesheet" href='resources/assets/css/fullcalendar/select2.min.css' />
-    <link rel="stylesheet" href='resources/assets/css/fullcalendar/bootstrap-datetimepicker.min.css' />  
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-   <link rel="stylesheet" href="resources/assets/css/fullcalendar/main.css">
-
+<base href="../../">
+<meta charset="utf-8" />
+<title>ezWork | 일정관리</title>
+<meta name="description" content="Basic calendar examples" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link
+	href="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css?v=7.0.4"
+	rel="stylesheet" type="text/css" />
+<link href="resources/assets/plugins/global/plugins.bundle.css?v=7.0.4"
+	rel="stylesheet" type="text/css" />
+<link
+	href="resources/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4"
+	rel="stylesheet" type="text/css" />
+<link href="resources/assets/css/style.bundle.css?v=7.0.4"
+	rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 </head>
-
 <body>
-    <div class="container">
-        <!-- 일자 클릭시 메뉴오픈 -->
-        <div id="contextMenu" class="dropdown clearfix">
-            <ul class="dropdown-menu dropNewEvent" role="menu" aria-labelledby="dropdownMenu"
-                style="display:block;position:static;margin-bottom:5px;">
-                <li><a tabindex="-1" href="#">일정등록</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="#" data-role="close">닫기</a></li>
-            </ul>
-        </div>
+	<!--begin::Content-->
+	<div class="content d-flex flex-column flex-column-fluid"
+		id="kt_content">
 
-        <div id="wrapper">
-            <div id="loading"></div>
-            <div id="calendar"></div>
-        </div>
-
-        <!-- 일정 추가 MODAL -->
-        <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-allDay">구분</label>
-                              <label><input class='allDayNewEvent' id="edit-allDay" name="sort" value = "schedule" type="radio">스케줄</label>&nbsp;&nbsp;
-                                <label><input class='allDayNewEvent' id="edit-allDay" name= "sort" value ="event" type="radio">이벤트</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-title">일정명</label>
-                                <input class="inputModal" type="text" name="edit-title" id="edit-title"
-                                    required="required" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-start">시작시간</label>
-                                <input class="inputModal" type="text" name="edit-start" id="edit-start" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-end">종료시간</label>
-                                <input class="inputModal" type="text" name="edit-end" id="edit-end" />
-                            </div>
-                        </div>
-                         <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-desc">상세내용</label>
-                                <textarea rows="4" cols="50" class="inputModal" name="edit-desc"
-                                    id="edit-desc"></textarea>
-                            </div>
-                        </div>
-                          <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-participant">참가자</label>
-                                <input class="inputModal" type="text" name="edit-participant" id="edit-participant" />
-                            </div>
-                        </div>
-                         <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-place">장소</label>
-                                <input class="inputModal" type="text" name="edit-place" id="edit-place" />
-                            </div>
-                        </div>
-                       
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-color">색상</label>
-                                <select class="inputModal" name="color" id="edit-color">
-                                    <option value="#D25565" style="color:#D25565;">red</option>
-                                    <option value="#9775fa" style="color:#9775fa;">purple</option>
-                                    <option value="#ffa94d" style="color:#ffa94d;">orange</option>
-                                    <option value="#74c0fc" style="color:#74c0fc;">blue</option>
-                                    <option value="#f06595" style="color:#f06595;">pink</option>
-                                    <option value="#63e6be" style="color:#63e6be;">light green</option>
-                                    <option value="#a9e34b" style="color:#a9e34b;">green</option>
-                                    <option value="#4d638c" style="color:#4d638c;">navy blue</option>
-                                    <option value="#495057" style="color:#495057;">black</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-allDay">공개여부</label>
-                              <label><input class='allDayNewEvent' id="edit-open" name="open" value = "open" type="checkbox">&nbsp;비공개</label>
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <div class="modal-footer modalBtnContainer-addEvent">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                        <button type="button" class="btn btn-primary" id="save-event">저장</button>
-                    </div>
-                    <div class="modal-footer modalBtnContainer-modifyEvent">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
-                        <button type="button" class="btn btn-primary" id="updateEvent">저장</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-		<br>
-        <div class="panel panel-default">
-
-            <div class="panel-heading">
-                <h3 class="panel-title">검색</h3>
-            </div>
-
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <input class="checkbox-inline"><button>검색</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- /.filter panel -->
-    <!-- /.container -->
-
-    <script src="resources/js/fullcalendar/jquery.min.js"></script>
-    <script src="resources/js/fullcalendar/bootstrap.min.js"></script>
-    <script src="resources/js/fullcalendar/moment.min.js"></script>
-    <script src="resources/js/fullcalendar/fullcalendar.min.js"></script>
-    <script src="resources/js/fullcalendar/ko.js"></script>
-    <script src="resources/js/fullcalendar/select2.min.js"></script>
-    <script src="resources/js/fullcalendar/bootstrap-datetimepicker.min.js"></script>
-    <script src="resources/js/fullcalendar/main.js"></script>
-    <script src="resources/js/fullcalendar/addEvent.js"></script>
-    <script src="resources/js/fullcalendar/editEvent.js"></script>
-    <script src="resources/js/fullcalendar/etcSetting.js"></script>
+		<!--begin::Entry-->
+		<div class="d-flex flex-column-fluid">
+			<!--begin::Container-->
+			<div class="container">
+				<!--begin::Notice-->
+				<div
+					class="alert alert-custom alert-white alert-shadow fade show gutter-b"
+					role="alert">
+					<div class="alert-text">
+						jaehee's schedule
+					</div>
+				</div>
+				<!--end::Notice-->
+				<!--begin::Example-->
+				<!--begin::Card-->
+				<div class="card card-custom">
+					<div class="card-header">
+						<div class="card-title">
+							<h3 class="card-label">일정관리</h3>
+						</div>
+						<div class="card-toolbar">
+							<a href="#" class="btn btn-light-primary font-weight-bold"> <i
+								class="ki ki-plus icon-md mr-2"></i>Add Event
+							</a>
+						</div>
+					</div>
+					<div class="card-body">
+						<div id="kt_calendar"></div>
+					</div>
+				</div>
+				<!--end::Card-->
+			</div>
+		</div>
+	</div>
+	<!--end::Card-->
+	<script>
+		var HOST_URL = "https://keenthemes.com/metronic/tools/preview";
+	</script>
+	<!--begin::Global Config(global config for global JS scripts)-->
+	<script>
+		var KTAppSettings = {
+			"breakpoints" : {
+				"sm" : 576,
+				"md" : 768,
+				"lg" : 992,
+				"xl" : 1200,
+				"xxl" : 1200
+			},
+			"colors" : {
+				"theme" : {
+					"base" : {
+						"white" : "#ffffff",
+						"primary" : "#3699FF",
+						"secondary" : "#E5EAEE",
+						"success" : "#1BC5BD",
+						"info" : "#8950FC",
+						"warning" : "#FFA800",
+						"danger" : "#F64E60",
+						"light" : "#F3F6F9",
+						"dark" : "#212121"
+					},
+					"light" : {
+						"white" : "#ffffff",
+						"primary" : "#E1F0FF",
+						"secondary" : "#ECF0F3",
+						"success" : "#C9F7F5",
+						"info" : "#EEE5FF",
+						"warning" : "#FFF4DE",
+						"danger" : "#FFE2E5",
+						"light" : "#F3F6F9",
+						"dark" : "#D6D6E0"
+					},
+					"inverse" : {
+						"white" : "#ffffff",
+						"primary" : "#ffffff",
+						"secondary" : "#212121",
+						"success" : "#ffffff",
+						"info" : "#ffffff",
+						"warning" : "#ffffff",
+						"danger" : "#ffffff",
+						"light" : "#464E5F",
+						"dark" : "#ffffff"
+					}
+				},
+				"gray" : {
+					"gray-100" : "#F3F6F9",
+					"gray-200" : "#ECF0F3",
+					"gray-300" : "#E5EAEE",
+					"gray-400" : "#D6D6E0",
+					"gray-500" : "#B5B5C3",
+					"gray-600" : "#80808F",
+					"gray-700" : "#464E5F",
+					"gray-800" : "#1B283F",
+					"gray-900" : "#212121"
+				}
+			},
+			"font-family" : "Poppins"
+		};
+	</script>
+	<!--end::Global Config-->
+	<!--begin::Global Theme Bundle(used by all pages)-->
+	<script src="resources/assets/plugins/global/plugins.bundle.js"></script>
+	<script src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+	<script src="resources/assets/js/scripts.bundle.js"></script>
+	<!--end::Global Theme Bundle-->
+	<!--begin::Page Vendors(used by this page)-->
+	<script
+		src="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+	<!--end::Page Vendors-->
+	<!--begin::Page Scripts(used by this page)-->
+	<script src="resources/assets/js/pages/features/calendar/basic.js"></script>
+	<!--end::Page Scripts-->
 </body>
+<!--end::Body-->
 </html>

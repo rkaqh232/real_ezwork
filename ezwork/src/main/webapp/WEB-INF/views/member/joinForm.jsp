@@ -140,7 +140,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="firstname" type="text" value="" />
+																	name="firstname" id="M_CODE" type="text" value="" />
 															</div>
 														</div>
 														<!--end::Group-->
@@ -150,7 +150,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" value="" /> <span
+																	name="lastname" id="M_WORK_C" type="text" value="" /> <span
 																	class="form-text text-muted"> 참고 계약코드 (계약직 :
 																	100, 정규직 : 200)</span>
 															</div>
@@ -162,7 +162,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" value="" />
+																	name="lastname" id="M_PART_C" type="text" value="" />
 															</div>
 														</div>
 
@@ -172,7 +172,20 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" value="" /> <span
+																	name="lastname" type="text" id="M_LEVEL"  value="" /> <span
+																	class="form-text text-muted">Enter valid US
+																	phone number(e.g: 5678967456).</span>
+															</div>
+														</div>
+														
+														
+														
+														<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호</label>
+															<div class="col-lg-9 col-xl-9">
+																<input
+																	class="form-control form-control-solid form-control-lg"
+																	name="lastname" type="text" id="M_PASS" value="" /> <span
 																	class="form-text text-muted">Enter valid US
 																	phone number(e.g: 5678967456).</span>
 															</div>
@@ -186,7 +199,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" value="" />
+																	name="lastname" type="text" id="M_NAME"  value="" />
 															</div>
 														</div>
 
@@ -198,7 +211,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" value="" />
+																	name="lastname" type="text" id="M_NAME_EN" value="" />
 															</div>
 														</div>
 
@@ -209,7 +222,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" value="" />
+																	name="lastname" type="text" id="M_PRI_NUMBER" value="" />
 															</div>
 														</div>
 
@@ -223,7 +236,7 @@
 															<div class="col-lg-4 col-md-9 col-sm-12">
 																<div class="input-group date">
 																	<input type="text" class="form-control" readonly
-																		value="05/20/2017" id="kt_datepicker_3" />
+																		value="05/20/2017" id="M_BIRTH" />
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>
@@ -238,10 +251,10 @@
 																성별 </label>
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info"> <input
-																	type="radio" name="gender" checked="checked" /> 남 <span></span>
+																	type="radio" name="gender" id="M_GENDER" checked="checked" /> 남 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																</label> <label class="radio radio-rounded radio-info">
-																	<input type="radio" name="gender" /> 여 <span></span>
+																	<input type="radio" id="M_GENDER" name="gender" /> 여 <span></span>
 																</label>
 															</div>
 														</div>
@@ -252,7 +265,7 @@
 																결혼여부 </label>
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info"> <input
-																	type="radio" name="marry" checked="checked" /> 기혼 <span></span>
+																	type="radio" name="marry" id="M_MARRIAGE" checked="checked" /> 기혼 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																</label> <label class="radio radio-rounded radio-info">
 																	<input type="radio" name="marry" /> 미혼 <span></span>
@@ -266,13 +279,13 @@
 																군필여부 </label>
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info"> <input
-																	type="radio" name="army" checked="checked" /> 군필 <span></span>
+																	type="radio" name="army" id="M_ARMY" checked="checked" /> 군필 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																</label> <label class="radio radio-rounded radio-info">
-																	<input type="radio" name="army" /> 면제 <span></span>
+																	<input type="radio" name="army" id="M_ARMY" /> 면제 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																</label> <label class="radio radio-rounded radio-info">
-																	<input type="radio" name="army" /> 해당없음 <span></span>
+																	<input type="radio" name="army" id="M_ARMY" /> 해당없음 <span></span>
 																</label>
 															</div>
 														</div>
@@ -301,7 +314,7 @@
 																	</div>
 																	<input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="phone" value="5678967456" placeholder="Phone" />
+																		name="phone" id="M_MOBILE_TEL" value="5678967456" placeholder="Phone" />
 																</div>
 																<span class="form-text text-muted">Enter valid US
 																	phone number(e.g: 5678967456).</span>
@@ -319,7 +332,7 @@
 																	</div>
 																	<input type="text"
 																		class="form-control form-control-solid"
-																		value="EzWork@ezwork.com" placeholder="Email" />
+																		value="EzWork@ezwork.com" id="M_EMAIL" placeholder="Email" />
 																</div>
 															</div>
 														</div>
@@ -338,7 +351,7 @@
 																	<input type="text"
 																		class="form-control form-control-solid form-control-lg"
 																		name="phone" value="5678967456"
-																		placeholder="HomePhone" />
+																		placeholder="HomePhone" id="M_TEL" />
 																</div>
 																<span class="form-text text-muted"> 참고 : 생략
 																	가능합니다. </span>
@@ -385,7 +398,7 @@
 															<label> 주소 </label> <input type="text"
 																class="form-control form-control-solid form-control-lg"
 																name="address1" placeholder="Address Line 1"
-																value="서울시 종로구 KH" id="sample6_address" /> <span
+																value="서울시 종로구 KH" id="M_ADDRESS" /> <span
 																class="form-text text-muted"> 주소를 검색해주세요. </span>
 														</div>
 

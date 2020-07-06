@@ -25,17 +25,17 @@ var KTLogin = function() {
 			KTUtil.getById('kt_login_signin_form'),
 			{
 				fields: {
-					id: {
+					username: {
 						validators: {
 							notEmpty: {
-								message: '사원번호를 입력해주세요.'
+								message: 'Username is required'
 							}
 						}
 					},
 					password: {
 						validators: {
 							notEmpty: {
-								message: '비밀번호를 입력해주세요.'
+								message: 'Password is required'
 							}
 						}
 					}
@@ -48,8 +48,38 @@ var KTLogin = function() {
 				}
 			}
 		);
-    };
-       
+
+        $('#kt_login_signin_submit').on('click', function (e) {
+            e.preventDefault();
+
+            validation.validate().then(function(status) {
+		        if (status == 'Valid') {
+                    swal.fire({
+		                text: "All is cool! Now you submit this form",
+		                icon: "success",
+		                buttonsStyling: false,
+		                confirmButtonText: "Ok, got it!",
+                        customClass: {
+    						confirmButton: "btn font-weight-bold btn-light-primary"
+    					}
+		            }).then(function() {
+						KTUtil.scrollTop();
+					});
+				} else {
+					swal.fire({
+		                text: "Sorry, looks like there are some errors detected, please try again.",
+		                icon: "error",
+		                buttonsStyling: false,
+		                confirmButtonText: "Ok, got it!",
+                        customClass: {
+    						confirmButton: "btn font-weight-bold btn-light-primary"
+    					}
+		            }).then(function() {
+						KTUtil.scrollTop();
+					});
+				}
+		    });
+        });
 
         // Handle forgot button
         $('#kt_login_forgot').on('click', function (e) {

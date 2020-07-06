@@ -13,6 +13,9 @@
 
    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
    
+   
+   <context:property-placeholder location="classpath:pro/mailsavefolder.properties"/>
+   
    <!-- Enables the Spring MVC @Controller programming model -->
    <annotation-driven />
 
@@ -32,8 +35,6 @@
    <!-- 주기적인 작업이 있을 때 @Scheduled annotation을 사용하면 쉽게 적용할 수 있다. (@Scheduled(fixedDelay=1000) -->
    <task:annotation-driven />
    
-   <context:component-scan base-package="com.ez.work" />
-   
-   
-   
+   <context:component-scan base-package="com.ez.work" /> 
+      
 </beans:beans>

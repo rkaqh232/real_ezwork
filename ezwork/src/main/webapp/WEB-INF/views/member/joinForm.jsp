@@ -140,7 +140,8 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="firstname" id="M_CODE" type="text" placeholder="자동생성(ex:EMP202001)" readonly />
+																	name="firstname" id="M_CODE" type="text" placeholder="자동생성(ex:EMP202001)" 
+																	onclick="empcode_error()"readonly />
 															</div>
 														</div>
 														<!--end::Group-->

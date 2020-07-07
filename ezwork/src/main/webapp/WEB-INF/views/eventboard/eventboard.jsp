@@ -70,25 +70,25 @@
                     BOARD_SUBJECT, BOARD_NAME, OARD_DATE
                   BOARD_READCOUNT : property 이름
                   --%>
-                  <c:if test="${b.BOARD_RE_LEV != 0}"> <!-- 답글인 경우 -->
-                     <c:forEach var="a" begin="0" end="${b.BOARD_RE_LEV *2}" step="1">
+                  <c:if test="${b.EV_RE_LEV != 0}"> <!-- 답글인 경우 -->
+                     <c:forEach var="a" begin="0" end="${b.EV_RE_LEV *2}" step="1">
                      &nbsp;
                      </c:forEach>
                      <img src = 'resources/image/answerLine.gif'>
                   </c:if>
                   
-                  <c:if test="${b.BOARD_RE_LEV == 0}">   <!-- 원문인 경우 -->
+                  <c:if test="${b.EV_RE_LEV == 0}">   <!-- 원문인 경우 -->
                      &nbsp;
                   </c:if>
                   
-                  <a href="./BoardDetailAction.bo?num=${b.BOARD_NUM}">
-                     ${b.BOARD_SUBJECT}
+                  <a href="./BoardDetailAction.bo?num=${b.EV_NO}">
+                     ${b.EV_TITLE}
                   </a>
               </div>
               </td>
-              <td><div>${b.BOARD_NAME}</div></td>
-              <td><div>${b.BOARD_DATE}</div></td>
-              <td><div>${b.BOARD_READCOUNT}</div></td>
+              <td><div>${b.EV_NAME}</div></td>
+              <td><div>${b.EV_DATE}</div></td>
+              <td><div>${b.EV_READCOUNT}</div></td>
            </tr>
            </c:forEach>
        </tbody>

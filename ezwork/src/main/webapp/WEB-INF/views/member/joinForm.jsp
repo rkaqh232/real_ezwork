@@ -141,7 +141,7 @@
 																<input
 																	class="form-control form-control-solid form-control-lg"
 																	name="firstname" id="M_CODE" type="text" placeholder="자동생성(ex:EMP202001)" 
-																	onclick="empcode_error()"readonly />
+																	onclick="empcode_error()" readonly />
 															</div>
 														</div>
 														<!--end::Group-->

@@ -44,7 +44,7 @@ function ajax(sdata) {
          //(라이브러리가 자동으로 대신 받아다줌) 
          //근데 나는 BOARD_NAME 이런식으로 설정을 해놨단 말여,,,
          //그래서 그거 대소문자 수정 안 해주면 값들이 다 undefined로 뜰거야! 
-      url : "BoardListAjax.bo", //요청이 들어오면
+      url : "EventBoardListAjax.ev", //요청이 들어오면
       dataType : "json",
       cache : false,
       success : function(data) {
@@ -59,24 +59,24 @@ function ajax(sdata) {
             $(data.boardlist).each(
                function(index, item) {
                   output += '<tr><td>' + (num--) + '</td>'
-                  blank_count = item.board_RE_LEV * 2 + 1;
+                  blank_count = item.ev_RE_LEV * 2 + 1;
                   blank = '&nbsp;';
                   for (var i = 0; i < blank_count; i++) {
                      blank += '&nbsp;&nbsp;';
                   }
                   img="";
-                  if (item.board_RE_LEV > 0) {
+                  if (item.ev_RE_LEV > 0) {
                      img="<img src='resources/image/answerLine.gif'>";
                   }
                      
                   output +=  "<td><div>" + blank + img
                   output += ' <a href="BoardDetailAction.bo?num='
-                          + item.board_NUM + '&page='
+                          + item.ev_NO + '&page='
                          + data.page + '">'
-                  output += item.board_SUBJECT + '</a></div></td>'
-                  output += '<td><div>' + item.board_NAME+'</div></td>'
-                  output += '<td><div>' + item.board_DATE+'</div></td>'
-                  output += '<td><div>' + item.board_READCOUNT
+                  output += item.ev_TITLE + '</a></div></td>'
+                  output += '<td><div>' + item.ev_NAME+'</div></td>'
+                  output += '<td><div>' + item.ev_DATE+'</div></td>'
+                  output += '<td><div>' + item.ev_READCOUNT
                         + '</div></td></tr>'
                })
             output += "</tbody>"
@@ -129,7 +129,7 @@ $(function(){
    
    $("button").click(function(){
       
-      location.href="BoardWrite.bo"; 
+      location.href="BoardWrite.ev"; 
    })
    
 })

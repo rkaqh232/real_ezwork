@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="resources/js/jquery-3.5.0.js"></script>
 <style>
    .center-block{
       display : flex;
@@ -81,7 +84,7 @@
                      &nbsp;
                   </c:if>
                   
-                  <a href="./BoardDetailAction.bo?num=${b.EV_NO}">
+                  <a href="./BoardDetailAction.ev?num=${b.EV_NO}">
                      ${b.EV_TITLE}
                   </a>
               </div>
@@ -105,7 +108,7 @@
                </c:if>
                <c:if test="${page > 1}">
                  <li class="page-item">
-                    <a href="./BoardList.bo?page=${page-1}" 
+                    <a href="./BoardList.ev?page=${page-1}" 
                        class="page-link">이전&nbsp;</a>
                    </li>
                </c:if>
@@ -118,7 +121,7 @@
                      </c:if>
                      <c:if test="${a != page}">  <!-- 같지 않으면, 이동할 수 있다 -->
                        <li class="page-item">
-                         <a href="./BoardList.bo?page=${a}"
+                         <a href="./BoardList.ev?page=${a}"
                             class="page-link">${a}</a>
                        </li>
                      </c:if>
@@ -131,7 +134,7 @@
                </c:if>
                <c:if test="${page < maxpage}">
                   <li class="page-item">
-                    <a href="./BoardList.bo?page=${page+1}"
+                    <a href="./BoardList.ev?page=${page+1}"
                        class="page-link">&nbsp;다음</a>
                   </li>
                </c:if>
@@ -145,7 +148,6 @@
    <c:if test="${listcount == 0}">
       <font size=5>등록된 글이 없습니다.</font>
    </c:if>
-
 <button type="button" class="btn btn-info float-right">글 쓰 기</button>
 </div>
 </body>

@@ -14,14 +14,17 @@
     <insert id="insert" parameterType="member">
    	  insert into member
       values
-      	(#{id}, #{password}, #{name}, #{age}, #{gender}, #{email})   
+      	('EMP'||emp_seq.nextval, #{password}, #{name}, #{age}, #{gender}, #{email})   
     </insert> <!--  만들고 작성하기  -->
+    
+    
     
     
     <!--  혜정 - 사원코드 체크   -->
 	<select id="idcheck" resultType="member" parameterType="String">
 		select * from member where M_CODE = #{M_CODE}
 	</select>
+    
     
     
     

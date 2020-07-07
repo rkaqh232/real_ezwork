@@ -33,24 +33,24 @@ body {
 
 <!--begin::Page Custom Styles(used by this page)-->
 <link
-	href="resources/assets/css/pages/login/classic/login-3.css?v=7.0.4"
+	href="resources/assets/css/pages/login/classic/login-3.css"
 	rel="stylesheet" type="text/css" />
 <!--end::Page Custom Styles-->
 
 <!--begin::Global Theme Styles(used by all pages)-->
-<link href="resources/assets/plugins/global/plugins.bundle.css?v=7.0.4"
+<link href="resources/assets/plugins/global/plugins.bundle.css"
 	rel="stylesheet" type="text/css" />
 <link
-	href="resources/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4"
+	href="resources/assets/plugins/custom/prismjs/prismjs.bundle.css"
 	rel="stylesheet" type="text/css" />
-<link href="resources/assets/css/style.bundle.css?v=7.0.4"
+<link href="resources/assets/css/style.bundle.css"
 	rel="stylesheet" type="text/css" />
 <!--end::Global Theme Styles-->
 
 <!--begin::Layout Themes(used by all pages)-->
-<link href="resources/assets/css/themes/layout/brand/dark.css?v=7.0.4"
+<link href="resources/assets/css/themes/layout/brand/dark.css"
 	rel="stylesheet" type="text/css" />
-<link href="resources/assets/css/themes/layout/aside/dark.css?v=7.0.4"
+<link href="resources/assets/css/themes/layout/aside/dark.css"
 	rel="stylesheet" type="text/css" />
 <!--end::Layout Themes-->
 
@@ -291,14 +291,14 @@ body {
 	</script>
 	<!--end::Global Config-->
 	<!--begin::Global Theme Bundle(used by all pages)-->
-	<script src="resources/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+	<script src="resources/assets/plugins/global/plugins.bundle.js"></script>
 	<script
-		src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
-	<script src="resources/assets/js/scripts.bundle.js?v=7.0.4"></script>
+		src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+	<script src="resources/assets/js/scripts.bundle.js"></script>
 	<!--end::Global Theme Bundle-->
 	<!--begin::Page Scripts(used by this page)-->
 	<!--  <script
-		src="resources/assets/js/pages/custom/login/login-general.js?v=7.0.4"></script> -->
+		src="resources/assets/js/pages/custom/login/login-general.js"></script> -->
 		<!--  로그인 자바스크립트  -->
 	<!--end::Page Scripts-->
 

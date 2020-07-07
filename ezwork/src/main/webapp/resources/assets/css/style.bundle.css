@@ -1,10 +1,20 @@
+
 @charset "UTF-8";
+
+@font-face { font-family: 'S-CoreDream-4Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+
+@font-face { font-family: 'InfinitySans-RegularA1'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+
+@font-face { font-family: 'GoyangIlsan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GoyangIlsan.woff') format('woff'); font-weight: normal; font-style: normal; }
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 
 :root { -
 	-blue: #007bff; -
@@ -49,7 +59,7 @@
 }
 
 html {
-	font-family: sans-serif;
+	font-family:'S-CoreDream-4Regular';
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -62,7 +72,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav,
 
 body {
 	margin: 0;
-	font-family: Poppins, Helvetica, "sans-serif";
+	font-family: 'S-CoreDream-4Regular';
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;

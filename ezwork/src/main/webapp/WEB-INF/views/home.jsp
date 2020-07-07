@@ -16,22 +16,22 @@
 		<!--end::Fonts-->
 
 		<!--begin::Page Vendors Styles(used by this page)-->
-		<link href="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
 
 		<!--end::Page Vendors Styles-->
 
 		<!--begin::Global Theme Styles(used by all pages)-->
-		<link href="resources/assets/plugins/global/plugins.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
-		<link href="resources/assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
-		<link href="resources/assets/css/style.bundle.css?v=7.0.5" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 
 		<!--end::Global Theme Styles-->
 
 		<!--begin::Layout Themes(used by all pages)-->
-		<link href="resources/assets/css/themes/layout/header/base/light.css?v=7.0.5" rel="stylesheet" type="text/css" />
-		<link href="resources/assets/css/themes/layout/header/menu/light.css?v=7.0.5" rel="stylesheet" type="text/css" />
-		<link href="resources/assets/css/themes/layout/brand/dark.css?v=7.0.5" rel="stylesheet" type="text/css" />
-		<link href="resources/assets/css/themes/layout/aside/dark.css?v=7.0.5" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+		<link href="resources/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
 
 		<!--end::Layout Themes-->
 		<link rel="shortcut icon" href="resources/assets/media/logos/tlogo.png" />
@@ -118,19 +118,19 @@
 		<!--end::Global Config-->
 
 		<!--begin::Global Theme Bundle(used by all pages)-->
-		<script src="resources/assets/plugins/global/plugins.bundle.js?v=7.0.5"></script>
-		<script src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.5"></script>
-		<script src="resources/assets/js/scripts.bundle.js?v=7.0.5"></script>
+		<script src="resources/assets/plugins/global/plugins.bundle.js"></script>
+		<script src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="resources/assets/js/scripts.bundle.js"></script>
 
 		<!--end::Global Theme Bundle-->
 
 		<!--begin::Page Vendors(used by this page)-->
-		<script src="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.5"></script>
+		<script src="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 
 		<!--end::Page Vendors-->
 
 		<!--begin::Page Scripts(used by this page)-->
-		<script src="resources/assets/js/pages/widgets.js?v=7.0.5"></script>
+		<script src="resources/assets/js/pages/widgets.js"></script>
 
 		<!--end::Page Scripts-->
 	</body>

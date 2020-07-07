@@ -1,3 +1,49 @@
+
+//dropdown 선택
+
+
+$(function(){
+
+    $(".dropdown-menu a").click(function(){
+
+      $(".btn:first-child").text($(this).text());
+      $(".btn:first-child").val($(this).text());
+
+   });
+
+});
+
+
+//이메일 유효성검사
+$(function(){
+	
+	var checkemail = false; 
+
+	$("input:eq(21)").on('keyup', function(){
+	
+	$("#M_EMAIL").empty(); 
+	
+	//[A-Za-z0-9_]와 동일한 것이 \w
+	//+는 1회 이상 반복을 의미합니다. {1,}와 동일합니다
+	//\w+는 [A-Za-z0-9_]를 1개 이상 사용하라는 의미입니다
+	
+	var pattern = /\w+@\w+[.]\w{3}/;
+	var email = $("input:eq(21)").val();
+	
+	if(!pattern.test(email)){
+		
+		alert("이메일 형식에 맞지 않습니다.");
+		checkemail = false; 
+	}else{
+		
+		alert("이메일 형식에 맞습니다.");
+		checkemail=true; 
+	}
+}); //email keyup 이벤트 처리 끝 
+
+});
+
+
 //달력 
 var KTBootstrapDatepicker = function () {
 
@@ -16,7 +62,7 @@ var KTBootstrapDatepicker = function () {
 }
 var demos = function () {
 	// enable clear button
-	  $('#M_BIRTH, #M_BIRTH_validate').datepicker({
+	 $('#kt_datepicker_3, #kt_datepicker_3_validate').datepicker({
 	   rtl: KTUtil.isRTL(),
 	   todayBtn: "linked",
 	   clearBtn: true,
@@ -25,7 +71,7 @@ var demos = function () {
 	  });
 
 	  // enable clear button for modal demo
-	  $('#M_BIRTH_modal').datepicker({
+	  $('#kt_datepicker_3_modal').datepicker({
 	   rtl: KTUtil.isRTL(),
 	   todayBtn: "linked",
 	   clearBtn: true,

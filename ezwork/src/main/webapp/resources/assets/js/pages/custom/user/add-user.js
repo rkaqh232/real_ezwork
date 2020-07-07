@@ -1,6 +1,9 @@
 "use strict";
 
 // Class Definition
+
+
+
 var KTAddUser = function () {
 	// Private Variables
 	var _wizardEl;
@@ -13,16 +16,16 @@ var KTAddUser = function () {
 	var _initWizard = function () {
 		// Initialize form wizard
 		_wizard = new KTWizard(_wizardEl, {
-			startStep: 4, // initial active step number 시작페이지
+			startStep: 1, // initial active step number 시작페이지
 			clickableSteps: true  // allow step clicking
 		});
 
 		// Validation before going to next page
 		_wizard.on('beforeNext', function (wizard) {
-			// Don't go to the next step yet
+			// 다음단계로 못가...
 			_wizard.stop();
 
-			// Validate form
+			// 유효성검사 폼
 			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
 			validator.validate().then(function (status) {
 		        if (status == 'Valid') {
@@ -58,13 +61,13 @@ var KTAddUser = function () {
 			_formEl,
 			{
 				fields: {
-					firstname: {
+					/*firstname: {
 						validators: {
 							notEmpty: {
 								message: '사원번호는 필수항목입니다. '
 							}
 						}
-					},
+					},*/
 					lastname: {
 						validators: {
 							notEmpty: {
@@ -79,10 +82,53 @@ var KTAddUser = function () {
 							}
 						}
 					},
+					level: {
+						validators: {
+							notEmpty: {
+								message: '직급코드는 필수항목입니다.'
+							}
+						}
+					},
+					password: {
+						validators: {
+							notEmpty: {
+								message: '비밀번호는 필수항목입니다.'
+							}
+						}
+					},
+					name: {
+						validators: {
+							notEmpty: {
+								message: '성명은 필수항목입니다.'
+							}
+						}
+					},
+					pri_code: {
+						validators: {
+							notEmpty: {
+								message: '주민등록번호는 필수항목입니다.'
+							}
+						}
+					},
+					birth: {
+						validators: {
+							notEmpty: {
+								message: '생년월일은 필수항목입니다.'
+							}
+						}
+					},
+					army: {
+						validators: {
+							notEmpty: {
+								message: '군필 여부 선택은 필수항목입니다.'
+							}
+						}
+					},
+					
 					phone: {
 						validators: {
 							notEmpty: {
-								message: 'Phone is required'
+								message: '핸드폰번호는 필수항목입니다.'
 							},
 							phone: {
 								country: 'US',
@@ -90,7 +136,7 @@ var KTAddUser = function () {
 							}
 						}
 					},
-					email: {
+					/*email: {
 						validators: {
 							notEmpty: {
 								message: 'Email is required'
@@ -99,7 +145,7 @@ var KTAddUser = function () {
 								message: 'The value is not a valid email address'
 							}
 						}
-					},
+					},*/
 					companywebsite: {
 						validators: {
 							notEmpty: {

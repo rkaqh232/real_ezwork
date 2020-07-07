@@ -14,7 +14,8 @@
 	rel="stylesheet" type="text/css" />
 <script src="resources/js/jquery-3.5.0.js"></script>
 <script src="resources/js/join.js"></script>
-</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
 <body>
 
 
@@ -49,7 +50,7 @@
 										<div class="wizard-number">2</div>
 										<div class="wizard-label">
 											<div class="wizard-title">학력정보</div>
-											<div class="wizard-desc">User's Personnel Appointment</div>
+											<div class="wizard-desc">User's Education Information</div>
 										</div>
 									</div>
 								</div>
@@ -58,7 +59,7 @@
 										<div class="wizard-number">3</div>
 										<div class="wizard-label">
 											<div class="wizard-title">어학정보</div>
-											<div class="wizard-desc">User's Education Information</div>
+											<div class="wizard-desc">User's Language Information</div>
 										</div>
 									</div>
 								</div>
@@ -67,7 +68,7 @@
 										<div class="wizard-number">4</div>
 										<div class="wizard-label">
 											<div class="wizard-title">자격증정보</div>
-											<div class="wizard-desc">User's Language Information</div>
+											<div class="wizard-desc">User's License Information</div>
 										</div>
 									</div>
 								</div>
@@ -140,44 +141,123 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="firstname" id="M_CODE" type="text" placeholder="자동생성(ex:EMP202001)" 
-																	onclick="empcode_error()" readonly />
+																	name="firstname" id="M_CODE" type="text" placeholder="자동생성 (예 :EMP202001)" 
+																	onclick="empcode_error()" readonly /><span class="form-text text-muted">참고 : 사원번호는 자동으로 생성됩니다. 
+																	</span>
 															</div>
 														</div>
 														<!--end::Group-->
 														<!--begin::Group-->
-														<div class="form-group row">
+														
+														
+														
+														
+														
+														
+														
+														<!-- test -->
+														<!--<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">계약코드</label>
 															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" id="M_WORK_C" type="text" value="" /> <span
-																	class="form-text text-muted"> 참고 계약코드 (계약직 :
+															
+																<div class="dropdown">
+    															<button class="btn btn-secondary dropdown-toggle" 
+    																type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       																	&nbsp;&nbsp;&nbsp;선택해주세요.&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  													
+  													 		 <div class="dropdown-menu">
+      												
+      														  <a class="dropdown-item" href="#">100</a>
+        													  <a class="dropdown-item" href="#">200</a>
+     													     
+   															 </div>
+															</div><span
+																	class="form-text text-muted">참고 : 계약코드 (계약직 :
 																	100, 정규직 : 200)</span>
 															</div>
 														</div>
 														<!--end::Group-->
+														
+														
+														
 
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
-															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" id="M_PART_C" type="text" value="" />
+																<div class="col-lg-9 col-xl-9">
+																	<div class="dropdown">
+    																	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       																		&nbsp;&nbsp;&nbsp;선택해주세요.&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  													  <div class="dropdown-menu" >
+      														  <a class="dropdown-item" href="#">A1   총무</a>
+        													  <a class="dropdown-item" href="#">A2   재무</a>
+     													      <a class="dropdown-item" href="#">A3   인사</a>
+     													      <a class="dropdown-item" href="#">B1   경영지원</a>
+     													      <a class="dropdown-item" href="#">B2  S/W지원</a>
+     													      <a class="dropdown-item" href="#">B3   기술지원</a>
+     													      <a class="dropdown-item" href="#">C1   영업1팀</a>
+     													      <a class="dropdown-item" href="#">C2   영업2팀</a>
+     													      <a class="dropdown-item" href="#">Q  임원</a>
+   															 </div>
+															</div>
+															<span
+																	class="form-text text-muted">참고 : 계약코드 (계약직 :
+																	100, 정규직 : 200)</span>
 															</div>
 														</div>
-
-
+														
+														
+														
+													<!-- 직급코드 테스트 -->
 														<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">
+																직급코드 </label>
+															<div class="col-lg-9 col-xl-9">
+																<label class="radio radio-rounded radio-info">															
+																<input type="radio" name="level" id="M_LEVEL" checked="checked" /> Level 1 <span></span>
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="level" /> Level 2 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="level" /> Level 3 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="level" /> Level 4 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="level" /> Level 5 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																
+																
+																</label><span
+																	class="form-text text-muted">
+																	참고 : 사원(Level-1) , 대리(Level-2), 과장(Level-3), 차장(Level-4), 임원(Level-5) </span>
+															</div>
+														</div>
+														
+														<!-- 직급코드 테스트 -->
+														
+														
+
+
+														<!-- <div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">직급코드</label>
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" id="M_LEVEL"  value="" /> <span
+																	name="level" type="text" id="M_LEVEL"  value="" /> <span
 																	class="form-text text-muted">Enter valid US
 																	phone number(e.g: 5678967456).</span>
 															</div>
-														</div>
+														</div>-->
+														
+														
+														
 														
 														
 														
@@ -186,7 +266,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" id="M_PASS" value="" /> <span
+																	name="password" type="text" id="M_PASS" value="" /> <span
 																	class="form-text text-muted">Enter valid US
 																	phone number(e.g: 5678967456).</span>
 															</div>
@@ -200,7 +280,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" id="M_NAME"  value="" />
+																	name="name" type="text" id="M_NAME"  value="" />
 															</div>
 														</div>
 
@@ -212,7 +292,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" id="M_NAME_EN" value="" />
+																	name="enname" type="text" id="M_NAME_EN" value="" />
 															</div>
 														</div>
 
@@ -223,7 +303,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="lastname" type="text" id="M_PRI_NUMBER" value="" />
+																	name="pri_code" type="text" id="M_PRI_NUMBER" value="" />
 															</div>
 														</div>
 
@@ -236,8 +316,8 @@
 																생년월일 </label>
 															<div class="col-lg-4 col-md-9 col-sm-12">
 																<div class="input-group date">
-																	<input type="text" class="form-control" readonly
-																		value="05/20/2017" id="M_BIRTH" />
+																	<input type="text" class="form-control"
+																		value="05/20/2017" id="kt_datepicker_3" name="birth"/>
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>
@@ -317,8 +397,8 @@
 																		class="form-control form-control-solid form-control-lg"
 																		name="phone" id="M_MOBILE_TEL" value="5678967456" placeholder="Phone" />
 																</div>
-																<span class="form-text text-muted">Enter valid US
-																	phone number(e.g: 5678967456).</span>
+																<span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
+																	(ex: 010-1234-5678)</span>
 															</div>
 														</div>
 
@@ -334,7 +414,8 @@
 																	<input type="text"
 																		class="form-control form-control-solid"
 																		value="EzWork@ezwork.com" id="M_EMAIL" placeholder="Email" />
-																</div>
+																</div><span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
+																	(ex: emp@Ezwork.com)</span>
 															</div>
 														</div>
 
@@ -375,10 +456,10 @@
 																<div class="form-group">
 																	<label>우편번호</label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="postcode" placeholder="Postcode"
+																		name="postcode" placeholder="우편번호"
 																		id="sample6_postcode"
 																		onclick="sample6_execDaumPostcode()" /> <span
-																		class="form-text text-muted"> 버튼을 눌러 검색해주세요.</span>
+																		class="form-text text-muted"> 참고 : 버튼을 눌러 검색해주세요.</span>
 																</div>
 															</div>
 
@@ -399,8 +480,7 @@
 															<label> 주소 </label> <input type="text"
 																class="form-control form-control-solid form-control-lg"
 																name="address1" placeholder="Address Line 1"
-																value="서울시 종로구 KH" id="M_ADDRESS" /> <span
-																class="form-text text-muted"> 주소를 검색해주세요. </span>
+																value="서울시 종로구 KH" id="M_ADDRESS" /> 
 														</div>
 
 

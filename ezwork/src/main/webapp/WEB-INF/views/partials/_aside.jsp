@@ -610,7 +610,7 @@
                               data-menu-toggle="hover"><a href="notice.bo"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">공지게시판</span> <i class="menu-arrow"></i>
+                              </i> <span class="menu-text">공지사항</span> <i class="menu-arrow"></i>
                            </a></li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
                               data-menu-toggle="hover"><a href="material.bo"
@@ -622,7 +622,13 @@
                               data-menu-toggle="hover"><a href="free.bo"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">임직원 게시판</span> <i class="menu-arrow"></i>
+                              </i> <span class="menu-text">인사이동알림</span> <i class="menu-arrow"></i>
+                           </a></li>
+                               <li class="menu-item menu-item-submenu" aria-haspopup="true"
+                              data-menu-toggle="hover"><a href="BoardList.ev"
+                              class="menu-link menu-toggle"> <i
+                                 class="menu-bullet menu-bullet-line"> <span></span>
+                              </i> <span class="menu-text">경조사알림</span> <i class="menu-arrow"></i>
                            </a></li>
                         </ul>
                      </div></li>

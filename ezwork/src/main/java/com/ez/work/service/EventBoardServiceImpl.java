@@ -1,21 +1,32 @@
 package com.ez.work.service;
 
+import java.util.HashMap;
 import java.util.List;
 
-import com.ez.work.domain.EventBoard;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.ez.work.dao.EventBoardDAO;
+import com.ez.work.domain.EventBoard;
+@Service
 public class EventBoardServiceImpl implements EventBoardService{
+	
+	@Autowired
+	private EventBoardDAO dao;
 
 	@Override
 	public int getListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.getListCount();
 	}
 
 	@Override
 	public List<EventBoard> getBoardList(int page, int limit) {
-		// TODO Auto-generated method stub
-		return null;
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		int startrow = (page - 1) * limit + 1;
+		int endrow = startrow + limit - 1;
+		map.put("start", startrow);
+		map.put("end", endrow);
+		return dao.getBoardList(map);
 	}
 
 	@Override

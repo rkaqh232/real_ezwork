@@ -5,10 +5,12 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="member" type="com.ez.work.domain.Member" />
+		<typeAlias alias="eventboard" type="com.ez.work.domain.EventBoard" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="sql/member.xml" />
+		<mapper resource="sql/eventboard.xml" />
 	</mappers>
 
 </configuration>

@@ -48,7 +48,7 @@
 									<div class="wizard-wrapper">
 										<div class="wizard-number">2</div>
 										<div class="wizard-label">
-											<div class="wizard-title">발령정보</div>
+											<div class="wizard-title">학력정보</div>
 											<div class="wizard-desc">User's Personnel Appointment</div>
 										</div>
 									</div>
@@ -57,7 +57,7 @@
 									<div class="wizard-wrapper">
 										<div class="wizard-number">3</div>
 										<div class="wizard-label">
-											<div class="wizard-title">학력정보</div>
+											<div class="wizard-title">어학정보</div>
 											<div class="wizard-desc">User's Education Information</div>
 										</div>
 									</div>
@@ -66,7 +66,7 @@
 									<div class="wizard-wrapper">
 										<div class="wizard-number">4</div>
 										<div class="wizard-label">
-											<div class="wizard-title">어학정보</div>
+											<div class="wizard-title">자격증정보</div>
 											<div class="wizard-desc">User's Language Information</div>
 										</div>
 									</div>
@@ -140,7 +140,8 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="firstname" id="M_CODE" type="text" value="" />
+																	name="firstname" id="M_CODE" type="text" placeholder="자동생성(ex:EMP202001)" 
+																	onclick="empcode_error()"readonly />
 															</div>
 														</div>
 														<!--end::Group-->
@@ -438,100 +439,7 @@
 
 													<!--end::Wizard Step 1-->
 													<!--begin::Wizard Step 2-->
-													<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="text-dark font-weight-bold mb-10 mt-5">
-															발령정보</h5>
-														<!--begin::Group-->
-
-														<div class="form-group row">
-															<label class="col-xl-6 col-form-label"> 발령일자 </label>
-															<div class="col-xl-6">
-																<div class="input-group date">
-																	<input type="text" class="form-control" readonly
-																		value="05/20/2017" id="kt_datepicker_3" />
-																	<div class="input-group-append">
-																		<span class="input-group-text"> <i
-																			class="la la-calendar"></i>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-
-
-														<div class="row">
-
-
-
-
-															<div class="col-xl-6">
-																<!--begin::Group-->
-																<div class="form-group">
-																	<label> 발령구분 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="date" placeholder="발령구분" id="ap_date" />
-
-																</div>
-															</div>
-
-
-
-
-
-															<!--end::Group-->
-															<!--begin::Group-->
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label>발령직급 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="level" placeholder="직급을 입력하세요." id="ap_level" />
-																</div>
-															</div>
-															<!--end::Group-->
-														</div>
-
-
-														<div class="row">
-															<div class="col-xl-6">
-																<!--begin::Group-->
-																<div class="form-group">
-																	<label> 발령내용 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요."
-																		id="ap_content" />
-
-																</div>
-															</div>
-															<!--end::Group-->
-															<!--begin::Group-->
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label> 기타사항 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
-																</div>
-															</div>
-															<!--end::Group-->
-														</div>
-
-
-
-
-
-
-
-														<!--end::Group-->
-													</div>
-
-													<!-- Step2 발령정보 END  Step2 발령정보 END  Step2 발령정보 END Step2  발령정보 END  Step2발령정보 END  -->
-
-													<!--end::Wizard Step 2-->
-
-
-													<!--begin::Wizard Step 3-->
-													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
-													<div class="my-5 step" data-wizard-type="step-content">
+												<div class="my-5 step" data-wizard-type="step-content">
 														<h5 class="mb-10 font-weight-bold text-dark">학력정보</h5>
 														<!--begin::Group-->
 
@@ -611,15 +519,14 @@
 
 													</div>
 
+													<!-- Step2 발령정보 END  Step2 발령정보 END  Step2 발령정보 END Step2  발령정보 END  Step2발령정보 END  -->
 
-													<!-- step3 학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  -->
-
-													<!--end::Wizard Step 3-->
-													<!--begin::Wizard Step 4-->
-													<!--  step 4 어학정보 시작  step 4 어학정보시작  step 4 어학정보시작 step 4 어학정보시작 -->
+													<!--end::Wizard Step 2-->
 
 
-													<div class="my-5 step" data-wizard-type="step-content">
+													<!--begin::Wizard Step 3-->
+													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
+														<div class="my-5 step" data-wizard-type="step-content">
 														<h5 class="mb-10 font-weight-bold text-dark">어학정보</h5>
 														<!--begin::Group-->
 
@@ -696,6 +603,92 @@
 
 
 													</div>
+
+
+													<!-- step3 학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  -->
+
+													<!--end::Wizard Step 3-->
+													<!--begin::Wizard Step 4-->
+													<!--  step 4 자격증정보 시작  step 4 자격증정보  step 4 자격증정보 step 4 자격증정보 -->
+
+
+													<div class="my-5 step" data-wizard-type="step-content">
+														<h5 class="mb-10 font-weight-bold text-dark">자격증정보</h5>
+														<!--begin::Group-->
+
+
+														<div class="row">
+															<div class="col-xl-6">
+																<!--begin::Group-->
+																<div class="form-group">
+																	<label> 자격증 명 </label> <input type="text"
+																		class="form-control form-control-solid form-control-lg"
+																		name="content" placeholder="내용을 입력하세요."
+																		id="ap_content" />
+
+																</div>
+															</div>
+															<!--end::Group-->
+															<!--begin::Group-->
+															<div class="col-xl-6">
+																<div class="form-group">
+																	<label> 발급기관 </label> <input type="text"
+																		class="form-control form-control-solid form-control-lg"
+																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
+																</div>
+															</div>
+															<!--end::Group-->
+														</div>
+
+
+
+
+														<!-- <div class="row">
+															<div class="col-xl-6">
+																begin::Group
+																<div class="form-group">
+																	<label> 시험점수 </label> <input type="text"
+																		class="form-control form-control-solid form-control-lg"
+																		name="content" placeholder="내용을 입력하세요."
+																		id="ap_content" />
+
+																</div>
+															</div>
+															end::Group
+															begin::Group
+															<div class="col-xl-6">
+																<div class="form-group">
+																	<label> 발급처 </label> <input type="text"
+																		class="form-control form-control-solid form-control-lg"
+																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
+																</div>
+															</div>
+															end::Group
+														</div>-->
+
+														<div class="form-group row">
+															<label class="col-xl-6 col-form-label"> 발급일자 </label>
+															<div class="col-xl-6">
+																<div class="input-group date">
+																	<input type="text" class="form-control" readonly
+																		value="05/20/2017" id="kt_datepicker_3" />
+																	<div class="input-group-append">
+																		<span class="input-group-text"> <i
+																			class="la la-calendar"></i>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+
+
+
+
+
+
+													</div>
 													<!-- step4 어학정보 END  step4 어학정보 END step4 어학정보 END step4 어학정보 END-->
 
 
@@ -704,15 +697,15 @@
 														<div class="mr-2">
 															<button type="button" id="prev-step"
 																class="btn btn-secondary font-weight-bolder px-9 py-4"
-																data-wizard-type="action-prev">Previous</button>
+																data-wizard-type="action-prev">이전</button>
 														</div>
 														<div>
 															<button type="button"
 																class="btn btn-success font-weight-bolder px-9 py-4"
-																data-wizard-type="action-submit">Submit</button>
+																data-wizard-type="action-submit">저장</button>
 															<button type="button" id="next-step"
 																class="btn btn-info font-weight-bolder px-9 py-4"
-																data-wizard-type="action-next">Next</button>
+																data-wizard-type="action-next">다음</button>
 														</div>
 													</div>
 

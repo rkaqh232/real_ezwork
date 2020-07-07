@@ -35,7 +35,11 @@ var demos = function () {
 
 	
 }
+//EMP코드
 
+ function empcode_error(){
+	 alert("사원번호는 자동생성됩니다.");
+ }
 
 // 주소 API
   function sample6_execDaumPostcode() {

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<link href="resources/assets/css/themes/layout/aside/dark.css?v=7.0.4"
+   rel="stylesheet" type="text/css" />
 <div
          class="aside aside-left aside-fixed d-flex flex-column flex-row-auto"
          id="kt_aside">

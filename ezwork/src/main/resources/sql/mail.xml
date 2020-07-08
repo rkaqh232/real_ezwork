@@ -16,8 +16,14 @@
 		   MAIL_RCHECK, MAIL_DATE)
 		 values(#{MAIL_NUM}, #{MAIL_SENDER}, #{MAIL_RECIPIENT}, #{MAIL_SUBJECT}, #{MAIL_CONTENT},
 		 #{MAIL_FILE, jdbcType=VARCHAR}, #{MAIL_ORIGINAL, jdbcType=VARCHAR},
-		 #{MAIL_RCHECK}, sysdate)
+		 0, sysdate)
 	</insert>
+	
+	<update id="RCheckUpdate" parameterType="int">
+		update email
+		set MAIL_RCHECK=MAIL_RCHECK+1
+		where MAIL_NUM=#{number}
+	</update>
 	
 	<select id="count" resultType="int">
 		select count(*) from email

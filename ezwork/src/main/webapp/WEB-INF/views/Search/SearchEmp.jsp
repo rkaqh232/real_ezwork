@@ -4,10 +4,7 @@
 <!-- 민혁 -->
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>ezWork 사원 검색 페이지</title>
-<jsp:include page="/WEB-INF/views/partials/_aside.jsp" />
-<jsp:include page="/WEB-INF/views/partials/_header.jsp" />
 
 <style>
 table caption {
@@ -15,7 +12,7 @@ table caption {
 	text-align: center;
 }
 
-body > div > table {
+body>div>table {
 	width: 60%;
 	margin: auto;
 }
@@ -104,33 +101,33 @@ td:nth-child(1) {
 				<div class="row">
 					<div class="col">
 						<ul class="pagination">
-							<c:if test="${page<=1 }">
+							<c:if test="${page1 <= 1}">
 								<li class="page=item"><a class="page-link current" href="#">이전&nbsp;</a>
 								</li>
 							</c:if>
-							<c:if test="${page>1 }">
+							<c:if test="${page1 > 1}">
 								<li class="page-item"><a
 									href="member_list?page=${page-1}&search_field=${search_field}&search_word=${search_word}"
 									class="page-link">이전</a>&nbsp;</li>
 							</c:if>
 
 							<c:forEach var="a" begin="${startpage}" end="${endpage}">
-								<c:if test="${a==page }">
+								<c:if test="${a eq page1 }">
 									<li class="page-item"><a class="page-link current"
 										href="#">${a}</a></li>
 								</c:if>
-								<c:if test="${a != page }">
+								<c:if test="${a ne page1 }">
 									<li class="page-item"><a
 										href="member_list?page=${a}&search_field=${search_field}&search_word=${search_word}"
 										class="page-link">${a}</a></li>
 								</c:if>
 							</c:forEach>
 
-							<c:if test="${page>=maxpage }">
+							<c:if test="${page1>=maxpage }">
 								<li class="page-item"><a class="page-link current" href="#">&nbsp;다음</a>
 								</li>
 							</c:if>
-							<c:if test="${page< maxpage}">
+							<c:if test="${page1< maxpage}">
 								<li class="page-item"><a
 									href="member_list?page=${page+1}&search_field=${search_field}&search_word=${search_word}"
 									class="page-link">&nbsp;다음</a></li>
@@ -143,7 +140,7 @@ td:nth-child(1) {
 	</div>
 
 	<%--회원이 없는 경우 --%>
-	<c:if test="${listcount ==0 }">
+	<c:if test="${listcount eq 0 }">
 		<h1>검색 결과가 없습니다.</h1>
 	</c:if>
 </body>

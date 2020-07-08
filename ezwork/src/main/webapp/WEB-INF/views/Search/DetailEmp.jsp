@@ -4,10 +4,18 @@
 <!-- 민혁 -->
 <html>
 <head>
-<meta charset="EUC-KR">
+
 <title>사원 상세 조회</title>
 </head>
 <body>
-사원 정보
+	<table>
+		<c:set var="m" value="${memberinfo}" />
+		<tr>
+			<td>${m.m_CODE }</td>
+			<td>${m.m_NAME }</td>
+			<td>${m.m_WORK_C }</td>
+			<td>${m.m_PART_C }</td>
+		</tr>
+	</table>
 </body>
 </html>

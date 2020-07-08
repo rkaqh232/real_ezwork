@@ -20,7 +20,7 @@
 					<div class="card-body px-5">
 						<!--begin::Compose-->
 						<div class="px-4 mt-4 mb-10">
-							<a href="#" class="btn btn-block btn-primary font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
+							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
 						</div>
 						<!--end::Compose-->
 						<!--begin::Navigations-->
@@ -245,7 +245,7 @@
 					<!--end::Header-->
 					<!--begin::Body-->
 					<div class="card-body table-responsive px-0">
-					
+					<div class="list">
 						<c:if test="${listcount > 0 }">
 						<!--begin::mailList-->
 						<table class="table table-hover">
@@ -284,35 +284,30 @@
 						</table>						
 						<!--end::mailList-->
 						</c:if>
-						
-						<!-- 받은 메일이 없으면 -->
-						<c:if test="${listcount == 0 }">
-								<font size=5>받은 메일이 없습니다.</font>
-						</c:if>
-						
 					</div>
 					<!--end::Body-->
 					
 					<!-- pagination 시작 -->
-					<div class="d-flex flex-wrap py-2 pagination" style="margin:0 auto">
-						
-				        <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1 disabled"><i class="ki ki-bold-double-arrow-back icon-xs"></i></a>
-				        <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1"><i class="ki ki-bold-arrow-back icon-xs"></i></a>
+					<div class="d-flex flex-wrap py-2" style="margin:0 auto">
+						<div class="pagination">
+				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1 disabled"><i class="ki ki-bold-double-arrow-back icon-xs"></i></a>
+				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-back icon-xs"></i></a>
 				
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">1</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">23</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary active mr-2 my-1">24</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">25</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">26</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">27</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">28</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">1</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">23</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light btn-hover-info active mr-2 my-1">24</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">25</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">26</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">27</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">28</a>
+				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">...</a>
 				
-				        <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1"><i class="ki ki-bold-arrow-next icon-xs"></i></a>
-				        <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1"><i class="ki ki-bold-double-arrow-next icon-xs"></i></a>
+				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-next icon-xs"></i></a>
+				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-double-arrow-next icon-xs"></i></a>
+				        </div>
 				    </div>
 					<!-- pagination 끝 -->
-					
+					</div>
 				</div>
 				<!--end::Card-->
 			</div>
@@ -343,9 +338,9 @@
 						<div class="d-block">
 							<!--begin::To-->
 							<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-45px">
-								<div class="text-dark-50 w-75px">To:</div>
+							<input type="text" name="MAIL_SENDER" value="${id}" style="display:none"/>
+								<div class="text-dark-50 w-25px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
-									<input type="text" name="MAIL_SENDER" value="${M_CODE}" style="display:none"/>
 									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT"/>
 								</div>
 								<div class="ml-2">
@@ -408,8 +403,8 @@
 							<div class="d-flex align-items-center mr-3">
 								<!--begin::Send-->
 								<div class="btn-group mr-4">
-									<span class="btn btn-primary font-weight-bold px-6">보내기</span>
-									<span class="btn btn-primary font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
+									<button class="btn btn-info font-weight-bold px-6" type="submit" id="submit">보내기</button>
+									<span class="btn btn-info font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 									<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 										<ul class="navi py-3">
 											<li class="navi-item">
@@ -425,9 +420,13 @@
 								</div>
 								<!--end::Send-->
 								<!--begin::Other-->
+								<label for="upfile">
 								<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_compose_attachments_select">
-									<i class="flaticon2-clip-symbol"></i>
-								</span>
+								<i class="flaticon2-clip-symbol">
+								<input type="file" id="upfile" name="uploadfile" style="display:none">
+								<span id="filevalue"></span>
+								</i>
+								</span></label>
 								<!--end::Other-->
 							</div>
 							<!--end::Actions-->

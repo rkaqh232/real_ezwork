@@ -74,10 +74,12 @@ function ajax(sdata){
 					href = 'href=javascript:go(' + (data.page + 1) + ')';
 				} 
 				setPaging( href, digit);
-
 				$('.pagination').append(output)
 			}//if(data.listcount) end
-			
+			else if(totalData==0){
+				output = "<h2>받은 메일이 없습니다.</h2>";
+				$('.list').append(output)//table 완성
+			}			
 		}, //success end
 		error : function(){
 			console.log('에러')

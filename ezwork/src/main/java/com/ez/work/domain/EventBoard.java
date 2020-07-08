@@ -127,7 +127,7 @@ public class EventBoard {
 	}
 
 	public String getEV_DATE() {
-		return EV_DATE;
+		return EV_DATE.substring(0,10);
 	}
 
 	public void setEV_DATE(String eV_DATE) {

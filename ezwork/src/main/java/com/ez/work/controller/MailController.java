@@ -107,6 +107,8 @@ public class MailController {
 		
 		List<Mail> maillist = mailService.getMailList(page, limit);
 		
+		System.out.println(listcount);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page",page);
 		map.put("maxpage",maxpage);

@@ -171,7 +171,7 @@
 									</div>
 								</div>
 								<span class="btn btn-clean btn-icon btn-sm mr-2" data-toggle="tooltip" title="Reload list">
-									<i class="ki ki-refresh icon-1x"></i>
+									<a href="inbox.mail"><i class="ki ki-refresh icon-1x"></i></a>
 								</span>
 							</div>
 							<div class="d-flex align-items-center mr-1 my-2">
@@ -245,19 +245,18 @@
 					<!--end::Header-->
 					<!--begin::Body-->
 					<div class="card-body table-responsive px-0">
-					<div class="list">
-						<c:if test="${listcount > 0 }">
-						<!--begin::mailList-->
-						<table class="table table-hover">
-							<thead>
+					<table class="table table-hover" style="text-align:center;">
+						<thead>
 							<tr>
 								<th><div>&nbsp;</div></th>
 								<th><div>보낸사람</div></th>
 								<th><div>제목</div></th>
 								<th><div>날짜</div></th>
-								<th><div>?</div></th>
 							</tr>	
 						   </thead>
+						   
+						   <!--begin::mailList-->
+						   <c:if test="${listcount > 0 }">
 						   <tbody>
 							<c:set var="num" value="${listcount-(page-1)*limit}"/>	
 							<c:forEach var="m" items="${maillist}">	
@@ -275,32 +274,24 @@
 									</a>
 									</div>
 								</td>
-								<td><div>${m.MAIL_NAME}</div></td>
-								<td><div>${m.MAIL_DATE}</div></td>	
-								<td><div>?</div></td>
+								<td><div>${m.MAIL_SENDER}</div></td>
+								<td><div>${m.MAIL_DATE}</div></td>
 							   </tr>
 							  </c:forEach>
 							 </tbody>	
+							 </c:if>
 						</table>						
 						<!--end::mailList-->
-						</c:if>
-					</div>
 					<!--end::Body-->
 					
 					<!-- pagination 시작 -->
-					<div class="d-flex flex-wrap py-2" style="margin:0 auto">
+					<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px; algin:center;">
 						<div class="pagination">
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1 disabled"><i class="ki ki-bold-double-arrow-back icon-xs"></i></a>
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-back icon-xs"></i></a>
 				
 				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">1</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">23</a>
 				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light btn-hover-info active mr-2 my-1">24</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">25</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">26</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">27</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">28</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">...</a>
 				
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-next icon-xs"></i></a>
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-double-arrow-next icon-xs"></i></a>
@@ -320,7 +311,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<!--begin::Form-->
-					<form id="kt_inbox_compose_form" name="mailform" action="MailAddaction.mail" method="post">
+					<form id="kt_inbox_compose_form" name="mailform" action="MailAddaction.mail" enctype="multipart/form-data" method="post">
 						<!--begin::Header-->
 						<div class="d-flex align-items-center justify-content-between py-5 pl-8 pr-5 border-bottom">
 							<h5 class="font-weight-bold m-0">메일 쓰기</h5>

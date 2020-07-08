@@ -59,8 +59,6 @@ public class MailController {
 	
 	@PostMapping("/MailAddaction.mail")
 	public String mailadd(Mail mail, HttpServletRequest request) throws Exception{
-		System.out.println("mail:"+mail.getMAIL_FILE());
-		
 		MultipartFile uploadfile=mail.getUploadfile();
 		if(!uploadfile.isEmpty()) {
 			String fileName = uploadfile.getOriginalFilename();
@@ -111,6 +109,7 @@ public class MailController {
 		List<Mail> maillist = mailService.getMailList(page, limit);
 		
 		System.out.println("listcount:" + listcount);
+		System.out.println("maillist : "+ maillist.get(0).getMAIL_SENDER());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page",page);

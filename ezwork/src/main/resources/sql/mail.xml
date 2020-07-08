@@ -19,7 +19,17 @@
 		 #{MAIL_RCHECK}, sysdate)
 	</insert>
 	
-	<select id="count" parameterType="int">
+	<select id="count" resultType="int">
 		select count(*) from email
 	</select>
+	
+	<select id="list" parameterType="java.util.Map" resultType="mail">
+		select* from 
+			(select rownum rnum, m.*
+			 from 
+			 	(select* from email
+			 	 order by MAIL_DATE desc) m)
+		where rnum &gt;=#{start} and rnum &lt;=#{end}
+	</select>
+	
 </mapper>

@@ -1,16 +1,20 @@
+$(function(){
+	go(1);
+})
+
 function go(page){
-	var limit = $('#viewcount').val();
+	var limit = 10;
 	var data = "limit=" + limit + "&start=ajax&page=" + page;
 	ajax(data);
 }
 
 function setPaging(href, digit){
-	output += "<li class=page-item>";
-	gray="";
+	output += '<a class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">';
+	active="";
 	if(href==""){
-		gray=" gray";
+		active=" active";
 	}
-	anchor = "<a class='page-link" + gray + "'" + href + ">" + digit + "</a></li>";
+	anchor = "<a class='page-link" + active + "'" + href + ">" + digit + "</a></li>";
 	output += anchor;
 }
 
@@ -20,36 +24,26 @@ function ajax(sdata){
 		type : "POST",
 		data : sdata,
 		url : "MailListAjax.mail",
-		dataType = "json",
+		dataType : "json",
 		cache : false,
 		success : function(data){
+			var totalData = data.listcount;
 			$("#viewcount").val(data.limit);
 			
-			if(data.listcount > 0){
+			if(totalData > 0){
 				$("tbody").remove();
-				var num = data.listcount - (data.page -1) * data.limit;
+				var num = totalData - (data.page -1) * data.limit;
 				output = "<tbody>";
-				$(data.boardlist).each(
-					function(index, item){
-						output += '<tr><td>' + (num--) + '</td>'
-						blank_count = item.board_RE_LEV*2 + 1;
-						blank = '&nbsp;';
-						for (var i = 0; i < blank_count; i++) {
-							blank += '&nbsp;&nbsp;';
-						}
-						img="";
-						if (item.board_RE_LEV > 0) {
-							img="<img src='resources/image/line.gif'>";
-						}
-							
-						output +=  "<td><div>" + blank + img
-						output += ' <a href="BoardDetailAction.bo?num='
-							     + item.board_NUM + '&page='
+				$(data.maillist).each(
+					function(index, item){							
+						output +=  "<td><div>"
+						output += ' <a href="#'
+							     + item.MAIL_NUM + '&page='
 								 + data.page + '">'
-						output += item.board_SUBJECT + '</a></div></td>'
-						output += '<td><div>' + item.board_NAME+'</div></td>'
-						output += '<td><div>' + item.board_DATE+'</div></td>'
-						output += '<td><div>' + item.board_READCOUNT
+						output += item.MAIL_SUBJECT + '</a></div></td>'
+						output += '<td><div>' + item.MAIL_SENDER+'</div></td>'
+						output += '<td><div>' + item.MAIL_DATE+'</div></td>'
+						output += '<td><div>' + item.MAIL_RCHECK
 								+ '</div></td></tr>'
 					})
 				output += "</tbody>"
@@ -90,9 +84,3 @@ function ajax(sdata){
 		}
 	})
 }
-
-$(function(){
-	$("#viewcount").change(function(){
-		go(1);
-	});
-})

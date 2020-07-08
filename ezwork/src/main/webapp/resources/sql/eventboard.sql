@@ -18,3 +18,26 @@ EV_RE_SEQ	NUMBER,			--답변 글의 순서
 EV_READCOUNT NUMBER,		--글의 조회수
 PRIMARY KEY(EV_NO)
 );
+
+insert into eventboard
+		(EV_NO,
+		EV_SORT, EV_NAME, EV_PASS,
+		EV_TITLE, EV_CONTENT, 
+		EV_RE_REF,
+		EV_RE_LEV,
+		EV_RE_SEQ, EV_READCOUNT,
+		EV_DATE)
+		values
+		(2,
+		'축하','인사팀', '1234',
+		'결혼 축하드립니다','추카추카영',
+		2,
+		0, 0, 0,
+		sysdate);
+		
+		
+		insert into EVENTBOARD 
+		(EV_NO)
+		values (1);
+		
+		SELECT * FROM eventboard;

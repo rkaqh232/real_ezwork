@@ -20,7 +20,7 @@
 				
 
 
-				<div class="card-toolbar">글등록</div>
+				<div class="card-toolbar"></div>
 				<div class="card-body">
 					<form action="BoardAddAction.bo" method="post"
 						enctype="multipart/form-data" name="boardform">

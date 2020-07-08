@@ -141,7 +141,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="firstname" id="M_CODE" type="text" placeholder="자동생성 (예 :EMP202001)" 
+																	name="firstname" id="M_CODE" type="text" value="자동생성 (예 : EMP202001)" 
 																	onclick="empcode_error()" readonly /><span class="form-text text-muted">참고 : 사원번호는 자동으로 생성됩니다. 
 																	</span>
 															</div>
@@ -200,8 +200,7 @@
    															 </div>
 															</div>
 															<span
-																	class="form-text text-muted">참고 : 계약코드 (계약직 :
-																	100, 정규직 : 200)</span>
+																	class="form-text text-muted">참고 : 기타 부서의 경우 A1으로 선택해주세요.</span>
 															</div>
 														</div>
 														
@@ -242,24 +241,7 @@
 														
 														<!-- 직급코드 테스트 -->
 														
-														
-
-
-														<!-- <div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">직급코드</label>
-															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="level" type="text" id="M_LEVEL"  value="" /> <span
-																	class="form-text text-muted">Enter valid US
-																	phone number(e.g: 5678967456).</span>
-															</div>
-														</div>-->
-														
-														
-														
-														
-														
+					
 														
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호</label>
@@ -267,8 +249,7 @@
 																<input
 																	class="form-control form-control-solid form-control-lg"
 																	name="password" type="text" id="M_PASS" value="" /> <span
-																	class="form-text text-muted">Enter valid US
-																	phone number(e.g: 5678967456).</span>
+																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
 															</div>
 														</div>
 
@@ -413,7 +394,7 @@
 																	</div>
 																	<input type="text"
 																		class="form-control form-control-solid"
-																		value="EzWork@ezwork.com" id="M_EMAIL" placeholder="Email" />
+																		value="EzWork@ezwork.com" name="email" id="M_EMAIL" placeholder="Email" />
 																</div><span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
 																	(ex: emp@Ezwork.com)</span>
 															</div>
@@ -519,6 +500,10 @@
 
 													<!--end::Wizard Step 1-->
 													<!--begin::Wizard Step 2-->
+													
+													
+												
+												
 												<div class="my-5 step" data-wizard-type="step-content">
 														<h5 class="mb-10 font-weight-bold text-dark">학력정보</h5>
 														<!--begin::Group-->
@@ -530,8 +515,8 @@
 																<div class="form-group">
 																	<label> 학교명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요."
-																		id="ap_content" />
+																		name="content" placeholder="학교명"
+																		id="sc_name" />
 
 																</div>
 															</div>
@@ -541,7 +526,7 @@
 																<div class="form-group">
 																	<label> 전공 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
+																		name="etc" placeholder="전공" id="sc_major" />
 																</div>
 															</div>
 															<!--end::Group-->
@@ -556,8 +541,8 @@
 																<div class="form-group">
 																	<label> 학위 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요."
-																		id="ap_content" />
+																		name="content" placeholder="학위"
+																		id="sc_degree" />
 
 																</div>
 															</div>
@@ -567,7 +552,7 @@
 																<div class="form-group">
 																	<label> 소재지 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
+																		name="etc" placeholder="주소" id="sc_address" />
 																</div>
 															</div>
 															<!--end::Group-->
@@ -617,8 +602,8 @@
 																<div class="form-group">
 																	<label> 외국어명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요."
-																		id="ap_content" />
+																		name="content" placeholder="외국어"
+																		id="lg_name" />
 
 																</div>
 															</div>
@@ -628,7 +613,7 @@
 																<div class="form-group">
 																	<label> 시험명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
+																		name="etc" placeholder="시험명" id="lg_test" />
 																</div>
 															</div>
 															<!--end::Group-->
@@ -643,8 +628,8 @@
 																<div class="form-group">
 																	<label> 시험점수 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요."
-																		id="ap_content" />
+																		name="content" placeholder="시험점수"
+																		id="lg_grade" />
 
 																</div>
 															</div>
@@ -652,9 +637,9 @@
 															<!--begin::Group-->
 															<div class="col-xl-6">
 																<div class="form-group">
-																	<label> 발급처 </label> <input type="text"
+																	<label> 발급기관 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
+																		name="etc" placeholder="발급기관" id="lg_organ" />
 																</div>
 															</div>
 															<!--end::Group-->
@@ -690,9 +675,9 @@
 													<!--end::Wizard Step 3-->
 													<!--begin::Wizard Step 4-->
 													<!--  step 4 자격증정보 시작  step 4 자격증정보  step 4 자격증정보 step 4 자격증정보 -->
-
-
-													<div class="my-5 step" data-wizard-type="step-content">
+													
+													
+														<div class="my-5 step" data-wizard-type="step-content">
 														<h5 class="mb-10 font-weight-bold text-dark">자격증정보</h5>
 														<!--begin::Group-->
 
@@ -701,10 +686,10 @@
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
-																	<label> 자격증 명 </label> <input type="text"
+																	<label> 자격증명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요."
-																		id="ap_content" />
+																		name="content" placeholder="자격증명" 
+																		id="li_name" />
 
 																</div>
 															</div>
@@ -714,61 +699,19 @@
 																<div class="form-group">
 																	<label> 발급기관 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
+																		name="etc" placeholder="발급기관" id="li_organ" />
 																</div>
 															</div>
 															<!--end::Group-->
 														</div>
-
-
-
-
-														<!-- <div class="row">
-															<div class="col-xl-6">
-																begin::Group
-																<div class="form-group">
-																	<label> 시험점수 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="content" placeholder="내용을 입력하세요."
-																		id="ap_content" />
-
-																</div>
-															</div>
-															end::Group
-															begin::Group
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label> 발급처 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="etc" placeholder="기타사항을 입력하세요." id="a_etc" />
-																</div>
-															</div>
-															end::Group
-														</div>-->
-
-														<div class="form-group row">
-															<label class="col-xl-6 col-form-label"> 발급일자 </label>
-															<div class="col-xl-6">
-																<div class="input-group date">
-																	<input type="text" class="form-control" readonly
-																		value="05/20/2017" id="kt_datepicker_3" />
-																	<div class="input-group-append">
-																		<span class="input-group-text"> <i
-																			class="la la-calendar"></i>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-
-
-
-
-
-
-
 													</div>
+													<!--  test -->
+													
+													
+
+
+													<!--  test 블럭  -->
+													
 													<!-- step4 어학정보 END  step4 어학정보 END step4 어학정보 END step4 어학정보 END-->
 
 
@@ -818,7 +761,7 @@
 	<!--begin::Page Scripts(used by this page)-->
 
 	<!-- 사원등록 js 추가 -->
-	<script src="resources/assets/js/pages/custom/user/add-user.js?v=7.0.4"></script>
+<!--  	<script src="resources/assets/js/pages/custom/user/add-user.js?v=7.0.4"></script>-->
 	<!-- 달력 js 추가 -->
 	<script
 		src="resources/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js?v=7.0.4"></script>

@@ -61,13 +61,13 @@ var KTAddUser = function () {
 			_formEl,
 			{
 				fields: {
-					/*firstname: {
+					firstname: {
 						validators: {
 							notEmpty: {
 								message: '사원번호는 필수항목입니다. '
 							}
 						}
-					},*/
+					},
 					lastname: {
 						validators: {
 							notEmpty: {
@@ -103,20 +103,20 @@ var KTAddUser = function () {
 							}
 						}
 					},
-					pri_code: {
+					/*pri_code: {
 						validators: {
 							notEmpty: {
 								message: '주민등록번호는 필수항목입니다.'
 							}
 						}
-					},
-					birth: {
+					},*/
+					/*birth: {
 						validators: {
 							notEmpty: {
 								message: '생년월일은 필수항목입니다.'
 							}
 						}
-					},
+					},*/
 					army: {
 						validators: {
 							notEmpty: {
@@ -130,10 +130,10 @@ var KTAddUser = function () {
 							notEmpty: {
 								message: '핸드폰번호는 필수항목입니다.'
 							},
-							phone: {
+							/*phone: {
 								country: 'US',
 								message: 'The value is not a valid US phone number. (e.g 5554443333)'
-							}
+							}*/
 						}
 					},
 					/*email: {
@@ -207,13 +207,13 @@ var KTAddUser = function () {
 							}
 						}
 					},
-					postcode: {
+					/*postcode: {
 						validators: {
 							notEmpty: {
 								message: 'Postcode is required'
 							}
 						}
-					},
+					},*/
 					city: {
 						validators: {
 							notEmpty: {

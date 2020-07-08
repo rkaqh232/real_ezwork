@@ -59,7 +59,9 @@ public class MailController {
 	
 	@PostMapping("/MailAddaction.mail")
 	public String mailadd(Mail mail, HttpServletRequest request) throws Exception{
-		MultipartFile uploadfile = mail.getUploadfile();
+		System.out.println("mail:"+mail.getMAIL_FILE());
+		
+		MultipartFile uploadfile=mail.getUploadfile();
 		if(!uploadfile.isEmpty()) {
 			String fileName = uploadfile.getOriginalFilename();
 			mail.setMAIL_ORIGINAL(fileName);
@@ -88,7 +90,8 @@ public class MailController {
 			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
 			mail.setMAIL_FILE(fileDBName);
 		}
-		return "";
+		mailService.insertMail(mail);
+		return "redirect:inbox.mail";
 	}
 	
 	@ResponseBody
@@ -107,7 +110,7 @@ public class MailController {
 		
 		List<Mail> maillist = mailService.getMailList(page, limit);
 		
-		System.out.println(listcount);
+		System.out.println("listcount:" + listcount);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page",page);
@@ -119,6 +122,5 @@ public class MailController {
 		map.put("limit",limit);
 		return map;
 	}
-	
 	
 }

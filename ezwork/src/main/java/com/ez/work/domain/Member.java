@@ -1,10 +1,9 @@
 package com.ez.work.domain;
 
-import java.sql.Date;
 
 //혜정, 민혁
 public class Member {
-	private String M_CODE;  //사원정보 			
+	private String M_CODE;  //사원정보 	
 	private String M_PASS;       		 
 	private int M_WORK_C; 				
 	private String M_PART_C; 	
@@ -13,27 +12,27 @@ public class Member {
 	private String M_NAME_EN; 		
 	private int M_PRI_NUMBER;  		  
 	private String M_GENDER; 		
-	private Date M_BIRTH;  			
+	private String M_BIRTH;  			
 	private String M_ARMY;   			
 	private String M_MARRIAGE; 		
 	private String M_TEL;       		
 	private String M_MOBILE_TEL;   		
 	private String M_EMAIL;        		
 	private String M_ADDRESS;       		
-	private Date M_JOIN_DATE;    	
+	private String M_JOIN_DATE;    	
 	private String SC_NAME; //학력정보
 	private String SC_MAJOR;
 	private String SC_DEGREE;
 	private String SC_ADDRESS;
-	private Date   SC__GRAD_DAY;
+	private String SC__GRAD_DAY;
 	private String LG_NAME; //어학정보
 	private String LG_TEST;
 	private String LG_GRADE;
-	private Date   LG_DATE;
+	private String LG_DATE;
 	private String LG_ORGAN;
 	private String LI_NAME; //자격증정보
 	private String LI_ORGAN;
-	private Date LI_DATE;
+	private String LI_DATE;
 	
 	
 	
@@ -91,10 +90,10 @@ public class Member {
 	public void setM_GENDER(String m_GENDER) {
 		M_GENDER = m_GENDER;
 	}
-	public Date getM_BIRTH() {
+	public String getM_BIRTH() {
 		return M_BIRTH;
 	}
-	public void setM_BIRTH(Date m_BIRTH) {
+	public void setM_BIRTH(String m_BIRTH) {
 		M_BIRTH = m_BIRTH;
 	}
 	public String getM_ARMY() {
@@ -133,10 +132,10 @@ public class Member {
 	public void setM_ADDRESS(String m_ADDRESS) {
 		M_ADDRESS = m_ADDRESS;
 	}
-	public Date getM_JOIN_DATE() {
+	public String getM_JOIN_DATE() {
 		return M_JOIN_DATE;
 	}
-	public void setM_JOIN_DATE(Date m_JOIN_DATE) {
+	public void setM_JOIN_DATE(String m_JOIN_DATE) {
 		M_JOIN_DATE = m_JOIN_DATE;
 	}
 	public String getSC_NAME() {
@@ -163,10 +162,10 @@ public class Member {
 	public void setSC_ADDRESS(String sC_ADDRESS) {
 		SC_ADDRESS = sC_ADDRESS;
 	}
-	public Date getSC__GRAD_DAY() {
+	public String getSC__GRAD_DAY() {
 		return SC__GRAD_DAY;
 	}
-	public void setSC__GRAD_DAY(Date sC__GRAD_DAY) {
+	public void setSC__GRAD_DAY(String sC__GRAD_DAY) {
 		SC__GRAD_DAY = sC__GRAD_DAY;
 	}
 	public String getLG_NAME() {
@@ -187,10 +186,10 @@ public class Member {
 	public void setLG_GRADE(String lG_GRADE) {
 		LG_GRADE = lG_GRADE;
 	}
-	public Date getLG_DATE() {
+	public String getLG_DATE() {
 		return LG_DATE;
 	}
-	public void setLG_DATE(Date lG_DATE) {
+	public void setLG_DATE(String lG_DATE) {
 		LG_DATE = lG_DATE;
 	}
 	public String getLG_ORGAN() {
@@ -211,12 +210,17 @@ public class Member {
 	public void setLI_ORGAN(String lI_ORGAN) {
 		LI_ORGAN = lI_ORGAN;
 	}
-	public Date getLI_DATE() {
+	public String getLI_DATE() {
 		return LI_DATE;
 	}
-	public void setLI_DATE(Date lI_DATE) {
+	public void setLI_DATE(String lI_DATE) {
 		LI_DATE = lI_DATE;
 	}
+	
+	
+	
+	
+	
 
 
 }

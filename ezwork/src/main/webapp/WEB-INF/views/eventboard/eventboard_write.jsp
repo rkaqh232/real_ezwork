@@ -5,7 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4"
+	rel="stylesheet" type="text/css" />
+<script src="resources/js/jquery-3.5.0.js"></script>
 <script src="resources/js/writeform.js"></script>
+
 </head>
 <body>
 	<!-- <div class="container">
@@ -75,7 +79,7 @@
 				</div>
 			</div>
 			<!--begin::Form-->
-			<form>
+			<form action="BoardAddAction.ev" method="post" enctype="multipart/form-data" name="boardform">
 				<div class="card-body">
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">말머리
@@ -99,18 +103,20 @@
 							maxlength="30" class="form-control">
 						</div>
 					</div>
+				
 					<div class="form-group row">
-						<label class="col-lg-3 col-form-label text-lg-right">비밀번호</label>
-						<div class="col-lg-4">
-							<input type="email" class="form-control"
-								placeholder="Enter email" name="email">
+						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
+						<div class="col-lg-7">
+							<input name="BOARD_SUBJECT"
+							id="board_subject" type="text" size="50" maxlength="100"
+							class="form-control" placeholder="제목을 입력하세요">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
 						<div class="col-lg-7">
-							<textarea class="form-control" rows="3"
-								placeholder="Please enter your message"></textarea>
+							<textarea  class="form-control" rows="3"
+								placeholder="내용을 입력하세요"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -118,13 +124,8 @@
 						<div class="col-lg-9">
 							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
 								<div class="dropzone-panel mb-lg-0 mb-2">
-									<a
-										class="dropzone-select btn btn-light-info font-weight-bold btn-sm dz-clickable">Attach
-										files</a> <a
-										class="dropzone-upload btn btn-light-info font-weight-bold btn-sm">Upload
-										All</a> <a
-										class="dropzone-remove-all btn btn-light-info font-weight-bold btn-sm">Remove
-										All</a>
+									 <input type="file" id="upfile" name="uploadfile" > <span
+							id="filevalue"></span> 
 								</div>
 								<div class="dropzone-items"></div>
 								<div class="dz-default dz-message">
@@ -134,6 +135,14 @@
 							</div>
 							<span class="form-text text-muted">Max file size is 1MB
 								and max number of files is 5.</span>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label text-lg-right">비밀번호</label>
+						<div class="col-lg-4">
+							<input type="password" class="form-control"
+								placeholder="비밀번호를 입력하세요" name="pass">
 						</div>
 					</div>
 				</div>

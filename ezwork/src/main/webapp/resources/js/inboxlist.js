@@ -9,12 +9,12 @@ function go(page){
 }
 
 function setPaging(href, digit){
-	output += '<a class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">';
+	output += '';
 	active="";
 	if(href==""){
 		active=" btn-hover-info active";
 	}
-	anchor = "<a class='btn btn-icon btn-sm btn-light mr-2 my-1" + active + "'" + href + ">" + digit + "</a></li>";
+	anchor = "<a class='btn btn-icon btn-sm btn-light mr-2 my-1" + "'" + href + ">" + digit + "</a></li>";
 	output += anchor;
 }
 
@@ -36,8 +36,8 @@ function ajax(sdata){
 						output += "<tr><td><label class='checkbox'>"
 					    output += "<input type='checkbox'/>"
 						output += ' <span></span></label></td><td>'
-						output += item.mail_SUBJECT + '</td>'
-						output += '<td><div>' + item.mail_SENDER+'</div></td>'
+						output += item.mail_SENDER + '</td>'
+						output += '<td><div>' + item.mail_SUBJECT +'</div></td>'
 						output += '<td><div>' + item.mail_DATE+'</div></td></tr>'
 					})
 				output += "</tbody>"

@@ -13,7 +13,7 @@
 								<!--begin::Chat-->
 								<div class="topbar-item">
 									<div class="btn btn-icon btn-clean btn-lg mr-1" data-toggle="modal" data-target="#kt_chat_modal">
-										<span class="svg-icon svg-icon-xl svg-icon-primary">
+										<span class="svg-icon svg-icon-xl svg-icon-info">
 
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group-chat.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

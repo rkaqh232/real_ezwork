@@ -12,9 +12,9 @@ function setPaging(href, digit){
 	output += '<a class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">';
 	active="";
 	if(href==""){
-		active=" active";
+		active=" btn-hover-info active";
 	}
-	anchor = "<a class='page-link" + active + "'" + href + ">" + digit + "</a></li>";
+	anchor = "<a class='btn btn-icon btn-sm btn-light mr-2 my-1" + active + "'" + href + ">" + digit + "</a></li>";
 	output += anchor;
 }
 
@@ -27,24 +27,18 @@ function ajax(sdata){
 		dataType : "json",
 		cache : false,
 		success : function(data){
-			var totalData = data.listcount;
-			$("#viewcount").val(data.limit);
-			
+			var totalData = data.listcount;			
 			if(totalData > 0){
-				$("tbody").remove();
 				var num = totalData - (data.page -1) * data.limit;
 				output = "<tbody>";
 				$(data.maillist).each(
 					function(index, item){							
-						output +=  "<td><div>"
-						output += ' <a href="#'
-							     + item.MAIL_NUM + '&page='
-								 + data.page + '">'
-						output += item.MAIL_SUBJECT + '</a></div></td>'
-						output += '<td><div>' + item.MAIL_SENDER+'</div></td>'
-						output += '<td><div>' + item.MAIL_DATE+'</div></td>'
-						output += '<td><div>' + item.MAIL_RCHECK
-								+ '</div></td></tr>'
+						output += "<tr><td><label class='checkbox'>"
+					    output += "<input type='checkbox'/>"
+						output += ' <span></span></label></td><td>'
+						output += item.mail_SUBJECT + '</td>'
+						output += '<td><div>' + item.mail_SENDER+'</div></td>'
+						output += '<td><div>' + item.mail_DATE+'</div></td></tr>'
 					})
 				output += "</tbody>"
 				$('table').append(output)//table 완성
@@ -52,7 +46,7 @@ function ajax(sdata){
 				$(".pagination").empty(); //페이징 처리 영역 내용 제거
 				output = "";
 				
-				digit = '이전&nbsp;'
+				digit = '<i class="ki ki-bold-arrow-back icon-xs"></i>'; //이전 버튼
 				href="";	
 				if (data.page > 1) {
 					href = 'href=javascript:go(' + (data.page - 1) + ')';
@@ -68,7 +62,7 @@ function ajax(sdata){
 					setPaging( href, digit);
 				}
 				
-				digit = '다음&nbsp;';
+				digit = '<i class="ki ki-bold-arrow-next icon-xs"></i>'; //다음 버튼
 				href="";
 				if (data.page < data.maxpage) {
 					href = 'href=javascript:go(' + (data.page + 1) + ')';
@@ -78,7 +72,7 @@ function ajax(sdata){
 			}//if(data.listcount) end
 			else if(totalData==0){
 				output = "<h2>받은 메일이 없습니다.</h2>";
-				$('.list').append(output)//table 완성
+				$('.tbody').append(output)//table 완성
 			}			
 		}, //success end
 		error : function(){

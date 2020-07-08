@@ -26,7 +26,7 @@
 						enctype="multipart/form-data" name="boardform">
 						<div class="form-group">
 							<label for="board_name">글쓴이</label> <input name="BOARD_NAME"
-								id="board_name" value="${id}" readOnly type="text" size="10"
+								id="board_name" value="인사팀" readOnly type="text" size="10"
 								maxlength="30" class="form-control"
 								placeholder="Enter board_name">
 						</div>

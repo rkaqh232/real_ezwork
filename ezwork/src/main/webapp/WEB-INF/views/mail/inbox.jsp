@@ -136,40 +136,6 @@
 									<input type="checkbox" />
 									<span class="symbol-label"></span>
 								</label>
-								<div class="btn-group">
-									<span class="btn btn-clean btn-icon btn-sm mr-1" data-toggle="dropdown">
-										<i class="ki ki-bold-arrow-down icon-sm"></i>
-									</span>
-									<div class="dropdown-menu dropdown-menu-left p-0 m-0 dropdown-menu-sm">
-										<ul class="navi py-3">
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">All</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Read</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Unread</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Starred</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Unstarred</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
 								<span class="btn btn-clean btn-icon btn-sm mr-2" data-toggle="tooltip" title="Reload list">
 									<a href="inbox.mail"><i class="ki ki-refresh icon-1x"></i></a>
 								</span>
@@ -248,10 +214,10 @@
 					<table class="table table-hover" style="text-align:center;">
 						<thead>
 							<tr>
-								<th><div>&nbsp;</div></th>
-								<th><div>보낸사람</div></th>
-								<th><div>제목</div></th>
-								<th><div>날짜</div></th>
+								<th style="width:10%"><div>&nbsp;</div></th>
+								<th><div><p class="text-dark-50">보낸사람</p></div></th>
+								<th style="width:50%"><div><p class="text-dark-50">제목</p></div></th>
+								<th><div><p class="text-dark-50">날짜</p></div></th>
 							</tr>	
 						   </thead>
 						   
@@ -285,8 +251,8 @@
 					<!--end::Body-->
 					
 					<!-- pagination 시작 -->
-					<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px; algin:center;">
-						<div class="pagination">
+					<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px;width:100%;">
+						<div class="pagination" style="margin:0 auto;">
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1 disabled"><i class="ki ki-bold-double-arrow-back icon-xs"></i></a>
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-back icon-xs"></i></a>
 				

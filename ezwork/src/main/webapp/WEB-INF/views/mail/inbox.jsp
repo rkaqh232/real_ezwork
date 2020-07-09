@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <script src="resources/js/jquery-3.5.0.js"></script>
 <script src="resources/js/inboxlist.js"></script>
+<style>
+p{margin-top:1rem}
+</style>
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 <!--begin::Entry-->
@@ -155,7 +157,7 @@
 										<!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Delete">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="삭제">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -168,7 +170,7 @@
 										<!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Mark as read">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="읽음으로 표시">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Duplicate.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -210,8 +212,8 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Body-->
-					<div class="card-body table-responsive px-0">
-					<table class="table table-hover" style="text-align:center;">
+					<div class="card-body">
+					<table class="table table-hover" style="text-align:center;margin-bottom:40px;">
 						<thead>
 							<tr>
 								<th style="width:10%"><div>&nbsp;</div></th>
@@ -253,14 +255,6 @@
 					<!-- pagination 시작 -->
 					<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px;width:100%;">
 						<div class="pagination" style="margin:0 auto;">
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1 disabled"><i class="ki ki-bold-double-arrow-back icon-xs"></i></a>
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-back icon-xs"></i></a>
-				
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">1</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light btn-hover-info active mr-2 my-1">24</a>
-				
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-next icon-xs"></i></a>
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-double-arrow-next icon-xs"></i></a>
 				        </div>
 				    </div>
 					<!-- pagination 끝 -->
@@ -295,10 +289,10 @@
 						<div class="d-block">
 							<!--begin::To-->
 							<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-45px">
-							<input type="text" name="MAIL_SENDER" value="${id}" style="display:none"/>
+							<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
 								<div class="text-dark-50 w-25px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
-									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT"/>
+									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" required/>
 								</div>
 								<div class="ml-2">
 									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary mr-2" data-inbox="cc-show">Cc</span>
@@ -318,12 +312,12 @@
 							<!--end::CC-->
 							<!--begin::Subject-->
 							<div class="border-bottom">
-								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" />
+								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" required/>
 							</div>
 							<!--end::Subject-->
 							<!--begin::Message-->
 							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px">
-							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none"></textarea>
+							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none" required></textarea>
 							</div>
 							<!--end::Message-->
 							<!--begin::Attachments-->
@@ -364,13 +358,15 @@
 									<span class="btn btn-info font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 									<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 										<ul class="navi py-3">
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
-														<i class="flaticon2-medical-records"></i>
-													</span>
-													<span class="navi-text">임시 보관</span>
-												</a>
+											<li class="navi-item">	
+											<a href="#" class="navi-link">
+											<button style="border:none;background:white;" type="submit" formaction="Tempaction.mail">
+												<span class="navi-icon">
+													<i class="flaticon2-medical-records"></i>
+												</span>
+												<span class="navi-text">임시 보관</span>
+											</button>
+											</a>
 											</li>
 										</ul>
 									</div>

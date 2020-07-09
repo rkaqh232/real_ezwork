@@ -24,7 +24,7 @@ function ajax(sdata){
 	$.ajax({
 		type : "POST",
 		data : sdata,
-		url : "MailInboxAjax.mail",
+		url : "MailOutboxAjax.mail",
 		dataType : "json",
 		cache : false,
 		success : function(data){
@@ -35,9 +35,9 @@ function ajax(sdata){
 				$(data.maillist).each(
 					function(index, item){							
 						output += "<tr><td><p><label class='checkbox'>"
-						output += "<input type='checkbox'/>"
+					    output += "<input type='checkbox'/>"
 						output += ' <span></span></label></p></td><td><p class="font-size-lg">'
-						output += item.mail_SENDER + '</p></td>'
+						output += item.mail_RECIPIENT + '</p></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_SUBJECT +'</p></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
@@ -47,7 +47,7 @@ function ajax(sdata){
 				$(".pagination").empty(); //페이징 처리 영역 내용 제거
 				output = "";
 				
-				digit = '<i class="ki ki-bold-arrow-back icon-xs"></i>'; //이전 버튼							
+				digit = '<i class="ki ki-bold-arrow-back icon-xs"></i>'; //이전 버튼
 				href="";	
 				if (data.page > 1) {
 					href = 'href=javascript:go(' + (data.page - 1) + ')';

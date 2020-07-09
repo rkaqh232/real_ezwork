@@ -15,14 +15,33 @@ public class MailDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public void insertMail(Mail mail) {
-		sqlSession.insert("Mails.insert", mail);
+		sqlSession.insert("Mails.insertout", mail);
+		sqlSession.insert("Mails.insertin", mail);
 	}
 	
-	public List<Mail> getMailList(HashMap<String, Integer> map){
-		return sqlSession.selectList("Mails.list", map);
+	public void tempMail(Mail mail) {
+		sqlSession.insert("Mails.temp", mail);
 	}
 	
-	public int getListCount() {
-		return sqlSession.selectOne("Mails.count");
+	public List<Mail> getInboxList(HashMap<String, Object> map){
+		return sqlSession.selectList("Mails.inlist", map);
+	}
+	
+	public List<Mail> getOutboxList(HashMap<String, Object> map){
+		return sqlSession.selectList("Mails.outlist", map);
+	}
+	
+	public List<Mail> getTempboxList(HashMap<String, Object> map){
+		return sqlSession.selectList("Mails.templist", map);
+	}
+	
+	public int getListCount(String id) {
+		return sqlSession.selectOne("Mails.incount",id);
+	}
+	public int getOutCount(String id) {
+		return sqlSession.selectOne("Mails.outcount",id);
+	}
+	public int getTempCount(String id) {
+		return sqlSession.selectOne("Mails.tempcount",id);
 	}
 }

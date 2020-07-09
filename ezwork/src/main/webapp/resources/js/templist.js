@@ -24,7 +24,7 @@ function ajax(sdata){
 	$.ajax({
 		type : "POST",
 		data : sdata,
-		url : "MailInboxAjax.mail",
+		url : "MailTempAjax.mail",
 		dataType : "json",
 		cache : false,
 		success : function(data){
@@ -36,8 +36,7 @@ function ajax(sdata){
 					function(index, item){							
 						output += "<tr><td><p><label class='checkbox'>"
 						output += "<input type='checkbox'/>"
-						output += ' <span></span></label></p></td><td><p class="font-size-lg">'
-						output += item.mail_SENDER + '</p></td>'
+						output += ' <span></span></label></p></td><td><p class="text-danger font-size-lg"> 임시보관 </p></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_SUBJECT +'</p></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
@@ -71,8 +70,8 @@ function ajax(sdata){
 				setPaging( href, digit);
 				$('.pagination').append(output)
 			}//if(data.listcount) end
-			else if(totalData==0){
-				output = "<tr><th colspan='4'><h3>받은 메일이 없습니다.</h3></th></tr>";
+			else if(data.listcount==0){
+				output = "<tr><th colspan='4'><h3>임시 보관된 메일이 없습니다.</h3></th></tr>";
 				$('table').append(output)
 			}			
 		}, //success end

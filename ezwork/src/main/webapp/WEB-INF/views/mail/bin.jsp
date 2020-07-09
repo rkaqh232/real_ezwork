@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -17,7 +18,7 @@
 					<div class="card-body px-5">
 						<!--begin::Compose-->
 						<div class="px-4 mt-4 mb-10">
-							<a href="#" class="btn btn-block btn-primary font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
+							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
 						</div>
 						<!--end::Compose-->
 						<!--begin::Navigations-->
@@ -128,46 +129,12 @@
 						<!--begin::Toolbar-->
 						<div class="col-12 col-sm-6 col-xxl-4 order-2 order-xxl-1 d-flex flex-wrap align-items-center">
 							<div class="d-flex align-items-center mr-1 my-2">
-								<label data-inbox="group-select" class="checkbox checkbox-single checkbox-primary mr-3">
+								<label class="checkbox checkbox-single checkbox-primary mr-3">
 									<input type="checkbox" />
 									<span class="symbol-label"></span>
 								</label>
-								<div class="btn-group">
-									<span class="btn btn-clean btn-icon btn-sm mr-1" data-toggle="dropdown">
-										<i class="ki ki-bold-arrow-down icon-sm"></i>
-									</span>
-									<div class="dropdown-menu dropdown-menu-left p-0 m-0 dropdown-menu-sm">
-										<ul class="navi py-3">
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">All</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Read</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Unread</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Starred</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-text">Unstarred</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
 								<span class="btn btn-clean btn-icon btn-sm mr-2" data-toggle="tooltip" title="Reload list">
-									<i class="ki ki-refresh icon-1x"></i>
+									<a href="inbox.mail"><i class="ki ki-refresh icon-1x"></i></a>
 								</span>
 							</div>
 							<div class="d-flex align-items-center mr-1 my-2">
@@ -185,7 +152,7 @@
 										<!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Delete">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="완전 삭제">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -198,14 +165,14 @@
 										<!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Move">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="보낸 편지함으로 이동">
 									<span class="svg-icon svg-icon-md">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Files/Media-folder.svg-->
+										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Duplicate.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 												<rect x="0" y="0" width="24" height="24" />
-												<path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3" />
-												<path d="M10.782158,17.5100514 L15.1856088,14.5000448 C15.4135806,14.3442132 15.4720618,14.0330791 15.3162302,13.8051073 C15.2814587,13.7542388 15.2375842,13.7102355 15.1868178,13.6753149 L10.783367,10.6463273 C10.5558531,10.489828 10.2445489,10.5473967 10.0880496,10.7749107 C10.0307022,10.8582806 10,10.9570884 10,11.0582777 L10,17.097272 C10,17.3734143 10.2238576,17.597272 10.5,17.597272 C10.6006894,17.597272 10.699033,17.566872 10.782158,17.5100514 Z" fill="#000000" />
+												<path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+												<path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
 											</g>
 										</svg>
 										<!--end::Svg Icon-->
@@ -236,699 +203,57 @@
 							</div>
 						</div>
 						<!--end::Search-->
-						<!--begin::Pagination-->
-						<div class="col-12 col-sm-6 col-xxl-4 order-2 order-xxl-3 d-flex align-items-center justify-content-sm-end text-right my-2">
-							<!--begin::Per Page Dropdown-->
-							<div class="d-flex align-items-center mr-2" data-toggle="tooltip" title="Records per page">
-								<span class="text-muted font-weight-bold mr-2" data-toggle="dropdown">1 - 50 of 235</span>
-								<div class="dropdown-menu dropdown-menu-right p-0 m-0 dropdown-menu-sm">
-									<ul class="navi py-3">
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-text">20 per page</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link active">
-												<span class="navi-text">50 par page</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-text">100 per page</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<!--end::Per Page Dropdown-->
-							<!--begin::Arrow Buttons-->
-							<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Previose page">
-								<i class="ki ki-bold-arrow-back icon-sm"></i>
-							</span>
-							<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Next page">
-								<i class="ki ki-bold-arrow-next icon-sm"></i>
-							</span>
-							<!--end::Arrow Buttons-->
-							<!--begin::Sort Dropdown-->
-							<div class="dropdown mr-2" data-toggle="tooltip" title="Sort">
-								<span class="btn btn-default btn-icon btn-sm" data-toggle="dropdown">
-									<i class="flaticon2-console icon-1x"></i>
-								</span>
-								<div class="dropdown-menu dropdown-menu-right p-0 m-0 dropdown-menu-sm">
-									<ul class="navi py-3">
-										<li class="navi-item">
-											<a href="#" class="navi-link active">
-												<span class="navi-text">Newest</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-text">Olders</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-text">Unread</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<!--end::Sort Dropdown-->
-							<!--begin::Options Dropdown-->
-							<div class="dropdown" data-toggle="tooltip" title="Settings">
-								<span class="btn btn-default btn-icon btn-sm" data-toggle="dropdown">
-									<i class="ki ki-bold-more-hor icon-1x"></i>
-								</span>
-								<div class="dropdown-menu dropdown-menu-right p-0 m-0 dropdown-menu-md">
-									<!--begin::Navigation-->
-									<ul class="navi navi-hover py-5">
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-drop"></i>
-												</span>
-												<span class="navi-text">New Group</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-list-3"></i>
-												</span>
-												<span class="navi-text">Contacts</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-rocket-1"></i>
-												</span>
-												<span class="navi-text">Groups</span>
-												<span class="navi-link-badge">
-													<span class="label label-light-primary label-inline font-weight-bold">new</span>
-												</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-bell-2"></i>
-												</span>
-												<span class="navi-text">Calls</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-gear"></i>
-												</span>
-												<span class="navi-text">Settings</span>
-											</a>
-										</li>
-										<li class="navi-separator my-3"></li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-magnifier-tool"></i>
-												</span>
-												<span class="navi-text">Help</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-bell-2"></i>
-												</span>
-												<span class="navi-text">Privacy</span>
-												<span class="navi-link-badge">
-													<span class="label label-light-danger label-rounded font-weight-bold">5</span>
-												</span>
-											</a>
-										</li>
-									</ul>
-									<!--end::Navigation-->
-								</div>
-							</div>
-							<!--end::Options Dropdown-->
-						</div>
-						<!--end::Pagination-->
+						
 					</div>
 					<!--end::Header-->
 					<!--begin::Body-->
-					<div class="card-body table-responsive px-0">
-						<!--begin::Items-->
-						<div class="list list-hover min-w-500px" data-inbox="list">
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
+					<div class="card-body">
+					<table class="table table-hover" style="text-align:center;margin-bottom:40px;">
+						<thead>
+							<tr>
+								<th style="width:10%"><div>&nbsp;</div></th>
+								<th><div><p class="text-dark-50">보낸사람</p></div></th>
+								<th style="width:50%"><div><p class="text-dark-50">제목</p></div></th>
+								<th><div><p class="text-dark-50">날짜</p></div></th>
+							</tr>	
+						   </thead>
+						   
+						   <!--begin::mailList-->
+						   <c:if test="${listcount > 0 }">
+						   <tbody>
+							<c:set var="num" value="${listcount-(page-1)*limit}"/>	
+							<c:forEach var="m" items="${maillist}">	
+							<tr>
+							  <td><%--번호 --%>
+								<label class="checkbox">
+					                <input type="checkbox"/>
+					                <span></span>
+					            </label>
+							  </td>
+							  <td><%--제목 --%>
+							     <div>		
+									<a href="#">
+										${m.MAIL_SUBJECT}
+									</a>
 									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<span class="symbol symbol-35 mr-3">
-											<span class="symbol-label" style="background-image: url('assets/media/users/100_13.jpg')"></span>
-										</span>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Sean Paul</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Digital PPV Customer Confirmation -</span>
-										<span class="text-muted">Thank you for ordering UFC 240 Holloway vs Edgar Alternate camera angles...</span>
-									</div>
-									<div class="mt-2">
-										<span class="label label-light-primary font-weight-bold label-inline mr-1">inbox</span>
-										<span class="label label-light-danger font-weight-bold label-inline">task</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-bolder w-50px text-right" data-toggle="view">8:30 PM</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<div class="symbol symbol-light-danger symbol-35 mr-3">
-											<span class="symbol-label font-weight-bolder">OJ</span>
-										</div>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Oliver Jake</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Your iBuy.com grocery shopping confirmation -</span>
-										<span class="text-muted">Please make sure that you have one of the following cards with you when we deliver your order...</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-bolder w-100px text-right" data-toggle="view">day ago</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<div class="symbol symbol-light-primary symbol-35 mr-3">
-											<span class="symbol-label font-weight-bolder">EF</span>
-										</div>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Enrico Fermi</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Your Order #224820998666029 has been Confirmed -</span>
-										<span class="text-muted">Your Order #224820998666029 has been placed on Saturday, 29 June</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">11:20PM</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<span class="symbol symbol-35 mr-3">
-											<span class="symbol-label" style="background-image: url('assets/media/users/100_2.jpg')"></span>
-										</span>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Jane Goodall</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Payment Notification DLOP2329KD -</span>
-										<span class="text-muted">Your payment of 4500USD to AirCar has been authorized and confirmed, thank you your account. This...</span>
-									</div>
-									<div class="mt-2">
-										<span class="label label-light-danger font-weight-bold label-inline">new</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">2 days ago</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<div class="symbol symbol-light-success symbol-35 mr-3">
-											<span class="symbol-label font-weight-bolder">MP</span>
-										</div>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Max O'Brien Planck</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Congratulations on your iRun Coach subscription -</span>
-										<span class="text-muted">Congratulations on your iRun Coach subscription. You made no space for excuses and you</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">July 25</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<span class="symbol symbol-35 mr-3">
-											<span class="symbol-label" style="background-image: url('assets/media/users/100_4.jpg')"></span>
-										</span>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Rita Levi-Montalcini</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Pay bills &amp; win up to 600$ Cashback! -</span>
-										<span class="text-muted">Congratulations on your iRun Coach subscription. You made no space for excuses and you decided on a healthier and happier life...</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">July 24</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<span class="symbol symbol-35 mr-3">
-											<span class="symbol-label" style="background-image: url('assets/media/users/100_5.jpg')"></span>
-										</span>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Stephen Hawking</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Activate your LIPO Account today -</span>
-										<span class="text-muted">Thank you for creating a LIPO Account. Please click the link below to activate your account.</span>
-									</div>
-									<div class="mt-2">
-										<span class="label label-light-warning font-weight-bold label-inline mr-2">task</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">July 13</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<div class="symbol symbol-light symbol-35 mr-3">
-											<span class="symbol-label text-dark-75 font-weight-bolder">WE</span>
-										</div>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Wolfgang Ernst Pauli</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">About your request for PalmLake -</span>
-										<span class="text-muted">What you requested can't be arranged ahead of time but PalmLake said they'll do their best to accommodate you upon arrival....</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-bold text-muted w-100px text-right" data-toggle="view">25 May</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<span class="symbol symbol-35 mr-3">
-											<span class="symbol-label" style="background-image: url('assets/media/users/100_6.jpg')"></span>
-										</span>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Patty Jo Watson</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Welcome, Patty -</span>
-										<span class="text-muted">Discover interesting ideas and unique perspectives. Read, explore and follow your interests. Get personalized recommendations delivered to you....</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">July 24</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<span class="symbol symbol-35 mr-3">
-											<span class="symbol-label" style="background-image: url('assets/media/users/100_8.jpg')"></span>
-										</span>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Blaise Pascal</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Free Video Marketing Guide -</span>
-										<span class="text-muted">Video has rolled into every marketing platform or channel, leaving...</span>
-									</div>
-									<div class="mt-2">
-										<span class="label label-light-success font-weight-bold label-inline">project</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">July 13</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<div class="symbol symbol-light-warning symbol-35 mr-3">
-											<span class="symbol-label font-weight-bolder">RO</span>
-										</div>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Roberts O'Neill Wilson</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Your iBuy.com grocery shopping confirmation -</span>
-										<span class="text-muted">Please make sure that you have one of the following cards with you when we deliver your order...</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-bolder w-100px text-right" data-toggle="view">day ago</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs text-hover-warning" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<div class="symbol symbol-light-primary symbol-35 mr-3">
-											<span class="symbol-label font-weight-bolder">EF</span>
-										</div>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Enrico Fermi</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Your Order #224820998666029 has been Confirmed -</span>
-										<span class="text-muted">Your Order #224820998666029 has been placed on Saturday, 29 June</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">11:20PM</div>
-								<!--end::Datetime-->
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
-								<!--begin::Toolbar-->
-								<div class="d-flex align-items-center">
-									<!--begin::Actions-->
-									<div class="d-flex align-items-center mr-3" data-inbox="actions">
-										<label class="checkbox checkbox-single checkbox-primary flex-shrink-0 mr-3">
-											<input type="checkbox" />
-											<span></span>
-										</label>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Star">
-											<i class="flaticon-star text-muted"></i>
-										</a>
-										<a href="#" class="btn btn-icon btn-xs btn-hover-text-warning active" data-toggle="tooltip" data-placement="right" title="Mark as important">
-											<i class="flaticon-add-label-button text-muted"></i>
-										</a>
-									</div>
-									<!--end::Actions-->
-									<!--begin::Author-->
-									<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
-										<span class="symbol symbol-35 mr-3">
-											<span class="symbol-label" style="background-image: url('assets/media/users/100_10.jpg')"></span>
-										</span>
-										<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Jane Goodall</a>
-									</div>
-									<!--end::Author-->
-								</div>
-								<!--end::Toolbar-->
-								<!--begin::Info-->
-								<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
-									<div>
-										<span class="font-weight-bolder font-size-lg mr-2">Payment Notification DLOP2329KD -</span>
-										<span class="text-muted">Your payment of 4500USD to AirCar has been authorized and confirmed, thank you your account. This...</span>
-									</div>
-								</div>
-								<!--end::Info-->
-								<!--begin::Datetime-->
-								<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">2 days ago</div>
-								<!--end::Datetime-->
-							</div>
-						</div>
-						<!--end::Items-->
-					</div>
+								</td>
+								<td><div>${m.MAIL_SENDER}</div></td>
+								<td><div>${m.MAIL_DATE}</div></td>
+							   </tr>
+							  </c:forEach>
+							 </tbody>	
+							 </c:if>
+						</table>						
+						<!--end::mailList-->
 					<!--end::Body-->
+					
+					<!-- pagination 시작 -->
+					<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px;width:100%;">
+						<div class="pagination" style="margin:0 auto;">
+				        </div>
+				    </div>
+					<!-- pagination 끝 -->
+					</div>
 				</div>
 				<!--end::Card-->
 			</div>
@@ -1465,7 +790,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<!--begin::Form-->
-					<form id="kt_inbox_compose_form">
+					<form id="kt_inbox_compose_form" name="mailform" action="MailAddaction.mail" enctype="multipart/form-data" method="post">
 						<!--begin::Header-->
 						<div class="d-flex align-items-center justify-content-between py-5 pl-8 pr-5 border-bottom">
 							<h5 class="font-weight-bold m-0">메일 쓰기</h5>
@@ -1483,13 +808,13 @@
 						<div class="d-block">
 							<!--begin::To-->
 							<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-45px">
-								<div class="text-dark-50 w-75px">To:</div>
+							<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
+								<div class="text-dark-50 w-25px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_to" value="Chris Muller, Lina Nilson" />
+									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT"/>
 								</div>
 								<div class="ml-2">
 									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary mr-2" data-inbox="cc-show">Cc</span>
-									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary" data-inbox="bcc-show">Bcc</span>
 								</div>
 							</div>
 							<!--end::To-->
@@ -1504,24 +829,15 @@
 								</span>
 							</div>
 							<!--end::CC-->
-							<!--begin::BCC-->
-							<div class="d-none align-items-center border-bottom inbox-to-bcc pl-8 pr-5 min-h-45px">
-								<div class="text-dark-50 w-75px">Bcc:</div>
-								<div class="flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_bcc" value="" />
-								</div>
-								<span class="btn btn-clean btn-xs btn-icon" data-inbox="bcc-hide">
-									<i class="la la-close"></i>
-								</span>
-							</div>
-							<!--end::BCC-->
 							<!--begin::Subject-->
 							<div class="border-bottom">
-								<input class="form-control border-0 px-8 min-h-45px" name="compose_subject" placeholder="Subject" />
+								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" />
 							</div>
 							<!--end::Subject-->
 							<!--begin::Message-->
-							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px"></div>
+							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px">
+							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none"></textarea>
+							</div>
 							<!--end::Message-->
 							<!--begin::Attachments-->
 							<div class="dropzone dropzone-multi px-8 py-4" id="kt_inbox_compose_attachments">
@@ -1557,32 +873,16 @@
 							<div class="d-flex align-items-center mr-3">
 								<!--begin::Send-->
 								<div class="btn-group mr-4">
-									<span class="btn btn-primary font-weight-bold px-6">보내기</span>
-									<span class="btn btn-primary font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
+									<button class="btn btn-info font-weight-bold px-6" type="submit" id="submit">보내기</button>
+									<span class="btn btn-info font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 									<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 										<ul class="navi py-3">
 											<li class="navi-item">
 												<a href="#" class="navi-link">
 													<span class="navi-icon">
-														<i class="flaticon2-writing"></i>
-													</span>
-													<span class="navi-text">Schedule Send</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
 														<i class="flaticon2-medical-records"></i>
 													</span>
-													<span class="navi-text">Save &amp; archive</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
-														<i class="flaticon2-hourglass-1"></i>
-													</span>
-													<span class="navi-text">Cancel</span>
+													<span class="navi-text">임시 보관</span>
 												</a>
 											</li>
 										</ul>
@@ -1590,20 +890,18 @@
 								</div>
 								<!--end::Send-->
 								<!--begin::Other-->
+								<label for="upfile">
 								<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_compose_attachments_select">
-									<i class="flaticon2-clip-symbol"></i>
-								</span>
-								<span class="btn btn-icon btn-sm btn-clean">
-									<i class="flaticon2-pin"></i>
-								</span>
+								<i class="flaticon2-clip-symbol">
+								<input type="file" id="upfile" name="uploadfile" style="display:none">
+								<span id="filevalue"></span>
+								</i>
+								</span></label>
 								<!--end::Other-->
 							</div>
 							<!--end::Actions-->
 							<!--begin::Toolbar-->
 							<div class="d-flex align-items-center">
-								<span class="btn btn-icon btn-sm btn-clean mr-2" data-toggle="tooltip" title="More actions">
-									<i class="flaticon2-settings"></i>
-								</span>
 								<span class="btn btn-icon btn-sm btn-clean" data-inbox="dismiss" data-toggle="tooltip" title="Dismiss reply">
 									<i class="flaticon2-rubbish-bin-delete-button"></i>
 								</span>

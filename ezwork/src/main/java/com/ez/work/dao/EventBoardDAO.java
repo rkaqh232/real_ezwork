@@ -1,5 +1,6 @@
 package com.ez.work.dao;
 
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,7 +13,6 @@ import com.ez.work.domain.EventBoard;
 
 @Repository
 public class EventBoardDAO {
-
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
@@ -22,5 +22,14 @@ public class EventBoardDAO {
 
 	public int getListCount() {
 		return sqlSession.selectOne("EventBoards.count");
+	}
+
+	public int setReadCountUpdate(int num) {
+		return sqlSession.update("EventBoards.ReadCountUpdate", num);
+	}
+
+	public void insertBoard(EventBoard board) {
+		sqlSession.insert("EventBoards.insert", board);
+		
 	}
 }

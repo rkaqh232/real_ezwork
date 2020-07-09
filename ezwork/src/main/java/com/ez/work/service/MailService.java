@@ -6,6 +6,11 @@ import com.ez.work.domain.Mail;
 
 public interface MailService {
 	public void insertMail(Mail mail);
-	public List<Mail> getMailList(int page, int limit);
-	public int getListCount();
+	public void tempMail(Mail mail);
+	public List<Mail> getInboxList(int page, int limit, String sender);
+	public List<Mail> getOutboxList(int page, int limit, String sender);
+	public List<Mail> getTempboxList(int page, int limit, String sender);
+	public int getListCount(String id);
+	public int getOutListCount(String id);
+	public int getTempListCount(String id);
 }

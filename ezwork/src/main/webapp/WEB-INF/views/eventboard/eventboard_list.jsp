@@ -103,7 +103,7 @@
 											<!-- 원문인 경우 -->
                    		  &nbsp;
                   		</c:if>
-										<a href="./BoardDetailAction.EV?num=${b.EV_NO}" style="color:#1B283F;">
+										<a href="./BoardDetailAction.ev?num=${b.EV_NO}" style="color:#1B283F;">
 											${b.EV_TITLE} </a>
 									</div>
 								</td>

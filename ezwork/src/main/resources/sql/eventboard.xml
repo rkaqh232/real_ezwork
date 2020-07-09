@@ -53,4 +53,9 @@
 		#{EV_RE_LEV}, #{EV_RE_SEQ}, #{EV_READCOUNT},
 		sysdate)
 	</insert>
+	
+	<select id="Detail" parameterType="int" resultType="eventboard">
+		select * from
+		eventboard where EV_NO = #{number}
+	</select>
 </mapper>

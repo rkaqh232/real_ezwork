@@ -43,10 +43,12 @@ public class EventBoardServiceImpl implements EventBoardService{
 		return dao.setReadCountUpdate(num);
 	}
 	
+	//글 상세보기
 	@Override
 	public EventBoard getDetail(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		if (setReadCountUpdate(num) != 1)
+			return null;
+		return dao.getDetail(num);
 	}
 
 	@Override
@@ -66,8 +68,6 @@ public class EventBoardServiceImpl implements EventBoardService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-
 
 	@Override
 	public boolean isBoardWriter(int num, String pass) {

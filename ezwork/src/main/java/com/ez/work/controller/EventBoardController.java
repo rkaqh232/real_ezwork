@@ -107,5 +107,24 @@ public class EventBoardController {
 		eventboardService.insertBoard(board); // 저장 메서드 호출
 		return mv;
 	}
+	
+	//글 상세보기
+	@GetMapping("/BoardDetailAction.ev")
+	public ModelAndView Detail(int num, ModelAndView mv, HttpServletRequest request, Model m) {
+		EventBoard board = eventboardService.getDetail(num);
+		if (board == null) {
+			System.out.println("상세보기 실패");
+			m.addAttribute("page", "error/error.jsp");
+			mv.setViewName("home");
+			mv.addObject("url", request.getRequestURL());
+			mv.addObject("message", "상세보기 실패입니다.");
+		} else {
+			System.out.println("상세보기 성공");
+			m.addAttribute("page", "eventboard/eventboard_view.jsp");
+			mv.setViewName("home");
+			mv.addObject("boarddata", board);
+		}
+		return mv;
+	}
 
 }

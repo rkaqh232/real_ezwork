@@ -14,37 +14,31 @@ $(function(){
 });
 
 
-/*//이메일 유효성검사
-$(function(){
-	
-	var checkemail = false; 
-	
+/*
+ * //이메일 유효성검사 $(function(){
+ * 
+ * var checkemail = false;
+ * 
+ * 
+ * $("input:eq(21)").on('keyup', function(){
+ * 
+ * $("#M_EMAIL").empty();
+ * 
+ * //[A-Za-z0-9_]와 동일한 것이 \w //+는 1회 이상 반복을 의미합니다. {1,}와 동일합니다 //\w+는
+ * [A-Za-z0-9_]를 1개 이상 사용하라는 의미입니다
+ * 
+ * var pattern = /\w+@\w+[.]\w{3}/; var email = $("input:eq(21)").val();
+ * 
+ * if(!pattern.test(email)){
+ * 
+ * alert("이메일 형식에 맞지 않습니다."); checkemail = false; }else{
+ * 
+ * alert("이메일 형식에 맞습니다."); checkemail=true; } }); //email keyup 이벤트 처리 끝
+ * 
+ * });
+ */
 
-	$("input:eq(21)").on('keyup', function(){
-	
-	$("#M_EMAIL").empty(); 
-	
-	//[A-Za-z0-9_]와 동일한 것이 \w
-	//+는 1회 이상 반복을 의미합니다. {1,}와 동일합니다
-	//\w+는 [A-Za-z0-9_]를 1개 이상 사용하라는 의미입니다
-	
-	var pattern = /\w+@\w+[.]\w{3}/;
-	var email = $("input:eq(21)").val();
-	
-	if(!pattern.test(email)){
-		
-		alert("이메일 형식에 맞지 않습니다.");
-		checkemail = false; 
-	}else{
-		
-		alert("이메일 형식에 맞습니다.");
-		checkemail=true; 
-	}
-}); //email keyup 이벤트 처리 끝 
-
-});*/
-
-//비밀번호 유효성 체크
+// 비밀번호 유효성 체크
 function chkPW(){
 
 	 var pw = $("#M_PASS").val();
@@ -69,7 +63,7 @@ function chkPW(){
 	 
 
 
-//달력 
+// 달력
 var KTBootstrapDatepicker = function () {
 
 	 var arrows;
@@ -108,7 +102,7 @@ var demos = function () {
 }
 
 
-//EMP코드
+// EMP코드
 
  function empcode_error(){
 	 alert("사원번호는 자동생성됩니다.");
@@ -125,7 +119,7 @@ var demos = function () {
                 var addr = ''; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
 
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                     addr = data.roadAddress;
                 } else { // 사용자가 지번 주소를 선택했을 경우(J)
@@ -165,10 +159,10 @@ var demos = function () {
   
 
   
-// 유효성검사   
+// 유효성검사
   "use strict";
 
-//Class Definition
+// Class Definition
 
 
 
@@ -194,7 +188,9 @@ var KTAddUser = function () {
 			_wizard.stop();
 
 			// 유효성검사 폼
-			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
+			var validator = _validations[wizard.getStep() - 1]; // get validator
+																// for currnt
+																// step
 			validator.validate().then(function (status) {
 		        if (status == 'Valid') {
 					_wizard.goNext();
@@ -222,7 +218,8 @@ var KTAddUser = function () {
 	}
 
 	var _initValidations = function () {
-		// Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+		// Init form validation rules. For more info check the FormValidation
+		// plugin's official documentation:https://formvalidation.io/
 
 		// Validation Rules For Step 1
 		_validations.push(FormValidation.formValidation(
@@ -261,30 +258,33 @@ var KTAddUser = function () {
 						validators: {
 							notEmpty: {
 								message: '비밀번호는 필수항목입니다.'
-							}
+							},
+							 stringLength: {
+							      min:6,
+							      max:6,
+							      message: '최소, 최대 길이는 6자리 입니다.'
+							     }					
 						}
 					},
 					name: {
 						validators: {
 							notEmpty: {
 								message: '성명은 필수항목입니다.'
-							}
+							},
+							stringLength: {
+							      max:3,
+							      message: '최대 길이는 5자리 입니다.'
+							     }
 						}
 					},
-					/*pri_code: {
-						validators: {
-							notEmpty: {
-								message: '주민등록번호는 필수항목입니다.'
-							}
-						}
-					},*/
-					/*birth: {
-						validators: {
-							notEmpty: {
-								message: '생년월일은 필수항목입니다.'
-							}
-						}
-					},*/
+					/*
+					 * pri_code: { validators: { notEmpty: { message: '주민등록번호는
+					 * 필수항목입니다.' } } },
+					 */
+					/*
+					 * birth: { validators: { notEmpty: { message: '생년월일은
+					 * 필수항목입니다.' } } },
+					 */
 					army: {
 						validators: {
 							notEmpty: {
@@ -298,10 +298,15 @@ var KTAddUser = function () {
 							notEmpty: {
 								message: '핸드폰번호는 필수항목입니다.'
 							},
-							/*phone: {
-								country: 'US',
-								message: 'The value is not a valid US phone number. (e.g 5554443333)'
-							}*/
+							 stringLength: {
+							      min:13,
+							      max:13,
+							      message: '최대 길이는 13자리 입니다.'
+							     }
+							/*
+							 * phone: { country: 'US', message: 'The value is
+							 * not a valid US phone number. (e.g 5554443333)' }
+							 */
 						}
 					},
 					email: {
@@ -310,14 +315,20 @@ var KTAddUser = function () {
 								message: '이메일 형식에 맞지 않습니다.'
 							}
 						}
+						
 					},
-					companywebsite: {
+					pri_code: {
 						validators: {
 							notEmpty: {
-								message: 'Website URL is required'
-							}
+								message: '주민등록번호는 필수항목입니다.'
+							},
+							stringLength: {
+								  min:13,
+							      max:13,
+							      message: '최대 길이는 '-' 포함 13자리 입니다.'
+							 }
 						}
-					}
+					},
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -330,7 +341,7 @@ var KTAddUser = function () {
 			_formEl,
 			{
 				fields: {
-					// Step 2
+					// 2번째 학력정보
 					communication: {
 						validators: {
 							choice: {
@@ -365,20 +376,11 @@ var KTAddUser = function () {
 			_formEl,
 			{
 				fields: {
-					address1: {
-						validators: {
-							notEmpty: {
-								message: 'Address is required'
-							}
-						}
-					},
-					/*postcode: {
-						validators: {
-							notEmpty: {
-								message: 'Postcode is required'
-							}
-						}
-					},*/
+					
+					/*
+					 * postcode: { validators: { notEmpty: { message: 'Postcode
+					 * is required' } } },
+					 */
 					city: {
 						validators: {
 							notEmpty: {
@@ -403,11 +405,11 @@ var KTAddUser = function () {
 				},
 				plugins: {
 					   trigger: new FormValidation.plugins.Trigger(),
-					   // Bootstrap Framework Integration
+					   // 부트 스트랩 프레임 워크 통합
 					   bootstrap: new FormValidation.plugins.Bootstrap(),
-					   // Validate fields when clicking the Submit button
+					   // 제출버튼 클릭시 유효성검증
 					   submitButton: new FormValidation.plugins.SubmitButton(),
-					            // Submit the form when all fields are valid
+					            // 모든 필드가 유효하면 양식을 제출
 					   defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
 					  }
 				
@@ -437,4 +439,4 @@ jQuery(document).ready(function () {
 });
 
   
-  
+ 

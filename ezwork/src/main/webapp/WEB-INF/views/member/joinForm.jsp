@@ -115,7 +115,7 @@
 																<div class="image-input image-input-outline"
 																	id="kt_user_add_avatar">
 																	<div class="image-input-wrapper"
-																		style="background-image: url(resources/assets/media/users/mari2.png)"></div>
+																		style="background-image: url(resources/assets/media/users/manosukja.PNG)"></div>
 																	<label
 																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
 																		data-action="change" data-toggle="tooltip" title=""
@@ -144,6 +144,16 @@
 																	name="firstname" id="M_CODE" type="text" value="자동생성 (예 : EMP202001)" 
 																	onclick="empcode_error()" readonly /><span class="form-text text-muted">참고 : 사원번호는 자동으로 생성됩니다. 
 																	</span>
+															</div>
+														</div>
+														
+														<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호</label>
+															<div class="col-lg-9 col-xl-9">
+																<input
+																	class="form-control form-control-solid form-control-lg"
+																	name="password" type="text" id="M_PASS" value="" placeholder="880920" /> <span
+																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
 															</div>
 														</div>
 														<!--end::Group-->
@@ -177,6 +187,24 @@
 															</div>
 														</div>
 														<!--end::Group-->
+														
+														
+														
+														<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">
+																입사일 </label>
+															<div class="col-lg-4 col-md-9 col-sm-12">
+																<div class="input-group date">
+																	<input type="text" class="form-control"
+																		value="05/20/2017" id="kt_datepicker_3" name="birth"/>
+																	<div class="input-group-append">
+																		<span class="input-group-text"> <i
+																			class="la la-calendar"></i>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</div>
 														
 														
 														
@@ -240,19 +268,7 @@
 														</div>
 														
 														<!-- 직급코드 테스트 -->
-														
 					
-														
-														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호</label>
-															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="password" type="text" id="M_PASS" value="" /> <span
-																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
-															</div>
-														</div>
-
 
 
 														<div class="form-group row">
@@ -261,7 +277,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="name" type="text" id="M_NAME"  value="" />
+																	name="name" type="text" id="M_NAME"  value="" placeholder="김마리"/>
 															</div>
 														</div>
 
@@ -273,7 +289,7 @@
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="enname" type="text" id="M_NAME_EN" value="" />
+																	name="enname" type="text" id="M_NAME_EN" value="" placeholder="Kimmari" />
 															</div>
 														</div>
 
@@ -292,7 +308,7 @@
 
 
 
-														<div class="form-group row">
+														<!-- <div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
 																생년월일 </label>
 															<div class="col-lg-4 col-md-9 col-sm-12">
@@ -306,7 +322,7 @@
 																	</div>
 																</div>
 															</div>
-														</div>
+														</div> -->
 
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
@@ -376,7 +392,7 @@
 																	</div>
 																	<input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="phone" id="M_MOBILE_TEL" value="5678967456" placeholder="Phone" />
+																		name="phone" id="M_MOBILE_TEL" placeholder="010-1234-5678" />
 																</div>
 																<span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
 																	(ex: 010-1234-5678)</span>
@@ -394,9 +410,9 @@
 																	</div>
 																	<input type="text"
 																		class="form-control form-control-solid"
-																		value="EzWork@ezwork.com" name="email" id="M_EMAIL" placeholder="Email" />
-																</div><span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
-																	(ex: emp@Ezwork.com)</span>
+																		name="email" id="M_EMAIL" placeholder="Email" />
+																</div><span class="form-text text-muted" placeholder="sample@Ezwork.com">참고 : 해당 양식으로 작성해주세요.
+																	(ex: sample@Ezwork.com)</span>
 															</div>
 														</div>
 
@@ -413,11 +429,11 @@
 																	</div>
 																	<input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="phone" value="5678967456"
-																		placeholder="HomePhone" id="M_TEL" />
+																		name="homephone"
+																		placeholder="02-123-4567" id="M_TEL" />
 																</div>
 																<span class="form-text text-muted"> 참고 : 생략
-																	가능합니다. </span>
+																	가능합니다. 입력시 해당 양식에 맞게 작성해주세요. (ex: 02-123-4567)</span>
 															</div>
 														</div>
 
@@ -460,8 +476,8 @@
 														<div class="form-group">
 															<label> 주소 </label> <input type="text"
 																class="form-control form-control-solid form-control-lg"
-																name="address1" placeholder="Address Line 1"
-																value="서울시 종로구 KH" id="M_ADDRESS" /> 
+																name="address1" placeholder="서울시 종로구 EZwork"
+																 id="M_ADDRESS" /> 
 														</div>
 
 
@@ -485,7 +501,7 @@
 																<div class="form-group">
 																	<label>상세주소 2 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="address3" placeholder="참고항목"
+																		name="address3" placeholder="기타"
 																		id="sample6_extraAddress" />
 																</div>
 															</div>

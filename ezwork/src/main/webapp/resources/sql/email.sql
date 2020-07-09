@@ -12,3 +12,6 @@ create table email(
 	MAIL_DATE		DATE,
 	PRIMARY KEY(MAIL_NUM)
 );
+
+
+select* from email;

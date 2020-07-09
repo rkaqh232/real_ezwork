@@ -18,7 +18,7 @@
 					<div class="card-body px-5">
 						<!--begin::Compose-->
 						<div class="px-4 mt-4 mb-10">
-							<a href="#" class="btn btn-block btn-primary font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
+							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
 						</div>
 						<!--end::Compose-->
 						<!--begin::Navigations-->
@@ -152,7 +152,7 @@
 										<!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Delete">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="완전 삭제">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -165,7 +165,7 @@
 										<!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Mark as read">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="보낸 편지함으로 이동">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Duplicate.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -207,8 +207,8 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Body-->
-					<div class="card-body table-responsive px-0">
-					<table class="table table-hover" style="text-align:center;">
+					<div class="card-body">
+					<table class="table table-hover" style="text-align:center;margin-bottom:40px;">
 						<thead>
 							<tr>
 								<th style="width:10%"><div>&nbsp;</div></th>
@@ -250,14 +250,6 @@
 					<!-- pagination 시작 -->
 					<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px;width:100%;">
 						<div class="pagination" style="margin:0 auto;">
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1 disabled"><i class="ki ki-bold-double-arrow-back icon-xs"></i></a>
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-back icon-xs"></i></a>
-				
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">1</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light btn-hover-info active mr-2 my-1">24</a>
-				
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-next icon-xs"></i></a>
-				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-double-arrow-next icon-xs"></i></a>
 				        </div>
 				    </div>
 					<!-- pagination 끝 -->
@@ -798,7 +790,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<!--begin::Form-->
-					<form id="kt_inbox_compose_form">
+					<form id="kt_inbox_compose_form" name="mailform" action="MailAddaction.mail" enctype="multipart/form-data" method="post">
 						<!--begin::Header-->
 						<div class="d-flex align-items-center justify-content-between py-5 pl-8 pr-5 border-bottom">
 							<h5 class="font-weight-bold m-0">메일 쓰기</h5>
@@ -816,13 +808,13 @@
 						<div class="d-block">
 							<!--begin::To-->
 							<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-45px">
-								<div class="text-dark-50 w-75px">To:</div>
+							<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
+								<div class="text-dark-50 w-25px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_to" value="Chris Muller, Lina Nilson" />
+									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT"/>
 								</div>
 								<div class="ml-2">
 									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary mr-2" data-inbox="cc-show">Cc</span>
-									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary" data-inbox="bcc-show">Bcc</span>
 								</div>
 							</div>
 							<!--end::To-->
@@ -837,24 +829,15 @@
 								</span>
 							</div>
 							<!--end::CC-->
-							<!--begin::BCC-->
-							<div class="d-none align-items-center border-bottom inbox-to-bcc pl-8 pr-5 min-h-45px">
-								<div class="text-dark-50 w-75px">Bcc:</div>
-								<div class="flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_bcc" value="" />
-								</div>
-								<span class="btn btn-clean btn-xs btn-icon" data-inbox="bcc-hide">
-									<i class="la la-close"></i>
-								</span>
-							</div>
-							<!--end::BCC-->
 							<!--begin::Subject-->
 							<div class="border-bottom">
-								<input class="form-control border-0 px-8 min-h-45px" name="compose_subject" placeholder="Subject" />
+								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" />
 							</div>
 							<!--end::Subject-->
 							<!--begin::Message-->
-							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px"></div>
+							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px">
+							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none"></textarea>
+							</div>
 							<!--end::Message-->
 							<!--begin::Attachments-->
 							<div class="dropzone dropzone-multi px-8 py-4" id="kt_inbox_compose_attachments">
@@ -890,32 +873,16 @@
 							<div class="d-flex align-items-center mr-3">
 								<!--begin::Send-->
 								<div class="btn-group mr-4">
-									<span class="btn btn-primary font-weight-bold px-6">보내기</span>
-									<span class="btn btn-primary font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
+									<button class="btn btn-info font-weight-bold px-6" type="submit" id="submit">보내기</button>
+									<span class="btn btn-info font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 									<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 										<ul class="navi py-3">
 											<li class="navi-item">
 												<a href="#" class="navi-link">
 													<span class="navi-icon">
-														<i class="flaticon2-writing"></i>
-													</span>
-													<span class="navi-text">Schedule Send</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
 														<i class="flaticon2-medical-records"></i>
 													</span>
-													<span class="navi-text">Save &amp; archive</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
-														<i class="flaticon2-hourglass-1"></i>
-													</span>
-													<span class="navi-text">Cancel</span>
+													<span class="navi-text">임시 보관</span>
 												</a>
 											</li>
 										</ul>
@@ -923,20 +890,18 @@
 								</div>
 								<!--end::Send-->
 								<!--begin::Other-->
+								<label for="upfile">
 								<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_compose_attachments_select">
-									<i class="flaticon2-clip-symbol"></i>
-								</span>
-								<span class="btn btn-icon btn-sm btn-clean">
-									<i class="flaticon2-pin"></i>
-								</span>
+								<i class="flaticon2-clip-symbol">
+								<input type="file" id="upfile" name="uploadfile" style="display:none">
+								<span id="filevalue"></span>
+								</i>
+								</span></label>
 								<!--end::Other-->
 							</div>
 							<!--end::Actions-->
 							<!--begin::Toolbar-->
 							<div class="d-flex align-items-center">
-								<span class="btn btn-icon btn-sm btn-clean mr-2" data-toggle="tooltip" title="More actions">
-									<i class="flaticon2-settings"></i>
-								</span>
 								<span class="btn btn-icon btn-sm btn-clean" data-inbox="dismiss" data-toggle="tooltip" title="Dismiss reply">
 									<i class="flaticon2-rubbish-bin-delete-button"></i>
 								</span>

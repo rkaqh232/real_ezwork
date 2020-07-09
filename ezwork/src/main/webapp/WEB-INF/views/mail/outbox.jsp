@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="resources/js/jquery-3.5.0.js"></script>
+<script src="resources/js/outboxlist.js"></script>
+<style>
+p{margin-top:1rem}
+</style>
 <!DOCTYPE html>
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -18,7 +23,7 @@
 					<div class="card-body px-5">
 						<!--begin::Compose-->
 						<div class="px-4 mt-4 mb-10">
-							<a href="#" class="btn btn-block btn-primary font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
+							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
 						</div>
 						<!--end::Compose-->
 						<!--begin::Navigations-->
@@ -152,7 +157,7 @@
 										<!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Delete">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="삭제">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -160,19 +165,6 @@
 												<rect x="0" y="0" width="24" height="24" />
 												<path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero" />
 												<path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3" />
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-								</span>
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Mark as read">
-									<span class="svg-icon svg-icon-md">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Duplicate.svg-->
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<path d="M15.9956071,6 L9,6 C7.34314575,6 6,7.34314575 6,9 L6,15.9956071 C4.70185442,15.9316381 4,15.1706419 4,13.8181818 L4,6.18181818 C4,4.76751186 4.76751186,4 6.18181818,4 L13.8181818,4 C15.1706419,4 15.9316381,4.70185442 15.9956071,6 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-												<path d="M10.1818182,8 L17.8181818,8 C19.2324881,8 20,8.76751186 20,10.1818182 L20,17.8181818 C20,19.2324881 19.2324881,20 17.8181818,20 L10.1818182,20 C8.76751186,20 8,19.2324881 8,17.8181818 L8,10.1818182 C8,8.76751186 8.76751186,8 10.1818182,8 Z" fill="#000000" />
 											</g>
 										</svg>
 										<!--end::Svg Icon-->
@@ -207,12 +199,12 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Body-->
-					<div class="card-body table-responsive px-0">
-					<table class="table table-hover" style="text-align:center;">
+					<div class="card-body">
+					<table class="table table-hover" style="text-align:center;margin-bottom:40px;">
 						<thead>
 							<tr>
 								<th style="width:10%"><div>&nbsp;</div></th>
-								<th><div><p class="text-dark-50">보낸사람</p></div></th>
+								<th><div><p class="text-dark-50">받는사람</p></div></th>
 								<th style="width:50%"><div><p class="text-dark-50">제목</p></div></th>
 								<th><div><p class="text-dark-50">날짜</p></div></th>
 							</tr>	
@@ -252,9 +244,6 @@
 						<div class="pagination" style="margin:0 auto;">
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1 disabled"><i class="ki ki-bold-double-arrow-back icon-xs"></i></a>
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-back icon-xs"></i></a>
-				
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light mr-2 my-1">1</a>
-				        <a href="#" class="btn btn-icon btn-sm border-0 brn-light btn-hover-info active mr-2 my-1">24</a>
 				
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-arrow-next icon-xs"></i></a>
 				        <a href="#" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i class="ki ki-bold-double-arrow-next icon-xs"></i></a>
@@ -798,7 +787,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<!--begin::Form-->
-					<form id="kt_inbox_compose_form">
+					<form id="kt_inbox_compose_form" name="mailform" action="MailAddaction.mail" enctype="multipart/form-data" method="post">
 						<!--begin::Header-->
 						<div class="d-flex align-items-center justify-content-between py-5 pl-8 pr-5 border-bottom">
 							<h5 class="font-weight-bold m-0">메일 쓰기</h5>
@@ -816,13 +805,13 @@
 						<div class="d-block">
 							<!--begin::To-->
 							<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-45px">
-								<div class="text-dark-50 w-75px">To:</div>
+							<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
+								<div class="text-dark-50 w-25px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_to" value="Chris Muller, Lina Nilson" />
+									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT"/>
 								</div>
 								<div class="ml-2">
 									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary mr-2" data-inbox="cc-show">Cc</span>
-									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary" data-inbox="bcc-show">Bcc</span>
 								</div>
 							</div>
 							<!--end::To-->
@@ -837,24 +826,15 @@
 								</span>
 							</div>
 							<!--end::CC-->
-							<!--begin::BCC-->
-							<div class="d-none align-items-center border-bottom inbox-to-bcc pl-8 pr-5 min-h-45px">
-								<div class="text-dark-50 w-75px">Bcc:</div>
-								<div class="flex-grow-1">
-									<input type="text" class="form-control border-0" name="compose_bcc" value="" />
-								</div>
-								<span class="btn btn-clean btn-xs btn-icon" data-inbox="bcc-hide">
-									<i class="la la-close"></i>
-								</span>
-							</div>
-							<!--end::BCC-->
 							<!--begin::Subject-->
 							<div class="border-bottom">
-								<input class="form-control border-0 px-8 min-h-45px" name="compose_subject" placeholder="Subject" />
+								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" />
 							</div>
 							<!--end::Subject-->
 							<!--begin::Message-->
-							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px"></div>
+							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px">
+							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none"></textarea>
+							</div>
 							<!--end::Message-->
 							<!--begin::Attachments-->
 							<div class="dropzone dropzone-multi px-8 py-4" id="kt_inbox_compose_attachments">
@@ -890,32 +870,16 @@
 							<div class="d-flex align-items-center mr-3">
 								<!--begin::Send-->
 								<div class="btn-group mr-4">
-									<span class="btn btn-primary font-weight-bold px-6">보내기</span>
-									<span class="btn btn-primary font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
+									<button class="btn btn-info font-weight-bold px-6" type="submit" id="submit">보내기</button>
+									<span class="btn btn-info font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 									<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 										<ul class="navi py-3">
 											<li class="navi-item">
 												<a href="#" class="navi-link">
 													<span class="navi-icon">
-														<i class="flaticon2-writing"></i>
-													</span>
-													<span class="navi-text">Schedule Send</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
 														<i class="flaticon2-medical-records"></i>
 													</span>
-													<span class="navi-text">Save &amp; archive</span>
-												</a>
-											</li>
-											<li class="navi-item">
-												<a href="#" class="navi-link">
-													<span class="navi-icon">
-														<i class="flaticon2-hourglass-1"></i>
-													</span>
-													<span class="navi-text">Cancel</span>
+													<span class="navi-text">임시 보관</span>
 												</a>
 											</li>
 										</ul>
@@ -923,20 +887,18 @@
 								</div>
 								<!--end::Send-->
 								<!--begin::Other-->
+								<label for="upfile">
 								<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_compose_attachments_select">
-									<i class="flaticon2-clip-symbol"></i>
-								</span>
-								<span class="btn btn-icon btn-sm btn-clean">
-									<i class="flaticon2-pin"></i>
-								</span>
+								<i class="flaticon2-clip-symbol">
+								<input type="file" id="upfile" name="uploadfile" style="display:none">
+								<span id="filevalue"></span>
+								</i>
+								</span></label>
 								<!--end::Other-->
 							</div>
 							<!--end::Actions-->
 							<!--begin::Toolbar-->
 							<div class="d-flex align-items-center">
-								<span class="btn btn-icon btn-sm btn-clean mr-2" data-toggle="tooltip" title="More actions">
-									<i class="flaticon2-settings"></i>
-								</span>
 								<span class="btn btn-icon btn-sm btn-clean" data-inbox="dismiss" data-toggle="tooltip" title="Dismiss reply">
 									<i class="flaticon2-rubbish-bin-delete-button"></i>
 								</span>

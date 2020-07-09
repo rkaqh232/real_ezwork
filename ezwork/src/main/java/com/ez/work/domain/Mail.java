@@ -5,11 +5,18 @@ import org.springframework.web.multipart.MultipartFile;
 public class Mail {
 	private int MAIL_NUM, MAIL_RCHECK;
 	private String MAIL_SENDER, MAIL_RECIPIENT;
-	private String MAIL_SUBJECT, MAIL_CONTENT, MAIL_FILE, MAIL_DATE;
+	private String MAIL_SUBJECT, MAIL_CONTENT, MAIL_FILE, MAIL_DATE, MAIL_TYPE;
 	
 	private MultipartFile uploadfile;
-	private String MAIL_ORIGINAL;	//Ã·ºÎµÉ ÆÄÀÏÀÇ ÀÌ¸§
+	private String MAIL_ORIGINAL;	//Ã·ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	
+	
+	public String getMAIL_TYPE() {
+		return MAIL_TYPE;
+	}
+	public void setMAIL_TYPE(String mAIL_TYPE) {
+		MAIL_TYPE = mAIL_TYPE;
+	}
 	public int getMAIL_NUM() {
 		return MAIL_NUM;
 	}

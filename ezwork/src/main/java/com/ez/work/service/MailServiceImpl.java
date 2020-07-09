@@ -17,18 +17,49 @@ public class MailServiceImpl implements MailService{
 	public void insertMail(Mail mail) {
 		dao.insertMail(mail);
 	}
+	
+	public void tempMail(Mail mail) {
+		dao.tempMail(mail);
+	}
 
-	public List<Mail> getMailList(int page, int limit) {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+	public List<Mail> getInboxList(int page, int limit, String sender) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		int startrow = (page-1)*limit + 1;
 		int endrow = startrow + limit -1;
 		map.put("start", startrow);
 		map.put("end", endrow);
-		return dao.getMailList(map);
+		map.put("sender", sender);
+		return dao.getInboxList(map);
+	}
+	
+	public List<Mail> getOutboxList(int page, int limit, String sender) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		int startrow = (page-1)*limit + 1;
+		int endrow = startrow + limit -1;
+		map.put("start", startrow);
+		map.put("end", endrow);
+		map.put("sender", sender);
+		return dao.getOutboxList(map);
+	}
+	
+	public List<Mail> getTempboxList(int page, int limit, String sender) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		int startrow = (page-1)*limit + 1;
+		int endrow = startrow + limit -1;
+		map.put("start", startrow);
+		map.put("end", endrow);
+		map.put("sender", sender);
+		return dao.getTempboxList(map);
 	}
 
-	public int getListCount() {
-		return dao.getListCount();
+	public int getListCount(String id) {
+		return dao.getListCount(id);
 	}
+	public int getOutListCount(String id) {
+		return dao.getOutCount(id);
+	}
+	public int getTempListCount(String id) {
+		return dao.getTempCount(id);
+	}	
 	
 }

@@ -32,4 +32,8 @@ public class EventBoardDAO {
 		sqlSession.insert("EventBoards.insert", board);
 		
 	}
+	
+	public EventBoard getDetail(int num) {
+		return sqlSession.selectOne("EventBoards.Detail", num);
+	}
 }

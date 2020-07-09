@@ -8,7 +8,8 @@
 <link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4"
 	rel="stylesheet" type="text/css" />
 <script src="resources/js/jquery-3.5.0.js"></script>
-<script src="resources/js/writeform.js"></script>
+<!-- <script src="resources/js/writeform.js"></script> -->
+
 
 </head>
 <body>
@@ -79,53 +80,53 @@
 				</div>
 			</div>
 			<!--begin::Form-->
-			<form action="BoardAddAction.ev" method="post" enctype="multipart/form-data" name="boardform">
+			<form action="Board_write_ok.ev" method="post"
+				enctype="multipart/form-data" name="boardform">
 				<div class="card-body">
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">말머리
 							선택</label>
-								<div class="col-lg-2">
+						<div class="col-lg-2">
 							<div class="rows">
-								<select class="form-control" id="viewcount">
+								<select name ="EV_SORT" class="form-control" id="viewcount">
 									<option value="결혼" selected>결혼</option>
 									<option value="부고">부고</option>
 									<option value="기타">기타</option>
 								</select>
 							</div>
 						</div>
-						</div>
+					</div>
 
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">글쓴이</label>
 						<div class="col-lg-4">
-							<input name="BOARD_NAME"
-							id="board_name" value="인사팀" readOnly type="text" size="10"
-							maxlength="30" class="form-control">
+							<input name="EV_NAME" id="board_name" value="인사팀" readOnly
+								type="text" size="10" maxlength="30" class="form-control">
 						</div>
 					</div>
-				
+
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
 						<div class="col-lg-7">
-							<input name="BOARD_SUBJECT"
-							id="board_subject" type="text" size="50" maxlength="100"
-							class="form-control" placeholder="제목을 입력하세요">
+							<input name="EV_TITLE" id="board_subject" type="text"
+								size="50" maxlength="100" class="form-control"
+								placeholder="제목을 입력하세요">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
 						<div class="col-lg-7">
-							<textarea  class="form-control" rows="3"
-								placeholder="내용을 입력하세요"></textarea>
+							<textarea name ="EV_CONTENT" style="height: 325px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
 						</div>
 					</div>
+
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">파일첨부</label>
 						<div class="col-lg-9">
 							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
 								<div class="dropzone-panel mb-lg-0 mb-2">
-									 <input type="file" id="upfile" name="uploadfile" > <span
-							id="filevalue"></span> 
+									<input type="file" id="upfile" name="uploadfile"> <span
+										id="filevalue"></span>
 								</div>
 								<div class="dropzone-items"></div>
 								<div class="dz-default dz-message">
@@ -137,12 +138,12 @@
 								and max number of files is 5.</span>
 						</div>
 					</div>
-					
+
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">비밀번호</label>
 						<div class="col-lg-4">
-							<input type="password" class="form-control"
-								placeholder="비밀번호를 입력하세요" name="pass">
+							<input type="password" class="form-control" id="pass"
+								placeholder="비밀번호를 입력하세요" name="EV_PASS">
 						</div>
 					</div>
 				</div>

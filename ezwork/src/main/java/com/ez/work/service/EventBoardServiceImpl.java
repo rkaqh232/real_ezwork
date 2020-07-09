@@ -13,12 +13,14 @@ public class EventBoardServiceImpl implements EventBoardService{
 	
 	@Autowired
 	private EventBoardDAO dao;
-
+	
+	//글 개수
 	@Override
 	public int getListCount() {
 		return dao.getListCount();
 	}
-
+	
+	//글 목록
 	@Override
 	public List<EventBoard> getBoardList(int page, int limit) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -29,6 +31,18 @@ public class EventBoardServiceImpl implements EventBoardService{
 		return dao.getBoardList(map);
 	}
 
+	//글 삽입
+	@Override
+	public void insertBoard(EventBoard board) {
+		dao.insertBoard(board);
+	}
+	
+	//글 조회수
+	@Override
+	public int setReadCountUpdate(int num) {
+		return dao.setReadCountUpdate(num);
+	}
+	
 	@Override
 	public EventBoard getDetail(int num) {
 		// TODO Auto-generated method stub
@@ -52,18 +66,8 @@ public class EventBoardServiceImpl implements EventBoardService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
 
-	@Override
-	public void insertBoard(EventBoard board) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int setReadCountUpdate(int num) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public boolean isBoardWriter(int num, String pass) {

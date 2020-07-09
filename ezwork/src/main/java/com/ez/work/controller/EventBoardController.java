@@ -100,14 +100,12 @@ public class EventBoardController {
 		return "home";
 	}
 
-	/* 게시판 저장 */
-	/*
-	 * @RequestMapping(value = "/board_write_ok.nhn", method = RequestMethod.POST)
-	 *//*
-	@PostMapping(value = "/Board_write_ok.bo")
-	public String board_write_ok(Board board) {
-		boardService.insertBoard(board); // 저장 메서드 호출
-		return "redirect:/BoardList.bo";
+	// 글저장
+	@PostMapping(value = "/Board_write_ok.ev")
+	public ModelAndView board_write_ok(EventBoard board) {
+		ModelAndView mv = new ModelAndView("redirect:BoardList.ev");
+		eventboardService.insertBoard(board); // 저장 메서드 호출
+		return mv;
 	}
-*/
+
 }

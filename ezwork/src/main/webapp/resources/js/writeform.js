@@ -3,7 +3,7 @@ $(document).ready(function(){
 	//등록 버튼 클릭할 때 이벤트 부분
 	$("form").submit(function(){
 		
-		if($.trim($("input").eq(1).val()) == ""){
+		if($.trim($("#board_subject").val()) == ""){
 			Swal.fire({
                 text: "제목을 입력해주세요.",
                 icon: "error",
@@ -13,7 +13,7 @@ $(document).ready(function(){
 					confirmButton: "btn font-weight-bold btn-light"
 				}
             })
-			$("input:eq(1)").focus();
+			$("#board_subject").focus();
 			return false;
 		}
 		if($.trim($("textarea").val()) == ""){
@@ -29,20 +29,11 @@ $(document).ready(function(){
 			$("textarea").focus();
 			return false;
 		}
-		if($.trim($("input").eq(2).val()) == ""){
-			Swal.fire({
-                text: "비밀번호를 입력해주세요.",
-                icon: "error",
-                buttonsStyling: false,
-                confirmButtonText: "확인",
-				customClass: {
-					confirmButton: "btn font-weight-bold btn-light"
-				}
-            })
-			$("input:eq(2)").focus();
+		if($.trim($("#pass").val()) == ""){
+			alert("비밀번호를 입력해주세요");
+			$("#pass").focus();
 			return false;
 		}
-		
 		
 	}); //submit end
 	

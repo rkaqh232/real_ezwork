@@ -29,7 +29,7 @@
 		where EV_NO = #{number}
 	</update>
 
-	<insert id="insert" parameterType="eventboard">
+	<insert id="insert" parameterType="EventBoard">
 		<selectKey resultType="int" order="BEFORE"
 			keyProperty="EV_NO">
 			select nvl(max(EV_NO), 0) + 1 from eventboard
@@ -38,7 +38,7 @@
 		(EV_NO,
 		EV_SORT, EV_NAME, EV_PASS,
 		EV_TITLE, EV_CONTENT, 
-		EV_FILE, EV_ORIGINAL
+		EV_FILE, EV_ORIGINAL,
 		EV_RE_REF,
 		EV_RE_LEV,
 		EV_RE_SEQ, EV_READCOUNT,
@@ -46,9 +46,9 @@
 		values
 		(#{EV_NO},
 		#{EV_SORT},#{EV_NAME}, #{EV_PASS},
-		#{EV_TITLE},#{EV_CONTENT},
-		#{BOARD_FILE, jdbcType=VARCHAR},
-		#{BOARD_ORIGINAL, jdbcType=VARCHAR},
+		#{EV_TITLE}, #{EV_CONTENT},
+		#{EV_FILE, jdbcType=VARCHAR},
+		#{EV_ORIGINAL, jdbcType=VARCHAR},
 		#{EV_NO},
 		#{EV_RE_LEV}, #{EV_RE_SEQ}, #{EV_READCOUNT},
 		sysdate)

@@ -92,13 +92,50 @@ public class MailController {
 		return "redirect:inbox.mail";
 	}
 	
+	@PostMapping("/Tempaction.mail")
+	public String tempadd(Mail mail, HttpServletRequest request) throws Exception{
+		System.out.println("tempaction");
+		MultipartFile uploadfile=mail.getUploadfile();
+		if(!uploadfile.isEmpty()) {
+			String fileName = uploadfile.getOriginalFilename();
+			mail.setMAIL_ORIGINAL(fileName);
+			
+			Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH)+1;
+			int date = c.get(Calendar.DATE);
+			String homedir = mailsaveFolder + year + "-" + "-" + date;
+			System.out.println(homedir);
+			File path1 = new File(homedir);
+			if(!(path1.exists())) {
+				path1.mkdir();
+			}
+			
+			Random r = new Random();
+			int random = r.nextInt(100000000);
+			int index = fileName.lastIndexOf(".");
+			System.out.println("index = " + index);
+			String fileExtension = fileName.substring(index+1);
+			//새로운 파일명
+			String refileName = "bbs"+year+month+date+random+"."+fileExtension;
+			
+			//오라클 DB에 저장될 파일명
+			String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
+			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
+			mail.setMAIL_FILE(fileDBName);
+		}
+		mailService.tempMail(mail);
+		return "redirect:inbox.mail";
+	}
+	
 	@ResponseBody
-	@RequestMapping(value="/MailListAjax.mail")
-	public Map<String, Object> mailListAjax(
+	@RequestMapping(value="/MailInboxAjax.mail")
+	public Map<String, Object> InboxListAjax(
 			@RequestParam(value="page", defaultValue="1", required=false) int page,
-			@RequestParam(value="limit", defaultValue="10", required=false) int limit)
+			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
+			@RequestParam(value="id") String id)
 	{
-		int listcount=mailService.getListCount();
+		int listcount=mailService.getListCount(id);
 		int maxpage = (listcount+limit-1)/limit;
 		int startpage = ((page-1)/10)*10+1;
 		int endpage = startpage+10-1;
@@ -106,12 +143,15 @@ public class MailController {
 		if(endpage>maxpage)
 			endpage = maxpage;
 		
-		List<Mail> maillist = mailService.getMailList(page, limit);
+		List<Mail> maillist = mailService.getInboxList(page, limit, id);
 		
+		System.out.println("sender:"+id);
 		System.out.println("listcount:" + listcount);
-		System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
+		System.out.println("listcount:" + listcount);
+		//System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sender",id);
 		map.put("page",page);
 		map.put("maxpage",maxpage);
 		map.put("startpage",startpage);
@@ -122,4 +162,102 @@ public class MailController {
 		return map;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/MailOutboxAjax.mail")
+	public Map<String, Object> OutboxListAjax(
+			@RequestParam(value="page", defaultValue="1", required=false) int page,
+			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
+			@RequestParam(value="id") String id)
+	{
+		int listcount=mailService.getOutListCount(id);
+		int maxpage = (listcount+limit-1)/limit;
+		int startpage = ((page-1)/10)*10+1;
+		int endpage = startpage+10-1;
+		
+		if(endpage>maxpage)
+			endpage = maxpage;
+		
+		List<Mail> maillist = mailService.getOutboxList(page, limit, id);
+		
+		System.out.println("sender:"+id);
+		System.out.println("listcount:" + listcount);
+		System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sender",id);
+		map.put("page",page);
+		map.put("maxpage",maxpage);
+		map.put("startpage",startpage);
+		map.put("endpage",endpage);
+		map.put("listcount",listcount);
+		map.put("maillist",maillist);
+		map.put("limit",limit);
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/MailBinAjax.mail")
+	public Map<String, Object> BinListAjax(
+			@RequestParam(value="page", defaultValue="1", required=false) int page,
+			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
+			@RequestParam(value="id") String id)
+	{
+		int listcount=mailService.getOutListCount(id);
+		int maxpage = (listcount+limit-1)/limit;
+		int startpage = ((page-1)/10)*10+1;
+		int endpage = startpage+10-1;
+		
+		if(endpage>maxpage)
+			endpage = maxpage;
+		
+		List<Mail> maillist = mailService.getOutboxList(page, limit, id);
+		
+		System.out.println("sender:"+id);
+		System.out.println("listcount:" + listcount);
+		System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sender",id);
+		map.put("page",page);
+		map.put("maxpage",maxpage);
+		map.put("startpage",startpage);
+		map.put("endpage",endpage);
+		map.put("listcount",listcount);
+		map.put("maillist",maillist);
+		map.put("limit",limit);
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/MailTempAjax.mail")
+	public Map<String, Object> TempListAjax(
+			@RequestParam(value="page", defaultValue="1", required=false) int page,
+			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
+			@RequestParam(value="id") String id)
+	{
+		int listcount=mailService.getTempListCount(id);
+		int maxpage = (listcount+limit-1)/limit;
+		int startpage = ((page-1)/10)*10+1;
+		int endpage = startpage+10-1;
+		
+		if(endpage>maxpage)
+			endpage = maxpage;
+		
+		List<Mail> maillist = mailService.getTempboxList(page, limit, id);
+		
+		System.out.println("sender:"+id);
+		System.out.println("listcount:" + listcount);
+		//System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sender",id);
+		map.put("page",page);
+		map.put("maxpage",maxpage);
+		map.put("startpage",startpage);
+		map.put("endpage",endpage);
+		map.put("listcount",listcount);
+		map.put("maillist",maillist);
+		map.put("limit",limit);
+		return map;
+	}
 }

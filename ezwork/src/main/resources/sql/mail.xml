@@ -6,36 +6,93 @@
 
 <mapper namespace="Mails">
 
-    <insert id="insert" parameterType="mail">
+    <insert id="insertout" parameterType="mail">
    	  <selectKey resultType="int" order="BEFORE" keyProperty="MAIL_NUM">
-		 select nvl(max(MAIL_NUM),0)+1 from email
+		 select nvl(max(MAIL_NUM),0)+1 from SENTMAIL
 	  </selectKey>
+		insert into SENTMAIL
+		(MAIL_NUM, MAIL_SENDER, MAIL_RECIPIENT, MAIL_SUBJECT,
+		   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
+		   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
+		 values(#{MAIL_NUM}, #{MAIL_SENDER}, #{MAIL_RECIPIENT}, #{MAIL_SUBJECT}, #{MAIL_CONTENT},
+		 #{MAIL_FILE, jdbcType=VARCHAR}, #{MAIL_ORIGINAL, jdbcType=VARCHAR},
+		 0, 'out', sysdate)
+	</insert>
+	
+	<insert id="insertin" parameterType="mail">
+   	  <selectKey resultType="int" order="BEFORE" keyProperty="MAIL_NUM">
+		 select nvl(max(MAIL_NUM),0)+1 from RECEIPTMAIL
+	  </selectKey>
+		insert into RECEIPTMAIL
+		(MAIL_NUM, MAIL_SENDER, MAIL_RECIPIENT, MAIL_SUBJECT,
+		   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
+		   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
+		 values(#{MAIL_NUM}, #{MAIL_SENDER}, #{MAIL_RECIPIENT}, #{MAIL_SUBJECT}, #{MAIL_CONTENT},
+		 #{MAIL_FILE, jdbcType=VARCHAR}, #{MAIL_ORIGINAL, jdbcType=VARCHAR},
+		 0, 'out', sysdate)
+	</insert>
+	
+	 <insert id="temp" parameterType="mail">
+		<selectKey resultType="int" order="BEFORE" keyProperty="MAIL_NUM">
+			select nvl(max(MAIL_NUM),0)+1 from email
+		</selectKey>
 		insert into email
 		(MAIL_NUM, MAIL_SENDER, MAIL_RECIPIENT, MAIL_SUBJECT,
 		   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
-		   MAIL_RCHECK, MAIL_DATE)
+		   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
 		 values(#{MAIL_NUM}, #{MAIL_SENDER}, #{MAIL_RECIPIENT}, #{MAIL_SUBJECT}, #{MAIL_CONTENT},
 		 #{MAIL_FILE, jdbcType=VARCHAR}, #{MAIL_ORIGINAL, jdbcType=VARCHAR},
-		 0, sysdate)
+		 0, 'temp', sysdate)
 	</insert>
 	
 	<update id="RCheckUpdate" parameterType="int">
-		update email
+		update RECEIPTMAIL
 		set MAIL_RCHECK=MAIL_RCHECK+1
 		where MAIL_NUM=#{number}
 	</update>
 	
-	<select id="count" resultType="int">
-		select count(*) from email
+	<select id="incount" parameterType="String" resultType="int">
+		select count(*) from RECEIPTMAIL
+		where MAIL_RECIPIENT=#{id} and MAIL_TYPE='in'
 	</select>
 	
-	<select id="list" parameterType="java.util.Map" resultType="mail">
+	<select id="outcount" parameterType="String" resultType="int">
+		select count(*) from SENTMAIL
+		where MAIL_SENDER=#{id} and MAIL_TYPE='out'
+	</select>
+	
+	<select id="tempcount" parameterType="String" resultType="int">
+		select count(*) from SENTMAIL
+		where MAIL_SENDER=#{id} and MAIL_TYPE='temp'
+	</select>
+	
+	<select id="inlist" parameterType="java.util.Map" resultType="mail">
 		select* from 
 			(select rownum rnum, m.*
 			 from 
-			 	(select* from email
+			 	(select* from RECEIPTMAIL
+			 	 where MAIL_RECIPIENT=#{sender} and MAIL_TYPE='in' 
 			 	 order by MAIL_DATE desc) m)
 		where rnum &gt;=#{start} and rnum &lt;=#{end}
 	</select>
 	
+	<select id="outlist" parameterType="java.util.Map" resultType="mail">
+		select* from 
+			(select rownum rnum, m.*
+			 from 
+			 	(select* from SENTMAIL
+			 	 where MAIL_SENDER=#{sender} and MAIL_TYPE='out' 
+			 	 order by MAIL_DATE desc) m)
+		where rnum &gt;=#{start} and rnum &lt;=#{end}
+	</select>
+	
+	<select id="templist" parameterType="java.util.Map" resultType="mail">
+		select* from 
+			(select rownum rnum, m.*
+			 from 
+			 	(select* from SENTMAIL
+			 	 where MAIL_SENDER=#{sender} and MAIL_TYPE='temp' 
+			 	 order by MAIL_DATE desc) m)
+		where rnum &gt;=#{start} and rnum &lt;=#{end}
+	</select>
 </mapper>

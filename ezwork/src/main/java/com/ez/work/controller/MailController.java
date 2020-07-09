@@ -109,7 +109,7 @@ public class MailController {
 		List<Mail> maillist = mailService.getMailList(page, limit);
 		
 		System.out.println("listcount:" + listcount);
-		System.out.println("maillist : "+ maillist.get(0).getMAIL_SENDER());
+		System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page",page);

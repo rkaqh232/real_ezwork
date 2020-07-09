@@ -38,7 +38,7 @@
 			<div class="card-header">
 				<div class="card-title">
 					<span class="card-icon"> <i
-						class="flaticon2-chat-1 text-primary"></i>
+						class="flaticon2-chat-1 text-info"></i>
 					</span>
 					<h3 class="card-label">
 						경조사알림 <small>게시판</small>
@@ -103,7 +103,7 @@
 											<!-- 원문인 경우 -->
                    		  &nbsp;
                   		</c:if>
-										<a href="./BoardDetailAction.EV?num=${b.EV_NO}">
+										<a href="./BoardDetailAction.EV?num=${b.EV_NO}" style="color:#1B283F;">
 											${b.EV_TITLE} </a>
 									</div>
 								</td>

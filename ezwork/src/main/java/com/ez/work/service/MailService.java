@@ -13,4 +13,6 @@ public interface MailService {
 	public int getListCount(String id);
 	public int getOutListCount(String id);
 	public int getTempListCount(String id);
+	public Mail getDetail(int num);
+	public int setRCheckUpdate(int num);
 }

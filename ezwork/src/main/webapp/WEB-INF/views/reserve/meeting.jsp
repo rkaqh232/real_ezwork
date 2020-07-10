@@ -34,13 +34,13 @@ table{text-align:center;}
  <form>
   <div class="card-body">
    <div class="form-group row">
-    <label  class="col-2 col-form-label">Text</label>
+    <label  class="col-2 col-form-label">예약자</label>
     <div class="col-10">
-     <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
+     <input class="form-control" type="text" value="${id}" id="example-text-input" disabled/>
     </div>
    </div>
    <div class="form-group row">
-    <label for="example-search-input" class="col-2 col-form-label">Search</label>
+    <label for="example-search-input" class="col-2 col-form-label">회의 내용</label>
     <div class="col-10">
      <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
     </div>
@@ -52,7 +52,7 @@ table{text-align:center;}
     </div>
    </div>
    <div class="form-group row">
-    <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+    <label for="example-tel-input" class="col-2 col-form-label">전화번호</label>
     <div class="col-10">
      <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"/>
     </div>

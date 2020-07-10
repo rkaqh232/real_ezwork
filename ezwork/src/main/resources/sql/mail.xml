@@ -29,14 +29,14 @@
 		   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
 		 values(#{MAIL_NUM}, #{MAIL_SENDER}, #{MAIL_RECIPIENT}, #{MAIL_SUBJECT}, #{MAIL_CONTENT},
 		 #{MAIL_FILE, jdbcType=VARCHAR}, #{MAIL_ORIGINAL, jdbcType=VARCHAR},
-		 0, 'out', sysdate)
+		 0, 'in', sysdate)
 	</insert>
 	
 	 <insert id="temp" parameterType="mail">
 		<selectKey resultType="int" order="BEFORE" keyProperty="MAIL_NUM">
-			select nvl(max(MAIL_NUM),0)+1 from email
+			select nvl(max(MAIL_NUM),0)+1 from SENTMAIL
 		</selectKey>
-		insert into email
+		insert into SENTMAIL
 		(MAIL_NUM, MAIL_SENDER, MAIL_RECIPIENT, MAIL_SUBJECT,
 		   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
 		   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
@@ -94,5 +94,15 @@
 			 	 where MAIL_SENDER=#{sender} and MAIL_TYPE='temp' 
 			 	 order by MAIL_DATE desc) m)
 		where rnum &gt;=#{start} and rnum &lt;=#{end}
+	</select>
+	
+	<update id="RcheckUpdate" parameterType="int">
+		update RECEIPTMAIL
+		set MAIL_RCHECK = 1
+		where MAIL_NUM = #{number}
+	</update>
+	
+	<select id="indetail" parameterType="int" resultType="mail">
+		select* from RECEIPTMAIL where MAIL_NUM=#{number}
 	</select>
 </mapper>

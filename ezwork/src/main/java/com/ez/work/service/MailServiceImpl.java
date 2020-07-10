@@ -60,6 +60,16 @@ public class MailServiceImpl implements MailService{
 	}
 	public int getTempListCount(String id) {
 		return dao.getTempCount(id);
+	}
+	
+	public Mail getDetail(int num) {
+		if(setRCheckUpdate(num)!=1)
+			return null;
+		return dao.Indetail(num);
+	}
+
+	public int setRCheckUpdate(int num) {
+		return dao.setRCheckUpdate(num);	//return 1이면 1줄 업데이트 된 것.
 	}	
 	
 }

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Mail;
 import com.ez.work.service.MailService;
@@ -259,5 +261,20 @@ public class MailController {
 		map.put("maillist",maillist);
 		map.put("limit",limit);
 		return map;
+	}
+	
+	@GetMapping(value="DetailAction.mail")
+	public ModelAndView inDetail(int num, ModelAndView mv, HttpServletRequest request) {
+		Mail mail = mailService.getDetail(num);
+		if(mail == null) {
+			System.out.println("mail view failed");
+			mv.setViewName("error/error");
+		}else {
+			System.out.println("mail view start");
+			mv.addObject("page", "mail/in_view.jsp");
+			mv.addObject("maildata", mail);
+			mv.setViewName("home");
+		}		
+		return mv;
 	}
 }

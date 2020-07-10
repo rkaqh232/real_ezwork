@@ -77,4 +77,23 @@
 		from eventboard where EV_NO=#{num} and EV_PASS=#{pass}
 	</select>
 	
+	<delete id="delete" parameterType="EventBoard">
+	<![CDATA[
+		delete from eventboard
+			where EV_RE_REF = #{EV_RE_REF}
+			and EV_RE_LEV >= #{EV_RE_LEV}
+	 		and EV_RE_SEQ >= #{EV_RE_SEQ}
+			and EV_RE_SEQ <=(
+								nvl((SELECT min(ev_re_seq)-1
+									FROM EVENTBOARD 
+									WHERE EV_RE_REF=#{EV_RE_REF}
+									AND EV_RE_LEV=#{EV_RE_LEV}
+									AND EV_RE_SEQ>#{EV_RE_SEQ}) , 
+									(SELECT max(ev_re_seq) 
+									FROM  EVENTBOARD  
+									WHERE EV_RE_REF=#{EV_RE_REF}  ))
+											)
+	]]>
+	</delete>
+	
 </mapper>

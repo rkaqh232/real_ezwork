@@ -82,8 +82,16 @@ public class EventBoardServiceImpl implements EventBoardService{
 	//글 삭제
 	@Override
 	public int boardDelete(int num) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		EventBoard board = dao.getDetail(num);
+		if (board != null) {
+			
+			//추가 - 삭제할 파일 목록을 저장하기 위한 메서드 호출
+			//dao.insert_deleteFiles(board);
+			
+			result = dao.boardDelete(board);
+		}
+		return result;
 	}
 
 

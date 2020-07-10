@@ -28,10 +28,10 @@ insert into eventboard
 		EV_RE_SEQ, EV_READCOUNT,
 		EV_DATE)
 		values
-		(2,
+		(1,
 		'축하','인사팀', '1234',
 		'결혼 축하드립니다','추카추카영',
-		2,
+		1,
 		0, 0, 0,
 		sysdate);
 		

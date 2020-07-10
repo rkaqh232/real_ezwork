@@ -16,6 +16,8 @@
    
    <context:property-placeholder location="classpath:pro/mailsavefolder.properties"/>
    
+   <context:property-placeholder location="classpath:pro/boardsavefolder.properties"/>
+   
    <!-- Enables the Spring MVC @Controller programming model -->
    <annotation-driven />
 

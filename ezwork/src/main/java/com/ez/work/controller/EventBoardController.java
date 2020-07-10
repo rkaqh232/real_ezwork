@@ -1,6 +1,9 @@
 package com.ez.work.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -8,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,16 +38,16 @@ public class EventBoardController {
 	@RequestMapping(value = "/BoardList.ev")
 	public ModelAndView boardList(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
 			ModelAndView mv, Model m) {
-		int limit = 10; // 한 화면에 출력할 레코드 갯수
-		int listcount = eventboardService.getListCount(); // 총 리스트 수를 받아옴
+		int limit = 10; 
+		int listcount = eventboardService.getListCount(); 
 
 		// 총 페이지수
 		int maxpage = (listcount + limit - 1) / limit;
 
-		// 현재 페이지에 보여 줄 시작 페이지 수 (1, 11, 21 등...)
+		// 시작 페이지수
 		int startpage = ((page - 1) / 10) * 10 + 1;
 
-		// 현재 페이지에 보여줄 마지막 페이지 수 (10, 20, 30 등..)
+		// 마지막 페이지수
 		int endpage = startpage + 10 - 1;
 
 		if (endpage > maxpage)
@@ -75,10 +79,10 @@ public class EventBoardController {
 		// 총 페이지수
 		int maxpage = (listcount + limit - 1) / limit;
 
-		// 현재 페이지에 보여 줄 시작 페이지 수 (1, 11, 21 등...)
+		// 시작 페이지수
 		int startpage = ((page - 1) / 10) * 10 + 1;
 
-		// 현재 페이지에 보여줄 마지막 페이지 수 (10, 20, 30 등..)
+		// 마지막 페이지수
 		int endpage = startpage + 10 - 1;
 
 		if (endpage > maxpage)
@@ -215,15 +219,16 @@ public class EventBoardController {
 			System.out.println("게시판 수정 완료");
 			
 			// 수정전에 파일이 있고 새로운 파일을 선택한 경우는 삭제할 목록을 테이블에 추가합니다.
-			if(!before_file.equals("") && !before_file.equals(board.getEV_FILE())) {
-				eventboardService.insert_deleteFile(before_file);
-			}
-			
-			String url = "BoardDetailAction.ev?num=" + board.getEV_NO();
-
-			// 수정한 글 내용을 보여주기 위해 글 내용 보기 보기 페이지로 이동하기 위해 경로를 설정합니다
-			m.addAttribute("page", url);
-			mv.setViewName("home");
+			//if(!before_file.equals("") && !before_file.equals(board.getEV_FILE())) {
+			//	eventboardService.insert_deleteFile(before_file);
+		//	}
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('수정 되었습니다.');");
+			out.println("location.href="+"'BoardDetailAction.ev?num="+board.getEV_NO()+"';");
+			out.println("</script>");
+			out.close();
 		}
 		return mv;
 
@@ -263,5 +268,108 @@ public class EventBoardController {
 		return fileDBName;
 	}
 
+	
+	//글 삭제
+	@RequestMapping(value = "/BoardDeleteAction.ev")
+	public ModelAndView BoardDeleteAction(String EV_PASS, int num,
+			ModelAndView mv, 
+			HttpServletResponse response,
+			HttpServletRequest request
+			) throws Exception{
+		System.out.println(num);
+		// 글 삭제 명령을 요청한 사용자가 글을 작성한 사용자인지 판단하기 위해
+		// 입력한 비밀번호와 저장된 비밀번호를 비교하여 일치하면 삭제합니다.
+		boolean usercheck = eventboardService.isBoardWriter(num, EV_PASS);
+		
+		// 비밀번호 일치하지 않은 경우
+		if (usercheck == false) {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('비밀번호가 다릅니다');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+		
+		// 비밀번호 일치하는 경우 삭제 처리 합니다.
+		int result = eventboardService.boardDelete(num);
+		
+		// 삭제처리 실패한 경우
+			if(result == 0) {
+				System.out.println("게시판 삭제 실패");
+				mv.setViewName("error/error");
+				mv.addObject("url",request.getRequestURL());
+				mv.addObject("message", "삭제 실패");
+				return mv;
+			}
+			
+		// 삭제처리 성공한 경우 - 글 목록 보기 요청을 전송하는 부분입니다.
+			System.out.println("게시판 삭제 성공");
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('삭제 되었습니다.');");
+			out.println("location.href='BoardList.ev';");
+			out.println("</script>");
+			out.close();
+			return null;
+	}
+	
+	@GetMapping("BoardFileDown.ev")
+	public void BoardFileDown(String filename, HttpServletRequest request, String original,
+			HttpServletResponse response) throws Exception {
+
+		String savePath = "resources/boardupload";
+
+		// 서블릿의 실행 환경 정보를 담고 있는 객체를 리턴합니다.
+		ServletContext context = request.getSession().getServletContext();
+		String sDownloadPath = context.getRealPath(savePath);
+
+		// String sFilePath = sDownloadPath + "\\" + fileName;
+		// "\" 추가하기 위해 "\\" 사용합니다.
+		String sFilePath = sDownloadPath + "/" + filename;
+		System.out.println(sFilePath);
+
+		byte b[] = new byte[4096];
+
+		// sFilePath에 있는 파일 MimeType을 구해옵니다
+		String sMimeType = context.getMimeType(sFilePath);
+		System.out.println("sMimeType>>>" + sMimeType);
+
+		if (sMimeType == null)
+			sMimeType = "application/octet-stream";
+
+		response.setContentType(sMimeType);
+
+		// - 이 부분이 한글 파일명이 깨지는 것을 방지해 줍니다.
+		String sEncoding = new String(original.getBytes("utf-8"), "ISO-8859-1");
+		System.out.println(sEncoding);
+
+		/*
+		 * Content-Dispostion: attachment : 브라우저는 해당 Content를 처리하지않고, 다운로드 하게 됩니다.
+		 * 
+		 */
+		response.setHeader("Content-Disposition", "attachment; filename= " + sEncoding);
+		//프로젝트 properties - Project facets에서 자바버전 1.8로 수정
+
+		try (
+				// 웹 브라우저로의 출력 스트림 생성합니다.
+				BufferedOutputStream out2 = new BufferedOutputStream(response.getOutputStream());
+				// sFilePath로 지정한 파일에 대한 입력 스트림을 생성합니다.
+				BufferedInputStream in = new BufferedInputStream(new FileInputStream(sFilePath));) {
+			int numRead;
+			// read(b, 0, b.length) : 바이트 배열 b의 0번부터 b.length
+			// 크기만큼 읽어옵니다.
+			while ((numRead = in.read(b, 0, b.length)) != -1) { // 읽을 데이터가 존재하는 경우
+				// 바이트 배열 b의 0번 부터 numRead크기 만큼 브라우저로 출력
+				out2.write(b, 0, numRead);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }

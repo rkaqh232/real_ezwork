@@ -44,4 +44,12 @@ public class MailDAO {
 	public int getTempCount(String id) {
 		return sqlSession.selectOne("Mails.tempcount",id);
 	}
+
+	public int setRCheckUpdate(int num) {
+		return sqlSession.update("Mails.RcheckUpdate",num);
+	}
+
+	public Mail Indetail(int num) {
+		return sqlSession.selectOne("Mails.indetail",num);
+	}
 }

@@ -37,7 +37,7 @@ function ajax(sdata){
 						output += "<tr><td><p><label class='checkbox'>"
 						output += "<input type='checkbox'/>"
 						output += ' <span></span></label></p></td><td><p class="text-danger font-size-lg"> 임시보관 </p></td>'
-						output += '<td><div><p class="font-size-lg">' + item.mail_SUBJECT +'</p></div></td>'
+						output += '<td><div style="margin-top:1rem">' + '<a href="#">' + item.mail_SUBJECT +'</p></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
 				output += "</tbody>"

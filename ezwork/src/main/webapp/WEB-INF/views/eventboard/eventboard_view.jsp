@@ -67,7 +67,7 @@
 			 <div class="btn-group" role="group" aria-label="First group" >
 			 
 		<!-- 수정 -->
-		<a href="#" class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="" data-original-title="수정">
+		<a href="BoardModifyView.ev?num=${boarddata.EV_NO }" class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="" data-original-title="수정">
 			<span class="svg-icon svg-icon-md">
 		  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 		 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

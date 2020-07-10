@@ -2,12 +2,14 @@ package com.ez.work.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ez.work.dao.EventBoardDAO;
 import com.ez.work.domain.EventBoard;
+
 @Service
 public class EventBoardServiceImpl implements EventBoardService{
 	
@@ -51,30 +53,41 @@ public class EventBoardServiceImpl implements EventBoardService{
 		return dao.getDetail(num);
 	}
 
+	//답글 쓰기
 	@Override
 	public int boardReply(EventBoard board) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	//글 수정
 	@Override
 	public int boardModify(EventBoard modifyboard) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.boardModify(modifyboard);
 	}
-
+	
+	//글 수정 시 아이디 비번 검사
+	@Override
+	public boolean isBoardWriter(int num, String pass) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("num", num);
+		map.put("pass", pass);
+		EventBoard result = dao.isBoardWriter(map);
+		if (result == null)
+			return false;
+		else
+			return true;
+	}
+	
+	//글 삭제
 	@Override
 	public int boardDelete(int num) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
-	public boolean isBoardWriter(int num, String pass) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
+	//
 	@Override
 	public int boardReplyUpdate(EventBoard board) {
 		// TODO Auto-generated method stub

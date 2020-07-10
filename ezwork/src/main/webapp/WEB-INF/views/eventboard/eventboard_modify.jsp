@@ -1,32 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4"
-	rel="stylesheet" type="text/css" />
-<script src="resources/js/jquery-3.5.0.js"></script>
-<!-- <script src="resources/js/writeform.js"></script> -->
-
-
+<title>EZWORK | 경조사 게시판 | 글 수정</title>
 </head>
 <body>
-
-	<div class="container">
+<div class="container">
 		<!--begin::Card-->
 		<div class="card card-custom">
 			<div class="card-header">
 				<div class="card-title">
 					<i class="flaticon2-chat-1 text-info"></i>
-					<h3 class="card-label">&nbsp;글 등록</h3>
+					<h3 class="card-label">&nbsp;글 수정</h3>
 					<small>경조사게시판</small>
 				</div>
 			</div>
 			<!--begin::Form-->
-			<form action="Board_write_ok.ev" method="post"
+			<form action="BoardModifyAction.ev" method="post"
 				enctype="multipart/form-data" name="boardform">
 				<div class="card-body">
 					<div class="form-group row">
@@ -46,8 +39,8 @@
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">글쓴이</label>
 						<div class="col-lg-4">
-							<input name="EV_NAME" id="board_name" value="인사팀" readOnly
-								type="text" size="10" maxlength="30" class="form-control">
+							<input name="EV_NAME" id="board_name" value="${boarddata.EV_NAME }" readOnly
+								type="text" class="form-control">
 						</div>
 					</div>
 
@@ -56,29 +49,32 @@
 						<div class="col-lg-7">
 							<input name="EV_TITLE" id="board_subject" type="text"
 								size="50" maxlength="100" class="form-control"
-								placeholder="제목을 입력하세요">
+								value="${boarddata.EV_TITLE }" >
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
 						<div class="col-lg-7">
-							<input name ="EV_CONTENT" style="height: 325px" class="form-control" rows="3" placeholder="내용을 입력하세요">
+							<input name ="EV_CONTENT" style="height: 325px" class="form-control" value="${boarddata.EV_CONTENT }">
 						</div>
 					</div>
 
+					<c:if test="${boarddata.EV_RE_LEV==0 }">
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">파일첨부</label>
 						<div class="col-lg-9">
 							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
 								<div class="dropzone-panel mb-lg-0 mb-2">
 									<input type="file" id="upfile" name="uploadfile"> <span
-										id="filevalue"></span>
+										id="filevalue">${boarddata.EV_FILE}</span>
+								<img src="resources/image/remove.png" alt = "파일삭제" width="10px" class="remove">
 								</div>
-								<div class="dropzone-items"></div>
+								<div class="dropzone-items">
+								</div>
 							</div>
 						</div>
 					</div>
-
+					</c:if>
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">비밀번호</label>
 						<div class="col-lg-4">
@@ -92,7 +88,7 @@
 						<div class="col-lg-3"></div>
 						<div class="col-lg-9">
 							<button type="submit" class="btn btn-info">등록</button>
-							<button type="reset" class="btn btn-outline-secondary">취소</button>
+							<button type="reset" class="btn btn-outline-secondary" onClick="history.go(-1)">취소</button>
 						</div>
 					</div>
 				</div>

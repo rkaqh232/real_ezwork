@@ -58,4 +58,23 @@
 		select * from
 		eventboard where EV_NO = #{number}
 	</select>
+	
+	
+	<update id="modify" parameterType="EventBoard">
+		update eventboard
+		set
+		EV_SORT=#{EV_SORT},
+		EV_TITLE=#{EV_TITLE},
+		EV_CONTENT=#{EV_CONTENT},
+		EV_FILE=#{EV_FILE, jdbcType=VARCHAR},
+		EV_ORIGINAL=#{EV_ORIGINAL, jdbcType=VARCHAR}
+		where
+		EV_NO=#{EV_NO}
+	</update>
+	
+	<select id="BoardWriter" parameterType="map" resultType="eventboard">
+		select *
+		from eventboard where EV_NO=#{num} and EV_PASS=#{pass}
+	</select>
+	
 </mapper>

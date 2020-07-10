@@ -1,5 +1,15 @@
 $(function(){
 	go(1);
+	
+	$("#upfile").change(function(){
+		var inputfile = $(this).val().split('\\');
+		$("#filevalue").text(inputfile[inputfile.length-1]);
+	})
+	
+	$("#allcheck").click(function(){
+		$('input:checkbox').prop('checked',this.checked);
+	})
+	
 })
 
 function go(page){
@@ -38,7 +48,8 @@ function ajax(sdata){
 						output += "<input type='checkbox'/>"
 						output += ' <span></span></label></p></td><td><p class="font-size-lg">'
 						output += item.mail_SENDER + '</p></td>'
-						output += '<td><div style="margin-top:1rem">' + '<a href="DetailAction.mail?num='
+						output += '<td><div class="btn btn-text-primary font-weight-bold mr-2"' 
+								+'style="margin-top:4px">' + '<a href="DetailAction.mail?num='
 								+item.mail_NUM+'&page=' + data.page+'">'+ item.mail_SUBJECT +'</a></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})

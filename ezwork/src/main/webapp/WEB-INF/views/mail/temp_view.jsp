@@ -132,7 +132,7 @@ function hideRe(){
 						<!--end::Subject-->
 						<!--begin::Message-->
 						<div id="kt_inbox_reply_editor" class="border-0" style="height: 250px">
-						<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none; padding:30px" required> ${maildata.MAIL_SUBJECT}</textarea>
+						<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none; padding:30px" required></textarea>
 						</div>
 						<!--end::Message-->
 						<!--begin::Attachments-->

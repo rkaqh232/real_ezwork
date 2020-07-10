@@ -3,6 +3,7 @@ package com.ez.work.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,13 @@ public class EventBoardDAO {
 	
 	public EventBoard getDetail(int num) {
 		return sqlSession.selectOne("EventBoards.Detail", num);
+	}
+	
+	public int boardModify(EventBoard modifyboard) {
+		return sqlSession.update("EventBoards.modify", modifyboard);
+	}
+
+	public EventBoard isBoardWriter(Map<String, Object> map) {
+		return sqlSession.selectOne("EventBoards.BoardWriter", map);
 	}
 }

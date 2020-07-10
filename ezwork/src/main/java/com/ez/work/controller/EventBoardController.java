@@ -1,10 +1,15 @@
 package com.ez.work.controller;
 
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.EventBoard;
@@ -126,5 +132,136 @@ public class EventBoardController {
 		}
 		return mv;
 	}
+	
+	//글 수정하기 뷰페이지
+	@GetMapping("/BoardModifyView.ev")
+	public ModelAndView BoardModifyView(int num, ModelAndView mv, HttpServletRequest request, Model m) {
+		System.out.println(num);
+		EventBoard boarddata = eventboardService.getDetail(num);
+		if (boarddata == null) {
+			System.out.println("(수정)상세보기 실패");
+			m.addAttribute("page", "error/error.jsp");
+			mv.setViewName("home");
+			mv.addObject("url", request.getRequestURI());
+			mv.addObject("message", "(수정)상세보기 실패입니다.");
+			return mv;
+		}
+		System.out.println("(수정)상세보기 성공");
+		m.addAttribute("page", "eventboard/eventboard_modify.jsp");
+		mv.setViewName("home");
+		mv.addObject("boarddata", boarddata);
+		return mv;
+	}
+	
+	//글 수정하기 기능
+	@PostMapping("BoardModifyAction.ev")
+	public ModelAndView BoardModifyAction(String before_file, EventBoard board, String check, ModelAndView mv, HttpServletRequest request,
+			HttpServletResponse response, Model m) throws Exception {
+		boolean usercheck = eventboardService.isBoardWriter(board.getEV_NO(), board.getEV_PASS());
+
+		// 비밀번호가 다른 경우
+		if (usercheck == false) {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('비밀번호가 다릅니다.')");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+			return null;
+		}
+
+		MultipartFile uploadfile = board.getUploadfile();
+		String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/upload/";
+
+		System.out.println("check = " + check);
+		if (check != null && !check.contentEquals("")) { // 기존 파일 그대로
+			board.setEV_ORIGINAL(check);
+			// <input type="hidden" name="BOARD_FILE" value="${boarddata.BOARD_fILE}">
+			// 위 문장 때문에 board.setBOARD_FILE()은 자동 저장 됩니다.
+		} else {
+			if (uploadfile != null && !uploadfile.isEmpty()) {// 파일 변경한 경우
+				System.out.println("파일 변경 되었습니다.");
+
+				String fileName = uploadfile.getOriginalFilename(); // 원래 파일 명
+				board.setEV_ORIGINAL(fileName);
+
+				String fileDBName = fileDBName(fileName, saveFolder);
+
+				// transferTo(File path) : 업로드한 파일을 매개변수의 경로에 저장합니다.
+				uploadfile.transferTo(new File(saveFolder + fileDBName));
+
+				// 바뀐 파일명으로 저장
+				board.setEV_FILE(fileDBName);
+			} else { // uploadfile.isEmpty() 인 경우 - 파일 선택하지 않은 경우
+				System.out.println("선택 파일 없습니다.");
+				// <input type="hidden" name="BOARD_FILE" value="${boarddata.BOARD_FILE}">
+				// 위 태그에 값이 있다면 ""로 값을 변경합니다.
+				board.setEV_FILE(""); // ""로 초기화 합니다.
+				board.setEV_ORIGINAL(""); // ""로 초기화 합니다.
+			}
+		}
+
+		// DAO에서 수정 메서드 호출하여 수정합니다.
+		int result = eventboardService.boardModify(board);
+
+		// 수정에 실패한 경우
+		if (result == 0) {
+			System.out.println("게시판 수정 실패");
+			mv.setViewName("error/error");
+			mv.addObject("url", request.getRequestURI());
+			mv.addObject("message", "게시판 수정 실패");
+		} else { // 수정 성공의 경우
+			System.out.println("게시판 수정 완료");
+			
+			// 수정전에 파일이 있고 새로운 파일을 선택한 경우는 삭제할 목록을 테이블에 추가합니다.
+			if(!before_file.equals("") && !before_file.equals(board.getEV_FILE())) {
+				eventboardService.insert_deleteFile(before_file);
+			}
+			
+			String url = "BoardDetailAction.ev?num=" + board.getEV_NO();
+
+			// 수정한 글 내용을 보여주기 위해 글 내용 보기 보기 페이지로 이동하기 위해 경로를 설정합니다
+			m.addAttribute("page", url);
+			mv.setViewName("home");
+		}
+		return mv;
+
+	}
+
+	// DB에 들어갈 내용 가공
+	private String fileDBName(String fileName, String saveFolder) {
+		Calendar c = Calendar.getInstance();
+		int year = c.get(Calendar.YEAR);
+		int month = c.get(Calendar.MONTH);
+		int date = c.get(Calendar.DATE);
+
+		String homedir = saveFolder + year + "-" + month + "-" + date;
+		System.out.println(homedir);
+		File path1 = new File(homedir);
+		if (!(path1.exists())) {
+			path1.mkdir(); // 새로운 폴더를 생성
+		}
+
+		Random r = new Random();
+		int random = r.nextInt(100000000);
+
+		// 확장자 구하기 시작
+		int index = fileName.lastIndexOf(".");
+		System.out.println("index = " + index);
+
+		String fileExtension = fileName.substring(index + 1);
+		System.out.println("fileExtension = " + fileExtension);
+
+		// 새로운 파일명
+		String refileName = "bbs" + year + month + date + random + "." + fileExtension;
+		System.out.println("refileName = " + refileName);
+
+		// 오라클 디비에 저장될 파일 명
+		String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
+		System.out.println("fileDBName = " + fileDBName);
+		return fileDBName;
+	}
+
 
 }

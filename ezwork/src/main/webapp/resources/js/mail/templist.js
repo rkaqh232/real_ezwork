@@ -1,5 +1,14 @@
 $(function(){
 	go(1);
+	
+	$("#upfile").change(function(){
+		var inputfile = $(this).val().split('\\');
+		$("#filevalue").text(inputfile[inputfile.length-1]);
+	})
+	
+	$("#allcheck").click(function(){
+		$('input:checkbox').prop('checked',this.checked);
+	})
 })
 
 function go(page){
@@ -37,7 +46,8 @@ function ajax(sdata){
 						output += "<tr><td><p><label class='checkbox'>"
 						output += "<input type='checkbox'/>"
 						output += ' <span></span></label></p></td><td><p class="text-danger font-size-lg"> 임시보관 </p></td>'
-						output += '<td><div style="margin-top:1rem">' + '<a href="#">' + item.mail_SUBJECT +'</p></div></td>'
+						output += '<td><div class="btn btn-text-primary font-weight-bold mr-2"' 
+							+'style="margin-top:4px">' + '<a href="#">' + item.mail_SUBJECT +'</a></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
 				output += "</tbody>"

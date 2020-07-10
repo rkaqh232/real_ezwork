@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="resources/js/jquery-3.5.0.js"></script>
-<script src="resources/js/templist.js"></script>
+<script src="resources/js/mail/templist.js"></script>
 <style>
 p{margin-top:1rem}
 </style>
@@ -134,11 +134,11 @@ p{margin-top:1rem}
 						<div class="col-12 col-sm-6 col-xxl-4 order-2 order-xxl-1 d-flex flex-wrap align-items-center">
 							<div class="d-flex align-items-center mr-1 my-2">
 								<label class="checkbox checkbox-single checkbox-primary mr-3">
-									<input type="checkbox" />
+									<input type="checkbox" id="allcheck"/>
 									<span class="symbol-label"></span>
 								</label>
-								<span class="btn btn-clean btn-icon btn-sm mr-2" data-toggle="tooltip" title="Reload list">
-									<a href="inbox.mail"><i class="ki ki-refresh icon-1x"></i></a>
+								<span class="btn btn-clean btn-icon btn-sm mr-2" data-toggle="tooltip" title="새로고침">
+									<a href="temp.mail"><i class="ki ki-refresh icon-1x"></i></a>
 								</span>
 							</div>
 							<div class="d-flex align-items-center mr-1 my-2">

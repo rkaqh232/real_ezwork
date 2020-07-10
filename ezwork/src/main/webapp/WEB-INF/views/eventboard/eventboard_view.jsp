@@ -11,6 +11,8 @@
 		<!--begin::Card-->
 		<div class="card card-custom">
 			<div class="card-header">
+			<input type = "hidden" name="EV_NO" value ="${boarddata.EV_NO }">
+			<input type = "hidden" name="EV_PASS" value ="${boarddata.EV_PASS }">
 				<div class="card-title">
 					<i class="flaticon2-chat-1 text-info"></i>
 					<h3 class="card-label">&nbsp;글 상세보기</h3>
@@ -91,9 +93,10 @@
 		</a>
 		
 			 <!-- 삭제 -->
-			 <a href="#" class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="" data-original-title="삭제">
+			 <a href="# " data-toggle="modal"
+				data-target="#myModal" class="btn btn-default btn-icon btn-sm mr-2" >
 			<span class="svg-icon svg-icon-md">
-		  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+		  <svg data-toggle="tooltip" title="" data-original-title="삭제" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 		<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 		<rect x="0" y="0" width="24" height="24"></rect>
 		<path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
@@ -116,6 +119,36 @@
 		
     </div>
 			</div>
+			
+			<%--modal 시작 --%>
+		<div class="modal" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal body -->
+					<div class="modal-body">
+						<form name="deleteForm" action="BoardDeleteAction.ev"
+							method="post">
+							<%--http://localhost:8088/Board_ajax_bootstrap/BoardDetailAction.bo?num=22
+               				  주소를 보면 num을 파라미터로 넘기고 있습니다.
+              				   이 값을 가져와서 ${param.num}를 사용
+               				  또는 ${boarddata.BOARD_NUM}
+                				 --%>
+							<input type="hidden" name="num" value="${boarddata.EV_NO}" id="board_num">
+							<div class="form-group">
+								<label for="pwd">비밀번호</label> <input type="password"
+									class="form-control" placeholder="Enter password"
+									name="EV_PASS" id="ev_pass">
+							</div>
+							<button type="submit" class="btn btn-primary">전송</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			
+			
 			</div>
 		</div>
 </body>

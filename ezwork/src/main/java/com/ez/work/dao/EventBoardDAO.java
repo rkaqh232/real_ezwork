@@ -45,4 +45,13 @@ public class EventBoardDAO {
 	public EventBoard isBoardWriter(Map<String, Object> map) {
 		return sqlSession.selectOne("EventBoards.BoardWriter", map);
 	}
+
+	public void insert_deleteFiles(EventBoard board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int boardDelete(EventBoard board) {
+		return sqlSession.delete("EventBoards.delete", board);
+	}
 }

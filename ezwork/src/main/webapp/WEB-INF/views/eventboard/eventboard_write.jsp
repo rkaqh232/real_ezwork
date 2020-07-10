@@ -62,7 +62,8 @@
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
 						<div class="col-lg-7">
-							<input name ="EV_CONTENT" style="height: 325px" class="form-control" rows="3" placeholder="내용을 입력하세요">
+							<textarea name ="EV_CONTENT" style="height: 325px" class="form-control" rows="3" placeholder="내용을 입력하세요">
+						</textarea>
 						</div>
 					</div>
 

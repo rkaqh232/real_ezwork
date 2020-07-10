@@ -21,6 +21,7 @@
 			<!--begin::Form-->
 			<form action="BoardModifyAction.ev" method="post"
 				enctype="multipart/form-data" name="boardform">
+				<input type = "hidden" name="EV_NO" value ="${boarddata.EV_NO }">
 				<div class="card-body">
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">말머리
@@ -55,7 +56,7 @@
 					<div class="form-group row">
 						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
 						<div class="col-lg-7">
-							<input name ="EV_CONTENT" style="height: 325px" class="form-control" value="${boarddata.EV_CONTENT }">
+							<textarea name ="EV_CONTENT" style="height: 325px" class="form-control">${boarddata.EV_CONTENT }</textarea>
 						</div>
 					</div>
 

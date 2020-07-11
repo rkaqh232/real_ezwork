@@ -35,6 +35,10 @@ public class MailDAO {
 		return sqlSession.selectList("Mails.templist", map);
 	}
 	
+	public List<Mail> getBinList(HashMap<String, Object> map){
+		return sqlSession.selectList("Mails.binlist", map);
+	}
+	
 	public int getListCount(String id) {
 		return sqlSession.selectOne("Mails.incount",id);
 	}
@@ -44,6 +48,11 @@ public class MailDAO {
 	public int getTempCount(String id) {
 		return sqlSession.selectOne("Mails.tempcount",id);
 	}
+	public int getBinCount(String id) {
+		int in = sqlSession.selectOne("Mails.binoutcount",id);
+		int out = sqlSession.selectOne("Mails.binincount",id);
+		return (in+out);
+	}
 
 	public int setRCheckUpdate(int num) {
 		return sqlSession.update("Mails.RcheckUpdate",num);
@@ -51,5 +60,9 @@ public class MailDAO {
 
 	public Mail Indetail(int num) {
 		return sqlSession.selectOne("Mails.indetail",num);
+	}
+	
+	public int InToBin(int num) {
+		return sqlSession.update("Mails.intobin",num);
 	}
 }

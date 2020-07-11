@@ -178,15 +178,9 @@
                                  <i class="menu-arrow"></i>
                                  <ul class="menu-subnav">
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="in.att" class="menu-link">
+                                       href="DailyCommute.cm" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">출근 등록</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="out.att"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">퇴근 등록</span>
+                                       </i> <span class="menu-text">일일 근태 등록</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="view.att"
@@ -198,12 +192,12 @@
                                        href="all.att"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">전사원 근태 조회</span>
+                                       </i> <span class="menu-text">부서별 근태 조회</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="check.att" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">근무시간진단</span>
+                                       </i> <span class="menu-text">근무 시간 진단</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="monthly.att" class="menu-link">
@@ -228,19 +222,19 @@
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="list.holi" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">부서 휴가 신청현황 조회</span>
+                                       </i> <span class="menu-text">휴가신청</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="request.holi"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">휴가신청</span>
+                                       </i> <span class="menu-text">휴가관리</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="view.holi"
                                        class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">휴가사용현황</span>
+                                       </i> <span class="menu-text">부서별 휴가사용현황</span>
                                     </a></li>
 
                                  </ul>

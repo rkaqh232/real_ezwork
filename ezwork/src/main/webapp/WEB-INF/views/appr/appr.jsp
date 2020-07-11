@@ -182,7 +182,7 @@ p{margin-top:1rem}
 													<th>Record ID</th>
 													<th>Order ID</th>
 													<th>Country</th>
-													<th>Ship City</th>
+													<th>Ship ity</th>
 													<th>Company Agent</th>
 													<th><span class="label label-lg font-weight-bold label-light-info label-inline">인사팀</span></th>
 													<th>Status</th>

@@ -21,7 +21,8 @@ function hideRe(){
 			<i class="flaticon2-left-arrow-1"></i>
 		</a>
 		
-		<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="Delete">
+		<button data-toggle="modal" data-target="#myModal" style="border:none;background:transparent">
+		<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="삭제">
 			<span class="svg-icon svg-icon-md">
 				<!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -33,7 +34,32 @@ function hideRe(){
 				</svg>
 				<!--end::Svg Icon-->
 			</span>
-		</span>
+		</span></button>
+		
+		
+		<!-- 삭제 모달 -->
+		<div class="modal" id="myModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		     <!-- Modal body -->
+		      <div class="modal-body">
+		        <form name="deleteForm" action="InToBin.mail" method="post">
+		          <%-- http://localhost:8088/Board_Ajax_bootstrap/BoardDetailAction.bo?num
+		          	     주소를 보면 num을 파라미터로 넘기고 있다. 
+		          	     이 값을 가져와서 ${param.num}을 사용 또는 ${boarddata.BOARD_NUM}
+		          --%>
+		          <input type="hidden" name="num" value="${param.num}" id="mail_num">
+		          <div class="modal-body" style="text-align:center">
+		          <h4>메일을 삭제하시겠습니까?</h4></div>
+		          <div style="margin:0 auto;width:25%">
+		          <button type="submit" class="btn btn-light-primary font-weight-bold" >삭제</button>
+		          <button type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">취소</button>
+		          </div>
+		        </form>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		
 	</div>
 	<!--end::Left-->
@@ -132,7 +158,7 @@ function hideRe(){
 						<!--end::Subject-->
 						<!--begin::Message-->
 						<div id="kt_inbox_reply_editor" class="border-0" style="height: 250px">
-						<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none; padding:30px" required> ${maildata.MAIL_SUBJECT}</textarea>
+						<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="12" class="form-control" style="border:none; padding:30px" required> ${maildata.MAIL_SUBJECT}</textarea>
 						</div>
 						<!--end::Message-->
 						<!--begin::Attachments-->

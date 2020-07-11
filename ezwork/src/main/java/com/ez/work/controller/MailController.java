@@ -204,7 +204,7 @@ public class MailController {
 			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
 			@RequestParam(value="id") String id)
 	{
-		int listcount=mailService.getOutListCount(id);
+		int listcount=mailService.getBinListCount(id);
 		int maxpage = (listcount+limit-1)/limit;
 		int startpage = ((page-1)/10)*10+1;
 		int endpage = startpage+10-1;
@@ -212,7 +212,7 @@ public class MailController {
 		if(endpage>maxpage)
 			endpage = maxpage;
 		
-		List<Mail> maillist = mailService.getOutboxList(page, limit, id);
+		List<Mail> maillist = mailService.getBinList(page, limit, id);
 		
 		System.out.println("sender:"+id);
 		System.out.println("listcount:" + listcount);
@@ -275,6 +275,30 @@ public class MailController {
 			mv.addObject("maildata", mail);
 			mv.setViewName("home");
 		}		
+		return mv;
+	}
+	
+	/*@PostMapping("Delete.mail")
+	public ModelAndView MailDeleteAction(Mail mail, String before_file, int num, ModelAndView mv) {
+		int result = mailService.mailDelete(num);
+		if(result==0) {
+			System.out.println();
+			
+		}
+	}*/
+	
+	@PostMapping("InToBin.mail")
+	public ModelAndView IntoBin(int num, ModelAndView mv) {
+		int result = mailService.InToBin(num);
+		if(result == 0) {
+			System.out.println("메일 삭제 실패");
+			mv.setViewName("error/error");
+			mv.addObject("message", "메일 삭제 실패");
+		}else {
+			System.out.println("휴지통 이동 성공");
+			mv.setViewName("home");
+			mv.addObject("message", "메일이 삭제되었습니다.");
+		}
 		return mv;
 	}
 }

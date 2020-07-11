@@ -61,6 +61,16 @@
 		where MAIL_SENDER=#{id} and MAIL_TYPE='out'
 	</select>
 	
+	<select id="binoutcount" parameterType="String" resultType="int">
+		select count(*) from SENTMAIL
+		where MAIL_SENDER=#{id} and MAIL_TYPE='bin'
+	</select>
+	
+	<select id="binincount" parameterType="String" resultType="int">
+		select count(*) from RECEIPTMAIL
+		where MAIL_RECIPIENT=#{id} and MAIL_TYPE='bin'
+	</select>
+	
 	<select id="tempcount" parameterType="String" resultType="int">
 		select count(*) from SENTMAIL
 		where MAIL_SENDER=#{id} and MAIL_TYPE='temp'
@@ -96,6 +106,19 @@
 		where rnum &gt;=#{start} and rnum &lt;=#{end}
 	</select>
 	
+	<select id="binlist" parameterType="java.util.Map" resultType="mail">
+		select rownum rnum, * from 
+			(select s.*, r.* 
+			 from 
+			 	(select* from SENTMAIL
+			 	 where MAIL_SENDER=#{sender} and MAIL_TYPE='bin') s,
+			 	 (select* from RECEIPTMAIL
+			 	 where MAIL_RECIPIENT=#{sender} and MAIL_TYPE='bin') r
+			 order by MAIL_DATE desc)
+		where rnum &gt;=#{start} and rnum &lt;=#{end}
+	</select>	
+	<!-- join 후  MAIL_DATE로 order by 한 후 에 rownum 부여하는 방법 ? -->
+	
 	<update id="RcheckUpdate" parameterType="int">
 		update RECEIPTMAIL
 		set MAIL_RCHECK = 1
@@ -105,4 +128,11 @@
 	<select id="indetail" parameterType="int" resultType="mail">
 		select* from RECEIPTMAIL where MAIL_NUM=#{number}
 	</select>
+	
+	<update id="intobin" parameterType="int">
+		update RECEIPTMAIL
+		set MAIL_TYPE='bin'
+		where MAIL_NUM=#{number}
+	</update>
+	
 </mapper>

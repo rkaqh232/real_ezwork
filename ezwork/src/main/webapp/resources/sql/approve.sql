@@ -15,3 +15,5 @@ create table approve(
 	APPR_VAL		NUMBER,
 
 );
+
+

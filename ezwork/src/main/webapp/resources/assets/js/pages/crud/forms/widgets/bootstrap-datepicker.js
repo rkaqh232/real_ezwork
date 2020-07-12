@@ -100,7 +100,8 @@ var KTBootstrapDatepicker = function () {
         $('#kt_datepicker_5').datepicker({
             rtl: KTUtil.isRTL(),
             todayHighlight: true,
-            templates: arrows
+            templates: arrows,
+            format: 'yyyy/mm/dd'
         });
 
          // inline picker

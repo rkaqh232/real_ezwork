@@ -36,6 +36,16 @@ create table member(
 
   );
 
+insert into member
+		(M_CODE,
+		M_PASS, M_NAME, M_PART_C,
+		M_EMAIL,M_LEVEL)
+		values
+		(
+		
+		);
+		
+
 
 insert into member(M_CODE,M_PASS) -- 임시 관리자 계정
 values('admin','1');

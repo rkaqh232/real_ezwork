@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,9 +66,7 @@
 								<div class="d-flex justify-content-between flex-wrap mt-1">
 									<div class="d-flex mr-3">
 										<a href="#"
-											class="text-dark-75 text-hover-primary font-size-h5 font-weight-bold mr-3">Jason
-											Muller</a> <a href="#"> <i
-											class="flaticon2-correct text-success font-size-h5"></i>
+											class="text-dark-75 text-hover-primary font-size-h2 font-weight-bold mr-3">이재희</a> 
 										</a>
 									</div>
 									<div class="my-lg-0 my-3"></div>
@@ -76,24 +75,18 @@
 								<!--begin::Content-->
 								<div class="d-flex flex-wrap justify-content-between mt-1">
 									<div class="d-flex flex-column flex-grow-1 pr-8">
-										<div class="d-flex flex-wrap mb-4">
-											<a href="#"
-												class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-new-email mr-2 font-size-lg"></i>jason@siastudio.com
-											</a> <a href="#"
-												class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>PR
-												Manager
-											</a> <a href="#"
-												class="text-dark-50 text-hover-primary font-weight-bold">
-												<i class="flaticon2-placeholder mr-2 font-size-lg"></i>Melbourne
-											</a>
+										<div class="d-flex flex-wrap mb-4" style="margin-top: 14px; margin-bottom:8px;">
+										<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+												<i class="flaticon2-placeholder mr-2 font-size-lg"></i>인사팀
+											</span>
+												<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+												<i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>주임
+											</span> 
+											
 										</div>
-										<span class="font-weight-bold text-dark-50">I
-											distinguish three main text objectives could be merely to
-											inform people.</span> <span class="font-weight-bold text-dark-50">A
-											second could be persuade people.You want people to bay
-											objective</span>
+											<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+												<i class="flaticon2-new-email mr-2 font-size-lg"></i>jason@siastudio.com
+											</span>
 									</div>
 									<div
 										class="d-flex align-items-center w-25 flex-fill float-right mt-lg-12 mt-8">
@@ -209,7 +202,7 @@
 											<!--begin::Table-->
 											<div class="table-responsive">
 												<table class="table table-hover" >
-													<thead>
+													<thead style="text-align:center;">
 														<tr>
 														<th>등록일자</th>
 															<th>사원번호</th>
@@ -221,7 +214,7 @@
 															<th>근무확정</th>
 														</tr>
 													</thead>
-													<tbody>
+													<tbody style="text-align:center;">
 														<tr>
 															<td>
 															2020-07-11

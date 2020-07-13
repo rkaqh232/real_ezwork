@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias alias="member" type="com.ez.work.domain.Member" />
 		<typeAlias alias="eventboard" type="com.ez.work.domain.EventBoard" />
+		<typeAlias alias="noticeboard" type="com.ez.work.domain.NoticeBoard" />
 		<typeAlias alias ="mail" type="com.ez.work.domain.Mail" />
 		<typeAlias alias ="appr" type="com.ez.work.domain.Appr" />
 	</typeAliases>
@@ -13,6 +14,7 @@
 	<mappers>
 		<mapper resource="sql/member.xml" />
 		<mapper resource="sql/eventboard.xml" />
+		<mapper resource="sql/noticeboard.xml" />
 		<mapper resource="sql/mail.xml" />
 		<mapper resource="sql/appr.xml"/>
 	</mappers>

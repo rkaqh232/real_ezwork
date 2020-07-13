@@ -4,12 +4,9 @@
 <html>
 <head>
 
-<!--  혜정 사원 등록 페이지  -->
-<!--  혜정 사원 등록 페이지  -->
-<!--  혜정 사원 등록 페이지  -->
 
 <meta charset="UTF-8">
-<title>신규 사원 등록</title>
+<title>사원 정보 수정</title>
 <link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4" rel="stylesheet" type="text/css" />
 <style>
 a{

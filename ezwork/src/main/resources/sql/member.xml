@@ -22,7 +22,7 @@
       	#{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
       	#{LI_NAME}, #{LI_ORGAN}, #{LI_DATE}
       	)   
-    </insert> <!--  만들고 작성하기  -->
+    </insert> 
     
     
     

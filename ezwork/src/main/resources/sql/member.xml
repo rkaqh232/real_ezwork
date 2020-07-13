@@ -14,7 +14,14 @@
     <insert id="insert" parameterType="member">
    	  insert into member
       values
-      	('EMP'||emp_seq.nextval, #{password}, #{name}, #{age}, #{gender}, #{email})   
+      	('EMP'||emp_seq.nextval, #{M_PASS}, #{M_FILE, jdbcType=VARCHAR},#{M_ORIGINAL, jdbcType=VARCHAR}, 
+      	#{M_PART_C}, #{M_LEVEL}, #{M_NAME},
+      	#{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE}, 
+      	#{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, SYSDATE, 
+      	#{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, #{SC_GRAD_DAY},
+      	#{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
+      	#{LI_NAME}, #{LI_ORGAN}, #{LI_DATE}
+      	)   
     </insert> <!--  만들고 작성하기  -->
     
     

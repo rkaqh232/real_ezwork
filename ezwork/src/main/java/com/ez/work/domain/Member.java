@@ -1,41 +1,53 @@
 package com.ez.work.domain;
 
+import org.springframework.web.multipart.MultipartFile;
 
 //혜정, 민혁
 public class Member {
-	private String M_CODE;  //사원정보 	
-	private String M_PASS;       		 
-	private int M_WORK_C; 				
-	private String M_PART_C; 	
-	private int M_LEVEL;  	
-	private String M_NAME;    			
-	private String M_NAME_EN; 		
-	private int M_PRI_NUMBER;  		  
-	private String M_GENDER; 		
-	private String M_BIRTH;  			
-	private String M_ARMY;   			
-	private String M_MARRIAGE; 		
-	private String M_TEL;       		
-	private String M_MOBILE_TEL;   		
-	private String M_EMAIL;        		
-	private String M_ADDRESS;       		
-	private String M_JOIN_DATE;    	
-	private String SC_NAME; //학력정보
-	private String SC_MAJOR;
-	private String SC_DEGREE;
-	private String SC_ADDRESS;
-	private String SC__GRAD_DAY;
-	private String LG_NAME; //어학정보
-	private String LG_TEST;
-	private String LG_GRADE;
-	private String LG_DATE;
-	private String LG_ORGAN;
-	private String LI_NAME; //자격증정보
-	private String LI_ORGAN;
-	private String LI_DATE;
+	private String M_CODE; 			 //사원정보 
+	private String M_PASS;  	   	 //비밀번호    
+	private String M_FILE;		 	 //증명사진
+	private String M_ORIGINAL;  	 //증명사진 가공할 이름
+	private String M_PART_C;		 //부서코드
+	private int M_LEVEL;  			 //직급코드
+	private String M_NAME;			 //성명 				  
+	private String M_GENDER;		 //성별	
+	private String M_BIRTH;  		 //생년월일		
+	private String M_ARMY;   		 //군필여부
+	private String M_MARRIAGE; 		 //결혼여부
+	private String M_MOBILE_TEL;     //핸드폰
+	private String M_EMAIL;          //이메일
+	private String M_ADDRESS;        //자택주소
+	private String M_JOIN_DATE;    	 //입사날짜
+	private String SC_NAME; 		 //학교명
+	private String SC_MAJOR;		 //전공
+	private String SC_DEGREE;		 //학위
+	private String SC_ADDRESS;       //소재지
+	private String SC_GRAD_DAY;      //졸업일자
+	private String LG_NAME;          //외국어명
+	private String LG_TEST;          //시험명
+	private String LG_GRADE;         //시험점수
+	private String LG_ORGAN;         //발급처
+	private String LG_DATE;          //발급일
+	private String LI_NAME;          //자격증 명
+	private String LI_ORGAN;         //발급기관
+	private String LI_DATE;          //발급일자
+	
+	
+	//qna_board_write.jsp에서 name 속성 확인하세요
+	//<input type="file" id="upfile" name="profile_avatar"> 확인
+	
+	private MultipartFile profile_avatar;
 	
 	
 	
+	
+	public MultipartFile getProfile_avatar() {
+		return profile_avatar;
+	}
+	public void setProfile_avatar(MultipartFile profile_avatar) {
+		this.profile_avatar = profile_avatar;
+	}
 	public String getM_CODE() {
 		return M_CODE;
 	}
@@ -48,11 +60,17 @@ public class Member {
 	public void setM_PASS(String m_PASS) {
 		M_PASS = m_PASS;
 	}
-	public int getM_WORK_C() {
-		return M_WORK_C;
+	public String getM_FILE() {
+		return M_FILE;
 	}
-	public void setM_WORK_C(int m_WORK_C) {
-		M_WORK_C = m_WORK_C;
+	public void setM_FILE(String m_FILE) {
+		M_FILE = m_FILE;
+	}
+	public String getM_ORIGINAL() {
+		return M_ORIGINAL;
+	}
+	public void setM_ORIGINAL(String m_ORIGINAL) {
+		M_ORIGINAL = m_ORIGINAL;
 	}
 	public String getM_PART_C() {
 		return M_PART_C;
@@ -71,18 +89,6 @@ public class Member {
 	}
 	public void setM_NAME(String m_NAME) {
 		M_NAME = m_NAME;
-	}
-	public String getM_NAME_EN() {
-		return M_NAME_EN;
-	}
-	public void setM_NAME_EN(String m_NAME_EN) {
-		M_NAME_EN = m_NAME_EN;
-	}
-	public int getM_PRI_NUMBER() {
-		return M_PRI_NUMBER;
-	}
-	public void setM_PRI_NUMBER(int m_PRI_NUMBER) {
-		M_PRI_NUMBER = m_PRI_NUMBER;
 	}
 	public String getM_GENDER() {
 		return M_GENDER;
@@ -107,12 +113,6 @@ public class Member {
 	}
 	public void setM_MARRIAGE(String m_MARRIAGE) {
 		M_MARRIAGE = m_MARRIAGE;
-	}
-	public String getM_TEL() {
-		return M_TEL;
-	}
-	public void setM_TEL(String m_TEL) {
-		M_TEL = m_TEL;
 	}
 	public String getM_MOBILE_TEL() {
 		return M_MOBILE_TEL;
@@ -162,11 +162,11 @@ public class Member {
 	public void setSC_ADDRESS(String sC_ADDRESS) {
 		SC_ADDRESS = sC_ADDRESS;
 	}
-	public String getSC__GRAD_DAY() {
-		return SC__GRAD_DAY;
+	public String getSC_GRAD_DAY() {
+		return SC_GRAD_DAY;
 	}
-	public void setSC__GRAD_DAY(String sC__GRAD_DAY) {
-		SC__GRAD_DAY = sC__GRAD_DAY;
+	public void setSC_GRAD_DAY(String sC_GRAD_DAY) {
+		SC_GRAD_DAY = sC_GRAD_DAY;
 	}
 	public String getLG_NAME() {
 		return LG_NAME;
@@ -186,17 +186,17 @@ public class Member {
 	public void setLG_GRADE(String lG_GRADE) {
 		LG_GRADE = lG_GRADE;
 	}
-	public String getLG_DATE() {
-		return LG_DATE;
-	}
-	public void setLG_DATE(String lG_DATE) {
-		LG_DATE = lG_DATE;
-	}
 	public String getLG_ORGAN() {
 		return LG_ORGAN;
 	}
 	public void setLG_ORGAN(String lG_ORGAN) {
 		LG_ORGAN = lG_ORGAN;
+	}
+	public String getLG_DATE() {
+		return LG_DATE;
+	}
+	public void setLG_DATE(String lG_DATE) {
+		LG_DATE = lG_DATE;
 	}
 	public String getLI_NAME() {
 		return LI_NAME;
@@ -216,9 +216,6 @@ public class Member {
 	public void setLI_DATE(String lI_DATE) {
 		LI_DATE = lI_DATE;
 	}
-	
-	
-	
 	
 	
 

@@ -212,7 +212,7 @@ public class MailController {
 		if(endpage>maxpage)
 			endpage = maxpage;
 		
-		List<Mail> maillist = mailService.getBinList(page, limit, id);
+		List<Mail> maillist = mailService.getBinList(page, limit, id, id);
 		
 		System.out.println("sender:"+id);
 		System.out.println("listcount:" + listcount);

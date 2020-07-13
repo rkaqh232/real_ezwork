@@ -54,20 +54,21 @@ var KTAddUser = function () {
 	}
 
 	var _initValidations = function () {
-		// Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+		// Init form validation rules. For more info check the FormValidation
+		// plugin's official documentation:https://formvalidation.io/
 
 		// Validation Rules For Step 1
 		_validations.push(FormValidation.formValidation(
 			_formEl,
 			{
 				fields: {
-					firstname: {
+					/*firstname: {
 						validators: {
 							notEmpty: {
 								message: '사원번호는 필수항목입니다. '
 							}
 						}
-					},
+					},*/
 					lastname: {
 						validators: {
 							notEmpty: {
@@ -93,30 +94,33 @@ var KTAddUser = function () {
 						validators: {
 							notEmpty: {
 								message: '비밀번호는 필수항목입니다.'
-							}
+							},
+							 stringLength: {
+							      min:6,
+							      max:6,
+							      message: '최소, 최대 길이는 6자리 입니다.'
+							     }					
 						}
 					},
 					name: {
 						validators: {
 							notEmpty: {
 								message: '성명은 필수항목입니다.'
-							}
+							},
+							stringLength: {
+							      max:3,
+							      message: '최대 길이는 5자리 입니다.'
+							     }
 						}
 					},
-					/*pri_code: {
-						validators: {
-							notEmpty: {
-								message: '주민등록번호는 필수항목입니다.'
-							}
-						}
-					},*/
-					/*birth: {
-						validators: {
-							notEmpty: {
-								message: '생년월일은 필수항목입니다.'
-							}
-						}
-					},*/
+					/*
+					 * pri_code: { validators: { notEmpty: { message: '주민등록번호는
+					 * 필수항목입니다.' } } },
+					 */
+					/*
+					 * birth: { validators: { notEmpty: { message: '생년월일은
+					 * 필수항목입니다.' } } },
+					 */
 					army: {
 						validators: {
 							notEmpty: {
@@ -130,29 +134,37 @@ var KTAddUser = function () {
 							notEmpty: {
 								message: '핸드폰번호는 필수항목입니다.'
 							},
-							/*phone: {
-								country: 'US',
-								message: 'The value is not a valid US phone number. (e.g 5554443333)'
-							}*/
+							 stringLength: {
+							      min:13,
+							      max:13,
+							      message: '최대 길이는 13자리 입니다.'
+							     }
+							/*
+							 * phone: { country: 'US', message: 'The value is
+							 * not a valid US phone number. (e.g 5554443333)' }
+							 */
 						}
 					},
-					/*email: {
-						validators: {
-							notEmpty: {
-								message: 'Email is required'
-							},
+					email: {
+						validators: {							
 							emailAddress: {
-								message: 'The value is not a valid email address'
+								message: '이메일 형식에 맞지 않습니다.'
 							}
 						}
-					},*/
-					companywebsite: {
+						
+					},
+					pri_code: {
 						validators: {
 							notEmpty: {
-								message: 'Website URL is required'
-							}
+								message: '주민등록번호는 필수항목입니다.'
+							},
+							stringLength: {
+								  min:13,
+							      max:13,
+							      message: '최대 길이는 '-' 포함 13자리 입니다.'
+							 }
 						}
-					}
+					},
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -207,13 +219,13 @@ var KTAddUser = function () {
 							}
 						}
 					},
-					/*postcode: {
+					postcode: {
 						validators: {
 							notEmpty: {
 								message: 'Postcode is required'
 							}
 						}
-					},*/
+					},
 					city: {
 						validators: {
 							notEmpty: {

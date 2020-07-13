@@ -11,8 +11,12 @@
 	</appender>
 	
 	<!-- Application Loggers -->
+	<logger name="Members">
+		<level value="trace" />
+	</logger>
+	
 	<logger name="com.ez.work">
-		<level value="info" />
+		<level value="trace" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -34,7 +38,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="trace" />
 		<appender-ref ref="console" />
 	</root>
 	

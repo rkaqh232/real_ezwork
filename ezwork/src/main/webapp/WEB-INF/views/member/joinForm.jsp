@@ -11,7 +11,12 @@
 <meta charset="UTF-8">
 <title>신규 사원 등록</title>
 <link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4" rel="stylesheet" type="text/css" />
+<style>
+a{
+font-size:12px !important;
+}
 
+</style>
 
 <body>
 
@@ -103,7 +108,7 @@
 													<div class="my-5 step" data-wizard-type="step-content"
 														data-wizard-state="current">
 														<h3 class="text-dark font-weight-bold mb-10"
-															font-weight="bold";>사원 등록</h3>
+															font-weight="bold";>사원 등록<a style="color:red">   * 필수항목입니다. </a> </h3>
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
@@ -149,7 +154,7 @@
 														</div>
 														<!--  비밀번호  -->
 														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호</label>
+															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호<a style="color:red"> * </a></label>
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
@@ -282,7 +287,7 @@
 
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
-																성명 </label>
+																성명<a style="color:red"> *</a> </label>
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
@@ -365,7 +370,7 @@
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
-																핸드폰 </label>
+																핸드폰<a style="color:red"> *</a> </label>
 															<div class="col-lg-9 col-xl-9">
 																<div
 																	class="input-group input-group-solid input-group-lg">
@@ -385,7 +390,7 @@
 
 
 														<div class="form-group row">
-															<label class="col-3"> 이메일 (Email) </label>
+															<label class="col-3"> 이메일 (Email)<a style="color:red"> *</a> </label>
 															<div class="col-9">
 																<div class="input-group input-group-solid">
 																	<div class="input-group-prepend">

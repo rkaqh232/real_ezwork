@@ -102,11 +102,11 @@ p{margin-top:1rem}
 		<form class="kt-form kt-form--fit mb-15">
 			<div class="row mb-6">
 				<div class="col-lg-3 mb-lg-0 mb-6">
-					<label>RecordID:</label>
+					<label>번호</label>
 					<input type="text" class="form-control datatable-input" placeholder="E.g: 4590" data-col-index="0" />
 				</div>
 				<div class="col-lg-3 mb-lg-0 mb-6">
-					<label>OrderID:</label>
+					<label>제출자</label>
 					<input type="text" class="form-control datatable-input" placeholder="E.g: 37000-300" data-col-index="1" />
 				</div>
 				<div class="col-lg-3 mb-lg-0 mb-6">
@@ -171,27 +171,23 @@ p{margin-top:1rem}
 			<thead>
 				<tr>
 					<th>번호</th>
-					<th>Order ID</th>
-					<th>Country</th>
-					<th>Ship City</th>
-					<th>Company Agent</th>
-					<th>Ship Date</th>
-					<th>Status</th>
-					<th>Type</th>
-					<th>Actions</th>
+					<th>제출자</th>
+					<th>제목</th>
+					<th>결재 구분</th>
+					<th>제출일</th>
+					<th>완료일</th>
+					<th>진행상황</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th>Record ID</th>
-					<th>Order ID</th>
-					<th>Country</th>
-					<th>Ship ity</th>
-					<th>Company Agent</th>
-					<th><span class="label label-lg font-weight-bold label-light-info label-inline">인사팀</span></th>
-					<th>Status</th>
-					<th>Type</th>
-					<th>Actions</th>
+					<td>1</td>
+					<td><span class="label label-lg font-weight-bold label-light-info label-inline">인사팀</span>admin</td>
+					<td>쉬고싶어</td>
+					<td>업무</td>
+					<td>2020/07/13</td>
+					<td>-</td>
+					<td>진행중</td>
 				</tr>
 			</tfoot>
 		</table>

@@ -52,14 +52,13 @@ public class MailServiceImpl implements MailService{
 		return dao.getTempboxList(map);
 	}
 	
-	public List<Mail> getBinList(int page, int limit, String sender, String receiver) {
+	public List<Mail> getBinList(int page, int limit, String id) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		int startrow = (page-1)*limit + 1;
 		int endrow = startrow + limit -1;
 		map.put("start", startrow);
 		map.put("end", endrow);
-		map.put("sender", sender);
-		map.put("receiver", receiver);
+		map.put("id", id);
 		return dao.getBinList(map);
 	}
 	
@@ -81,6 +80,10 @@ public class MailServiceImpl implements MailService{
 			return null;
 		return dao.Indetail(num);
 	}
+	
+	public Mail outDetail(int num) {
+		return dao.Outdetail(num);
+	}
 
 	public int setRCheckUpdate(int num) {
 		return dao.setRCheckUpdate(num);	//return 1이면 1줄 업데이트 된 것.
@@ -88,6 +91,13 @@ public class MailServiceImpl implements MailService{
 	
 	public int InToBin(int num) {
 		return dao.InToBin(num);
+	}
+
+	public int tempDelete(int num) {
+		int result = 0;
+		//파일 삭제 처리하기
+		result = dao.tempDelete(num);
+		return result;
 	}	
 	
 }

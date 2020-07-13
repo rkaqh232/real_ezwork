@@ -2,7 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="resources/js/jquery-3.5.0.js"></script>
-
+<script>
+function reply(){
+	document.getElementById("kt_inbox_reply").style.display="block";
+}
+function hideRe(){
+	document.getElementById("kt_inbox_reply").style.display="none";	
+	
+}
+</script>
 <div class="container">
 <div class="card card-custom">
 <!--begin::Header-->
@@ -12,6 +20,7 @@
 		<a href="javascript:history.back()" class="btn btn-clean btn-icon btn-sm mr-6" data-inbox="back">
 			<i class="flaticon2-left-arrow-1"></i>
 		</a>
+		
 		<button data-toggle="modal" data-target="#myModal" style="border:none;background:transparent">
 		<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="삭제">
 			<span class="svg-icon svg-icon-md">
@@ -27,20 +36,21 @@
 			</span>
 		</span></button>
 		
+		
 		<!-- 삭제 모달 -->
 		<div class="modal" id="myModal">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		     <!-- Modal body -->
 		      <div class="modal-body">
-		        <form name="deleteForm" action="TempDelete.mail" method="post">
+		        <form name="deleteForm" action="InToBin.mail" method="post">
 		          <%-- http://localhost:8088/Board_Ajax_bootstrap/BoardDetailAction.bo?num
 		          	     주소를 보면 num을 파라미터로 넘기고 있다. 
 		          	     이 값을 가져와서 ${param.num}을 사용 또는 ${boarddata.BOARD_NUM}
 		          --%>
 		          <input type="hidden" name="num" value="${param.num}" id="mail_num">
 		          <div class="modal-body" style="text-align:center">
-		          <h4>메일을 영구 삭제하시겠습니까?</h4></div>
+		          <h4>메일을 삭제하시겠습니까?</h4></div>
 		          <div style="margin:0 auto;width:25%">
 		          <button type="submit" class="btn btn-light-primary font-weight-bold" >삭제</button>
 		          <button type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">취소</button>
@@ -50,6 +60,7 @@
 		    </div>
 		  </div>
 		</div>
+		
 	</div>
 	<!--end::Left-->
 	<!--begin::Right-->
@@ -65,8 +76,56 @@
 	<!--end::Right-->
 </div>
 <!--end::Header-->
+<!--begin::Body-->
+<div class="card-body p-0">
+	<!--begin::Header-->
+	<div class="d-flex align-items-center justify-content-between flex-wrap card-spacer-x py-5">
+		<!--begin::Title-->
+		<div class="d-flex align-items-center mr-2 py-2">
+			<div class="font-weight-bold font-size-h3 mr-3">${maildata.MAIL_SUBJECT}</div>
+			<span class="label label-light-primary font-weight-bold label-inline mr-2">inbox</span>
+		</div>
+		<!--end::Title-->
+	</div>
+	<!--end::Header-->
+	<!--begin::Messages-->
+	<div class="mb-3">
+		<div class="cursor-pointer toggle-on" data-inbox="message">
+			<div class="d-flex align-items-center card-spacer-x py-6">
+				<span class="symbol symbol-50 mr-4">
+					<span class="symbol-label" style="background-image: url('assets/media/users/100_13.jpg')"></span>
+				</span>
+				<div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
+					<div class="d-flex">
+						<a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mr-2">${maildata.MAIL_SENDER }</a>
+						
+					</div>
+					<div class="d-flex flex-column">
+						<div class="toggle-off-item">
+							<span class="font-weight-bold text-muted cursor-pointer" data-toggle="dropdown">to ${maildata.MAIL_RECIPIENT}
+							</span>
+						</div>
+						<div class="text-muted font-weight-bold toggle-on-item" data-inbox="toggle">With resrpect, i must disagree with Mr.Zinsser. We all know the most part of important part....</div>
+					</div>
+				</div>
+				<div class="d-flex align-items-center">
+					<div class="font-weight-bold text-muted mr-2 date">${maildata.MAIL_DATE}</div>
+					<div class="d-flex align-items-center" data-inbox="toolbar">
+						<span class="btn btn-icon-primary btn-hover-bg-light btn-sm btn-icon mr-2" data-toggle="tooltip" data-placement="top" title="답장하기">
+							<button onclick="reply()" style="border:none;background:transparent"><i class="flaticon2-reply-1 icon-1x"></i></button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="card-spacer-x py-3 toggle-off-item" style="margin-top:40px;margin-bottom:40px;">
+				<textarea cols="67" rows="12" class="form-control" style="border:none; padding:30px; background:transparent" disabled>${maildata.MAIL_CONTENT}</textarea>
+			</div>
+		</div>
+	</div>
+	<!--end::Messages-->
+	
 	<!--begin::Reply-->
-	<div class="card-spacer mb-3" id="kt_inbox_reply">
+	<div class="card-spacer mb-3" id="kt_inbox_reply" style="display:none">
 		<div class="card card-custom shadow-sm">
 			<div class="card-body p-0">
 				<!--begin::Form-->
@@ -95,12 +154,12 @@
 						<!--end::CC-->
 						<!--begin::Subject-->
 						<div class="border-bottom">
-							<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" value="${maildata.MAIL_SUBJECT}" />
+							<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" value=" RE: ${maildata.MAIL_SUBJECT}" />
 						</div>
 						<!--end::Subject-->
 						<!--begin::Message-->
 						<div id="kt_inbox_reply_editor" class="border-0" style="height: 250px">
-						<textarea name="MAIL_CONTENT" id="MAIL_CONTENT" cols="67" rows="12" class="form-control" style="border:none; padding:30px" required>${maildata.MAIL_CONTENT}</textarea>
+						<textarea name="MAIL_CONTENT" id="MAIL_CONTENT" cols="67" rows="12" class="form-control" style="border:none; padding:30px" required><%="\r\n\n\n" %>----------------원본 메일----------------<%="\r\n"%>보낸사람:&nbsp;${maildata.MAIL_SENDER}<%="\r\n"%>날짜:&nbsp;${maildata.MAIL_DATE}<%="\r\n"%>제목:&nbsp;${maildata.MAIL_SUBJECT}<%="\r\n\n"%>${maildata.MAIL_CONTENT}</textarea>
 						</div>
 						<!--end::Message-->
 						<!--begin::Attachments-->
@@ -165,16 +224,23 @@
 							</span></label>
 							<!--end::Other-->
 						</div>
-						</form>
-						<!--end::Form-->
-						
 						<!--end::Actions-->
-						
+						<!--begin::Toolbar-->
+						<div class="d-flex align-items-center">
+							<span class="btn btn-icon btn-sm btn-clean" data-inbox="dismiss" data-toggle="tooltip" title="삭제">
+								<button onclick="hideRe()" type="reset" style="border:none;background:transparent"><i class="flaticon2-rubbish-bin-delete-button"></i></button>
+							</span>
+						</div>
+						<!--end::Toolbar-->
 					</div>
 					<!--end::Footer-->
+				</form>
+				<!--end::Form-->
 			</div>
 		</div>
 	</div>
 	<!--end::Reply-->
+</div>
+<!--end::Body-->
 </div>
 </div>

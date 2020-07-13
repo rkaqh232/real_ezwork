@@ -47,13 +47,25 @@ insert into SENTMAIL
 	(MAIL_NUM, MAIL_SENDER, MAIL_RECIPIENT, MAIL_SUBJECT,
 	   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
 	   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
-	 values(2, 'admin', 'admin', '두번째 메일', 'ㅎㅇ',
+	 values(2, 'admin', 'admin', '임시보관 메일', 'ㅎㅇ',
 	 null, null, 0, 'temp', sysdate); --임시 보관함
 
-insert into RECEIPTMAIL
+insert into sentMAIL
 	(MAIL_NUM, MAIL_SENDER, MAIL_RECIPIENT, MAIL_SUBJECT,
 	   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
 	   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
 	 values(3, 'admin', 'admin', '세번째 메일', 'ㅎㅇ',
 	 null, null, 0, 'bin', sysdate); --휴지통
 
+select* from
+	(select rownum rnum, u.*
+	from
+		(select* 
+		from 
+			(select* from SENTMAIL
+		 	 where MAIL_SENDER='admin' and MAIL_TYPE='bin'
+		 	 union 
+			 select* from RECEIPTMAIL
+		 	 where MAIL_RECIPIENT='admin' and MAIL_TYPE='bin') 
+		order by MAIL_DATE desc) u)
+where rnum>=1 and rnum<=10

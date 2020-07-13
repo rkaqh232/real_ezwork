@@ -18,7 +18,7 @@ create table member(
    M_MARRIAGE            varchar2(8) CHECK (M_MARRIAGE IN('Y','N')),  -- 결혼유무  
    M_MOBILE_TEL          VARCHAR2(20),                                -- 핸드폰
    M_EMAIL               VARCHAR2(100),                               -- 이메일
-   M_ADDRESS             VARCHAR2(100),                               -- 자택주소 -우편번호 sample6_postcode  / 상세주소 
+   M_ADDRESS             VARCHAR2(100),                               -- 자택주소 
    M_JOIN_DATE           DATE,                               		  -- 입사날짜-SYSDATE
    SC_NAME               VARCHAR2(50),                                -- 학교명   (학력정보)
    SC_MAJOR              VARCHAR2(20),                                -- 전공
@@ -32,7 +32,7 @@ create table member(
    LG_DATE               VARCHAR2(20),                                -- 발급일자 kt_datepicker_3
    LI_NAME               VARCHAR2(50),                                -- 자격증명  (자격정보)
    LI_ORGAN              VARCHAR2(50),                                -- 발급기관
-   LI_DATE               VARCHAR2(20)                                -- 발급일자 , 총 26개의 컬럼-kt_datepicker_3
+   LI_DATE               VARCHAR2(20)                                 -- 발급일자 , 총 28개의 컬럼-kt_datepicker_3
 
   );
 

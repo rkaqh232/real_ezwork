@@ -191,33 +191,39 @@ public class MemberController {
 		out.close();
 
 	}
+	
+		// 수정폼
+		@RequestMapping(value = "/update.hr", method = RequestMethod.GET)
+		public ModelAndView member_update(HttpSession session, ModelAndView mv) throws Exception {
+			String id = (String) session.getAttribute("id");
+			Member m = loginmemberservice.member_info(id);
+			mv.setViewName("member/updateForm2");
+			mv.addObject("memberinfo", m);
+			return mv;
+		}
 
-	/*
-	 * // db에 들어갈 부분 가공 private String fileDBName(String fileName, String
-	 * saveFolder) { Calendar c = Calendar.getInstance(); int year =
-	 * c.get(Calendar.YEAR); int month = c.get(Calendar.MONTH); int date =
-	 * c.get(Calendar.DATE);
-	 * 
-	 * String homedir = saveFolder + year + "-" + month + "-" + date;
-	 * System.out.println(homedir); File path1 = new File(homedir); if
-	 * (!(path1.exists())) { path1.mkdir(); // 새로운 폴더를 생성 }
-	 * 
-	 * // 난수를 구합니다. Random r = new Random(); int random = r.nextInt(100000000);
-	 * 
-	 * // 확장자 구하기 시작 int index = fileName.lastIndexOf("."); // 문자열에서 특정 문자열의 위치
-	 * 값(index)를 반환한다. // indexOf가 처음 발견되는 문자열에 대한 index를 반환하는 반면, // lastIndexOf는
-	 * 마지막으로 발견되는 문자열의 index를 반환합니다. // (파일명에 점이 여러개 있을 경우 맨 마지막에 발견되는 문자열의 위치를
-	 * 리턴합니다.) System.out.println("index = " + index);
-	 * 
-	 * String fileExtension = fileName.substring(index + 1);
-	 * System.out.println("fileExtension = " + fileExtension); // 확장자 구하기 끝
-	 * 
-	 * // 새로운 파일명 String refileName = "bbs" + year + month + date + random + "." +
-	 * fileExtension; System.out.println("refileName = " + refileName);
-	 * 
-	 * // 오라클 디비에 저장될 파일 명 String fileDBName = "/" + year + "-" + month + "-" + date
-	 * + "/" + refileName; System.out.println("fileDBName = " + fileDBName); return
-	 * fileDBName; }
-	 */
+		// 수정처리
+		@RequestMapping(value = "/updateProcess.net", method = RequestMethod.POST)
+		public void updateProcess(Member member, HttpServletResponse response) throws Exception {
+
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			int result = loginmemberservice.update(member);
+			out.println("<script>");
+
+			// 삽입이 된 경우
+			if (result == 1) {
+				out.println("alert('수정되었습니다.')");
+				out.println("location.href='update.hr';");
+			} else {
+				out.println("alert('회원 정보 수정에 실패했습니다.');");
+				out.println("history.back()"); // 비밀번호를 제외한 다른 데이터는 유지 되어 있습니다
+			}
+			out.println("</script>");
+			out.close();
+
+		}
+
+
 
 }

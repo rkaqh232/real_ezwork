@@ -13,7 +13,7 @@
 		<tr>
 			<td>${m.m_CODE }</td>
 			<td>${m.m_NAME }</td>
-			<td>${m.m_WORK_C }</td>
+			<td>${m.m_LEVEL }</td>
 			<td>${m.m_PART_C }</td>
 		</tr>
 	</table>

@@ -37,7 +37,8 @@
       애노테이션의 주요 용도는 자바 코드 외부의 리소스나 환경정보에 담긴 값을 사용하도록 지정해주는 데 있다. -->
 
    <!-- 주기적인 작업이 있을 때 @Scheduled annotation을 사용하면 쉽게 적용할 수 있다. (@Scheduled(fixedDelay=1000) -->
-   <task:annotation-driven />
+   <tx:annotation-driven proxy-target-class="true"/>
+
    
    <context:component-scan base-package="com.ez.work" /> 
       

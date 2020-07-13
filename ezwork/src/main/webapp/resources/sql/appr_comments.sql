@@ -6,8 +6,7 @@ create table appr_comments(
 	COMM_DATE		DATE,
 	COMM_CONTENT	VARCAHR2(1000),
 	APPR_CODE		NUMBER references approve(appr_code)
-				on delete cascade
-	
+					on delete cascade
 );
 
 

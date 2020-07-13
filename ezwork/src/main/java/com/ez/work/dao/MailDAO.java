@@ -62,7 +62,15 @@ public class MailDAO {
 		return sqlSession.selectOne("Mails.indetail",num);
 	}
 	
+	public Mail Outdetail(int num) {
+		return sqlSession.selectOne("Mails.outdetail",num);
+	}
+	
 	public int InToBin(int num) {
 		return sqlSession.update("Mails.intobin",num);
+	}
+	
+	public int tempDelete(int num) {
+		return sqlSession.delete("Mails.tempdelete", num);
 	}
 }

@@ -81,7 +81,7 @@ function ajax(sdata){
 				$('.pagination').append(output)
 			}//if(data.listcount) end
 			else if(totalData==0){
-				output = "<tr><th colspan='4'><h3>받은 메일이 없습니다.</h3></th></tr>";
+				output = "<tr><th colspan='4'><h3>삭제된 메일이 없습니다.</h3></th></tr>";
 				$('table').append(output)
 			}			
 		}, //success end

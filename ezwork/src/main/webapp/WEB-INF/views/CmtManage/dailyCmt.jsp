@@ -158,7 +158,9 @@
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> </span>
 								<div class="d-flex flex-column flex-lg-fill">
-									<a href="#"
+								<input type = "hidden" name="CM_MCODE" value ="인사팀">
+								<input type = "hidden" name="CM_NAME" value ="이재희">
+									<a href="OnTime.cm"
 										class="btn btn-info btn-shadow-hover font-weight-bolder w-100 py-3">출근
 										등록</a>
 								</div>
@@ -166,7 +168,7 @@
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> </span>
 								<div class="d-flex flex-column flex-lg-fill">
-									<a href="#"
+									<a href="OffTime.cm"
 										class="btn btn-outline-info btn-shadow-hover font-weight-bolder w-100 py-3">퇴근
 										등록</a>
 								</div>

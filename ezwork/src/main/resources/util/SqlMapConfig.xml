@@ -8,6 +8,7 @@
 		<typeAlias alias="eventboard" type="com.ez.work.domain.EventBoard" />
 		<typeAlias alias ="mail" type="com.ez.work.domain.Mail" />
 		<typeAlias alias ="appr" type="com.ez.work.domain.Appr" />
+		<typeAlias alias ="cmtmanage" type="com.ez.work.domain.CmtManage" />
 	</typeAliases>
 
 	<mappers>
@@ -15,6 +16,7 @@
 		<mapper resource="sql/eventboard.xml" />
 		<mapper resource="sql/mail.xml" />
 		<mapper resource="sql/appr.xml"/>
+		<mapper resource="sql/CmtManage.xml"/>
 	</mappers>
 
 </configuration>

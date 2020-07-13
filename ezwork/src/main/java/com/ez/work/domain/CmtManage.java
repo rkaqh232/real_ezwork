@@ -1,7 +1,7 @@
 package com.ez.work.domain;
 
 public class CmtManage {
-	private int CM_CODE;
+	private String CM_CODE;
 	private String CM_MCODE;
 	private String CM_NAME;
 	private String CM_ONTIME;
@@ -14,11 +14,10 @@ public class CmtManage {
 	private String CM_DATE;
 	
 	
-	
-	public int getCM_CODE() {
+	public String getCM_CODE() {
 		return CM_CODE;
 	}
-	public void setCM_CODE(int cM_CODE) {
+	public void setCM_CODE(String cM_CODE) {
 		CM_CODE = cM_CODE;
 	}
 	public String getCM_MCODE() {

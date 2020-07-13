@@ -7,7 +7,7 @@ import com.ez.work.domain.CmtManage;
 public interface CmtManageService {
 
 	// 일일 근태 현황 리스트
-	public List<CmtManage> getCmtList(int page, int limit);
+	public List<CmtManage> getCmtList();
 
 	// 출근 정보 입력
 	public void insertOntime(CmtManage cmtManageOn);
@@ -23,5 +23,6 @@ public interface CmtManageService {
 
 	// 근무확정
 	public int insertConfirm(CmtManage cmtManageConfirm);
+
 
 }

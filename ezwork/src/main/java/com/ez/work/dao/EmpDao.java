@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ez.work.domain.Member;
+
 //민혁
 @Repository
 public class EmpDao {
@@ -25,6 +26,10 @@ public class EmpDao {
 
 	public Member getSearchMemberInfo(String M_CODE) {
 		return sqlSession.selectOne("Members.EmpCheck", M_CODE);
+	}
+
+	public int updatebookmark(Map<String, Object> map) {
+		return sqlSession.update("Members.updatebookmark", map);
 	}
 
 }

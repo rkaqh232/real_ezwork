@@ -10,31 +10,25 @@
 
 
 
- 	<!-- 혜정 - 사원등록 -->
-    <insert id="insert" parameterType="member">
-   	  insert into member
-      values
-      	('EMP'||emp_seq.nextval, #{M_PASS}, #{M_FILE, jdbcType=VARCHAR},#{M_ORIGINAL, jdbcType=VARCHAR}, 
-      	#{M_PART_C}, #{M_LEVEL}, #{M_NAME},
-      	#{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE}, 
-      	#{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, SYSDATE, 
-      	#{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, #{SC_GRAD_DAY},
-      	#{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
-      	#{LI_NAME}, #{LI_ORGAN}, #{LI_DATE}
-      	)   
-    </insert> 
-    
-    
-    
-    
-    <!--  혜정 - 사원코드 체크   -->
+	<!-- 혜정 - 사원등록 -->
+	<insert id="insert" parameterType="member">
+		insert into member
+		values
+		('EMP'||emp_seq.nextval, #{password}, #{name}, #{age}, #{gender}, #{email})
+	</insert> <!-- 만들고 작성하기 -->
+
+
+
+
+	<!-- 혜정 - 사원코드 체크 -->
 	<select id="idcheck" resultType="member" parameterType="String">
-		select * from member where M_CODE = #{M_CODE}
+		select *
+		from member where M_CODE = #{M_CODE}
 	</select>
-    
-    
-    
-    
+
+
+
+
 	<select id="searchcount" parameterType="map" resultType="int">
 		select count(*) from member where M_CODE != 'admin'
 		<if test="search_field!=null">
@@ -74,11 +68,15 @@
 		where rnum &gt; = #{start} and rnum &lt; = #{end}
 	</select>
 
-
-
-
 	<select id="EmpCheck" resultType="member" parameterType="String">
 		select *
 		from member where M_CODE = #{M_CODE}
 	</select>
+
+	<update id="updatebookmark" parameterType="map">
+		update member
+		set
+		m_bookmark = #{bookmark}
+		where m_code = #{id}
+	</update>
 </mapper>

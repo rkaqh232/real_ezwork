@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -346,4 +345,17 @@ public class MailController {
 		mv.setViewName("home");
 		return mv;
 	}
+	
+	@PostMapping("DeleteAll.mail")
+	public ModelAndView DeleteAll(String[] num, String before_file, ModelAndView mv) {
+		int result = 0;
+		for (int i = 0; i < num.length; i++) {
+			result += mailService.tempDelete(Integer.parseInt(num[i]));
+		}
+		mv.setViewName("home");
+		mv.addObject("page", "mail/temp.jsp");
+		System.out.println(result + "개 메일 영구삭제");
+		return mv;
+	}
+	
 }

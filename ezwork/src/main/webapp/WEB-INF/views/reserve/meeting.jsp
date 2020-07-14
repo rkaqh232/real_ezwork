@@ -3,13 +3,15 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <style>
-p{margin:0}
-table{text-align:center;}
-.bg-forest{background:#ff9900}
-.bg-mountain{background:#2d8659;}
-.bg-ocean{background:#4d4dff}
-.bg-desert{background:#ffd966}
+	p{margin:0}
+	table{text-align:center;}
+	.bg-forest{background:#ff9900}
+	.bg-mountain{background:#2d8659;}
+	.bg-ocean{background:#4d4dff}
+	.bg-desert{background:#ffd966}
 </style>
+<script src="resources/js/reserve.js"></script>
+
 <!--begin::Advance Table Widget 10-->
 	<div class="card card-custom gutter-b" style="width:90%; margin:0 auto; padding:30px;">
 		<!--begin::Header-->
@@ -31,53 +33,76 @@ table{text-align:center;}
 				            </div>
 				            <div class="card card-custom">
  <!--begin::Form-->
- <form>
-  <div class="card-body">
+ <form method="post" action="ReserveAction.res">
+  <div class="card-body" style="padding-bottom:0px;">
    <div class="form-group row">
     <label  class="col-2 col-form-label">예약자</label>
     <div class="col-10">
-     <input class="form-control" type="text" value="${id}" id="example-text-input" disabled/>
+     <input class="form-control" name="USER_NAME" type="text" value="${id}" id="example-text-input" disabled/>
     </div>
    </div>
    <div class="form-group row">
     <label for="example-search-input" class="col-2 col-form-label">회의 내용</label>
     <div class="col-10">
-     <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
-    </div>
-   </div>
-   <div class="form-group row">
-    <label for="example-email-input" class="col-2 col-form-label">Email</label>
-    <div class="col-10">
-     <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"/>
+     <input class="form-control" name="MSUBJECT" type="search" id="example-search-input"/>
     </div>
    </div>
    <div class="form-group row">
     <label for="example-tel-input" class="col-2 col-form-label">전화번호</label>
     <div class="col-10">
-     <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"/>
+     <input class="form-control" type="tel" name="USER_TEL" id="example-tel-input"/>
     </div>
    </div>
    <div class="form-group row">
-    <label for="example-datetime-local-input" class="col-2 col-form-label">날짜</label>
+    <label for="mroom" class="col-2 col-form-label">회의실</label>
     <div class="col-10">
-     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input"/>
+     <select class="custom-select form-control" name="RNAME" id="mroom">
+     <option selected value="Forest">Forest</option>
+     <option value="Ocean">Ocean</option>
+     <option value="Desert">Desert</option>
+     <option value="Mountain">Mountain</option>
+     <option value="Sky">Sky</option>
+    </select>
+    </div>    
+   </div>
+   <div class="form-group row">
+    <label for="stime" class="col-2 col-form-label">시간</label>
+    <div class="col-10">
+     <!-- <input class="form-control" type="time" value="09:00:00" step="3600" id="stime"/> -->
+     <select name="MTIME" class="form-control" id="stime">
+     <option value="8">08 시 ~ 09 시</option>
+     <option value="9">09 시 ~ 10 시</option>
+     <option value="10">10 시 ~ 11 시</option>
+     <option value="11">11 시 ~ 12 시</option>
+     <option value="12">12 시 ~ 13 시</option>
+     <option value="13">13 시 ~ 14 시</option>
+     <option value="14">14 시 ~ 15 시</option>
+     <option value="15">15 시 ~ 16 시</option>
+     <option value="16">16 시 ~ 17 시</option>
+     <option value="17">17 시 ~ 18 시</option>
+    </select>
     </div>
    </div>
    <div class="form-group row">
-    <label for="example-time-input" class="col-2 col-form-label">시작</label>
+    <!-- <label for="example-time-input" class="col-2 col-form-label">끝</label>
     <div class="col-10">
-     <input class="form-control" type="time" value="13:45:00" id="example-time-input"/>
-    </div>
-   </div>
-   <div class="form-group row">
-    <label for="example-time-input" class="col-2 col-form-label">끝</label>
-    <div class="col-10">
-     <input class="form-control" type="time" value="13:45:00" id="example-time-input"/>
-    </div>
+     <select name="ETIME" class="form-control" id="etime">
+     <option value="9">09 시</option>
+     <option value="10">10 시</option>
+     <option value="11">11 시</option>
+     <option value="12">12 시</option>
+     <option value="13">13 시</option>
+     <option value="14">14 시</option>
+     <option value="15">15 시</option>
+     <option value="16">16 시</option>
+     <option value="17">17 시</option>
+     <option value="18">18 시</option>
+    </select>
+    </div> -->
    </div>
    <div class="modal-footer">
-       <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">취소</button>
-       <button type="button" class="btn btn-primary font-weight-bold">예약</button>
+       <button type="reset" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">취소</button>
+       <button type="submit" class="btn btn-primary font-weight-bold">예약</button>
    </div>
   </div>
  </form>

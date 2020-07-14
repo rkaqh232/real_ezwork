@@ -9,6 +9,7 @@
 		<typeAlias alias="noticeboard" type="com.ez.work.domain.NoticeBoard" />
 		<typeAlias alias ="mail" type="com.ez.work.domain.Mail" />
 		<typeAlias alias ="appr" type="com.ez.work.domain.Appr" />
+		<typeAlias alias ="cmtmanage" type="com.ez.work.domain.CmtManage" />
 	</typeAliases>
 
 	<mappers>
@@ -17,6 +18,7 @@
 		<mapper resource="sql/noticeboard.xml" />
 		<mapper resource="sql/mail.xml" />
 		<mapper resource="sql/appr.xml"/>
+		<mapper resource="sql/CmtManage.xml"/>
 	</mappers>
 
 </configuration>

@@ -1,8 +1,9 @@
 package com.ez.work.domain;
 
 public class CmtManage {
-	private int CM_CODE;
+	private String CM_CODE;
 	private String CM_MCODE;
+	private String CM_TEAMNAME;
 	private String CM_NAME;
 	private String CM_ONTIME;
 	private String CM_OFFTIME;
@@ -13,12 +14,17 @@ public class CmtManage {
 	private String CM_CONFIRM;
 	private String CM_DATE;
 	
+	public String getCM_TEAMNAME() {
+		return CM_TEAMNAME;
+	}
+	public void setCM_TEAMNAME(String cM_TEAMNAME) {
+		CM_TEAMNAME = cM_TEAMNAME;
+	}
 	
-	
-	public int getCM_CODE() {
+	public String getCM_CODE() {
 		return CM_CODE;
 	}
-	public void setCM_CODE(int cM_CODE) {
+	public void setCM_CODE(String cM_CODE) {
 		CM_CODE = cM_CODE;
 	}
 	public String getCM_MCODE() {

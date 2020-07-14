@@ -1,4 +1,5 @@
 package com.ez.work.service;
+
 //민혁
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,7 @@ public class MemberServiceImp implements MemberService {
 		map.put("end", endrow);
 		return dao.getSearchList(map);
 	}
-	
+
 	@Override
 	public int getSearchListCount(int index, String search_word) {
 		Map<String, String> map = new HashMap<String, String>();
@@ -47,5 +48,22 @@ public class MemberServiceImp implements MemberService {
 		return dao.getSearchMemberInfo(M_CODE);
 	}
 
+	@Override
+	public int updatebookmark(String id, int bookmark) {
+		System.out.println("if문 전의 bookmark의 값은 " + bookmark);
+		if (bookmark == 0) {
+			bookmark = 1;
+		} else if (bookmark == 1) {
+			bookmark = 0;
+		}
+
+		System.out.println("if문 뒤의 bookmark의 값은 " + bookmark);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("bookmark", bookmark);
+		dao.updatebookmark(map);
+		return bookmark;
+	}
 
 }

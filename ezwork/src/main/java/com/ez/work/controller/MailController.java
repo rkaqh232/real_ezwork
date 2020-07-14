@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -212,11 +213,10 @@ public class MailController {
 		if(endpage>maxpage)
 			endpage = maxpage;
 		
-		List<Mail> maillist = mailService.getBinList(page, limit, id, id);
+		List<Mail> maillist = mailService.getBinList(page, limit, id);
 		
 		System.out.println("sender:"+id);
 		System.out.println("listcount:" + listcount);
-		System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("sender",id);
@@ -278,6 +278,35 @@ public class MailController {
 		return mv;
 	}
 	
+	@GetMapping(value="DetailTemp.mail")
+	public ModelAndView tempDetail(int num, ModelAndView mv, HttpServletRequest request) {
+		Mail mail = mailService.outDetail(num);
+		if(mail == null) {
+			System.out.println("mail view failed");
+			mv.setViewName("error/error");
+		}else {
+			System.out.println("mail view start");
+			mv.addObject("page", "mail/temp_view.jsp");
+			mv.addObject("maildata", mail);
+			mv.setViewName("home");
+		}		
+		return mv;
+	}
+	
+	@GetMapping(value="DetailOut.mail")
+	public ModelAndView outDetail(int num, ModelAndView mv, HttpServletRequest request) {
+		Mail mail = mailService.outDetail(num);
+		if(mail == null) {
+			System.out.println("mail view failed");
+			mv.setViewName("error/error");
+		}else {
+			System.out.println("mail view start");
+			mv.addObject("page", "mail/out_view.jsp");
+			mv.addObject("maildata", mail);
+			mv.setViewName("home");
+		}		
+		return mv;
+	}
 	/*@PostMapping("Delete.mail")
 	public ModelAndView MailDeleteAction(Mail mail, String before_file, int num, ModelAndView mv) {
 		int result = mailService.mailDelete(num);
@@ -297,8 +326,24 @@ public class MailController {
 		}else {
 			System.out.println("휴지통 이동 성공");
 			mv.setViewName("home");
+			mv.addObject("page", "mail/inbox.jsp");
 			mv.addObject("message", "메일이 삭제되었습니다.");
 		}
+		return mv;
+	}
+	
+	@PostMapping("TempDelete.mail")
+	public ModelAndView TempDelete(Mail mail, String before_file, int num, ModelAndView mv, 
+			HttpServletResponse response, HttpServletRequest request) throws Exception {
+		int result = mailService.tempDelete(num);
+		if (result==0) {
+			System.out.println("temp 삭제 실패");
+			mv.setViewName("error/error");
+			return mv;
+		}
+		System.out.println("temp 삭제 성공");
+		mv.addObject("page", "mail/temp.jsp");
+		mv.setViewName("home");
 		return mv;
 	}
 }

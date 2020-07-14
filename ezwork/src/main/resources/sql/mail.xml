@@ -107,17 +107,19 @@
 	</select>
 	
 	<select id="binlist" parameterType="java.util.Map" resultType="mail">
-		select rownum rnum, * from 
-			(select s.*, r.* 
-			 from 
-			 	(select* from SENTMAIL
-			 	 where MAIL_SENDER=#{sender} and MAIL_TYPE='bin') s,
-			 	 (select* from RECEIPTMAIL
-			 	 where MAIL_RECIPIENT=#{sender} and MAIL_TYPE='bin') r
-			 order by MAIL_DATE desc)
+		select* from
+			(select rownum rnum, u.*
+			from
+				(select* 
+				from 
+					(select* from SENTMAIL
+				 	 where MAIL_SENDER='admin' and MAIL_TYPE='bin'
+				 	 union 
+					 select* from RECEIPTMAIL
+				 	 where MAIL_RECIPIENT='admin' and MAIL_TYPE='bin') 
+				order by MAIL_DATE desc) u)
 		where rnum &gt;=#{start} and rnum &lt;=#{end}
 	</select>	
-	<!-- join 후  MAIL_DATE로 order by 한 후 에 rownum 부여하는 방법 ? -->
 	
 	<update id="RcheckUpdate" parameterType="int">
 		update RECEIPTMAIL
@@ -129,10 +131,19 @@
 		select* from RECEIPTMAIL where MAIL_NUM=#{number}
 	</select>
 	
+	<select id="outdetail" parameterType="int" resultType="mail">
+		select* from SENTMAIL where MAIL_NUM=#{number}
+	</select>
+	
 	<update id="intobin" parameterType="int">
 		update RECEIPTMAIL
 		set MAIL_TYPE='bin'
 		where MAIL_NUM=#{number}
 	</update>
+	
+	<delete id="tempdelete" parameterType="int">
+		delete from SENTMAIL 
+		where MAIL_NUM=#{number} and MAIL_TYPE='temp'
+	</delete>
 	
 </mapper>

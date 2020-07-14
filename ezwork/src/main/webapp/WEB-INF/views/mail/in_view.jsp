@@ -7,8 +7,7 @@ function reply(){
 	document.getElementById("kt_inbox_reply").style.display="block";
 }
 function hideRe(){
-	document.getElementById("kt_inbox_reply").style.display="none";
-	
+	document.getElementById("kt_inbox_reply").style.display="none";	
 }
 </script>
 <div class="container">
@@ -118,7 +117,7 @@ function hideRe(){
 				</div>
 			</div>
 			<div class="card-spacer-x py-3 toggle-off-item" style="margin-top:40px;margin-bottom:40px;">
-				${maildata.MAIL_CONTENT}
+				<textarea cols="67" rows="12" class="form-control" style="border:none; padding:30px; background:transparent" disabled>${maildata.MAIL_CONTENT}</textarea>
 			</div>
 		</div>
 	</div>
@@ -134,9 +133,10 @@ function hideRe(){
 					<div class="d-block">
 						<!--begin::To-->
 						<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-50px">
+						<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
 							<div class="text-dark-50 w-25px">To:</div>
 							<div class="d-flex align-items-center flex-grow-1">
-								<input type="text" class="form-control border-0" name="compose_to" value="${maildata.MAIL_SENDER}" />
+								<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" value="${maildata.MAIL_SENDER}" />
 							</div>
 						</div>
 						<!--end::To-->
@@ -153,12 +153,12 @@ function hideRe(){
 						<!--end::CC-->
 						<!--begin::Subject-->
 						<div class="border-bottom">
-							<input class="form-control border-0 px-8 min-h-45px" name="compose_subject" value=" RE: ${maildata.MAIL_SUBJECT}" />
+							<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" value=" RE: ${maildata.MAIL_SUBJECT}" />
 						</div>
 						<!--end::Subject-->
 						<!--begin::Message-->
 						<div id="kt_inbox_reply_editor" class="border-0" style="height: 250px">
-						<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="12" class="form-control" style="border:none; padding:30px" required> ${maildata.MAIL_SUBJECT}</textarea>
+						<textarea name="MAIL_CONTENT" id="MAIL_CONTENT" cols="67" rows="12" class="form-control" style="border:none; padding:30px" required><%="\r\n\n\n" %>----------------원본 메일----------------<%="\r\n"%>보낸사람:&nbsp;${maildata.MAIL_SENDER}<%="\r\n"%>날짜:&nbsp;${maildata.MAIL_DATE}<%="\r\n"%>제목:&nbsp;${maildata.MAIL_SUBJECT}<%="\r\n\n"%>${maildata.MAIL_CONTENT}</textarea>
 						</div>
 						<!--end::Message-->
 						<!--begin::Attachments-->
@@ -195,49 +195,39 @@ function hideRe(){
 						<div class="d-flex align-items-center mr-3">
 							<!--begin::Send-->
 							<div class="btn-group mr-4">
-								<span class="btn btn-primary font-weight-bold px-6">보내기</span>
-								<span class="btn btn-primary font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
+								<button class="btn btn-info font-weight-bold px-6" type="submit" id="submit">보내기</button>
+								<span class="btn btn-info font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 								<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 									<ul class="navi py-3">
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-writing"></i>
-												</span>
-												<span class="navi-text">Schedule Send</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-medical-records"></i>
-												</span>
-												<span class="navi-text">Save &amp; archive</span>
-											</a>
-										</li>
-										<li class="navi-item">
-											<a href="#" class="navi-link">
-												<span class="navi-icon">
-													<i class="flaticon2-hourglass-1"></i>
-												</span>
-												<span class="navi-text">Cancel</span>
-											</a>
+										<li class="navi-item">	
+										<a href="#" class="navi-link">
+										<button style="border:none;background:white;" type="submit" formaction="Tempaction.mail">
+											<span class="navi-icon">
+												<i class="flaticon2-medical-records"></i>
+											</span>
+											<span class="navi-text">임시 보관</span>
+										</button>
+										</a>
 										</li>
 									</ul>
 								</div>
 							</div>
 							<!--end::Send-->
 							<!--begin::Other-->
-							<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_reply_attachments_select">
-								<i class="flaticon2-clip-symbol"></i>
-							</span>
+							<label for="upfile">
+							<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_compose_attachments_select">
+							<i class="flaticon2-clip-symbol">
+							<input type="file" id="upfile" name="uploadfile" style="display:none">
+							<span id="filevalue"></span>
+							</i>
+							</span></label>
 							<!--end::Other-->
 						</div>
 						<!--end::Actions-->
 						<!--begin::Toolbar-->
 						<div class="d-flex align-items-center">
 							<span class="btn btn-icon btn-sm btn-clean" data-inbox="dismiss" data-toggle="tooltip" title="삭제">
-								<button onclick="hideRe()" style="border:none;background:transparent"><i class="flaticon2-rubbish-bin-delete-button"></i></button>
+								<button onclick="hideRe()" type="reset" style="border:none;background:transparent"><i class="flaticon2-rubbish-bin-delete-button"></i></button>
 							</span>
 						</div>
 						<!--end::Toolbar-->

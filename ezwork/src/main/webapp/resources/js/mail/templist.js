@@ -44,10 +44,11 @@ function ajax(sdata){
 				$(data.maillist).each(
 					function(index, item){							
 						output += "<tr><td><p><label class='checkbox'>"
-						output += "<input type='checkbox'/>"
+						output += "<input type='checkbox' name=" + "'tnum' value="+ "'" + item.mail_NUM +"'/>"
 						output += ' <span></span></label></p></td><td><p class="text-danger font-size-lg"> 임시보관 </p></td>'
 						output += '<td><div class="btn btn-text-primary font-weight-bold mr-2"' 
-							+'style="margin-top:4px">' + '<a href="#">' + item.mail_SUBJECT +'</a></div></td>'
+							+'style="margin-top:4px">' + '<a href="DetailTemp.mail?num='
+							+item.mail_NUM+'&page=' + data.page+'">' + item.mail_SUBJECT +'</a></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
 				output += "</tbody>"

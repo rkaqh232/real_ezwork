@@ -40,8 +40,7 @@ public class LoginMemberServiceImp implements LoginMemberService{
 
 	@Override
 	public int insert(Member m) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(m);
 	}
 
 

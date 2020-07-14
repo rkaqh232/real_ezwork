@@ -47,11 +47,15 @@ insert into member
 		
 
 
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL) -- 임시생성재희
+values('jaehee','1','이재희', '총무팀','3');
+
 insert into member(M_CODE,M_PASS) -- 임시 관리자 계정
 values('admin','1');
 
 insert into member(M_CODE,M_PASS) -- 사원코드 부여 테스트
 values('EMP'||emp_seq.nextval,'1234');
+
 
 select *
 from member;

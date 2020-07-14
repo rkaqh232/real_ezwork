@@ -5,18 +5,24 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.CmtManage;
+import com.ez.work.domain.Member;
 import com.ez.work.service.CmtManageService;
 
 
 @Controller
+
 public class CmtManageController {
 	
 	@Autowired
@@ -24,41 +30,60 @@ public class CmtManageController {
 	
 	// 홈화면
 	@GetMapping(value = "/DailyCommute.cm")
-	public String DailyCommute(HttpServletRequest request, Model m) {
-		m.addAttribute("page", "CmtManage/dailyCmt.jsp");
-		return "home";
+	public ModelAndView DailyCommute(HttpServletRequest request, 
+			ModelAndView mv, HttpSession session, @RequestParam(value="check", defaultValue="0" )int check) {
+		String id = (String) session.getAttribute("id");
+		Member memberinfo = cmtManageService.getInfo(id);
+		CmtManage memberinfo2 = cmtManageService.getDetail(id);
+		mv.setViewName("home");
+		mv.addObject("page", "CmtManage/dailyCmt.jsp");
+		mv.addObject("memberinfo", memberinfo);		
+		mv.addObject("memberinfo2", memberinfo2);
+		if(memberinfo2 == null) {
+			check = 0;
+		}else {
+			if(memberinfo2.getCM_OFFTIME() == null)
+				check=1;
+			else
+				check = 2;
+		}
+		
+		mv.addObject("check", check);
+		return mv;
 	}
 	
 	//출근등록
-	@GetMapping(value = "/OnTime.cm")
-	public ModelAndView OnTime_ok(ModelAndView mv, CmtManage CmtManage, HttpServletResponse response, Model m) throws Exception {
-		try {
+	@PostMapping(value = "/OnTime.cm")
+	public void OnTime_ok(ModelAndView mv, CmtManage CmtManage, Member member, HttpServletResponse response) throws Exception {
+		System.out.println(member.getM_CODE());
+		CmtManage result = cmtManageService.getDetail(member.getM_CODE());
+		
+		if(result == null) {
 		cmtManageService.insertOntime(CmtManage); // 저장 메서드 호출
-			
 		System.out.println("출근 등록 완료");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("alert('출근 처리 되었습니다.');");
-		out.println("location.href="+"'DailyCommute.cm';");
+		out.println("location.href="+"'DailyCommute.cm?check=1';");
 		out.println("</script>");
 		out.close();
 		
-		}catch(Exception e) {
+		
+		}else {
 			System.out.println("출근 등록 실패");
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('이미 출근 처리 되었습니다.');");
-			out.println("location.href="+"'DailyCommute.cm';");
+			out.println("alert('금일 근태 등록은 완료되었습니다.');");
+			out.println("location.href="+"'DailyCommute.cm?check=0';");
 			out.println("</script>");
 			out.close();
 		}
-		return mv;
 	}
 	
 	//퇴근등록
-		@GetMapping("/OffTime.cm")
+	@PostMapping("/OffTime.cm")
 		public ModelAndView OffTime_ok(CmtManage CmtManage, ModelAndView mv, HttpServletRequest request,
 				HttpServletResponse response, Model m) throws Exception {
 			//퇴근 메소드 호출
@@ -76,7 +101,7 @@ public class CmtManageController {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('퇴근 처리 되었습니다.');");
-				out.println("location.href="+"'DailyCommute.cm';");
+				out.println("location.href="+"'DailyCommute.cm?check=2';");
 				out.println("</script>");
 				out.close();
 			}
@@ -87,13 +112,18 @@ public class CmtManageController {
 	
 	//일일근태목록 list
 	@GetMapping(value = "/CmtList.cm")
-		public ModelAndView CmtList(ModelAndView mv, Model m) {
+		public ModelAndView CmtList(ModelAndView mv) {
 			List<CmtManage> Cmtlist = cmtManageService.getCmtList(); // 리스트를 받아옴
-			m.addAttribute("page", "CmtManage/dailyCmt.jsp");
 			mv.setViewName("home");
+			mv.addObject("page", "CmtManage/dailyCmt.jsp");
 			mv.addObject("Cmtlist", Cmtlist);
 			return mv;
 		}
+	
+	//@GetMapping(value = "/GetDetail.cm")
+	
+	
+	
 
 	
 

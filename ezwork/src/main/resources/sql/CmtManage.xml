@@ -9,18 +9,20 @@
 		resultType="cmtmanage">
 		select * from
 		commute;
-	</select>
+</select>
 
 <!-- 출근 등록 (사번, 이름, 생성날짜, 출근시간만 삽입) overtime 수정해야함 -->
 <insert id="insert" parameterType="cmtmanage">
 	insert into commute
 		(CM_CODE,
+		CM_TEAMNAME,
 		CM_MCODE, 
 		CM_NAME, 
 		CM_ONTIME,
 		CM_DATE)
 		values
 		(to_char(sysdate,'yyyymmdd'),
+		#{CM_TEAMNAME, jdbcType=VARCHAR},
 		#{CM_MCODE, jdbcType=VARCHAR},
 		#{CM_NAME, jdbcType=VARCHAR},
 		to_char(sysdate,'HH24:MI'),
@@ -36,4 +38,11 @@
 		CM_CODE=to_char(sysdate,'yyyymmdd')
 </update>
 
+<!-- 당일 근태 현황만 출력 -->
+	<select id="Detail" parameterType="string" resultType="cmtmanage">
+		select * from commute
+		where 
+		CM_CODE = to_char(sysdate,'yyyymmdd') AND CM_MCODE = #{M_CODE}
+	</select>
+	
 </mapper>

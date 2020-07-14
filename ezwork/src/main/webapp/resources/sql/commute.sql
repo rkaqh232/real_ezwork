@@ -1,5 +1,6 @@
 CREATE TABLE COMMUTE(
-CM_CODE VARCHAR2(20) PRIMARY KEY, 					--근태코드 // 그날 날짜 20200713
+CM_CODE VARCHAR2(20), 					--근태코드 // 그날 날짜 20200713
+CM_TEAMNAME VARCHAR2(20), --팀명
 CM_MCODE VARCHAR2(20),	--사원번호 
 CM_NAME VARCHAR2(15),								--성명
 CM_ONTIME VARCHAR2(10),										--근무시작시간
@@ -38,3 +39,6 @@ select TO_CHAR(SYSDATE, 'yyyymmdd') from datetest;
 
 select * from datetest;
 
+select * from commute
+where 
+CM_CODE=to_char(sysdate,'yyyymmdd');

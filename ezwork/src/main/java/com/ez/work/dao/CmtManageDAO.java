@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ez.work.domain.CmtManage;
+import com.ez.work.domain.Member;
 
 @Repository
 public class CmtManageDAO {
@@ -38,5 +39,12 @@ public class CmtManageDAO {
 		return 0;
 	}
 
+	public CmtManage getDetail(String m_code) {
+		return sqlSession.selectOne("CmtManage.Detail", m_code);
+	}
+
+	public Member getInfo(String m_code) {
+		return sqlSession.selectOne("Members.EmpCheck", m_code);
+	}
 
 }

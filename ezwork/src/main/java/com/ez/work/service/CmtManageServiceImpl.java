@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ez.work.dao.CmtManageDAO;
 import com.ez.work.domain.CmtManage;
+import com.ez.work.domain.Member;
 
 @Service
 public class CmtManageServiceImpl implements CmtManageService{
@@ -40,5 +41,17 @@ public class CmtManageServiceImpl implements CmtManageService{
 	public int insertConfirm(CmtManage cmtManageConfirm) {
 		return dao.insertConfirm(cmtManageConfirm);
 	}
+
+	@Override
+	public CmtManage getDetail(String m_code) {
+		return dao.getDetail(m_code);
+	}
+
+	@Override
+	public Member getInfo(String m_code) {
+		return dao.getInfo(m_code);
+	}
+
+
 
 }

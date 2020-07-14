@@ -8,7 +8,23 @@
 #kt_content {
 	padding-top: 0px;
 }
+
 </style>
+<script>
+$(function(){
+	var check = '${check}';
+	if (check == 0){
+		$('#start').prop('disabled', false);
+		$('#end').prop('disabled',true);
+	}else if(check ==1){
+		$('#start').prop('disabled', true);
+		$('#end').prop('disabled',false);
+	}else if(check ==2){
+		$('#start').prop('disabled', false);
+		$('#end').prop('disabled',true);
+	}
+})
+</script> 
 </head>
 <body onload="startTime()">
 	<div class="content d-flex flex-column flex-column-fluid"
@@ -41,6 +57,7 @@
 			</div>
 		</div>
 
+
 		<div class="d-flex flex-column-fluid">
 			<!--begin::Container-->
 			<div class="container" style="margin-top: 23px;">
@@ -66,7 +83,7 @@
 								<div class="d-flex justify-content-between flex-wrap mt-1">
 									<div class="d-flex mr-3">
 										<a href="#"
-											class="text-dark-75 text-hover-primary font-size-h2 font-weight-bold mr-3">이재희</a> 
+											class="text-dark-75 text-hover-primary font-size-h2 font-weight-bold mr-3">${memberinfo.m_NAME }</a> 
 										</a>
 									</div>
 									<div class="my-lg-0 my-3"></div>
@@ -77,15 +94,15 @@
 									<div class="d-flex flex-column flex-grow-1 pr-8">
 										<div class="d-flex flex-wrap mb-4" style="margin-top: 14px; margin-bottom:8px;">
 										<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-placeholder mr-2 font-size-lg"></i>인사팀
+												<i class="flaticon2-placeholder mr-2 font-size-lg"></i>${memberinfo.m_PART_C }
 											</span>
 												<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>주임
+												<i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>Level ${memberinfo.m_LEVEL }
 											</span> 
 											
 										</div>
 											<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-new-email mr-2 font-size-lg"></i>jason@siastudio.com
+												<i class="flaticon2-new-email mr-2 font-size-lg"></i>${memberinfo.m_EMAIL }
 											</span>
 									</div>
 									<div
@@ -123,7 +140,13 @@
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">근무시작시간</span> <span
 										class="font-weight-bolder font-size-h5"> <span
-										class="text-dark-50 font-weight-bold"></span>08:45
+										class="text-dark-50 font-weight-bold"></span>
+										<c:if test="${!empty memberinfo2.CM_ONTIME }" >
+										${memberinfo2.CM_ONTIME }
+										</c:if>
+										<c:if test="${empty memberinfo2.CM_ONTIME }">
+										미등록
+										</c:if>
 									</span>
 								</div>
 							</div>
@@ -136,7 +159,13 @@
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">근무종료시간</span> <span
 										class="font-weight-bolder font-size-h5"> <span
-										class="text-dark-50 font-weight-bold"></span>18:11
+										class="text-dark-50 font-weight-bold"></span>
+										<c:if test="${!empty memberinfo2.CM_OFFTIME }" >
+										${memberinfo2.CM_OFFTIME }
+										</c:if>
+										<c:if test="${empty memberinfo2.CM_OFFTIME }">
+										미등록
+										</c:if>
 									</span>
 								</div>
 							</div>
@@ -155,29 +184,37 @@
 							</div>
 							<!--end::Item-->
 							<!--begin::Item-->
+							<form method="POST">
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> </span>
 								<div class="d-flex flex-column flex-lg-fill">
-								<input type = "hidden" name="CM_MCODE" value ="인사팀">
-								<input type = "hidden" name="CM_NAME" value ="이재희">
-									<a href="OnTime.cm"
-										class="btn btn-info btn-shadow-hover font-weight-bolder w-100 py-3">출근
-										등록</a>
+								<input type = "hidden" name="CM_MCODE" value ="${memberinfo.m_CODE }">
+								<input type = "hidden" name="CM_TEAMNAME" value ="${memberinfo.m_PART_C }">
+								<input type = "hidden" name="CM_NAME" value ="${memberinfo.m_NAME }">
+								<input type = "hidden" name="M_CODE" value ="${memberinfo.m_CODE }">
+								
+									<button type="submit"
+										class="btn btn-info btn-shadow-hover font-weight-bolder w-100 py-3"  
+										id="start" formaction="OnTime.cm" >출근
+										등록</button>
 								</div>
 							</div>
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> </span>
 								<div class="d-flex flex-column flex-lg-fill">
-									<a href="OffTime.cm"
-										class="btn btn-outline-info btn-shadow-hover font-weight-bolder w-100 py-3">퇴근
-										등록</a>
+									<button type="submit" class="btn btn-outline-info btn-shadow-hover font-weight-bolder w-100 py-3"
+										id ="end" formaction="OffTime.cm" >퇴근
+										등록</button>
 								</div>
 							</div>
+							</form>
+							
 							<!--end::Item-->
 							<!--begin::Item-->
 
 							<!--end::Item-->
 						</div>
+						
 						<!--begin::Items-->
 					</div>
 				</div>
@@ -280,6 +317,7 @@
 					</div>
 					</div>
 				</div>
+			
 			</div>
 			<!--end::Container-->
 	<script src="resources/js/clock.js"></script>

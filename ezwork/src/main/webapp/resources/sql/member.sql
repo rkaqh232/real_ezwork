@@ -8,9 +8,9 @@ DROP TABLE member;
 create table member(
    M_CODE                VARCHAR2(20) PRIMARY KEY,                    -- 사원번호 not null (시퀀스사용 emp + 202001 자동부여)
    M_PASS                VARCHAR2(20),                                -- 비밀번호 not null
-   M_FILE               VARCHAR2(50),                           -- 증명사진 - 첨부될 파일 명(가공)
-   M_ORIGINAL             VARCHAR2(50),                         -- 증명사진 - 첨부될 파일 명
-   M_PART_C              VARCHAR2(10),                                -- 부서코드
+   M_FILE                VARCHAR2(100),                               -- 증명사진 - 첨부될 파일 명(가공)
+   M_ORIGINAL            VARCHAR2(100),                               -- 증명사진 - 첨부될 파일 명
+   M_PART_C              VARCHAR2(20),                                -- 부서코드
    M_LEVEL               NUMBER,                                      -- 직급코드(1,2,3,4,5, 1은 계약직~ 5: CEO)
    M_NAME                VARCHAR2(15),                                -- 성명 not null
    M_GENDER              varchar2(8) CHECK (M_GENDER IN ('남','여')),  -- 성별
@@ -26,8 +26,8 @@ create table member(
    SC_DEGREE             VARCHAR2(20),                                -- 학위
    SC_ADDRESS            VARCHAR2(50),                                -- 소재지
    SC_GRAD_DAY           VARCHAR2(20),                                -- 졸업일자 kt_datepicker_3
-   LG_NAME               VARCHAR2(20),                                -- 외국어명  (어학정보)
-   LG_TEST               VARCHAR2(20),                                -- 시험명
+   LG_NAME               VARCHAR2(50),                                -- 외국어명  (어학정보)
+   LG_TEST               VARCHAR2(50),                                -- 시험명
    LG_GRADE              VARCHAR2(20),                                -- 시험점수
    LG_ORGAN              VARCHAR2(20),                                -- 발급처 
    LG_DATE               VARCHAR2(20),                                -- 발급일자 kt_datepicker_3

@@ -266,6 +266,7 @@ p{margin-top:1rem}
 			
 		</div>
 		<!--end::Inbox-->
+		
 		<!--begin::Compose-->
 		<div class="modal modal-sticky modal-sticky-lg modal-sticky-bottom-right" id="kt_inbox_compose" role="dialog" data-backdrop="false">
 			<div class="modal-dialog" role="document">
@@ -398,6 +399,7 @@ p{margin-top:1rem}
 			</div>
 		</div>
 		<!--end::Compose-->
+		
 	</div>
 	<!--end::Container-->
 </div>

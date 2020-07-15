@@ -7,11 +7,11 @@
 <script>
 	$(function(){
 			$("#deleteall").click(function(){
-				var favorite = [];
+				var nums = [];
 				$.each($("input[name='tnum']:checked"), function() {
-				  favorite.push($(this).val());
+					nums.push($(this).val());
 				});
-				$("#mail_num").val(favorite);
+				$("#mail_num").val(nums);
 			})
 	}) 
 </script>
@@ -179,7 +179,7 @@
 							    <div class="modal-content">
 							     <!-- Modal body -->
 							      <div class="modal-body">
-							        <form name="deleteForm" action="TempDelete.mail" method="post">
+							        <form name="deleteForm" id="deleteForm" action="DeleteAll.mail" method="post">
 							          <%-- http://localhost:8088/Board_Ajax_bootstrap/BoardDetailAction.bo?num
 							          	     주소를 보면 num을 파라미터로 넘기고 있다. 
 							          	     이 값을 가져와서 ${param.num}을 사용 또는 ${boarddata.BOARD_NUM}
@@ -304,7 +304,7 @@
 							<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
 								<div class="text-dark-50 w-25px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
-									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT"/>
+									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" required/>
 								</div>
 								<div class="ml-2">
 									<span class="text-muted font-weight-bold cursor-pointer text-hover-primary mr-2" data-inbox="cc-show">Cc</span>
@@ -324,12 +324,12 @@
 							<!--end::CC-->
 							<!--begin::Subject-->
 							<div class="border-bottom">
-								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" />
+								<input class="form-control border-0 px-8 min-h-45px" name="MAIL_SUBJECT" placeholder="제목" required/>
 							</div>
 							<!--end::Subject-->
 							<!--begin::Message-->
 							<div id="kt_inbox_compose_editor" class="border-0" style="height: 250px">
-							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none"></textarea>
+							<textarea name="MAIL_CONTENT" id="board_content" cols="67" rows="13" class="form-control" style="border:none" required></textarea>
 							</div>
 							<!--end::Message-->
 							<!--begin::Attachments-->
@@ -370,13 +370,15 @@
 									<span class="btn btn-info font-weight-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button"></span>
 									<div class="dropdown-menu dropdown-menu-sm dropup p-0 m-0 dropdown-menu-right">
 										<ul class="navi py-3">
-											<li class="navi-item">
-												<a href="Tempaction.mail" class="navi-link">
-													<span class="navi-icon">
-														<i class="flaticon2-medical-records"></i>
-													</span>
-													<span class="navi-text">임시 보관</span>
-												</a>
+											<li class="navi-item">	
+											<a href="#" class="navi-link">
+											<button style="border:none;background:white;" type="submit" formaction="Tempaction.mail">
+												<span class="navi-icon">
+													<i class="flaticon2-medical-records"></i>
+												</span>
+												<span class="navi-text">임시 보관</span>
+											</button>
+											</a>
 											</li>
 										</ul>
 									</div>

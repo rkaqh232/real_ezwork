@@ -17,11 +17,12 @@
 <link href="resources/assets/css/style.bundle.css?v=7.0.4"
 	rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+
+<script>
+
+</script>
 </head>
 <body>
-
-           
-
 	<!--begin::Content-->
 	<div class="content d-flex flex-column flex-column-fluid"
 		id="kt_content">
@@ -38,9 +39,6 @@
 				</div>
 				<!--end::Notice-->
 				<!--begin::Example-->
-				
-				
-				
 				<!--begin::Card-->
 				<div class="card card-custom">
 					<div class="card-header">
@@ -48,7 +46,7 @@
 							<h3 class="card-label">일정관리</h3>
 						</div>
 						<div class="card-toolbar">
-							<a href="#" class="btn btn-light-primary font-weight-bold"> <i
+							<a href="#" id="addevent" class="btn btn-light-primary font-weight-bold"> <i
 								class="ki ki-plus icon-md mr-2"></i>Add Event
 							</a>
 						</div>

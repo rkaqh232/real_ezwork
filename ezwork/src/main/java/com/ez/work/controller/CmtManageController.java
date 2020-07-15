@@ -22,7 +22,6 @@ import com.ez.work.service.CmtManageService;
 
 
 @Controller
-
 public class CmtManageController {
 	
 	@Autowired
@@ -47,7 +46,6 @@ public class CmtManageController {
 			else
 				check = 2;
 		}
-		
 		mv.addObject("check", check);
 		return mv;
 	}
@@ -68,8 +66,6 @@ public class CmtManageController {
 		out.println("location.href="+"'DailyCommute.cm?check=1';");
 		out.println("</script>");
 		out.close();
-		
-		
 		}else {
 			System.out.println("출근 등록 실패");
 			response.setContentType("text/html;charset=utf-8");
@@ -84,7 +80,7 @@ public class CmtManageController {
 	
 	//퇴근등록
 	@PostMapping("/OffTime.cm")
-		public ModelAndView OffTime_ok(CmtManage CmtManage, ModelAndView mv, HttpServletRequest request,
+		public void OffTime_ok(CmtManage CmtManage, ModelAndView mv, HttpServletRequest request,
 				HttpServletResponse response, Model m) throws Exception {
 			//퇴근 메소드 호출
 			int result = cmtManageService.insertOfftime(CmtManage);
@@ -105,7 +101,6 @@ public class CmtManageController {
 				out.println("</script>");
 				out.close();
 			}
-			return mv;
 
 		}
 	
@@ -120,7 +115,6 @@ public class CmtManageController {
 			return mv;
 		}
 	
-	//@GetMapping(value = "/GetDetail.cm")
 	
 	
 	

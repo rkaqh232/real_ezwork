@@ -320,7 +320,7 @@ font-size:12px !important;
 																	type="radio" name="M_GENDER" id="M_GENDER" checked="checked" value="남" /> 남 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																</label> <label class="radio radio-rounded radio-info">
-																	<input type="radio" id="M_GENDER" name="gender"  value="여"/> 여 <span></span>
+																	<input type="radio" id="M_GENDER" name="M_GENDER"  value="여"/> 여 <span></span>
 																</label>
 															</div>
 														</div>

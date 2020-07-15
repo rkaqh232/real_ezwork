@@ -24,6 +24,8 @@ $(function(){
 		$('#end').prop('disabled',true);
 	}
 })
+
+
 </script> 
 </head>
 <body onload="startTime()">
@@ -178,7 +180,7 @@ $(function(){
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">누적근무시간</span> <span
 										class="font-weight-bolder font-size-h5"> <span
-										class="text-dark-50 font-weight-bold"></span>10h 24m
+										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>
 							</div>

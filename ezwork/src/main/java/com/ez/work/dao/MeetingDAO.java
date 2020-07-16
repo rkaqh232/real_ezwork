@@ -22,4 +22,7 @@ public class MeetingDAO {
 		return sqlSession.selectOne("Reserves.check", meeting);
 	}
 	
+	public List<MeetingRoom> getList(){
+		return sqlSession.selectList("Reserves.list");
+	}
 }

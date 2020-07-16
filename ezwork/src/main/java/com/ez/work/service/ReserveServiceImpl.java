@@ -1,5 +1,7 @@
 package com.ez.work.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,9 @@ public class ReserveServiceImpl implements ReserveService{
 			dao.insertMeeting(meeting);
 			return check;
 		}
+	}
+
+	public List<MeetingRoom> getList() {
+		return dao.getList();
 	}
 }

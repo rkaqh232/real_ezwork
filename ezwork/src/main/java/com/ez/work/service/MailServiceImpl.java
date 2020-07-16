@@ -99,5 +99,4 @@ public class MailServiceImpl implements MailService{
 		result = dao.tempDelete(num);
 		return result;
 	}	
-	
 }

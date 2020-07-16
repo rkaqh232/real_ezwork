@@ -35,8 +35,9 @@ SET CM_WORKHOUR = (SELECT ((REGEXP_REPLACE(CM_OFFTIME, '[[:punct:]]')-REGEXP_REP
 FROM COMMUTE WHERE CM_CODE = to_char(sysdate+2,'yyyymmdd')) WHERE CM_CODE = to_char(sysdate+2,'yyyymmdd');
 /*근무시간 계산*/
 
-/*월별근무시간 계산 사람별해야됨..*/ 
-SELECT SUM(CM_WORKHOUR) FROM COMMUTE WHERE SUBSTR(CM_CODE,1,6) = to_char(sysdate,'yyyymm');
+/*월별근무시간 계산..*/ 
+SELECT SUM(CM_WORKHOUR) FROM COMMUTE WHERE SUBSTR(CM_CODE,1,6) = to_char(sysdate,'yyyymm') 
+AND CM_NAME = '이재희';
 /*월별근무시간 계산*/
 
 /*연장근무시간 계산.*/

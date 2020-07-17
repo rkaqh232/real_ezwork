@@ -50,7 +50,15 @@
 			like #{search_word}
 		</if>
 	</select>
-
+	
+	
+	 <!--  혜정 - 정보 업데이트 --> 
+    <update id="update" parameterType="member">
+    	update member
+    	set	 name = #{name}, age = #{age},
+    	 	 gender = #{gender}, email=#{email}
+    	where id=#{id}
+ 	</update>
 
 
 

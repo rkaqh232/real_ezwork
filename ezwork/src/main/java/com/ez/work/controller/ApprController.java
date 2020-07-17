@@ -3,6 +3,7 @@ package com.ez.work.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +30,9 @@ public class ApprController {
 
 	@GetMapping(value="/wait.appr")
 	public ModelAndView apprlist(HttpServletRequest request, ModelAndView mv,
-			@RequestParam(value = "page", defaultValue = "1", required = false) int page) {		
+			@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+			HttpSession session) {		
+		String id = (String) session.getAttribute("id");		
 		
 		int limit = 10; 
 
@@ -45,7 +48,7 @@ public class ApprController {
 		if (endpage > maxpage)
 			endpage = maxpage;
 
-		List<Appr> apprlist = apprservice.getApprList(page, limit); 
+		List<Appr> apprlist = apprservice.getApprList(page, limit, id); 
 
 		
 		mv.addObject("nowpage", page);

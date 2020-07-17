@@ -1,5 +1,6 @@
 package com.ez.work.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,15 @@ public class ApprServiceImpl implements ApprService {
 		return 0;
 	}
 
-	public List<Appr> getApprList(int page, int limit) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Appr> getApprList(int page, int limit, String id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		int startrow = (page-1)*limit + 1;
+		int endrow = startrow + limit -1;
+		map.put("start", startrow);
+		map.put("end", endrow);
+		map.put("id", id);
+		return dao.getInboxList(map);
+		
 	}
 	
 }

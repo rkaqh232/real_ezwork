@@ -159,6 +159,13 @@ tr>th:nth-child(6){width:10%}
 				</tr>
 			</tfoot>
 		</table>
+		<!-- pagination 시작 -->
+		<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px;width:100%;">
+			<div class="pagination" style="margin:0 auto;">
+	        </div>
+	    </div>
+					<!-- pagination 끝 -->
+		
 		<!--end: Datatable-->
 	</div>
 </div>

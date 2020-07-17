@@ -42,6 +42,18 @@ create table member(
 insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL) -- 임시생성재희
 values('jaehee','1','이재희', '총무팀','3','ex@Exwork.com');
 
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL) -- 임시생성 영민
+values('test','1','test', '인사팀','3','ex@Exwork.com');
+
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL) -- 임시생성 영민
+values('test1','1','test', '총무팀','3','ex@Exwork.com');
+
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL) -- 임시생성 영민
+values('test2','1','test', '회계팀','4','ex@Exwork.com');
+
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL) -- 임시생성 영민
+values('test3','1','test', '인사팀','3','ex@Exwork.com');
+
 insert into member(M_CODE,M_PASS) -- 임시 관리자 계정
 values('admin','1');
 

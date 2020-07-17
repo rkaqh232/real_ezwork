@@ -125,6 +125,28 @@ tr>th:nth-child(6){width:10%}
 					<th>진행상황</th>
 				</tr>
 			</thead>
+			<tbody>
+        <c:set var="num" value="${listcount-(nowpage-1)*limit}"/>
+        <c:forEach var="b" items="${apprlist}">
+        <tr>
+           <td><%--번호 --%>
+              <c:out value="${num}"/><%--num 출력 --%>
+              <c:set var="num" value="${num-1}"/> <%--num = num-1; 의미 --%>
+           </td>
+           <td><%--제목 --%>
+              <div>
+                  <a href="./ApprDetailAction.bo?num=${b.APPR_CODE}">
+                     ${b.APPR_TITLE}
+                  </a>
+              </div>
+              </td>
+              <td><div>${b.M_CODE}</div></td>
+              <td><div>${b.APPR_DATE}</div></td>              
+              <td><div>${b.APPR_COMP_DATE}</div></td>
+           </tr>
+           </c:forEach>
+       </tbody>
+			
 			<tfoot>
 				<tr>
 					<td>1</td>

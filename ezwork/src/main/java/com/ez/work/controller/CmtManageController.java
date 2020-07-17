@@ -32,7 +32,7 @@ public class CmtManageController {
 	public ModelAndView DailyCommute(HttpServletRequest request, 
 			ModelAndView mv, HttpSession session, @RequestParam(value="check", defaultValue="0" )int check) {
 		String id = (String) session.getAttribute("id");
-		Member memberinfo = cmtManageService.getInfo(id);
+		Member memberinfo = cmtManageService.getInfo(id); //로그인 된 ID정보 가져옴
 		CmtManage memberinfo2 = cmtManageService.getDetail(id);
 		mv.setViewName("home");
 		mv.addObject("page", "CmtManage/dailyCmt.jsp");

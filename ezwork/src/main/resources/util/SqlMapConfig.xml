@@ -11,6 +11,7 @@
 		<typeAlias alias ="appr" type="com.ez.work.domain.Appr" />
 		<typeAlias alias ="cmtmanage" type="com.ez.work.domain.CmtManage" />
 		<typeAlias alias ="mroom" type="com.ez.work.domain.MeetingRoom" />
+		<typeAlias alias ="schedule" type="com.ez.work.domain.Schedule" />
 	</typeAliases>
 
 	<mappers>
@@ -21,6 +22,7 @@
 		<mapper resource="sql/appr.xml"/>
 		<mapper resource="sql/CmtManage.xml"/>
 		<mapper resource="sql/reserve.xml"/>
+		<mapper resource="sql/schedule.xml"/>
 	</mappers>
 
 </configuration>

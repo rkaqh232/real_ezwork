@@ -24,7 +24,7 @@ font-size:12px !important;
 
 
 	<!--begin::Entry-->
-	
+	<c:set var="m" value="${memberinfo}" />
 	<div class="d-flex flex-column-fluid">
 		<!--begin::Container-->
 		<div class="container">
@@ -85,7 +85,7 @@ font-size:12px !important;
 						<!--end::Wizard Nav-->
 						<!--begin::Card-->
 
-                       <form class="form" id="kt_form" action="joinProcess.net" method="post" enctype="multipart/form-data">
+                       <form class="form" id="kt_form" action="updateProcess.net" method="post">
 
 						<!--  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작 -->
 						<div class="card card-custom card-shadowless rounded-top-0">
@@ -110,34 +110,7 @@ font-size:12px !important;
 														<h3 class="text-dark font-weight-bold mb-10"
 															font-weight="bold";>사원 등록<a style="color:red">   * 필수항목입니다. </a> </h3>
 														<!--begin::Group-->
-														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label text-left">
-																사진 </label>
-															<div class="col-lg-9 col-xl-9">
-																<div class="image-input image-input-outline"
-																	id="kt_user_add_avatar">
-																	<div class="image-input-wrapper"
-																		style="background-image: url(resources/assets/media/users/LEE.PNG)"></div>
-																	<label
-																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-																		data-action="change" data-toggle="tooltip" title=""
-																		data-original-title="Change avatar"> <i
-																		class="fa fa-pen icon-sm text-muted"></i> 
-																		
-																		<input type="file" id="upfile" name="profile_avatar" accept=".png, .jpg, .jpeg" /> 
-																		
-																		<input type="hidden" name="profile_avatar_remove" />
-																		<!-- <input type="file" id="upfile" name="uploadfile"> -->
-																		
-																	</label> <span
-																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-																		data-action="cancel" data-toggle="tooltip"
-																		title="Cancel avatar"> <i
-																		class="ki ki-bold-close icon-xs text-muted"></i>
-																	</span>
-																</div>
-															</div>
-														</div>
+														
 														<!--end::Group-->
 														<!--begin::Group-->
 														<!--  사원번호  -->
@@ -147,8 +120,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_CODE" id="M_CODE" type="text" placeholder="EMP202010" 
-																	onclick="empcode_error()" readonly /><span class="form-text text-muted">참고 : 사원번호는 자동으로 생성됩니다. 
+																	name="M_CODE" id="M_CODE" type="text" value="${m.M_CODE}" readonly /><span class="form-text text-muted">참고 : 사원번호는 자동으로 생성됩니다. 
 																	</span>
 															</div>
 														</div>
@@ -158,7 +130,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_PASS" type="text" id="password" value="" placeholder="840817" /> <span
+																	name="M_PASS" type="text" id="password" value="" placeholder="840817"  /> <span
 																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
 															</div>
 														</div>

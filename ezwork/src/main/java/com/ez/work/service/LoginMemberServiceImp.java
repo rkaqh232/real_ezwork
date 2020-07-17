@@ -45,30 +45,25 @@ public class LoginMemberServiceImp implements LoginMemberService{
 
 
 	@Override
+	public Member member_info(String id) {
+		return dao.member_info(id);
+	}
+	
+	@Override
+	public int update(Member m) {
+		return dao.update(m);
+	}
+
+	@Override
 	public int isId(String id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-
-	@Override
-	public Member member_info(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	@Override
 	public void delete(String id) {
 		// TODO Auto-generated method stub
 		
-	}
-
-
-	@Override
-	public int update(Member m) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 

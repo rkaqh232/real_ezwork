@@ -192,12 +192,23 @@ public class MemberController {
 
 	}
 	
+	//  샘플
+	//  
+	//  @RequestMapping(value="/member_update.net", method=RequestMethod.GET)
+	//  public ModelAndView member_update(HttpSession session, ModelAndView mv) throws Exception{
+	//	  String id = (String)session.getAttribute("id");
+	//    Member m = memberservice.member_info(id);
+	//	  mv.setViewName("member/updateForm");
+	//    mv.addObject("memberinfo",m);
+	//    return mv;
+	  
+	
 		// 수정폼
 		@RequestMapping(value = "/update.hr", method = RequestMethod.GET)
 		public ModelAndView member_update(HttpSession session, ModelAndView mv) throws Exception {
 			String id = (String) session.getAttribute("id");
 			Member m = loginmemberservice.member_info(id);
-			mv.setViewName("member/updateForm2");
+			mv.setViewName("member/editForm");
 			mv.addObject("memberinfo", m);
 			return mv;
 		}

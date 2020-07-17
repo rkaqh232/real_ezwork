@@ -32,5 +32,14 @@ public class MemberDAO {
 		return sqlSession.selectOne("Members.idcheck",id);// 이부분이 mamber.xml 에서 mapper Members
 		
 	}
+	
+	public Member member_info(String id) {
+		return sqlSession.selectOne("Members.idcheck",id);
+	}
+
+
+	public int update(Member m) {
+		return sqlSession.update("Members.update",m);
+	}
 
 }

@@ -1264,12 +1264,12 @@ var KTImageInput = function(elementId, options) {
             the.element = element;
             the.events = [];
 
-           the.input = KTUtil.find(element, 'input[type="file"]');
+            the.input = KTUtil.find(element, 'input[type="file"]');
             the.wrapper = KTUtil.find(element, '.image-input-wrapper');
             the.cancel = KTUtil.find(element, '[data-action="cancel"]');
             the.remove = KTUtil.find(element, '[data-action="remove"]');
             the.src = KTUtil.css(the.wrapper, 'backgroundImage');
-            //the.hidden = KTUtil.find(element, 'input[type="hidden"]');
+            the.hidden = KTUtil.find(element, 'input[type="hidden"]');
 
             // merge default and user defined options
             the.options = KTUtil.deepExtend({}, defaultOptions, options);
@@ -1281,7 +1281,7 @@ var KTImageInput = function(elementId, options) {
         build: function() {
             // Handle change
             KTUtil.addEvent(the.input, 'change', function(e) {
-               e.preventDefault();
+                e.preventDefault();
 
 	            if (the.input && the.input.files && the.input.files[0]) {
 	                var reader = new FileReader();

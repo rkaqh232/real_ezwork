@@ -61,29 +61,15 @@ var KTAddUser = function () {
 		_validations.push(FormValidation.formValidation(
 			_formEl,
 			{
-				fields: {
-					/*firstname: {
-						validators: {
-							notEmpty: {
-								message: '사원번호는 필수항목입니다. '
-							}
-						}
-					},*/
-					lastname: {
-						validators: {
-							notEmpty: {
-								message: '계약코드는 필수항목입니다.'
-							}
-						}
-					},
-					companyname: {
+				fields: {					
+					M_PART_C: {
 						validators: {
 							notEmpty: {
 								message: '부서코드는 필수항목입니다.'
 							}
 						}
 					},
-					level: {
+					M_LEVEL: {
 						validators: {
 							notEmpty: {
 								message: '직급코드는 필수항목입니다.'
@@ -102,7 +88,7 @@ var KTAddUser = function () {
 							     }					
 						}
 					},
-					name: {
+					M_NAME: {
 						validators: {
 							notEmpty: {
 								message: '성명은 필수항목입니다.'
@@ -113,15 +99,7 @@ var KTAddUser = function () {
 							     }
 						}
 					},
-					/*
-					 * pri_code: { validators: { notEmpty: { message: '주민등록번호는
-					 * 필수항목입니다.' } } },
-					 */
-					/*
-					 * birth: { validators: { notEmpty: { message: '생년월일은
-					 * 필수항목입니다.' } } },
-					 */
-					army: {
+					M_ARMY: {
 						validators: {
 							notEmpty: {
 								message: '군필 여부 선택은 필수항목입니다.'
@@ -129,7 +107,7 @@ var KTAddUser = function () {
 						}
 					},
 					
-					phone: {
+					M_MOBILE_TEL: {
 						validators: {
 							notEmpty: {
 								message: '핸드폰번호는 필수항목입니다.'
@@ -139,13 +117,9 @@ var KTAddUser = function () {
 							      max:13,
 							      message: '최대 길이는 13자리 입니다.'
 							     }
-							/*
-							 * phone: { country: 'US', message: 'The value is
-							 * not a valid US phone number. (e.g 5554443333)' }
-							 */
 						}
 					},
-					email: {
+					M_EMAIL: {
 						validators: {							
 							emailAddress: {
 								message: '이메일 형식에 맞지 않습니다.'
@@ -153,108 +127,96 @@ var KTAddUser = function () {
 						}
 						
 					},
-					pri_code: {
-						validators: {
-							notEmpty: {
-								message: '주민등록번호는 필수항목입니다.'
-							},
-							stringLength: {
-								  min:13,
-							      max:13,
-							      message: '최대 길이는 '-' 포함 13자리 입니다.'
-							 }
-						}
-					},
+					
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
 					bootstrap: new FormValidation.plugins.Bootstrap()
 				}
 			}
-		));
-
+		));	
 		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					// Step 2
-					communication: {
-						validators: {
-							choice: {
-								min: 1,
-								message: 'Please select at least 1 option'
+				_formEl,
+				{
+					fields: {
+						// Step 2
+						communication: {
+							validators: {
+								choice: {
+									min: 1,
+									message: 'Please select at least 1 option'
+								}
+							}
+						},
+						language: {
+							validators: {
+								notEmpty: {
+									message: 'Please select a language'
+								}
+							}
+						},
+						timezone: {
+							validators: {
+								notEmpty: {
+									message: 'Please select a timezone'
+								}
 							}
 						}
 					},
-					language: {
-						validators: {
-							notEmpty: {
-								message: 'Please select a language'
-							}
-						}
-					},
-					timezone: {
-						validators: {
-							notEmpty: {
-								message: 'Please select a timezone'
-							}
-						}
+					plugins: {
+						trigger: new FormValidation.plugins.Trigger(),
+						bootstrap: new FormValidation.plugins.Bootstrap()
 					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
 				}
-			}
-		));
+			));
 
-		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					address1: {
-						validators: {
-							notEmpty: {
-								message: 'Address is required'
+			_validations.push(FormValidation.formValidation(
+				_formEl,
+				{
+					fields: {
+						address1: {
+							validators: {
+								notEmpty: {
+									message: 'Address is required'
+								}
 							}
-						}
-					},
-					postcode: {
-						validators: {
-							notEmpty: {
-								message: 'Postcode is required'
+						},
+						postcode: {
+							validators: {
+								notEmpty: {
+									message: 'Postcode is required'
+								}
 							}
-						}
-					},
-					city: {
-						validators: {
-							notEmpty: {
-								message: 'City is required'
+						},
+						city: {
+							validators: {
+								notEmpty: {
+									message: 'City is required'
+								}
 							}
-						}
-					},
-					state: {
-						validators: {
-							notEmpty: {
-								message: 'state is required'
+						},
+						state: {
+							validators: {
+								notEmpty: {
+									message: 'state is required'
+								}
 							}
-						}
-					},
-					country: {
-						validators: {
-							notEmpty: {
-								message: 'Country is required'
+						},
+						country: {
+							validators: {
+								notEmpty: {
+									message: 'Country is required'
+								}
 							}
-						}
+						},
 					},
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
+					plugins: {
+						trigger: new FormValidation.plugins.Trigger(),
+						bootstrap: new FormValidation.plugins.Bootstrap()
+					}
 				}
-			}
-		));
-	}
+			));
+		}
 
 	var _initAvatar = function () {
 		_avatar = new KTImageInput('kt_user_add_avatar');

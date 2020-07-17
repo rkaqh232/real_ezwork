@@ -6,4 +6,5 @@ import com.ez.work.domain.MeetingRoom;
 
 public interface ReserveService {
 	public int insertM(MeetingRoom meeting);
+	public List<MeetingRoom> getList();
 }

@@ -2,13 +2,13 @@ package com.ez.work.controller;
 
 
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,24 +24,32 @@ public class ReserveController {
 	private ReserveService reserveService;
 	
 	@GetMapping(value="/meeting.res")
-	public String inbox(HttpServletRequest request, Model m) {
-		m.addAttribute("page","reserve/meeting.jsp");
-		return "home";
+	public ModelAndView inbox(HttpServletRequest request, ModelAndView mv) {
+		List<MeetingRoom> list = null;
+		list = reserveService.getList();
+		mv.setViewName("home");
+		mv.addObject("page","reserve/meeting.jsp");
+		mv.addObject("list", list);
+		return mv;
 	}
 	
 	@PostMapping("/ReserveAction.res")
-	public ModelAndView mailadd(ModelAndView mv, MeetingRoom meeting, HttpServletResponse response) throws Exception{
+	public ModelAndView mailadd(MeetingRoom meeting, ModelAndView mv, HttpServletResponse response) throws Exception{
+		System.out.println("ReserveAction starts");
+		
+		System.out.println("meeting user info: " + meeting.getUSER_NAME());
+		System.out.println("meeting subject: " + meeting.getMSUBJECT());
+		
 		int result = reserveService.insertM(meeting);
 		PrintWriter out = response.getWriter();
+		response.setContentType("text/html;charset=utf-8");
 		if(result==0) {
 			mv.setViewName("home");
 			mv.addObject("page","reserve/meeting.jsp");
-			out.println("<script>alert('예약이 완료되었습니다.');</script>");
+			return mv;
 		} else {
-			mv.setViewName("home");
-			mv.addObject("page","reserve/meeting.jsp");
-			out.println("<script>alert('이미 예약된 시간입니다.');</script>");
+			out.println("<script>alert('이미 예약된 시간입니다. 다른 회의실을 이용해주세요 ^ ^'); history.back()</script>");
+			return null;
 		}
-		return mv;
 	}
 }

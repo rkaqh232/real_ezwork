@@ -1,6 +1,7 @@
 package com.ez.work.controller;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +61,7 @@ public class MailController {
 	}
 	
 	@PostMapping("/MailAddaction.mail")
-	public String mailadd(Mail mail, HttpServletRequest request) throws Exception{
+	public void mailadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		MultipartFile uploadfile=mail.getUploadfile();
 		if(!uploadfile.isEmpty()) {
 			String fileName = uploadfile.getOriginalFilename();
@@ -91,11 +92,13 @@ public class MailController {
 			mail.setMAIL_FILE(fileDBName);
 		}
 		mailService.insertMail(mail);
-		return "redirect:inbox.mail";
+		PrintWriter out = response.getWriter();
+		out.println("<script>history.back();</script>");
+		out.close();
 	}
 	
 	@PostMapping("/Tempaction.mail")
-	public String tempadd(Mail mail, HttpServletRequest request) throws Exception{
+	public void tempadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		System.out.println("tempaction");
 		MultipartFile uploadfile=mail.getUploadfile();
 		if(!uploadfile.isEmpty()) {
@@ -127,7 +130,9 @@ public class MailController {
 			mail.setMAIL_FILE(fileDBName);
 		}
 		mailService.tempMail(mail);
-		return "redirect:inbox.mail";
+		PrintWriter out = response.getWriter();
+		out.println("<script>history.back();</script>");
+		out.close();
 	}
 	
 	@ResponseBody

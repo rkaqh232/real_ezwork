@@ -1,4 +1,4 @@
-drop table approve;
+drop table appr_comments;
 
 create table appr_comments(
 	COMM_CODE		NUMBER		PRIMARY KEY,
@@ -10,5 +10,5 @@ create table appr_comments(
 );
 
 
-drop sequence com_seq;
-create sequence com_seq;
+drop sequence appr_com_seq;
+create sequence appr_com_seq;

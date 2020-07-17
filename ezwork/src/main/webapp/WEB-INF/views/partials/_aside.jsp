@@ -200,7 +200,7 @@
                                        </i> <span class="menu-text">근무 시간 진단</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="monthly.att" class="menu-link">
+                                       href="monthlyCmt.cm" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">월별 근태 조회</span>
                                     </a></li>

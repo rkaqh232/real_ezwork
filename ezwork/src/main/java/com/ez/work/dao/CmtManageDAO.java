@@ -47,4 +47,8 @@ public class CmtManageDAO {
 		return sqlSession.selectOne("Members.EmpCheck", m_code);
 	}
 
+	public List<CmtManage> monthlyCmt(String m_code) {
+		return sqlSession.selectList("CmtManage.monthlyCmt", m_code);
+	}
+
 }

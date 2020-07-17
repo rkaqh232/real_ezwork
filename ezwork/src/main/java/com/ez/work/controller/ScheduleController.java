@@ -54,7 +54,7 @@ public class ScheduleController {
 		System.out.println(schearray);
 		mv.addObject("schearray", schearray);
 		}
-		
+		mv.addObject("Schedulelist", scheduleList);
 		mv.addObject("page","schedule/calendar.jsp");
 		mv.setViewName("home");
 		mv.addObject("memberinfo", memberinfo);		
@@ -89,8 +89,7 @@ public class ScheduleController {
 		
 		@RequestMapping(value = "/getScheduleDetail.sche", method = RequestMethod.POST)
 		@ResponseBody
-		public Schedule getDetailSchedule(@RequestParam (value = "scheduleNo") String scheduleNo) throws Exception{
-			
+		public Schedule getDetailSchedule(@RequestParam (value = "scheduleNo") int scheduleNo) throws Exception{
 			System.out.println("no" + scheduleNo);
 			return null;
 		}

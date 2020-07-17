@@ -98,6 +98,7 @@
 							
 							
 							eventClick : function(date, allDay, jsEvent, view){
+								
 								var scheduleNo = date.event.extendedProps.description;
 								console.log(scheduleNo);
 								$.ajax({
@@ -191,7 +192,6 @@
 									<div class="input-group-append">
 										<button class="btn btn-outline-info" type="button">검색</button>
 									</div>
-									
 
 
 								</div>
@@ -347,7 +347,7 @@
 	<!--end::Card-->
 
 		<script src="resources/js/fullcalendar/jquery.min.js"></script>
-		<script src="resources/assets/plugins/global/plugins.bundle.js"></script>
+ 	<script src="resources/assets/plugins/global/plugins.bundle.js"></script>
 		<script src="resources/js/fullcalendar/moment.min.js"></script>
 		<script
 			src="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>

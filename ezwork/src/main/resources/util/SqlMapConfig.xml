@@ -12,6 +12,7 @@
 		<typeAlias alias ="cmtmanage" type="com.ez.work.domain.CmtManage" />
 		<typeAlias alias ="mroom" type="com.ez.work.domain.MeetingRoom" />
 		<typeAlias alias ="schedule" type="com.ez.work.domain.Schedule" />
+		<typeAlias alias="bookmark" type="com.ez.work.domain.bookmark" />
 	</typeAliases>
 
 	<mappers>

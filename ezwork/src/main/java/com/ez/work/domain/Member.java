@@ -19,6 +19,7 @@ public class Member {
 	   private String M_EMAIL;          //이메일
 	   private String M_ADDRESS;        //자택주소
 	   private String M_JOIN_DATE;        //입사날짜
+	   private int M_BOOKMARK;        //즐겨찾기
 	   private String SC_NAME;        //학교명
 	   private String SC_MAJOR;       //전공
 	   private String SC_DEGREE;       //학위
@@ -33,6 +34,7 @@ public class Member {
 	   private String LI_ORGAN;         //발급기관
 	   private String LI_DATE;          //발급일자
 	   private MultipartFile profile_avatar;
+	   
 	 
 	   
 	   
@@ -120,6 +122,12 @@ public class Member {
 	}
 	public void setM_ADDRESS(String m_ADDRESS) {
 		M_ADDRESS = m_ADDRESS;
+	}
+	 public int getM_BOOKMARK() {
+			return M_BOOKMARK;
+	}
+	public void setM_BOOKMARK(int m_BOOKMARK) {
+		M_BOOKMARK = m_BOOKMARK;
 	}
 	public String getM_JOIN_DATE() {
 		return M_JOIN_DATE;

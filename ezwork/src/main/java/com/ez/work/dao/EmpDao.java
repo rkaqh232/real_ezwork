@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ez.work.domain.Member;
+import com.ez.work.domain.bookmark;
 
 //민혁
 @Repository
@@ -28,8 +29,16 @@ public class EmpDao {
 		return sqlSession.selectOne("Members.EmpCheck", M_CODE);
 	}
 
-	public int updatebookmark(Map<String, Object> map) {
-		return sqlSession.update("Members.updatebookmark", map);
+	public int insertbookmark(Map<String, Object> map) {
+		return sqlSession.insert("Members.bkinsert", map);
+	}
+
+	public int deletebookmark(Map<String, Object> map) {
+		return sqlSession.delete("Members.bkdelete", map);
+	}
+
+	public List<bookmark> bkinf(String owner) {
+		return sqlSession.selectList("Members.bkinf", owner);
 	}
 
 }

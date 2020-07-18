@@ -104,6 +104,11 @@ td:nth-child(1) {
 					senddata2 = $(this).parent().parent().parent()
 							.find("input").eq(1).val();
 					t = $(this);
+					if (senddata2 == 0) {
+						t.addClass('yellow');
+					} else {
+						t.removeClass('yellow');
+					}
 					$.ajax({
 						url : "updatebookmark",
 						type : "GET",
@@ -112,17 +117,33 @@ td:nth-child(1) {
 							"bookmark" : senddata2
 						},
 						success : function(data) {
-							console.log("data값은" + data);
-							t.parent().parent().parent().find("input").eq(1)
-									.val(data);
-							if (data == 1) {
+							//[{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"},{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"},{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"}]
+							console.log("data값은" + data.m_BOOKMARK);
+							console.log("data값은" + data.m_CODE);
+							console.log("data값은" + data.m_OWNER);
+							if (data.length == 0) {
+								t.parent().parent().parent().find("input")
+										.eq(1).val(0);
+							} else {
+								$.each(data, function(i, item) {
+									t.parent().parent().parent().find("input")
+											.eq(1).val(item.m_BOOKMARK);
+
+								})
+							} // 결론은 db에 저장된 변경된 bookmark 1값을 SearchEmp.jsp에 반영시켜주고 싶습니다.
+
+							/*
+							t.parent().parent().parent().find("input").eq(1).val(bminf.bookmark);
+							if (data != null) {
 								t.addClass('yellow');
 							} else {
 								t.removeClass('yellow');
 							}
-						}
-					});
-				});
+							 */
+
+						}//success
+					});//ajax
+				});//click
 	});
 </script>
 <body>
@@ -192,10 +213,11 @@ td:nth-child(1) {
 										<td>${m.m_NAME}</td>
 										<td>${m.m_LEVEL}</td>
 										<td><p>
-												<c:if test="${m.m_BOOKMARK == 1 }">
+												<c:set var="bk" value="${m.m_BOOKMARK}" />
+												<c:if test="${bk == 1 }">
 													<button class="bookmarkbutton yellow">☆</button>
 												</c:if>
-												<c:if test="${m.m_BOOKMARK == 0 }">
+												<c:if test="${bk == 0 }">
 													<button class="bookmarkbutton">☆</button>
 												</c:if>
 											</p></td>

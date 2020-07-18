@@ -11,20 +11,19 @@
 
 
 	<!-- 혜정 - 사원등록 -->
-    <insert id="insert" parameterType="member">
-        insert into member
-      values
-         ('EMP'||emp_seq.nextval, #{M_PASS}, #{M_FILE, jdbcType=VARCHAR},#{M_ORIGINAL, jdbcType=VARCHAR}, 
-         #{M_PART_C}, #{M_LEVEL}, #{M_NAME},
-         #{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE}, 
-         #{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, SYSDATE, 
-         #{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, #{SC_GRAD_DAY},
-         #{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
-         #{LI_NAME}, #{LI_ORGAN}, #{LI_DATE}
-         )   
-    </insert> 
-
-
+	<insert id="insert" parameterType="member">
+		insert into member
+		values
+		('EMP'||emp_seq.nextval, #{M_PASS}, #{M_FILE, jdbcType=VARCHAR},#{M_ORIGINAL,
+		jdbcType=VARCHAR},
+		#{M_PART_C}, #{M_LEVEL}, #{M_NAME},
+		#{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE},
+		#{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, SYSDATE,
+		#{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, #{SC_GRAD_DAY},
+		#{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
+		#{LI_NAME}, #{LI_ORGAN}, #{LI_DATE}
+		)
+	</insert>
 
 
 
@@ -36,35 +35,23 @@
 
 
 
+	<!-- 혜정 - 정보 업데이트 -->
+	<update id="update" parameterType="member">
+		update member
+		set name = #{name}, age = #{age},
+		gender = #{gender}, email=#{email}
+		where id=#{id}
+	</update>
 
-	<select id="searchcount" parameterType="map" resultType="int">
-		select count(*) from member where M_CODE != 'admin'
-		<if test="search_field!=null">
-			and
-			<choose>
-				<when test="search_field=='M_CODE'">M_CODE</when>
-				<when test="search_field=='M_PART_C'">M_PART_C</when>
-				<when test="search_field=='M_NAME'">M_NAME</when>
-				<when test="search_field=='M_LEVEL'">M_LEVEL</when>
-			</choose>
-			like #{search_word}
-		</if>
-	</select>
+
+
 	
-	
-	 <!--  혜정 - 정보 업데이트 --> 
-    <update id="update" parameterType="member">
-    	update member
-    	set	 name = #{name}, age = #{age},
-    	 	 gender = #{gender}, email=#{email}
-    	where id=#{id}
- 	</update>
-
-
-
+	<!-- 민혁 - 사원 검색 / 즐겨찾기 -->
 	<select id="getSearchList" parameterType="map"
 		resultType="member">
-		select *
+		select mem.M_CODE, mem.M_PART_C, mem.M_NAME, mem.M_LEVEL,
+		bookmark.M_BOOKMARK
+		from bookmark right join (select *
 		from ( select rownum rnum, b.*
 		from (select * from member where
 		M_CODE != 'admin'
@@ -79,20 +66,50 @@
 			like #{search_word}
 		</if>
 		order by M_CODE
-		)b
+			)b
 		)
-		where rnum &gt; = #{start} and rnum &lt; = #{end}
+		where rnum &gt; = #{start} and rnum &lt; = #{end}) mem
+		on bookmark.m_code = mem.m_code
 	</select>
-
+	
+	<!-- 민혁 - 사원 수 검색 -->
+	<select id="searchcount" parameterType="map" resultType="int">
+		select count(*) from member where M_CODE != 'admin'
+		<if test="search_field!=null">
+			and
+			<choose>
+				<when test="search_field=='M_CODE'">M_CODE</when>
+				<when test="search_field=='M_PART_C'">M_PART_C</when>
+				<when test="search_field=='M_NAME'">M_NAME</when>
+				<when test="search_field=='M_LEVEL'">M_LEVEL</when>
+			</choose>
+			like #{search_word}
+		</if>
+	</select>
+	
+	<!--  민혁 - 사원 상세 정보  -->
 	<select id="EmpCheck" resultType="member" parameterType="String">
 		select *
 		from member where M_CODE = #{M_CODE}
 	</select>
-
-	<update id="updatebookmark" parameterType="map">
-		update member
-		set
-		m_bookmark = #{bookmark}
-		where m_code = #{id}
-	</update>
+	
+	<!--  민혁 - 즐겨찾기 값 삽입  -->
+	<insert id="bkinsert" parameterType="map">
+		insert into bookmark
+		values(#{bookmark}, #{owner}, #{user})
+	</insert>
+	
+	<!--  민혁 - 즐겨찾기 값 삭제  -->
+	<delete id="bkdelete" parameterType="map">
+		delete from bookmark
+		where
+		m_owner = #{owner} and m_code = #{user}
+	</delete>
+	
+	<!--  민혁 - 즐겨찾기 값 불러오기  -->
+	<select id="bkinf" parameterType="String" resultType="bookmark">
+		select *
+		from bookmark
+		where m_owner = #{owner}
+	</select>
 </mapper>

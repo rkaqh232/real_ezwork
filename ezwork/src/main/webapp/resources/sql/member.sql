@@ -20,7 +20,8 @@ create table member(
    M_MOBILE_TEL          VARCHAR2(20),                                -- 핸드폰
    M_EMAIL               VARCHAR2(100),                               -- 이메일
    M_ADDRESS             VARCHAR2(100),                               -- 자택주소 
-   M_JOIN_DATE           DATE,                                       -- 입사날짜-SYSDATE
+   M_JOIN_DATE           DATE,                                        -- 입사날짜-SYSDATE
+   M_BOOKMARK			 NUMBER,									  -- 즐겨찾기 값(0, 1)
    SC_NAME               VARCHAR2(50),                                -- 학교명   (학력정보)
    SC_MAJOR              VARCHAR2(20),                                -- 전공
    SC_DEGREE             VARCHAR2(20),                                -- 학위
@@ -34,7 +35,7 @@ create table member(
    LI_NAME               VARCHAR2(50),                                -- 자격증명  (자격정보)
    LI_ORGAN              VARCHAR2(50),                                -- 발급기관
    LI_DATE               VARCHAR2(20)                                 -- 발급일자 , 총 28개의 컬럼-kt_datepicker_3
-
+   
   );
    
 

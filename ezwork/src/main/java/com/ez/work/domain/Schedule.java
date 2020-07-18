@@ -1,8 +1,26 @@
 package com.ez.work.domain;
 
 public class Schedule {
-	private String SCH_TITLE, SCH_STARTDATE, SCH_STARTTIME, SCH_ENDDATE, SCH_ENDTIME,
-	SCH_PARTICIPANT, SCH_PLACE, SCH_COLOR, SCH_OPEN, SCH_CONTENT;
+	private String SCH_TITLE, SCH_NAME, SCH_STARTDATE, SCH_ENDDATE,
+	SCH_PARTICIPANT, SCH_PLACE, SCH_COLOR, SCH_CONTENT;
+	
+	private int SCH_NO;
+
+	public String getSCH_NAME() {
+		return SCH_NAME;
+	}
+
+	public int getSCH_NO() {
+		return SCH_NO;
+	}
+
+	public void setSCH_NO(int sCH_NO) {
+		SCH_NO = sCH_NO;
+	}
+
+	public void setSCH_NAME(String sCH_NAME) {
+		SCH_NAME = sCH_NAME;
+	}
 
 	public String getSCH_TITLE() {
 		return SCH_TITLE;
@@ -20,28 +38,12 @@ public class Schedule {
 		SCH_STARTDATE = sCH_STARTDATE;
 	}
 
-	public String getSCH_STARTTIME() {
-		return SCH_STARTTIME;
-	}
-
-	public void setSCH_STARTTIME(String sCH_STARTTIME) {
-		SCH_STARTTIME = sCH_STARTTIME;
-	}
-
 	public String getSCH_ENDDATE() {
 		return SCH_ENDDATE;
 	}
 
 	public void setSCH_ENDDATE(String sCH_ENDDATE) {
 		SCH_ENDDATE = sCH_ENDDATE;
-	}
-
-	public String getSCH_ENDTIME() {
-		return SCH_ENDTIME;
-	}
-
-	public void setSCH_ENDTIME(String sCH_ENDTIME) {
-		SCH_ENDTIME = sCH_ENDTIME;
 	}
 
 	public String getSCH_PARTICIPANT() {
@@ -66,14 +68,6 @@ public class Schedule {
 
 	public void setSCH_COLOR(String sCH_COLOR) {
 		SCH_COLOR = sCH_COLOR;
-	}
-
-	public String getSCH_OPEN() {
-		return SCH_OPEN;
-	}
-
-	public void setSCH_OPEN(String sCH_OPEN) {
-		SCH_OPEN = sCH_OPEN;
 	}
 
 	public String getSCH_CONTENT() {

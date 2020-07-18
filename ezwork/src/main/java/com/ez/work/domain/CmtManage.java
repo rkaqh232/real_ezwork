@@ -13,6 +13,7 @@ public class CmtManage {
 	private String CM_GOOUTREASON;
 	private String CM_CONFIRM;
 	private String CM_DATE;
+	private String CM_OFFDATE;
 	
 	public String getCM_TEAMNAME() {
 		return CM_TEAMNAME;
@@ -86,5 +87,11 @@ public class CmtManage {
 	}
 	public void setCM_DATE(String cM_DATE) {
 		CM_DATE = cM_DATE;
+	}
+	public String getCM_OFFDATE() {
+		return CM_OFFDATE;
+	}
+	public void setCM_OFFDATE(String cM_OFFDATE) {
+		CM_OFFDATE = cM_OFFDATE;
 	}
 }

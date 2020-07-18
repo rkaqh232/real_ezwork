@@ -5,28 +5,31 @@
 <mapper namespace="Schedule">
 <insert id="addSchedule" parameterType="schedule">
 	insert into schedule
-		(SCH_TITLE,
+		(SCH_NO,
+		SCH_TITLE,
+		SCH_NAME,
 		SCH_STARTDATE,
-		SCH_STARTTIME, 
 		SCH_ENDDATE, 
-		SCH_ENDTIME,
 		SCH_PARTICIPANT,
 		SCH_PLACE,
 		SCH_COLOR,
-		SCH_OPEN,
 		SCH_CONTENT
 		)
 		values
-		(#{SCH_TITLE},
+		(SCHE_SEQ.NEXTVAL,
+		#{SCH_TITLE},
+		#{SCH_NAME},
 		#{SCH_STARTDATE},
-		#{SCH_STARTTIME},
 		#{SCH_ENDDATE},
-		#{SCH_ENDTIME},
 		#{SCH_PARTICIPANT},
 		#{SCH_PLACE},
 		#{SCH_COLOR},
-		#{SCH_OPEN},
-		#{SCH_CONTENT},
+		#{SCH_CONTENT}
 		)
 </insert>
+
+<select id="showSchedule" resultType="Schedule">
+select 
+* from schedule
+</select>
 </mapper>

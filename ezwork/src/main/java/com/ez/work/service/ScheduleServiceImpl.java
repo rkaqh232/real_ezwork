@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ez.work.dao.ScheduleDAO;
+import com.ez.work.domain.Member;
 import com.ez.work.domain.Schedule;
 
 @Repository
@@ -15,8 +16,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 	private ScheduleDAO dao;
 	
 	//일정 추가
-	public void addSchedule(Schedule sche) throws Exception{
-		dao.addSchedule(sche);
+	public int addSchedule(Schedule sche) throws Exception{
+		return dao.addSchedule(sche);
 	}
 
 	//일정 view
@@ -24,5 +25,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public List<Schedule> showSchedule() {
 		return dao.showSchedule();
 	}
+	
+	//로그인 정보 가져오기
+	@Override
+	public Member getInfo(String m_code) {
+		return dao.getInfo(m_code);
+	}
+	
 
 }

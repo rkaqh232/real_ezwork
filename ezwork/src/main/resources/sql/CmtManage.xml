@@ -33,7 +33,7 @@
 <update id="modify" parameterType="cmtmanage">
 		update commute
 		set
-		CM_OFFTIME = to_char(sysdate,'HH24:MI')
+		CM_OFFTIME = to_char(sysdate,'HH24:MI'), CM_OFFDATE = sysdate
 		where
 		CM_CODE=to_char(sysdate,'yyyymmdd')
 </update>
@@ -45,4 +45,9 @@
 		CM_CODE = to_char(sysdate,'yyyymmdd') AND CM_MCODE = #{M_CODE}
 	</select>
 	
+	
+<select id="monthlyCmt" parameterType="string" resultType="cmtmanage">
+select 
+* from commute where CM_MCODE = #{M_CODE}
+</select>
 </mapper>

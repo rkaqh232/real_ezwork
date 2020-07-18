@@ -8,7 +8,9 @@ CM_OFFTIME VARCHAR2(10),									--근무종료시간 18:00 -> 1800
 CM_WORKHOUR VARCHAR2(10),									--하루근무시간 
 CM_OVERTIME VARCHAR2(10),									--연장근무시간
 CM_CONFIRM VARCHAR2(10) CHECK(CM_CONFIRM IN('Y','N')),	--최종근무확정
-CM_DATE DATE);										--등록일자
+CM_DATE DATE,										--등록날짜시간
+CM_OFFDATE DATE										--퇴근날짜시간
+);										
 
 ALTER TABLE COMMUTE
 MODIFY (CM_WORKHOUR VARCHAR2(15));

@@ -13271,6 +13271,7 @@ Docs & License: https://fullcalendar.io/
                         ' data-full="' + core.htmlEscape(fullTimeText) + '"' +
                         '>' +
                         '<span>' + core.htmlEscape(timeText) + '</span>' +
+                        
                         '</div>' :
                     '') +
                 (eventDef.title ?

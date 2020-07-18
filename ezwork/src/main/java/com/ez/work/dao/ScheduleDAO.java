@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ez.work.domain.Member;
 import com.ez.work.domain.Schedule;
 @Repository
 public class ScheduleDAO {
@@ -14,12 +15,16 @@ public class ScheduleDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	
-	public void addSchedule(Schedule sche) throws Exception  {
-		sqlSession.insert("Schedule.addSchedule", sche);
+	public int addSchedule(Schedule sche) throws Exception  {
+		return sqlSession.insert("Schedule.addSchedule", sche);
 	}
 
 	public List<Schedule> showSchedule() {
 		return sqlSession.selectList("Schedule.showSchedule");
+	}
+
+	public Member getInfo(String m_code) {
+		return sqlSession.selectOne("Members.EmpCheck", m_code);
 	}
 
 }

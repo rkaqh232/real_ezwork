@@ -26,7 +26,7 @@ CM_CODE = 20200716;
 select * from commute;
 
 insert into commute(CM_CODE,CM_TEAMNAME,CM_MCODE,CM_NAME,CM_ONTIME,CM_OFFTIME, CM_DATE )
-values (20200717,'인사팀','202','이재희','08:02','18:41',SYSDATE+2 );
+values (20200717,'인사팀','202','이재희','08:02','18:41',SYSDATE);
 
 
 

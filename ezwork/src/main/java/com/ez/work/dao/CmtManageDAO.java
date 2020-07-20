@@ -16,10 +16,6 @@ public class CmtManageDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<CmtManage> getCmtList(HashMap<String, Integer> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void insertOntime(CmtManage cmtManageOn) {
 		 sqlSession.insert("CmtManage.insert", cmtManageOn);
@@ -29,15 +25,6 @@ public class CmtManageDAO {
 		return sqlSession.update("CmtManage.modify", cmtManageOff);
 	}
 
-	public int insertOvertime(CmtManage cmtManageOver) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int insertConfirm(CmtManage cmtManageConfirm) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public CmtManage getDetail(String m_code) {
 		return sqlSession.selectOne("CmtManage.Detail", m_code);
@@ -51,4 +38,18 @@ public class CmtManageDAO {
 		return sqlSession.selectList("CmtManage.monthlyCmt", m_code);
 	}
 
+	public void dailyWorkHours() {
+		sqlSession.update("CmtManage.dailyWork");
+	}
+
+	public int getListCount() {
+		return sqlSession.selectOne("CmtManage.count");
+	}
+	public List<CmtManage> getCmtList(HashMap<String, Integer> map) {
+		return sqlSession.selectList("CmtManage.list", map);
+	}
+
+	public void accumulativeHours(String id) {
+		sqlSession.update("CmtManage.accumulative", id);
+	}
 }

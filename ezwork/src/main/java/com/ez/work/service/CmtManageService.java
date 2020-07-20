@@ -17,12 +17,6 @@ public interface CmtManageService {
 	// 퇴근 정보 입력
 	public int insertOfftime(CmtManage cmtManageOff);
 
-	// 연장 근무 시간 계산
-	public int insertOvertime(CmtManage cmtManageOver);
-
-	// 근무확정
-	public int insertConfirm(CmtManage cmtManageConfirm);
-	
 	//당일 근태 현황 select
 	public CmtManage getDetail(String datecode);
 	
@@ -31,4 +25,17 @@ public interface CmtManageService {
 	
 	//월간 보기
 	public List<CmtManage> monthlyCmt(String m_code);
+
+	//하루 근무 시간
+	public void dailyWorkHours();
+
+	//근태 찍은 날짜 수
+	public int getListCount();
+
+	//근태 리스트
+	public List<CmtManage> getCmtList(int page, int limit);
+
+	//누적근무 계산
+	public void accumulativeHours(String id);
+
 }

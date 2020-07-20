@@ -1,26 +1,35 @@
-create table request_al( --연차신청 table
-al_date date, --등록일
-al_m_name varchar2(20), --등록자 이름
-al_m_part_c varchar2(20), --부서
-al_m_code varchar2(20), --사번
-al_sort varchar2(20),  --연차종류
-al_startdate date,  --시작일
-al_enddate date,   --종료일
-al_reason varchar(500) --휴가사유
+create table REQUEST_AL( --연차신청 table
+AL_DATE date, --등록일
+AL_M_NAME varchar2(20), --등록자 이름
+AL_M_PART_C varchar2(20), --부서
+AL_M_CODE varchar2(20), --사번
+AL_SORT varchar2(20),  --연차종류
+AL_STARTDATE date,  --시작일
+AL_ENDDATE date,   --종료일
+AL_REASON varchar(500) --휴가사유
+);
+
+select  substr(AL_STARTDATE,1,10) from REQUEST_AL;
+
+DROP TABLE REQUEST_AL;
+
+insert into REQUEST_AL(AL_DATE, AL_M_NAME, AL_M_PART_C, AL_M_CODE, AL_SORT, AL_STARTDATE, AL_ENDDATE, AL_REASON
+)values(
+sysdate,'안혜정','총무팀','part','연차','2020-07-18', '2020-07-21 00:00:00','리프레쉬휴가'
 );
 
 select * from request_al;
 
-create table list_al(
-al_m_code varchar2(20), --사번
-al_m_name varchar2(20), --등록자 이름
-al_m_part_c varchar2(20), --부서 소속
-al_m_join_date date, --입사날짜
-al_years number,-- 근속년수
-al_totalday number, --보유연차 (일수)
-al_totalhour number, --보유연차 (시간)
-al_used number, -- 사용한 연차
-al_unused number -- 남은연차
+create table LIST_AL(
+AL_M_CODE varchar2(20), --사번
+AL_M_NAME varchar2(20), --등록자 이름
+AL_M_PART_C varchar2(20), --부서 소속
+AL_M_JOIN_DATE date, --입사날짜
+AL_YEARS number,-- 근속년수
+AL_TOTALDAY number, --보유연차 (일수)
+AL_TOTALHOUR number, --보유연차 (시간)
+AL_USED number, -- 사용한 연차
+AL_UNUSED number -- 남은연차
 );
 
 select floor(months_between(sysdate,M_JOIN_DATE)/12) from member; --근속 년수

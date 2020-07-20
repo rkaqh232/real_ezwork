@@ -12,7 +12,8 @@
 		<typeAlias alias ="cmtmanage" type="com.ez.work.domain.CmtManage" />
 		<typeAlias alias ="mroom" type="com.ez.work.domain.MeetingRoom" />
 		<typeAlias alias ="schedule" type="com.ez.work.domain.Schedule" />
-		<typeAlias alias="bookmark" type="com.ez.work.domain.bookmark" />
+		<typeAlias alias ="allist" type="com.ez.work.domain.ALList" />
+		<typeAlias alias="alrequest" type="com.ez.work.domain.ALRequest" />
 	</typeAliases>
 
 	<mappers>
@@ -24,6 +25,8 @@
 		<mapper resource="sql/CmtManage.xml"/>
 		<mapper resource="sql/reserve.xml"/>
 		<mapper resource="sql/schedule.xml"/>
+		<mapper resource="sql/ALlist.xml"/>
+		<mapper resource="sql/ALrequest.xml"/>
 	</mappers>
 
 </configuration>

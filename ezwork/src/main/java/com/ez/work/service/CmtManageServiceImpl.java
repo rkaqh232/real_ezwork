@@ -33,16 +33,6 @@ public class CmtManageServiceImpl implements CmtManageService{
 	}
 
 	@Override
-	public int insertOvertime(CmtManage cmtManageOver) {
-		return dao.insertOvertime(cmtManageOver);
-	}
-
-	@Override
-	public int insertConfirm(CmtManage cmtManageConfirm) {
-		return dao.insertConfirm(cmtManageConfirm);
-	}
-
-	@Override
 	public CmtManage getDetail(String m_code) {
 		return dao.getDetail(m_code);
 	}
@@ -57,6 +47,35 @@ public class CmtManageServiceImpl implements CmtManageService{
 	public List<CmtManage> monthlyCmt(String m_code) {
 		return dao.monthlyCmt(m_code);
 		}
+
+	//하루 근무시간 계산
+	@Override
+	public void dailyWorkHours() {
+		dao.dailyWorkHours();
+	}
+
+	//근태 수
+	@Override
+	public int getListCount() {
+		return dao.getListCount();
+	}
+	
+	//근태 리스트
+	@Override
+	public List<CmtManage> getCmtList(int page, int limit) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		int startrow = (page - 1) * limit + 1;
+		int endrow = startrow + limit - 1;
+		map.put("start", startrow);
+		map.put("end", endrow);
+		return dao.getCmtList(map);
+	}
+
+	//누적근무 계산
+	@Override
+	public void accumulativeHours(String id) {
+		dao.accumulativeHours(id);		
+	}
 
 
 

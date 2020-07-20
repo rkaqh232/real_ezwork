@@ -183,23 +183,6 @@
                                        </i> <span class="menu-text">일일 근태 등록</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="view.att"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">개인 근태 조회</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="all.att"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">부서별 근태 조회</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="check.att" class="menu-link">
-                                          <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">근무 시간 진단</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
                                        href="monthlyCmt.cm" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
                                        </i> <span class="menu-text">월별 근태 조회</span>

@@ -105,88 +105,91 @@
 				</div>
 
 				<!--end::Row-->
-				<div class="card card-custom">
-					<div class="card-header flex-wrap border-0 pt-6 pb-0">
-						<div class="card-title">
-							<h3 class="card-label">
-								<i class="flaticon-list-2 text-info"></i>&nbsp; 휴가 신청<span
-									class="text-muted pt-2 font-size-sm d-block"></span>
-							</h3>
+				<form action="RequestInsert.al" method="POST">
+					<div class="card card-custom">
+						<div class="card-header flex-wrap border-0 pt-6 pb-0">
+							<div class="card-title">
+								<h3 class="card-label">
+									<i class="flaticon-list-2 text-info"></i>&nbsp; 휴가 신청<span
+										class="text-muted pt-2 font-size-sm d-block"></span>
+								</h3>
+							</div>
+							<div class="card-toolbar">
+								<button type="submit" class="btn btn-info" style="margin-left: 10px;">제출</button>
+							</div>
 						</div>
-						<div class="card-toolbar">
-							<a href="#" class="btn btn-info" style="margin-left: 10px;">제출</a>
-						</div>
-					</div>
-					<div class="card-body pt-0 pb-3">
-						<div class="tab-content">
-							<!--begin::Table-->
-
-							<div class="card-body">
-								<table class="table">
-									<colgroup>
-										<col width="10%">
-										<col width="40%">
-										<col width="10%">
-										<col width="40%">
-									</colgroup>
-									<tbody style="text-align: center; font-size: 14px;">
-										<tr>
-											<th class="table-Secondary" style="text-align: center;"><div>신청자</div></th>
-											<td><div>이재희</div></td>
-											<th class="table-Secondary"><div>소속</div></th>
-											<td><div>총무팀</div></td>
-										</tr>
-										<tr>
-											<th class="table-Secondary"><div>휴가구분</div></th>
-											<td colspan="3"><div>
-												<div class="col-10">
-														<select
-															class="form-control col-5" id="exampleSelect1">
-															<option value="8">연차 (8h)</option>
-															<option value="4">반차 (4h)</option>
-															<option value="0">병가 (0h)</option>
-															<option value="8">예비군 (8h)</option>
-															<option value="4">경조사 (4h)</option>
-														</select>
+						<div class="card-body pt-0 pb-3">
+							<div class="tab-content">
+								<!--begin::Table-->
+								<div class="card-body">
+									<input type = "hidden" name="AL_M_CODE" value ="${memberinfo.m_CODE }">
+									<table class="table">
+										<colgroup>
+											<col width="10%">
+											<col width="40%">
+											<col width="10%">
+											<col width="40%">
+										</colgroup>
+										<tbody style="text-align: center; font-size: 14px;">
+											<tr>
+												<th class="table-Secondary" style="text-align: center;"><div>신청자</div></th>
+												<td><div class="col-10"><input name="AL_M_NAME" value="${memberinfo.m_NAME }" readOnly
+								type="text" style="text-align:center;"class="form-control"></div></td>
+											
+												<th class="table-Secondary" style="text-align: center;"><div>소속</div></th>
+											<td><div class="col-10"><input name="AL_M_PART_C" value="${memberinfo.m_PART_C }" readOnly
+								type="text" style="text-align:center;"class="form-control"></div></td>
+											</tr>
+											<tr>
+												<th class="table-Secondary"><div>휴가구분</div></th>
+												<td colspan="3"><div>
+														<div class="col-10">
+															<select class="form-control col-5" id="ALsort" name="AL_SORT">
+																<option value="연차">연차 (8h)</option>
+																<option value="반차">반차 (4h)</option>
+																<option value="병가">병가 (0h)</option>
+																<option value="예비군">예비군 (8h)</option>
+																<option value="경조사">경조사 (4h)</option>
+															</select>
+														</div>
+													</div></td>
+											</tr>
+											<tr>
+												<th class="table-Secondary"><div>시작일자</div></th>
+												<td>
+													<div class="col-10">
+														<input class="form-control" type="date" name="AL_STARTDATE"
+															id="startdate" />
 													</div>
 
-												</div></td>
-										</tr>
-										<tr>
-											<th class="table-Secondary"><div>시작일자</div></th>
-											<td>
-														<div class="col-10">
-															<input class="form-control" type="date"
-																id="example-date-input" />
-														</div>
-													
 												</td>
-											<th class="table-Secondary"><div>종료일자</div></th>
-											<td>
-														<div class="col-10">
-															<input class="form-control" type="date"
-																id="example-date-input" />
-														</div>
+												<th class="table-Secondary"><div>종료일자</div></th>
+												<td>
+													<div class="col-10">
+														<input class="form-control" type="date" name="AL_ENDDATE"
+															id="enddate" />
+													</div>
 												</td>
-										</tr>
-										<tr height="120px">
-											<th class="table-Secondary"><div>휴가사유</div></th>
-											<td colspan="3">
-											<div>
-											 <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-											</div></td>
-										</tr>
-									</tbody>
-								</table>
-
-
-								<!--end::Table-->
+											</tr>
+											<tr height="120px">
+												<th class="table-Secondary"><div>휴가사유</div></th>
+												<td colspan="3">
+													<div>
+														<textarea class="form-control" name ="AL_REASON" id="ALreason"
+															rows="3"></textarea>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</form>
+				<!--end::Table-->
 			</div>
-
 		</div>
+	</div>
 </body>
 </html>

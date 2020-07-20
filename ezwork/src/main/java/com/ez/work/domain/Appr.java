@@ -2,18 +2,22 @@ package com.ez.work.domain;
 
 public class Appr {
 	
-	private int APPR_CODE;                          //°áÀç ¹øÈ£         
-	private String M_CODE;                          //»ç¿ø ÄÚµå(id)     
-	private String APPR_TITLE;                      //Á¦¸ñ            
-	private String APPR_CONTENT;                    //³»¿ë            
-	private String FIRST_CODE;                      //1-»ç¿ø          
-	private String SECOND_CODE;                     //2-»ç¿ø          
-	private String THIRD_CODE;                      //3-»ç¿ø          
-	private String APPR_FILE;                       //º¯°æµÈ ÆÄÀÏ¸í       
-	private String APPR_ORIGIN;                     //original ÆÄÀÏ¸í  
-	private int STAT;                               //°áÀç »óÅÂ         
-	private String APPR_DATE;                       //Á¦Ãâ ³¯Â¥         
-	private String APPR_COMP_DATE;                  //¿Ï·á ³¯Â¥         
+	private int APPR_CODE;                          //ê²°ì¬ ë²ˆí˜¸         
+	private String M_CODE;                          //ì‚¬ì› ì½”ë“œ(id)
+	private String M_PART; 
+	private String APPR_TITLE;                      //ì œëª©            
+	private String APPR_CONTENT;                    //ë‚´ìš©            
+	private String FIRST_CODE;                      //1-ì‚¬ì›
+	private String M_PART_F; 
+	private String SECOND_CODE;                     //2-ì‚¬ì›
+	private String M_PART_S; 
+	private String THIRD_CODE;                      //3-ì‚¬ì›
+	private String M_PART_T; 	
+	private String APPR_FILE;                       //ë³€ê²½ëœ íŒŒì¼ëª…       
+	private String APPR_ORIGIN;                     //original íŒŒì¼ëª…  
+	private int APPR_STAT;                               //ê²°ì¬ ìƒíƒœ         
+	private String APPR_DATE;                       //ì œì¶œ ë‚ ì§œ         
+	private String APPR_COMP_DATE;                  //ì™„ë£Œ ë‚ ì§œ         
 	private int APPR_VAL;                           //??            
 	
 	public int getAPPR_CODE() {
@@ -70,12 +74,7 @@ public class Appr {
 	public void setAPPR_ORIGIN(String aPPR_ORIGIN) {
 		APPR_ORIGIN = aPPR_ORIGIN;
 	}
-	public int getSTAT() {
-		return STAT;
-	}
-	public void setSTAT(int sTAT) {
-		STAT = sTAT;
-	}
+	
 	public String getAPPR_DATE() {
 		return APPR_DATE;
 	}
@@ -93,5 +92,29 @@ public class Appr {
 	}
 	public void setAPPR_VAL(int aPPR_VAL) {
 		APPR_VAL = aPPR_VAL;
+	}
+	public int getAPPR_STAT() {
+		return APPR_STAT;
+	}
+	public void setAPPR_STAT(int aPPR_STAT) {
+		APPR_STAT = aPPR_STAT;
+	}
+	public String getM_PART() {
+		return M_PART;
+	}
+	public void setM_PART(String m_PART) {
+		M_PART = m_PART;
+	}
+	public String getM_PART_F() {
+		return M_PART_F;
+	}
+	public void setM_PART_F(String m_PART_F) {
+		M_PART_F = m_PART_F;
+	}
+	public String getM_PART_S() {
+		return M_PART_S;
+	}
+	public void setM_PART_S(String m_PART_S) {
+		M_PART_S = m_PART_S;
 	}
 }

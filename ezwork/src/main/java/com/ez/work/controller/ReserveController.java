@@ -23,7 +23,7 @@ public class ReserveController {
 	@Autowired
 	private ReserveService reserveService;
 	
-	@GetMapping(value="/meeting.res")
+	@PostMapping(value="/meeting.res")
 	public ModelAndView inbox(HttpServletRequest request, ModelAndView mv) {
 		List<MeetingRoom> list = null;
 		list = reserveService.getList();

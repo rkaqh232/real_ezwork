@@ -15,8 +15,12 @@ public class ApprDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<Appr> getInboxList(HashMap<String, Object> map) {
+	public List<Appr> getApprList(HashMap<String, Object> map) {
 		return sqlSession.selectList("Apprs.getlist", map);
+	}
+
+	public int getListCount() {		
+		return sqlSession.selectOne("Apprs.count");
 	}
 	
 	

@@ -15,9 +15,8 @@ public class ApprServiceImpl implements ApprService {
 	@Autowired
 	private ApprDAO dao;
 
-	public int getListCount() {
-		
-		return 0;
+	public int getListCount() {		
+		return dao.getListCount();
 	}
 
 	public List<Appr> getApprList(int page, int limit, String id) {
@@ -27,7 +26,7 @@ public class ApprServiceImpl implements ApprService {
 		map.put("start", startrow);
 		map.put("end", endrow);
 		map.put("id", id);
-		return dao.getInboxList(map);
+		return dao.getApprList(map);
 		
 	}
 	

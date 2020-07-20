@@ -1,6 +1,8 @@
 package com.ez.work.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Appr;
@@ -27,9 +31,15 @@ public class ApprController {
 	private ApprServiceImpl apprservice;
 	
 	
-
 	@GetMapping(value="/wait.appr")
-	public ModelAndView apprlist(HttpServletRequest request, ModelAndView mv,
+	public String inbox(HttpServletRequest request, Model m) {
+		m.addAttribute("page","appr/appr.jsp");
+		return "home";
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/ApprListAjax.appr")
+	public Map<String, Object> apprlist(HttpServletRequest request, ModelAndView mv,
 			@RequestParam(value = "page", defaultValue = "1", required = false) int page,
 			HttpSession session) {		
 		String id = (String) session.getAttribute("id");		
@@ -50,19 +60,18 @@ public class ApprController {
 
 		List<Appr> apprlist = apprservice.getApprList(page, limit, id); 
 
+		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println(apprlist);
 		
-		mv.addObject("nowpage", page);
-		mv.addObject("maxpage", maxpage);
-		mv.addObject("startpage", startpage);
-		mv.addObject("endpage", endpage);
-		mv.addObject("listcount", listcount);
-		mv.addObject("apprlist", apprlist);
-		mv.addObject("limit", limit);
-		mv.addObject("page","appr/appr.jsp");
+		map.put("nowpage", page);
+		map.put("maxpage", maxpage);
+		map.put("startpage", startpage);
+		map.put("endpage", endpage);
+		map.put("listcount", listcount);
+		map.put("apprlist", apprlist);
+		map.put("limit", limit);		
 		
-		
-		mv.setViewName("home");
-		return null;
+		return map;
 	}
 	
 	

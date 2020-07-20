@@ -122,7 +122,7 @@
 				</table>
 				<!-- 레코드가 없으면 -->
 				<c:if test="${listcount == 0}">
-					<font size=5>등록된 글이 없습니다.</font>
+					<div style="text-align:center;">등록된 글이 없습니다.</div>
 				</c:if>
 			</div>
 			<div class="card-footer d-flex justify-content-between">

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ez.work.domain.ALRequest;
 import com.ez.work.domain.CmtManage;
 import com.ez.work.domain.Member;
 import com.ez.work.service.CmtManageService;
@@ -32,15 +33,41 @@ public class CmtManageController {
 	
 	// 홈화면
 	@GetMapping(value = "/DailyCommute.cm")
-	public ModelAndView DailyCommute(HttpServletRequest request, 
+	public ModelAndView DailyCommute(@RequestParam(value = "page", defaultValue = "1", required = false) int page, HttpServletRequest request, 
 			ModelAndView mv, HttpSession session, @RequestParam(value="check", defaultValue="0" )int check) {
 		String id = (String) session.getAttribute("id");
 		Member memberinfo = cmtManageService.getInfo(id); //로그인 된 ID정보 가져옴
 		CmtManage memberinfo2 = cmtManageService.getDetail(id);
+		
+		int limit = 10;
+		int listcount = cmtManageService.getListCount();
+
+		// 총 페이지수
+		int maxpage = (listcount + limit - 1) / limit;
+
+		// 시작 페이지수
+		int startpage = ((page - 1) / 10) * 10 + 1;
+
+		// 마지막 페이지수
+		int endpage = startpage + 10 - 1;
+
+		if (endpage > maxpage)
+			endpage = maxpage;
+
+		List<CmtManage> cmtlist = cmtManageService.getCmtList(page, limit); // 리스트를 받아옴
+		
 		mv.setViewName("home");
 		mv.addObject("page", "CmtManage/dailyCmt.jsp");
+		mv.addObject("page1", page);
 		mv.addObject("memberinfo", memberinfo);		
 		mv.addObject("memberinfo2", memberinfo2);
+		mv.addObject("maxpage", maxpage);
+		mv.addObject("startpage", startpage);
+		mv.addObject("endpage", endpage);
+		mv.addObject("listcount", listcount);
+		mv.addObject("cmtlist", cmtlist);
+		mv.addObject("limit", limit);
+		
 		if(memberinfo2 == null) {
 			check = 0;
 		}else {
@@ -84,7 +111,7 @@ public class CmtManageController {
 	//퇴근등록
 	@PostMapping("/OffTime.cm")
 		public void OffTime_ok(CmtManage CmtManage, ModelAndView mv, HttpServletRequest request,
-				HttpServletResponse response, Model m) throws Exception {
+				HttpServletResponse response, Model m, HttpSession session) throws Exception {
 			//퇴근 메소드 호출
 			int result = cmtManageService.insertOfftime(CmtManage);
 
@@ -95,6 +122,13 @@ public class CmtManageController {
 				mv.addObject("url", request.getRequestURI());
 				mv.addObject("message", "퇴근 등록 실패");
 			} else { // 퇴근 등록 성공의 경우
+				//하루근무시간계산
+				cmtManageService.dailyWorkHours();
+				//누적근무시간계산
+				String id = (String) session.getAttribute("id");
+				cmtManageService.accumulativeHours(id);
+				//연장근무있을시 연장근무계산
+				//cmtManageService.extendedHours(CmtManage);
 				System.out.println("퇴근 등록 완료");
 				response.setContentType("text/html;charset=utf-8");
 				PrintWriter out = response.getWriter();
@@ -124,7 +158,6 @@ public class CmtManageController {
 		String id = (String) session.getAttribute("id");
 		Member memberinfo = cmtManageService.getInfo(id); //로그인 된 ID정보 가져옴
 		List<CmtManage> monthlylist = cmtManageService.monthlyCmt(id); // 리스트를 받아옴
-		
 
 		if(monthlylist.size() !=0){
 			System.out.println(monthlylist.get(0).getCM_CODE());

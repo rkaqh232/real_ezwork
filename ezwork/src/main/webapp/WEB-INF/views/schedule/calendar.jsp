@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.ez.work.domain.Schedule"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +38,7 @@
 						'YYYY-MM-DD');
 
 				var calendarEl = document.getElementById('kt_calendar');
-				var calendar = new FullCalendar.Calendar(
-						calendarEl,
+				var calendar = new FullCalendar.Calendar(calendarEl,
 						{
 							plugins : [ 'bootstrap', 'interaction', 'dayGrid',
 									'timeGrid', 'list' ],
@@ -80,51 +77,65 @@
 							editable : true,
 							eventLimit : true, // allow "more" link when too many events
 							navLinks : true,
-							events : [
+							events : ${schearray},
+							
+							  eventRender : function(info) {
+								  console.log(info.event.extendedProps.description);
+				                   var element = $(info.el);
 
-							],
-
-							eventRender : function(info) {
-								var element = $(info.el);
-
-								if (info.event.extendedProps
-										&& info.event.extendedProps.description) {
-									if (element.hasClass('fc-day-grid-event')) {
-										element
-												.data(
-														'content',
-														info.event.extendedProps.description);
-										element.data('placement', 'top');
-										KTApp.initPopover(element);
-									} else if (element
-											.hasClass('fc-time-grid-event')) {
-										element
-												.find('.fc-title')
-												.append(
-														'<div class="fc-description">'
-																+ info.event.extendedProps.description
-																+ '</div>');
-									} else if (element
-											.find('.fc-list-item-title').lenght !== 0) {
-										element
-												.find('.fc-list-item-title')
-												.append(
-														'<div class="fc-description">'
-																+ info.event.extendedProps.description
-																+ '</div>');
+				                    if (info.event.extendedProps && info.event.extendedProps.description) {
+				                        if (element.hasClass('fc-day-grid-event')) {
+				                            element.data('content', info.event.extendedProps.description);
+				                           element.data('placement', 'top');
+				                           KTApp.initPopover(element);
+				                       } else if (element.hasClass('fc-time-grid-event')) {
+				                          element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
+				                     } else if (element.find('.fc-list-item-title').lenght !== 0) {
+				                            element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
+				                        }
+				                   }
+				                },
+							
+							
+							eventClick : function(date, allDay, jsEvent, view){
+								
+								var scheduleNo = date.event.extendedProps.description;
+								console.log(scheduleNo);
+								$.ajax({
+									url : "getScheduleDetail.sche",
+									method : "POST",
+									data : scheduleNo,
+									success : function(data){
+										
 									}
-								}
-							}
-						});
+								})
+								 $("#myModal2").modal();
+							 }
+				            });
 
 				calendar.render();
 			}
 		};
 	}();
 
+	function openModal(){
+		
+		//mymodal2 에 엮여있는 input . value 를 다 수정. ajax 통해서 가져옴.
+		
+		
+		$("#myModal2").modal();
+	}
+	
+	
 	jQuery(document).ready(function() {
 		KTCalendarBasic.init();
 	});
+	
+	
+	
+
+	
+	
 </script>
 </head>
 <body>
@@ -162,82 +173,79 @@
 	<!--begin::Entry-->
 
 
+		<div class="d-flex flex-column-fluid">
+			<!--begin::Container-->
+			<div class="container">
+				<!--begin::Card-->
+				<div class="card card-custom" style="margin-top: 28px;">
+					<div class="card-header">
+						<div class="card-title">
+							<i class="flaticon-calendar-3 text-info"></i>
+							<h3 class="card-label">&nbsp;&nbsp;user님의 캘린더</h3>
+						</div>
 
-	<div class="d-flex flex-column-fluid">
-		<!--begin::Container-->
-		<div class="container">
-			<!--begin::Card-->
-			<div class="card card-custom" style="margin-top: 28px;">
-				<div class="card-header">
-					<div class="card-title">
-						<i class="flaticon-calendar-3 text-info"></i>
-						<h3 class="card-label">&nbsp;&nbsp;user님의 캘린더</h3>
-					</div>
+						<div class="d-flex flex-column-fluid">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="사번으로 검색" />
+									<div class="input-group-append">
+										<button class="btn btn-outline-info" type="button">검색</button>
+									</div>
 
 
-					<div class="d-flex flex-column-fluid">
-						<div class="form-group">
-							<label>&nbsp;</label>
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="사번으로 검색" />
-								<div class="input-group-append">
-									<button class="btn btn-outline-info" type="button">검색</button>
 								</div>
 							</div>
 						</div>
-					</div>
 
 
 
 
-					<div class="card-toolbar">
-						<button type="button" id="addevent"
-							class="btn btn-light-info font-weight-bold" data-toggle="modal"
-							data-target="#myModal">
-							<i class="ki ki-plus icon-md mr-2"></i>일정추가
-						</button>
-					</div>
-					<!-- 일정추가 모달 -->
-					<div id="myModal" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<h4 class="modal-title">
-										<i class="flaticon-add text-info"></i>&nbsp;일정 추가
-									</h4>
-									<button type="button" class="close" data-dismiss="modal">
-										<i class="flaticon2-cancel-music"></i>
-									</button>
-								</div>
-								<div class="modal-body">
-									<form id="scheduleData">
+						<div class="card-toolbar">
+							<button type="button" id="addevent"
+								class="btn btn-light-info font-weight-bold" data-toggle="modal"
+								data-target="#myModal">
+								<i class="ki ki-plus icon-md mr-2"></i>일정추가
+							</button>
+						</div>
+						<!-- 일정추가 모달 -->
+						<form action="addSchedule.sche" method="get">
+						<div id="myModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">
+											<i class="flaticon-add text-info"></i>&nbsp;일정 추가
+										</h4>
+										<button type="button" class="close" data-dismiss="modal">
+											<i class="flaticon2-cancel-music"></i>
+										</button>
+									</div>
+									<div class="modal-body">
 										<div class="form-group">
+										<input type = "hidden" name="SCH_NAME" value ="${memberinfo.m_CODE }">
+										
 											<label>일정명</label> <input type="text"
 												class="form-control form-control-solid" name="SCH_TITLE"
 												placeholder="일정 제목을 입력하세요." />
 										</div>
 										<div class="form-group">
-											<label>시작날짜</label> <input
-												class="form-control form-control-solid" type="date"
-												value="2020-08-19" id="startDate"  name="SCH_STARTDATE" /> 
-												<br> <label>시작시간</label>
-											<input class="form-control form-control-solid" type="time"
-												value="13:45:00" id="startTime" name="SCH_ENDDATE" />
+											<label>시작 날짜 및 시간 선택</label> <input
+												class="form-control form-control-solid"
+												type="datetime-local" id="startDate" name="SCH_STARTDATE" />
 										</div>
 
 										<div class="form-group">
-											<label>종료날짜</label> <input
-												class="form-control form-control-solid" type="date"
-												value="2020-08-19" id="endDate" name="SCH_ENDDATE"/> 
-												<br> <label>종료시간</label>
-											<input class="form-control form-control-solid" type="time"
-												value="13:45:00" id="endTime" name="SCH_ENDTIME" />
+											<label>종료 날짜 및 시간 선택</label> <input
+												class="form-control form-control-solid"
+												type="datetime-local" id="endDate" name="SCH_ENDDATE" />
 										</div>
 
 										<div class="form-group">
 											<label for="exampleTextarea">상세내용</label>
-											<textarea class="form-control form-control-solid" rows="3" name="SCH_CONTENT"></textarea>
+											<textarea class="form-control form-control-solid" rows="3"
+												name="SCH_CONTENT"></textarea>
 										</div>
 
 										<div class="form-group">
@@ -249,7 +257,7 @@
 										<div class="form-group">
 											<label>장소</label> <input type="text"
 												class="form-control form-control-solid"
-												placeholder="장소를 입력하세요" name="SCH_PLACE"/>
+												placeholder="장소를 입력하세요" name="SCH_PLACE" />
 										</div>
 
 										<div class="form-group">
@@ -257,45 +265,100 @@
 												class="form-control  form-control-solid" type="color"
 												value="#563d7c" id="example-color-input" name="SCH_COLOR" />
 										</div>
+									</div>
 
-										<div class="form-group">
-											<label>공개여부&nbsp;&nbsp;</label> <label><input
-												class='checkbox checkbox-info' id="edit-open" name="SCH_OPEN"
-												value="open" type="checkbox" >&nbsp;비공개</label>
-										</div>
-								</form>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">취소</button>
+										<button type="submit" class="btn btn-info" id="save-event">저장</button>
+									</div>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">취소</button>
-									<button type="button" class="btn btn-info" id="save-event" onclick="click_ok();">저장</button>
-								</div>
-
 							</div>
 						</div>
+						</form>
+						<!-- 일정상세보기 모달 -->
+						<div id="myModal2" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">
+											<i class="flaticon-add text-info"></i>&nbsp;일정 상세 보기
+										</h4>
+										<button type="button" class="close" data-dismiss="modal">
+											<i class="flaticon2-cancel-music"></i>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="form-group">
+											<label>일정명</label> <input type="text"
+											 class="form-control form-control-solid" name="SCH_TITLE1"
+												 />
+										</div>
+										<div class="form-group">
+											<label>시작 날짜 및 시간</label> <input
+												class="form-control form-control-solid"
+												type="datetime-local" id="startDate" name="SCH_STARTDATE1" />
+										</div>
+
+										<div class="form-group">
+											<label>종료 날짜 및 시간</label> <input
+												class="form-control form-control-solid"
+												type="datetime-local" id="endDate" name="SCH_ENDDATE1" />
+										</div>
+
+										<div class="form-group">
+											<label for="exampleTextarea">상세내용</label>
+											<textarea class="form-control form-control-solid" rows="3"
+												name="SCH_CONTENT1"></textarea>
+										</div>
+
+										<div class="form-group">
+											<label>참가자</label> <input type="text"
+												class="form-control form-control-solid"
+												 name="SCH_PARTICIPANT1" />
+										</div>
+
+										<div class="form-group">
+											<label>장소</label> <input type="text"
+												class="form-control form-control-solid"
+												 name="SCH_PLACE1" />
+										</div>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-warning"
+											data-dismiss="modal">일정 삭제</button>
+										<button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">닫기</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+					</div>
+
+					<div class="card-body">
+						<div id="kt_calendar"></div>
 					</div>
 				</div>
-
-				<div class="card-body">
-					<div id="kt_calendar"></div>
-				</div>
+				<!--end::Card-->
 			</div>
-			<!--end::Card-->
 		</div>
-	</div>
 	<!--end::Card-->
 
-	<script src="resources/js/fullcalendar/jquery.min.js"></script>
-	<script src="resources/assets/plugins/global/plugins.bundle.js"></script>
-	<script src="resources/js/fullcalendar/moment.min.js"></script>
-	<script
-		src="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-	<!--  	<script src="resources/assets/js/pages/features/calendar/basic.js"></script>-->
-	<script src="resources/js/fullcalendar/ko.js"></script>
-	<script src="resources/js/fullcalendar/bootstrap-datetimepicker.min.js"></script>
-	<script src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-	<script src="resources/assets/js/scripts.bundle.js"></script>
-	<!--  	<script src="resources/js/fullcalendar/addEvent.js"></script>
+		<script src="resources/js/fullcalendar/jquery.min.js"></script>
+ 	<script src="resources/assets/plugins/global/plugins.bundle.js"></script>
+		<script src="resources/js/fullcalendar/moment.min.js"></script>
+		<script
+			src="resources/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<!--  	<script src="resources/assets/js/pages/features/calendar/basic.js"></script>-->
+		<script src="resources/js/fullcalendar/ko.js"></script>
+		<script
+			src="resources/js/fullcalendar/bootstrap-datetimepicker.min.js"></script>
+		<script
+			src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="resources/assets/js/scripts.bundle.js"></script>
+		<!--  	<script src="resources/js/fullcalendar/addEvent.js"></script>
 		<script src="resources/js/fullcalendar/editEvent.js"></script>
 		<script src="resources/js/fullcalendar/etcSetting.js"></script>-->
 </body>

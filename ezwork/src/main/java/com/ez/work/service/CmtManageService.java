@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ez.work.domain.CmtManage;
 import com.ez.work.domain.Member;
+import com.ez.work.domain.Schedule;
 
 public interface CmtManageService {
 
@@ -27,6 +28,7 @@ public interface CmtManageService {
 	
 	//로그인 정보 가져오기
 	public Member getInfo(String M_CODE);
-
-
+	
+	//월간 보기
+	public List<CmtManage> monthlyCmt(String m_code);
 }

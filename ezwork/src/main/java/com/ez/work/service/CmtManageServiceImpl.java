@@ -51,6 +51,12 @@ public class CmtManageServiceImpl implements CmtManageService{
 	public Member getInfo(String m_code) {
 		return dao.getInfo(m_code);
 	}
+	
+	//월간 보기
+	@Override
+	public List<CmtManage> monthlyCmt(String m_code) {
+		return dao.monthlyCmt(m_code);
+		}
 
 
 

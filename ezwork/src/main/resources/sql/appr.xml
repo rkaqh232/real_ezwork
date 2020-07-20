@@ -20,4 +20,22 @@
 	<select id="count" resultType="int">
 		select count(*) from approve
 	</select>
+	
+	<insert id="insert" parameterType="appr">
+		insert into approve
+		value
+	</insert>
+	
+	<select id="getname" parameterType="string">
+		select M_NAME
+		from member
+		where M_NAME=
+	</select>
+	
+	<select id="getpart" parameterType="string">
+		select M_PART_C
+		from member
+		where M_PART_C=
+	</select>
+	
 </mapper>

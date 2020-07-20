@@ -11,7 +11,7 @@ public class Appr {
 	private String THIRD_CODE;                      //3-사원          
 	private String APPR_FILE;                       //변경된 파일명       
 	private String APPR_ORIGIN;                     //original 파일명  
-	private int STAT;                               //결재 상태         
+	private int APPR_STAT;                               //결재 상태         
 	private String APPR_DATE;                       //제출 날짜         
 	private String APPR_COMP_DATE;                  //완료 날짜         
 	private int APPR_VAL;                           //??            
@@ -70,12 +70,7 @@ public class Appr {
 	public void setAPPR_ORIGIN(String aPPR_ORIGIN) {
 		APPR_ORIGIN = aPPR_ORIGIN;
 	}
-	public int getSTAT() {
-		return STAT;
-	}
-	public void setSTAT(int sTAT) {
-		STAT = sTAT;
-	}
+	
 	public String getAPPR_DATE() {
 		return APPR_DATE;
 	}
@@ -93,5 +88,11 @@ public class Appr {
 	}
 	public void setAPPR_VAL(int aPPR_VAL) {
 		APPR_VAL = aPPR_VAL;
+	}
+	public int getAPPR_STAT() {
+		return APPR_STAT;
+	}
+	public void setAPPR_STAT(int aPPR_STAT) {
+		APPR_STAT = aPPR_STAT;
 	}
 }

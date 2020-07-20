@@ -2,17 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="resources/js/jquery-3.5.0.js"></script>
+<script src="resources/js/appr/apprlist.js"></script>
 <style>
-p{margin-top:1rem}
+p{margin-top:0rem;
+  margin-bottom:0rem;
+	}
 table, tr, th ,td{
 	text-align:center;
 }
 tr>th:nth-child(1){width:5%}
 tr>th:nth-child(2){width:15%}
-tr>th:nth-child(3){width:40%}
+tr>th:nth-child(3){width:40%;}
 tr>th:nth-child(4){width:7%}
 tr>th:nth-child(5){width:10%}
 tr>th:nth-child(6){width:10%}
+.modal {
+	display: none;
+}
 
 
 </style>
@@ -28,7 +34,7 @@ tr>th:nth-child(6){width:10%}
 		</div>
 		<div class="card-toolbar">						
 			<!--begin::Button-->
-			<a href="#" class="btn btn-primary font-weight-bolder">
+			<button data-toggle="modal" data-target="#myModal" class="btn btn-primary font-weight-bolder">
 			<span class="svg-icon svg-icon-md">
 				<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -39,7 +45,7 @@ tr>th:nth-child(6){width:10%}
 					</g>
 				</svg>
 				<!--end::Svg Icon-->
-			</span>결재 작성</a>
+			</span>결재 작성</button>
 			<!--end::Button-->
 		</div>
 	</div>
@@ -125,15 +131,15 @@ tr>th:nth-child(6){width:10%}
 					<th>진행상황</th>
 				</tr>
 			</thead>
-			<tbody>
+		<%-- 	<tbody>
         <c:set var="num" value="${listcount-(nowpage-1)*limit}"/>
         <c:forEach var="b" items="${apprlist}">
         <tr>
-           <td><%--번호 --%>
-              <c:out value="${num}"/><%--num 출력 --%>
-              <c:set var="num" value="${num-1}"/> <%--num = num-1; 의미 --%>
+           <td>번호
+              <c:out value="${num}"/>num 출력
+              <c:set var="num" value="${num-1}"/> num = num-1; 의미
            </td>
-           <td><%--제목 --%>
+           <td>제목
               <div>
                   <a href="./ApprDetailAction.bo?num=${b.APPR_CODE}">
                      ${b.APPR_TITLE}
@@ -145,27 +151,105 @@ tr>th:nth-child(6){width:10%}
               <td><div>${b.APPR_COMP_DATE}</div></td>
            </tr>
            </c:forEach>
-       </tbody>
-			
-			<tfoot>
-				<tr>
-					<td>1</td>
-					<td><span class="label label-lg font-weight-bold label-light-info label-inline">인사팀</span>admin</td>
-					<td>쉬고싶어</td>
-					<td>업무</td>
-					<td>2020/07/13</td>
-					<td>-</td>
-					<td>진행중</td>
-				</tr>
-			</tfoot>
+       </tbody> --%>
 		</table>
+		
+		
+		
 		<!-- pagination 시작 -->
-		<div class="d-flex flex-wrap py-2" style="position:absolute;bottom:10px;width:100%;">
+		<div class="d-flex flex-wrap py-2">
 			<div class="pagination" style="margin:0 auto;">
 	        </div>
 	    </div>
-					<!-- pagination 끝 -->
-		
+		<!-- pagination 끝 -->
+		<div class="modal" id="myModal">
+		<div class="modal-content">
+		<!--begin::Card-->
+		<div class="card card-custom">
+			<div class="card-header">
+				<div class="card-title">
+					<i class="flaticon2-chat-1 text-info"></i>
+					<h3 class="card-label">&nbsp;글 등록</h3>
+					<small>경조사게시판</small>
+				</div>
+			</div>
+			<!--begin::Form-->
+			<form action="Board_write_ok.ev" method="post"
+				enctype="multipart/form-data" name="boardform">
+				<div class="card-body">
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label text-lg-right">말머리
+							선택</label>
+						<div class="col-lg-2">
+							<div class="rows">
+								<select name ="EV_SORT" class="form-control" id="viewcount">
+									<option value="결혼" selected>결혼</option>
+									<option value="부고">부고</option>
+									<option value="기타">기타</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label text-lg-right">글쓴이</label>
+						<div class="col-lg-4">
+							<input name="EV_NAME" id="board_name" value="인사팀" readOnly
+								type="text" size="10" maxlength="30" class="form-control">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
+						<div class="col-lg-7">
+							<input name="EV_TITLE" id="board_subject" type="text"
+								size="50" maxlength="100" class="form-control"
+								placeholder="제목을 입력하세요">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
+						<div class="col-lg-7">
+							<textarea name ="EV_CONTENT" style="height: 325px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label text-lg-right">파일첨부</label>
+						<div class="col-lg-9">
+							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
+								<div class="dropzone-panel mb-lg-0 mb-2">
+									<input type="file" id="upfile" name="uploadfile"> <span
+										id="filevalue"></span>
+								</div>
+								<div class="dropzone-items"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-lg-3 col-form-label text-lg-right">비밀번호</label>
+						<div class="col-lg-4">
+							<input type="password" class="form-control" id="pass"
+								placeholder="비밀번호를 입력하세요" name="EV_PASS">
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						<div class="col-lg-3"></div>
+						<div class="col-lg-9">
+							<button type="submit" class="btn btn-info">등록</button>
+							<button type="reset" class="btn btn-outline-secondary">취소</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!--end::Form-->
+		</div>
+		<!--end::Card-->
+		</div>
+		</div>
 		<!--end: Datatable-->
 	</div>
 </div>

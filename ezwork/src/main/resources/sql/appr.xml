@@ -5,7 +5,19 @@
 <!-- 영민 결재  -->
 
 <mapper namespace="Apprs">
-	<select id="getlist" parameterType="java.util.Map" resultType="mail">
-		
+	<select id="getlist" parameterType="java.util.Map" resultType="appr">
+		select * from
+		(select rownum rnum, b.*
+		from
+		(select * from
+		approve
+		order by APPR_CODE desc) b
+		)
+		where rnum
+		&gt;=#{start} and rnum &lt;= #{end}
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(*) from approve
 	</select>
 </mapper>

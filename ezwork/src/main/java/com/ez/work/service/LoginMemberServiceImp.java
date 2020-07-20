@@ -49,6 +49,7 @@ public class LoginMemberServiceImp implements LoginMemberService{
 		return dao.member_info(id);
 	}
 	
+	
 	@Override
 	public int update(Member m) {
 		return dao.update(m);

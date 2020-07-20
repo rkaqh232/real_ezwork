@@ -4,12 +4,8 @@
 <html>
 <head>
 
-<!--  혜정 사원 등록 페이지  -->
-<!--  혜정 사원 등록 페이지  -->
-<!--  혜정 사원 등록 페이지  -->
-
 <meta charset="UTF-8">
-<title>신규 사원 등록</title>
+<title>사원 정보 수정</title>
 <link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4" rel="stylesheet" type="text/css" />
 <style>
 a{
@@ -24,7 +20,7 @@ font-size:12px !important;
 
 
 	<!--begin::Entry-->
-	<c:set var="m" value="${memberinfo}" />
+	
 	<div class="d-flex flex-column-fluid">
 		<!--begin::Container-->
 		<div class="container">
@@ -50,35 +46,6 @@ font-size:12px !important;
 										</div>
 									</div>
 								</div>
-								<div class="wizard-step" data-wizard-type="step">
-									<div class="wizard-wrapper">
-										<div class="wizard-number">2</div>
-										<div class="wizard-label">
-											<div class="wizard-title">학력정보</div>
-											<div class="wizard-desc">User's Education Information</div>
-										</div>
-									</div>
-								</div>
-								<div class="wizard-step" data-wizard-type="step">
-									<div class="wizard-wrapper">
-										<div class="wizard-number">3</div>
-										<div class="wizard-label">
-											<div class="wizard-title">어학정보</div>
-											<div class="wizard-desc">User's Language Information</div>
-										</div>
-									</div>
-								</div>
-								<div class="wizard-step" data-wizard-type="step">
-									<div class="wizard-wrapper">
-										<div class="wizard-number">4</div>
-										<div class="wizard-label">
-											<div class="wizard-title">자격증정보</div>
-											<div class="wizard-desc">User's License Information</div>
-										</div>
-									</div>
-								</div>
-
-
 							</div>
 						</div>
 						<!-- 탭메뉴  종료  탭메뉴   종료    탭메뉴   종료   탭메뉴  종료  탭메뉴  종료  탭메뉴   종료 탭메뉴   종료  탭메뉴   종료  탭메뉴   종료 탭메뉴  -->
@@ -86,6 +53,7 @@ font-size:12px !important;
 						<!--begin::Card-->
 
                        <form class="form" id="kt_form" action="updateProcess.net" method="post">
+                       <c:set var="m" value="${memberinfo}" />
 
 						<!--  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작 -->
 						<div class="card card-custom card-shadowless rounded-top-0">
@@ -110,7 +78,34 @@ font-size:12px !important;
 														<h3 class="text-dark font-weight-bold mb-10"
 															font-weight="bold";>사원 등록<a style="color:red">   * 필수항목입니다. </a> </h3>
 														<!--begin::Group-->
-														
+														<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label text-left">
+																사진 </label>
+															<div class="col-lg-9 col-xl-9">
+																<div class="image-input image-input-outline"
+																	id="kt_user_add_avatar">
+																	<div class="image-input-wrapper"
+																		style="background-image: url(resources/assets/media/users/LEE.PNG)"></div>
+																	<label
+																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+																		data-action="change" data-toggle="tooltip" title=""
+																		data-original-title="Change avatar"> <i
+																		class="fa fa-pen icon-sm text-muted"></i> 
+																		
+																		<input type="file" id="upfile" name="profile_avatar" value="${m.profile_avatar}" accept=".png, .jpg, .jpeg" readonly/> 
+																		
+																		<input type="hidden" name="profile_avatar_remove" />
+																		<!-- <input type="file" id="upfile" name="uploadfile"> -->
+																		
+																	</label> <span
+																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+																		data-action="cancel" data-toggle="tooltip"
+																		title="Cancel avatar"> <i
+																		class="ki ki-bold-close icon-xs text-muted"></i>
+																	</span>
+																</div>
+															</div>
+														</div>
 														<!--end::Group-->
 														<!--begin::Group-->
 														<!--  사원번호  -->
@@ -120,7 +115,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_CODE" id="M_CODE" type="text" value="${m.M_CODE}" readonly /><span class="form-text text-muted">참고 : 사원번호는 자동으로 생성됩니다. 
+																	name="M_CODE" id="M_CODE" type="text" value="${m.M_CODE}" readonly /><span class="form-text text-muted">참고 : 수정불가능 항목입니다. 
 																	</span>
 															</div>
 														</div>
@@ -130,77 +125,46 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_PASS" type="text" id="password" value="" placeholder="840817"  /> <span
-																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
+																	name="M_PASS" type="text" id="password" value="${m.M_PASS }" /> <span
+																	class="form-text text-muted"> 참고 : 6자리까지 수정 가능합니다. </span>
 															</div>
 														</div>
 														<!--end::Group-->
 														<!--begin::Group-->
 														
-														
-														
-														
-														
-														
-								
-														
-
-														<!-- <div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
-																<div class="col-lg-9 col-xl-9">
-																	<div class="dropdown">
-    																	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       																		&nbsp;&nbsp;&nbsp;선택해주세요.&nbsp;&nbsp;&nbsp;&nbsp;</button>
-  													  <div class="dropdown-menu" >
-      														  <a class="dropdown-item" href="#" value="A1">A1   총무</a>
-        													  <a class="dropdown-item" href="#" value="A2">A2   재무</a>
-     													      <a class="dropdown-item" href="#" value="A3">A3   인사</a>
-     													      <a class="dropdown-item" href="#" value="B1">B1   경영지원</a>
-     													      <a class="dropdown-item" href="#" value="B2">B2  S/W지원</a>
-     													      <a class="dropdown-item" href="#" value="B3">B3   기술지원</a>
-     													      <a class="dropdown-item" href="#" value="C1">C1   영업1팀</a>
-     													      <a class="dropdown-item" href="#" value="C2">C2   영업2팀</a>
-     													      <a class="dropdown-item" href="#" value="Q">Q  임원</a>
-   															 </div>
-															</div>
-															<span
-																	class="form-text text-muted">참고 : 기타 부서의 경우 A1으로 선택해주세요.</span>
-															</div>
-														</div> -->
-														
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
 																<div class="col-lg-9 col-xl-9">
 																	<label class="radio radio-rounded radio-info">															
-																<input type="radio" name="M_PART_C" id="M_PART_C" checked="checked" value="A1_총무" />A1 총무 <span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="A1_총무" readonly/>A1 총무 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="A2_재무" />A2   재무<span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="A2_재무" readonly/>A2   재무<span></span>
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="A3_인사" />A3   인사<span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="A3_인사" readonly/>A3   인사<span></span>
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="B1_경영지원" />B1   경영지원<span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="B1_경영지원" readonly/>B1   경영지원<span></span>
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="B2_S/W지원"/>B2  S/W지원<span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="B2_S/W지원" readonly/>B2  S/W지원<span></span>
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="B3_기술지원"/>B3   기술지원<span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="B3_기술지원" readonly/>B3   기술지원<span></span>
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 																 
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="C1_영업1팀"/>C1   영업1팀<span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="C1_영업1팀" readonly/>C1   영업1팀<span></span>
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="C2_영업2팀"/>C2   영업2팀<span></span>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="C2_영업2팀" readonly/>C2   영업2팀<span></span>
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
@@ -377,32 +341,7 @@ font-size:12px !important;
 															</div>
 														</div>
 
-														<!-- <div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">
-																자택연락처 </label>
-															<div class="col-lg-9 col-xl-9">
-																<div
-																	class="input-group input-group-solid input-group-lg">
-																	<div class="input-group-prepend">
-																		<span class="input-group-text"> <i
-																			class="la la-phone"></i>
-																		</span>
-																	</div>
-																	<input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="homephone"
-																		placeholder="02-123-4567" id="M_TEL" />
-																</div>
-																<span class="form-text text-muted"> 참고 : 생략
-																	가능합니다. 입력시 해당 양식에 맞게 작성해주세요. (ex: 02-123-4567)</span>
-															</div>
-														</div> -->
-
-
-
-
-														<!--end::Group-->
-														<!--begin::Group-->
+														
 
 
 														<!--  주소 API  주소 API  주소 API  주소 API    주소 API  주소 API  주소 API  주소 API   주소 API  주소 API  주소 API  주소 API -->
@@ -481,95 +420,7 @@ font-size:12px !important;
 													
 												
 												
-												<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">학력정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
-														<!--begin::Group-->
-
-
-														<div class="row">
-															<div class="col-xl-6">
-																<!--begin::Group-->
-																<div class="form-group">
-																	<label> 학교명 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="SC_NAME" placeholder="중앙대학교"
-																		id="SC_NAME" /><span
-																	class="form-text text-muted">
-																	참고 : OO대학, OO대학교 </span>
-
-																</div>
-															</div>
-															<!--end::Group-->
-															<!--begin::Group-->
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label> 전공 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="SC_MAJOR" placeholder="경영학과" id="SC_MAJOR" />
-																		<span
-																	class="form-text text-muted">
-																	참고 : 경제금융학과 등 </span>
-																</div>
-															</div>
-															<!--end::Group-->
-														</div>
-
-
-
-
-														<div class="row">
-															<div class="col-xl-6">
-																<!--begin::Group-->
-																<div class="form-group">
-																	<label> 학위 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="SC_DEGREE" placeholder="학위"
-																		id="SC_DEGREE" /><span
-																	class="form-text text-muted">
-																	참고 : 학사, 석사, 전문석사, 박사 </span>
-
-																</div>
-															</div>
-															<!--end::Group-->
-															<!--begin::Group-->
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label> 소재지 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="SC_ADDRESS" placeholder="서울특별시 동작구" id="SC_ADDRESS" />
-																		<span
-																	class="form-text text-muted">
-																	참고 : 서울시 종로구, 전라북도 전주시 완산구<br>(해당 소재지의 시,구까지 입력해주세요.) </span>
-																</div>
-															</div>
-															<!--end::Group-->
-														</div>
-
-
-
-														<div class="form-group row">
-															<label class="col-xl-6 col-form-label"> 졸업일자 </label>
-															<div class="col-xl-6">
-																<div class="input-group date">
-																	<input type="text" class="form-control" readonly
-																		value="29/70/2020" name="SC_GRAD_DAY" id=kt_datepicker_3" />
-																	<div class="input-group-append">
-																		<span class="input-group-text"> <i
-																			class="la la-calendar"></i>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-
-
-
-
-
-
-
-													</div>
+												
 
 													<!-- Step2 발령정보 END  Step2 발령정보 END  Step2 발령정보 END Step2  발령정보 END  Step2발령정보 END  -->
 
@@ -578,92 +429,7 @@ font-size:12px !important;
 
 													<!--begin::Wizard Step 3-->
 													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
-														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">어학정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
-														<!--begin::Group-->
-
-
-														<div class="row">
-															<div class="col-xl-6">
-																<!--begin::Group-->
-																<div class="form-group">
-																	<label> 외국어명 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="LG_NAME" placeholder="외국어"
-																		id="LG_NAME" />
-																		<span
-																	class="form-text text-muted">
-																	참고 : 영어, 일본어, 이탈리아어 등 </span>
-
-																</div>
-															</div>
-															<!--end::Group-->
-															<!--begin::Group-->
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label> 시험명 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="LG_TEST" placeholder="시험명" id="LG_TEST" />
-																		<span
-																	class="form-text text-muted">
-																	참고 : TOEIC, TOEFL, IELTS 등 </span>
-																</div>
-															</div>
-															<!--end::Group-->
-														</div>
-
-
-
-
-														<div class="row">
-															<div class="col-xl-6">
-																<!--begin::Group-->
-																<div class="form-group">
-																	<label> 시험점수 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="LG_GRADE" placeholder="시험점수"
-																		id="LG_GRADE" />
-
-																</div>
-															</div>
-															<!--end::Group-->
-															<!--begin::Group-->
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label> 발급기관 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="LG_ORGAN" placeholder="발급기관" id="LG_ORGAN" />
-																		<span
-																	class="form-text text-muted">
-																	참고 : 한국 TOEIC위원회, 일본국제교육지원협회 등 </span>
-																</div>
-															</div>
-															<!--end::Group-->
-														</div>
-
-														<div class="form-group row">
-															<label class="col-xl-6 col-form-label"> 발급일자 </label>
-															<div class="col-xl-6">
-																<div class="input-group date">
-																	<input type="text" class="form-control" readonly
-																		value="29/70/2020" name="LG_DATE" id="kt_datepicker_3" />
-																	<div class="input-group-append">
-																		<span class="input-group-text"> <i
-																			class="la la-calendar"></i>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-
-
-
-
-
-
-
-													</div>
+													
 
 
 													<!-- step3 학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  step3  학력정보 END  -->
@@ -673,78 +439,18 @@ font-size:12px !important;
 													<!--  step 4 자격증정보 시작  step 4 자격증정보  step 4 자격증정보 step 4 자격증정보 -->
 													
 													
-														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">자격증정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
-														<!--begin::Group-->
-
-
-														<div class="row">
-															<div class="col-xl-6">
-																<!--begin::Group-->
-																<div class="form-group">
-																	<label> 자격증명 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="LI_NAME" placeholder="정보처리기사" 
-																		id="LI_NAME" /><span
-																	class="form-text text-muted">
-																	참고 : 정보처리기사, 컴퓨터활용능력 1급 등</span>
-
-																</div>
-															</div>
-															<!--end::Group-->
-															<!--begin::Group-->
-															<div class="col-xl-6">
-																<div class="form-group">
-																	<label> 발급기관 </label> <input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="LI_ORGAN" placeholder="대한상공회의소" id="LI_ORGAN" />
-																		<span
-																	class="form-text text-muted">
-																	참고 : 대한상공회의소, 한국산업인력공단 등</span>
-																</div>
-															</div>
-															<!--end::Group-->
-														</div>
-														
-														<div class="form-group row">
-															<label class="col-xl-6 col-form-label"> 발급일자 </label>
-															<div class="col-xl-6">
-																<div class="input-group date">
-																	<input type="text" class="form-control" readonly
-																		value="29/70/2020" name="LI_DATE" id="kt_datepicker_3" />
-																	<div class="input-group-append">
-																		<span class="input-group-text"> <i
-																			class="la la-calendar"></i>
-																		</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<!--  test -->
-													
-													
-
-
-													<!--  test 블럭  -->
-													
+																										
 													<!-- step4 어학정보 END  step4 어학정보 END step4 어학정보 END step4 어학정보 END-->
 
 													<div
 														class="d-flex justify-content-between border-top pt-10 mt-15">
-														<div class="mr-2">
-															<button type="button" id="prev-step"
-																class="btn btn-secondary font-weight-bolder px-9 py-4"
-																data-wizard-type="action-prev">이전</button>
-														</div>
+														
 														<div>
 															<button type="submit" 
 																class="btn btn-success font-weight-bolder px-9 py-4"
-																data-wizard-type="action-submit">저장</button>
+																>저장</button>
 															
-															<button type="button" id="next-step"
-																class="btn btn-info font-weight-bolder px-9 py-4"
-																data-wizard-type="action-next">다음</button>
+															
 														</div>
 													</div>
 													
@@ -777,8 +483,9 @@ font-size:12px !important;
 
 	<!--end::Entry-->
 	<!--begin::Global Theme Bundle(used by all pages)-->
+	
 	<script src="resources/js/jquery-3.5.0.js"></script>
-	<script src="resources/js/join.js"></script>
+	<script src="resources/js/update.js"></script>
 	<script src="resources/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
 	<script
 		src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>

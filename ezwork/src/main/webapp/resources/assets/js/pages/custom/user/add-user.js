@@ -120,7 +120,10 @@ var KTAddUser = function () {
 						}
 					},
 					M_EMAIL: {
-						validators: {							
+						validators: {	
+							notEmpty: {
+								message: '이메일은 필수항목입니다.'
+							},
 							emailAddress: {
 								message: '이메일 형식에 맞지 않습니다.'
 							}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false" %>
 <!--begin::Header-->
 					<div id="kt_header" class="header">
 
@@ -33,9 +35,10 @@
 
 								<!--begin::User-->
 								<div class="topbar-item">
+								
 									<div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
 										<span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">안녕하세요, </span>
-										<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">${id } 님</span>
+										<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">${m_NAME } 님</span>
 										<span class="symbol symbol-35 symbol-light-success">
 											<span class="symbol-label font-size-h5 font-weight-bold">S</span>
 										</span>

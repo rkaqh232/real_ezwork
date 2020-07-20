@@ -61,8 +61,8 @@ public class MemberController {
 
 	// 로그인 처리
 	@RequestMapping(value = "/loginProcess.net", method = RequestMethod.POST)
-	public String loginProcess(@RequestParam("id") String id, // 로그인값 넘어온것
-			@RequestParam("password") String password,
+	public String loginProcess(@RequestParam(value="M_CODE",required=false) String id, // 로그인값 넘어온것
+			@RequestParam(value="M_PASS",required=false) String password,
 			@RequestParam(value = "remember", defaultValue = "") String remember, // 체크하는거에요. 기본값 스트링이니까 빈값으로 넣어줬읍니다.
 			HttpServletResponse response, HttpSession session) throws Exception {
 
@@ -72,7 +72,7 @@ public class MemberController {
 		if (result == 1) { // 결과에 따라서 나머지 조건을 처리한겁니다. 리멤버를 체크한 경우와 아닌 경우 두가지를 설정할겁니다.
 
 			// 로그인 성공
-			session.setAttribute("id", id);
+			session.setAttribute("M_CODE", id);
 			Cookie savecookie = new Cookie("saveid", id);
 			if (!remember.equals("")) {
 				savecookie.setMaxAge(60 * 60);
@@ -88,7 +88,7 @@ public class MemberController {
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";
 			if (result == -1)
-				message = "아이디가 존재하지 않습니다.";
+				message = "사원번호가 존재하지 않습니다.";
 
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
@@ -191,15 +191,19 @@ public class MemberController {
 		out.close();
 
 	}
+
+	
 	  
 		// 수정폼
 		@RequestMapping(value="/update.hr", method=RequestMethod.GET)
-		public ModelAndView member_update(HttpSession session, ModelAndView mv) throws Exception {
-			String id = (String) session.getAttribute("id");
-			Member m = loginmemberservice.member_info(id);
-			mv.setViewName("member/updateForm");
-			mv.addObject("memberinfo", m);
-			return mv;
+		public String member_update(HttpSession session, Model m) throws Exception {
+			String id = (String) session.getAttribute("M_CODE");
+			Member member = loginmemberservice.member_info(id);
+			//mv.setViewName("member/updateForm2");
+			//mv.setViewName("member/joinForm");
+			m.addAttribute("page", "member/updateForm.jsp");
+			m.addAttribute("memberinfo", member);
+			return "home";
 		}
 
 		// 수정처리

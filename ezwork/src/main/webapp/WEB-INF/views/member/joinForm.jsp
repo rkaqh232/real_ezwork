@@ -331,11 +331,11 @@ font-size:12px !important;
 																결혼여부 </label>
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info"> <input
-																	type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="Y" /> 기혼 <span></span>
+																	type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="Y" checked="checked"/> 기혼 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																
 																</label> <label class="radio radio-rounded radio-info">
-																	<input type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="N" checked="checked" /> 미혼 <span></span>
+																	<input type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="N"/> 미혼 <span></span>
 																</label>
 															</div>
 														</div>
@@ -399,7 +399,7 @@ font-size:12px !important;
 																	</div>
 																	<input type="text"
 																		class="form-control form-control-solid"
-																		name="M_EMAIL" id="M_EMAIL" placeholder="sample@Ezwork.com" />
+																		name="M_EMAIL" id="email" placeholder="sample@Ezwork.com" />
 																</div><span class="form-text text-muted" placeholder="sample@Ezwork.com">참고 : 해당 양식으로 작성해주세요.
 																	(ex: sample@Ezwork.com)</span>
 															</div>
@@ -666,7 +666,7 @@ font-size:12px !important;
 																		name="LG_ORGAN" placeholder="발급기관" id="LG_ORGAN" />
 																		<span
 																	class="form-text text-muted">
-																	참고 : 한국 TOEIC위원회, 일본국제교육지원협회 등 </span>
+																	참고 : 한국TOEIC위원회, 일본국제교육지원협회 등 </span>
 																</div>
 															</div>
 															<!--end::Group-->

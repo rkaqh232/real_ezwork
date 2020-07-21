@@ -34,11 +34,22 @@ public class Member {
 	   private String LI_ORGAN;         //발급기관
 	   private String LI_DATE;          //발급일자
 	   private MultipartFile profile_avatar;
-	   
-	 
-	   
-	   
-	   
+	   private String M_POSTCODE; 
+	   private String M_ADDRESS2;   
+		   
+		   
+	public String getM_POSTCODE() {
+	   return M_POSTCODE;
+	}
+	public void setM_POSTCODE(String m_POSTCODE) {
+		M_POSTCODE = m_POSTCODE;
+	}
+	public String getM_ADDRESS2() {
+		return M_ADDRESS2;
+	}
+	public void setM_ADDRESS2(String m_ADDRESS2) {
+		M_ADDRESS2 = m_ADDRESS2;
+	}	   
    public String getM_CODE() {
 		return M_CODE;
 	}

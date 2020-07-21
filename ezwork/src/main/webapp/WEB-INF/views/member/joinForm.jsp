@@ -442,7 +442,7 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label>우편번호</label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="M_postcode" placeholder="우편번호"
+																		name="M_POSTCODE" placeholder="우편번호"
 																		id="sample6_postcode"
 																		onclick="sample6_execDaumPostcode()" /> <span
 																		class="form-text text-muted"> 참고 : 버튼을 눌러 검색해주세요.</span>
@@ -572,15 +572,18 @@ font-size:12px !important;
 															</div>
 															<!--end::Group-->
 														</div>
-
+														
+													
 
 
 														<div class="form-group row">
 															<label class="col-xl-6 col-form-label"> 졸업일자 </label>
 															<div class="col-xl-6">
 																<div class="input-group date">
+																	
 																	<input type="text" class="form-control" readonly
-																		value="29/70/2020" name="SC_GRAD_DAY" id=kt_datepicker_3" />
+																		value="29/70/2020" name="SC_GRAD_DAY" id="kt_datepicker_3" />
+																
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>

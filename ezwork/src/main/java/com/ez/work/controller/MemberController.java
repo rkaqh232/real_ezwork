@@ -197,12 +197,15 @@ public class MemberController {
 		// 수정폼
 		@RequestMapping(value="/update.hr", method=RequestMethod.GET)
 		public String member_update(HttpSession session, Model m) throws Exception {
-			String id = (String) session.getAttribute("M_CODE");
+			String id = (String) session.getAttribute("M_CODE");			
 			Member member = loginmemberservice.member_info(id);
+			
 			//mv.setViewName("member/updateForm2");
 			//mv.setViewName("member/joinForm");
+			
 			m.addAttribute("page", "member/updateForm.jsp");
-			m.addAttribute("memberinfo", member);
+			m.addAttribute("info", member);
+			
 			return "home";
 		}
 

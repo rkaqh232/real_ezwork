@@ -24,16 +24,17 @@ public class AnnualLeaveDAO {
 		return sqlSession.insert("RequestAL.insert", alrequest);
 	}
 
-	public List<ALRequest> getRequestList(HashMap<String, Integer> map) {
+	public List<ALRequest> getRequestList(HashMap<String, Object> map) {
 		return sqlSession.selectList("RequestAL.list", map);
 	}
 
-	public int getListCount() {
-		return sqlSession.selectOne("RequestAL.count");
-	}
 
 	public List<ALRequest> getTeamInfo(String m_PART_C) {
 		return sqlSession.selectList("RequestAL.teamInfo", m_PART_C);
+	}
+
+	public int getListCount(String id) {
+		return sqlSession.selectOne("RequestAL.count", id);
 	}
 
 }

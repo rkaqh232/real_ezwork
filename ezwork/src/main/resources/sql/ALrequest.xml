@@ -39,12 +39,12 @@
 		)
 		where rnum
 		&gt;=#{start} and rnum
-		&lt;= #{end}
+		&lt;= #{end} and AL_M_CODE = #{id}
 	</select>
 	
 	<!-- list 개수 -->
 	<select id="count" resultType="int">
-		select count(*) from REQUEST_AL
+		select count(*) from REQUEST_AL WHERE AL_M_CODE = #{id}
 	</select>
 	
 	<select id="teamInfo" parameterType="String" resultType="alrequest">

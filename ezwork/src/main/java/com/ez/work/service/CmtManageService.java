@@ -8,8 +8,6 @@ import com.ez.work.domain.Schedule;
 
 public interface CmtManageService {
 
-	// 일일 근태 현황 리스트
-	public List<CmtManage> getCmtList();
 
 	// 출근 정보 입력
 	public void insertOntime(CmtManage cmtManageOn);
@@ -32,10 +30,10 @@ public interface CmtManageService {
 	//근태 찍은 날짜 수
 	public int getListCount();
 
-	//근태 리스트
-	public List<CmtManage> getCmtList(int page, int limit);
-
 	//누적근무 계산
 	public void accumulativeHours(String id);
+
+	//근태리스트
+	public List<CmtManage> getCmtList(int page, int limit, String id);
 
 }

@@ -35,3 +35,33 @@ AL_UNUSED number -- 남은연차
 select floor(months_between(sysdate,M_JOIN_DATE)/12) from member; --근속 년수
 
 select * from list_al;
+
+DELETE FROM list_al
+WHERE
+AL_M_CODE = 'minhyeok';
+
+insert into list_al
+(AL_M_CODE, AL_M_NAME, AL_M_PART_C, AL_M_JOIN_DATE )
+values('sujin', '수진', '총무팀', '2015-04-01' );
+
+--근속년수 update--
+update list_al
+set AL_YEARS = (select floor(months_between(sysdate,AL_M_JOIN_DATE)/12) from list_al where AL_M_CODE = 'sujin' ) where AL_M_CODE = 'sujin';
+
+--휴가 갯수--
+select 15+((AL_YEARS - 1) / 2 ) from list_al where AL_YEARS > 1; --1년차이상부터
+select 11 from list_al where AL_YEARS = 0; --1년차 미만인 사람
+
+--휴가 갯수 1년차 이상 update--
+update list_al
+set AL_TOTALDAY = (select 15 + ((AL_YEARS - 1) / 2 ) from list_al where AL_YEARS >= 1 and AL_M_CODE = 'hyejeong' ) where AL_M_CODE = 'hyejeong';
+
+--휴가 갯수 1년차 미만 update--
+update list_al
+set AL_TOTALDAY = 11 where AL_YEARS = 0;
+
+--휴가 갯수 시간으로 환산--
+update list_al
+set AL_TOTALHOUR = AL_TOTALDAY*8;
+
+

@@ -108,7 +108,7 @@
 											<i class="flaticon2-new-email mr-2 font-size-lg"></i>${memberinfo.m_EMAIL }
 										</span>
 									</div>
-
+									
 								</div>
 								<!--end::Content-->
 							</div>
@@ -169,7 +169,8 @@
 								</div>
 							</div>
 							<!--end::Item-->
-							<!--begin::Item-->
+
+							<!--  
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> <i
 									class="flaticon-pie-chart display-4 text-muted font-weight-bold"></i>
@@ -185,7 +186,8 @@
 										</c:if>
 									</span>
 								</div>
-							</div>
+							</div>-->
+
 							<!--end::Item-->
 							<!--begin::Item-->
 							<form method="POST">
@@ -199,14 +201,16 @@
 										<input type="hidden" name="M_CODE"
 											value="${memberinfo.m_CODE }"> <span class="mr-4">
 										</span>
-										<div class="d-flex flex-column flex-lg-fill" style="width:140px;">
+										<div class="d-flex flex-column flex-lg-fill"
+											style="width: 140px;">
 											<button type="submit"
 												class="btn btn-info btn-shadow-hover font-weight-bolder w-100 py-3"
 												id="start" formaction="OnTime.cm">출근 등록</button>
 										</div>
 									</div>
 									<span class="mr-4"> </span>
-									<div class="d-flex flex-column flex-lg-fill" style="width:140px;">
+									<div class="d-flex flex-column flex-lg-fill"
+										style="width: 140px;">
 										<button type="submit"
 											class="btn btn-outline-info btn-shadow-hover font-weight-bolder w-100 py-3"
 											id="end" formaction="OffTime.cm">퇴근 등록</button>
@@ -234,14 +238,13 @@
 								<table class="table table-hover">
 									<thead style="text-align: center;">
 										<tr>
-											<th>NO</th>
+											<th>근태번호</th>
 											<th>등록일자</th>
 											<th>사원번호</th>
 											<th>부서명</th>
 											<th>이름</th>
 											<th>근무시작시간</th>
 											<th>근무종료시간</th>
-											<th>일일근무시간</th>
 										</tr>
 									</thead>
 									<tbody style="text-align: center; font-size: 14px;">
@@ -258,16 +261,56 @@
 												<td>${co.CM_NAME }</td>
 												<td>${co.CM_ONTIME }</td>
 												<td>${co.CM_OFFTIME }</td>
-												<td>${memberinfo2.CM_WORKHOUR }</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 								<!-- 레코드가 없으면 -->
 								<c:if test="${listcount == 0}">
-									<div style="text-align: center; margin-bottom: 10px;">신청
-										내역이 없습니다.</div>
+									<div style="text-align: center; margin-bottom: 10px;">근태
+										기록이 없습니다.</div>
 								</c:if>
+							</div>
+							<div class="card-footer d-flex justify-content-between">
+
+								<!--begin::Pagination-->
+								<div
+									class="d-flex justify-content-between align-items-center flex-wrap"
+									style="margin: auto;">
+									<div class="d-flex flex-wrap py-2 mr-3">
+										<c:if test="${page1 <= 1 }">
+											<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-back icon-xs"></i></a>
+										</c:if>
+										<c:if test="${page1 > 1}">
+											<a href="./BoardList.ev?page=${page1 - 1}"
+												class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-back icon-xs"></i></a>
+										</c:if>
+
+										<c:forEach var="a" begin="${startpage}" end="${endpage}">
+											<c:if test="${a == page1 }">
+												<a
+													class="btn btn-icon btn-sm border-0 btn-hover-info active mr-2 my-1">${a }</a>
+											</c:if>
+											<c:if test="${a != page1}">
+												<!-- 같지 않으면, 이동할 수 있다 -->
+												<a href="./BoardList.ev?page=${a}"
+													class="btn btn-icon btn-sm border-0 btn-light mr-2 my-1">${a }</a>
+											</c:if>
+										</c:forEach>
+
+										<c:if test="${page1 >= maxpage}">
+											<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-next icon-xs"></i></a>
+										</c:if>
+										<c:if test="${page1 < maxpage}">
+											<a href="./BoardList.ev?page=${page1 + 1 }"
+												class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-next icon-xs"></i></a>
+										</c:if>
+									</div>
+								</div>
 							</div>
 							<!--end::Table-->
 						</div>
@@ -277,7 +320,7 @@
 		</div>
 
 	</div>
-	
+
 	<!--end::Container-->
 	<script src="resources/js/clock.js"></script>
 </body>

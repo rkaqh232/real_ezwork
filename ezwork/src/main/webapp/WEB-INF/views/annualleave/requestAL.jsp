@@ -68,7 +68,7 @@
 									class="flaticon-users-1 display-4 text-muted font-weight-bold"></i>
 								</span>
 								<div class="d-flex flex-column text-dark-75">
-									<span class="font-weight-bolder font-size-sm">연차잔여현황</span> <span
+									<span class="font-weight-bolder font-size-sm">연차일수</span> <span
 										class="font-weight-bolder font-size-h5">16일<span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>

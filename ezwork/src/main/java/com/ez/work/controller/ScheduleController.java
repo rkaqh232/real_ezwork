@@ -33,7 +33,7 @@ public class ScheduleController {
 	public ModelAndView monthlySchedule(HttpServletRequest request, ModelAndView mv, Model m, HttpSession session) throws Exception {
 		//addSchedule 결과를 뽑는다.
 		//addAtrribute 저장 결과를 json형식으로 뿌림
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = scheduleService.getInfo(id);
 		List<Schedule> scheduleList = scheduleService.showSchedule();
 		

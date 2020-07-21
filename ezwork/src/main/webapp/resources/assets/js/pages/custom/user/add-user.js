@@ -62,21 +62,8 @@ var KTAddUser = function () {
 			_formEl,
 			{
 				fields: {					
-					M_PART_C: {
-						validators: {
-							notEmpty: {
-								message: '부서코드는 필수항목입니다.'
-							}
-						}
-					},
-					M_LEVEL: {
-						validators: {
-							notEmpty: {
-								message: '직급코드는 필수항목입니다.'
-							}
-						}
-					},
-					password: {
+					
+					M_PASS: {
 						validators: {
 							notEmpty: {
 								message: '비밀번호는 필수항목입니다.'
@@ -86,7 +73,7 @@ var KTAddUser = function () {
 							      max:6,
 							      message: '최소, 최대 길이는 6자리 입니다.'
 							     }					
-						}
+							}
 					},
 					M_NAME: {
 						validators: {
@@ -99,13 +86,7 @@ var KTAddUser = function () {
 							     }
 						}
 					},
-					M_ARMY: {
-						validators: {
-							notEmpty: {
-								message: '군필 여부 선택은 필수항목입니다.'
-							}
-						}
-					},
+					
 					
 					M_MOBILE_TEL: {
 						validators: {
@@ -119,7 +100,7 @@ var KTAddUser = function () {
 							     }
 						}
 					},
-					M_EMAIL: {
+					email: {
 						validators: {	
 							notEmpty: {
 								message: '이메일은 필수항목입니다.'

@@ -10,7 +10,7 @@
 <!--  혜정 사원 등록 페이지  -->
 
 <meta charset="UTF-8">
-<title>신규 사원 등록</title>
+<title>사원 정보 수정</title>
 <link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4" rel="stylesheet" type="text/css" />
 <style>
 a{
@@ -106,7 +106,7 @@ font-size:12px !important;
 													<div class="my-5 step" data-wizard-type="step-content"
 														data-wizard-state="current">
 														<h3 class="text-dark font-weight-bold mb-10"
-															font-weight="bold";>사원 정보 수정<a style="color:#BF00FF"> * 표시 - 해당 정보만 수정가능합니다. 이외의 추가, 수정사항은 인사팀으로 문의부탁드립니다.</a></h3>
+															font-weight="bold";>사원 정보 수정<a style="color:#BF00FF">   ▶  해당 정보만 수정가능합니다. 이 외의 수정사항은 인사팀(내선번호 : 2114)으로 문의부탁드립니다.</a></h3>
 														<!--begin::Group-->
 														<!-- <div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
@@ -145,7 +145,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_CODE" id="M_CODE" type="text" placeholder="${info.m_CODE}" 
+																	name="M_CODE" id="M_CODE" type="text" value="${info.m_CODE}" 
 																	readonly /><span class="form-text text-muted">참고 : 수정불가
 																	</span>
 															</div>
@@ -177,11 +177,11 @@ font-size:12px !important;
 													<!-- 직급코드 -->
 													
 													<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">직급코드</label>
+															<label class="col-xl-3 col-lg-3 col-form-label">직급코드(level)</label>
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_LEVEL" type="text" id="M_LEVEL" value="level ${info.m_LEVEL}" readonly/> <span
+																	name="M_LEVEL" type="text" id="M_LEVEL" value="${info.m_LEVEL}" readonly/><span
 																	class="form-text text-muted"> 참고 : 수정불가 </span>
 															</div>
 														</div>
@@ -193,7 +193,7 @@ font-size:12px !important;
 
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
-																성명<a style="color:red"> *</a> </label>
+																성명 </label>
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
@@ -218,7 +218,7 @@ font-size:12px !important;
 															</div>
 														</div>
 
-														<div class="form-group row">
+													<!-- 	<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
 																성별 </label>
 															<div class="col-lg-9 col-xl-9">
@@ -261,44 +261,22 @@ font-size:12px !important;
 																	<input type="radio" name="M_ARMY" id="M_ARMY" value="NA"/> 해당없음 <span></span>
 																</label>
 															</div>
-														</div>
+														</div> -->
 														
-														
-														<!--  비밀번호  -->
-														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호<a style="color:#BF00FF">  ▶</a></label>
-															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control"
-																	name="M_PASS" type="text" id="password" value="${info.m_PASS}" /> <span
-																	class="form-text text-muted"> 참고 : 비밀번호는 반드시 숫자 6자리로 입력해주세요. </span>
-															</div>
-														</div>
-														<!--end::Group-->
-
-
-
-
-
-
-
-
-
-
 
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
-																핸드폰<a style="color:#BF00FF"> * </a></label>
+																핸드폰<a style="color:#BF00FF">  ▶</a></label>
 															<div class="col-lg-9 col-xl-9">
 																<div
 																	class="input-group input-group-solid input-group-lg">
 																	<div class="input-group-prepend">
-																		<span class="form-control"> <i
+																		<span class="input-group-text"> <i
 																			class="la la-phone"></i>
 																		</span>
 																	</div>
-																	<input class="form-control" type="text"
+																	<input class="form-control form-control-solid form-control-lg" type="text"
 																		name="M_MOBILE_TEL" id="M_MOBILE_TEL" value="${info.m_MOBILE_TEL}" />
 																</div>
 																<span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
@@ -308,7 +286,7 @@ font-size:12px !important;
 
 
 														<div class="form-group row">
-															<label class="col-3"> 이메일 (Email)<a style="color:#BF00FF"> * </a> </label>
+															<label class="col-3"> 이메일 (Email)<a style="color:#BF00FF">  ▶</a> </label>
 															<div class="col-9">
 																<div class="input-group input-group-solid">
 																	<div class="input-group-prepend">
@@ -356,7 +334,7 @@ font-size:12px !important;
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
-																	<label>우편번호<a style="color:#BF00FF"> * </a></label> <input type="text"
+																	<label>우편번호<a style="color:#BF00FF">  ▶</a></label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
 																		name="M_POSTCODE" placeholder="우편번호"
 																		id="sample6_postcode"
@@ -406,8 +384,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label>상세주소 2 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="M_ADDRESS3"
-																		id="sample6_extraAddress" placeholder=" "/>
+																		
+																		id="sample6_extraAddress" placeholder=""/>
 																</div>
 															</div>
 															<!--end::Group-->
@@ -426,7 +404,7 @@ font-size:12px !important;
 												
 												
 												<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">학력정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀으로 요청해주세요. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">학력정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀(내선번호 :2114)으로 문의해주세요. </a></h5>
 														<!--begin::Group-->
 														
 
@@ -524,7 +502,7 @@ font-size:12px !important;
 													<!--begin::Wizard Step 3-->
 													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
 														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">어학정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀으로 요청해주세요. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">어학정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀(내선번호 :2114)으로 문의해주세요. </a></h5>
 														<!--begin::Group-->
 
 
@@ -619,7 +597,7 @@ font-size:12px !important;
 													
 													
 														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">자격증정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀으로 요청해주세요. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">자격증정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀(내선번호 :2114)으로 문의해주세요. </a></h5>
 														<!--begin::Group-->
 
 
@@ -723,7 +701,7 @@ font-size:12px !important;
 	<!--end::Entry-->
 	<!--begin::Global Theme Bundle(used by all pages)-->
 	<script src="resources/js/jquery-3.5.0.js"></script>
-	<script src="resources/js/join.js"></script>
+	<script src="resources/js/update.js"></script>
 	<script src="resources/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
 	<script
 		src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>

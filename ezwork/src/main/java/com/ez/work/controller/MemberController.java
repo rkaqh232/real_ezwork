@@ -62,8 +62,8 @@ public class MemberController {
 	// 로그인 처리
 	@RequestMapping(value = "/loginProcess.net", method = RequestMethod.POST)
 	public String loginProcess(@RequestParam(value="M_CODE",required=false) String id, // 로그인값 넘어온것
-			@RequestParam(value="M_PASS",required=false) String password,
-			@RequestParam(value = "remember", defaultValue = "") String remember, // 체크하는거에요. 기본값 스트링이니까 빈값으로 넣어줬읍니다.
+							   @RequestParam(value="M_PASS",required=false) String password,
+							   @RequestParam(value ="remember", defaultValue = "") String remember, // 체크하는거에요. 기본값 스트링이니까 빈값으로 넣어줬읍니다.
 			HttpServletResponse response, HttpSession session) throws Exception {
 
 		int result = loginmemberservice.isId(id, password); // 두개 넘겨줍니다.
@@ -102,16 +102,16 @@ public class MemberController {
 		}
 	}
 
-	// 회원가입처리
+	// 사원등록
 	@RequestMapping(value = "/joinProcess.net", method = RequestMethod.POST)
 	public void joinProcess(Member member, HttpServletResponse response, HttpServletRequest request) throws Exception {
-		System.out.println(member.getM_PASS());
+		  System.out.println(member.getM_PASS());
 		  String saveFolder = 
 		             request.getSession().getServletContext().getRealPath("resources")
 		             + "/upload/";
 		  System.out.println(saveFolder);
 		  System.out.println(member.getM_BIRTH());
-		MultipartFile uploadfile = member.getProfile_avatar(); //자료형이  MultipartFile로 가져온겁니다.
+		  MultipartFile uploadfile = member.getProfile_avatar(); //자료형이  MultipartFile로 가져온겁니다.
 	       
 	       
 	     //오리지널은 이름 그대로 넣을꺼에요. 올린 이름 그대로. 실제로 여러분들이 저장하는 곳 위치에서는 이름을 바꿀거에요.
@@ -120,8 +120,8 @@ public class MemberController {
 	          member.setM_ORIGINAL(fileName); //원래 파일명 저장
 	          
 	          
-	        //새로운 폴더 이름 : 오늘 년-월-일 , 저장할땐 이름이 겹치는 경우가 있기때문에.. 첫번째는 오늘날짜에 대한 연월일을 구합니다. 
-	          // 새로운 폴더 이름 : 오늘 - 년 - 월 - 일 
+	      //새로운 폴더 이름 : 오늘 년-월-일 , 저장할땐 이름이 겹치는 경우가 있기때문에.. 첫번째는 오늘날짜에 대한 연월일을 구합니다. 
+	      // 새로운 폴더 이름 : 오늘 - 년 - 월 - 일 
 	       Calendar c = Calendar.getInstance();
 	       int year = c.get(Calendar.YEAR); // 오늘 년도 구합니다.
 	       int month = c.get(Calendar.MONTH) +  1; // 오늘 월 구합니다.
@@ -216,6 +216,8 @@ public class MemberController {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			int result = loginmemberservice.update(member);
+			System.out.println(member);
+			System.out.println("결과는 " + result);
 			out.println("<script>");
 
 			// 삽입이 된 경우
@@ -228,7 +230,6 @@ public class MemberController {
 			}
 			out.println("</script>");
 			out.close();
-
 		}
 
 

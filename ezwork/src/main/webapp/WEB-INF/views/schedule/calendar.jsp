@@ -108,14 +108,7 @@
 		};
 	}();
 
-	function openModal(){
-		
-		//mymodal2 에 엮여있는 input . value 를 다 수정. ajax 통해서 가져옴.
-		
-		
-		$("#myModal2").modal();
-	}
-	
+
 	
 	jQuery(document).ready(function() {
 		KTCalendarBasic.init();

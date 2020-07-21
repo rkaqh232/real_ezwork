@@ -51,13 +51,14 @@ values('user', '수진1', '총무팀', '2018-04-01' );
 update list_al
 set AL_YEARS = (select floor(months_between(sysdate,AL_M_JOIN_DATE)/12) from list_al where AL_M_CODE = 'user' ) where AL_M_CODE = 'user';
 
---휴가 갯수--decode 사용해서
-select 15+((AL_YEARS - 1) / 2 ) from list_al where AL_YEARS > 1; --1년차이상부터
+--휴가 갯수--
+select 15+ TRUNC((AL_YEARS - 1) / 2 ) from list_al where AL_YEARS > 1; --1년차이상부터
 select 11 from list_al where AL_YEARS = 0; --1년차 미만인 사람
 
 --휴가 갯수 연차 1년차 이상 update--
 update list_al
-set AL_TOTALDAY = (select 15 + ((AL_YEARS - 1) / 2 ) from list_al where AL_YEARS >= 1 and AL_M_CODE = 'user' ) where AL_M_CODE = 'user';
+set AL_TOTALDAY = (select 15 + TRUNC((AL_YEARS - 1) / 2 ) from list_al where AL_YEARS >= 1 and AL_M_CODE = 'EMP202019' ) where AL_M_CODE = 'EMP202019';
+
 
 --휴가 갯수 연차 1년차 미만 update--
 update list_al
@@ -69,6 +70,8 @@ update list_al
 set AL_TOTALHOUR = AL_TOTALDAY*8;
 
 
+select enddate - startdate from list_al where al_m_code = 'EMP202023';
+
 1. al_request테이블에서 : 휴가신청한 사람의 정보 읽어옴
 2. getAL_SORT() :
    ilsu = [8,4,0,8,4]
@@ -79,8 +82,8 @@ set AL_TOTALHOUR = AL_TOTALDAY*8;
      al_unused = al_totalhour - (40)
      where al_m_code = 'sujin';
      
-    update from LIST_AL
-     set al_used =  (신청ㅁㅏ지막날 - 신청 첫날 + 1 ) * 8시간, 
+    update  LIST_AL
+     set al_used =  (enddate - startdate + 1 ) * 8시간, 
      al_unused = al_totalhour - ((신청ㅁㅏ지막날 - 신청 첫날 + 1 ) * 8시간)
      where al_m_code = 'sujin';
      

@@ -16,18 +16,17 @@ import com.ez.work.domain.Member;
 
 @Repository
 public class MemberDAO {
-	
-	
-	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
-	
+
 	public int insert(Member m) {
 		int result1 = sqlSession.insert("Members.insert", m);
 		int result2 = sqlSession.insert("ALlist.insert",m);
-	
-		if (result1 > 0 && result2 >0)
+		int result3 = sqlSession.insert("ALlist.update",m);
+		sqlSession.update("ALlist.updateUnder");
+		int result4 = sqlSession.update("ALlist.updateOver", m);
+		sqlSession.update("ALlist.calHour");		
+		if (result1 > 0 && result2 >0 && result3 >0 && result4 >0)
 			return 1;
 		else
 			return 0;

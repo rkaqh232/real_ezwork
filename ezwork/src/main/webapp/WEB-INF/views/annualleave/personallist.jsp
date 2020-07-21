@@ -115,7 +115,8 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">입사일</span> <span
-										class="font-weight-bolder font-size-h5"> <span
+										class="font-weight-bolder font-size-h5">
+										${fn:substring(allist1.AL_M_JOIN_DATE,0,10) } <span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>
@@ -128,7 +129,7 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">연차잔여현황</span> <span
-										class="font-weight-bolder font-size-h5"> <span
+										class="font-weight-bolder font-size-h5">${allist1.AL_TOTALDAY }일 <span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>
@@ -141,7 +142,7 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">사용완료연차</span> <span
-										class="font-weight-bolder font-size-h5"> <span
+										class="font-weight-bolder font-size-h5">${allist1.AL_USED/8}일 <span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>
@@ -154,7 +155,7 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">잔여연차</span> <span
-										class="font-weight-bolder font-size-h5"> <span
+										class="font-weight-bolder font-size-h5"> ${allist1.AL_TOTALDAY - allist1.AL_USED/8}일<span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>

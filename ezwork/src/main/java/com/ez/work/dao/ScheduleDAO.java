@@ -27,4 +27,12 @@ public class ScheduleDAO {
 		return sqlSession.selectOne("Members.EmpCheck", m_code);
 	}
 
+	public Schedule getDetailSchedule(int sch_no) {
+		return sqlSession.selectOne("Schedule.getDetail", sch_no);
+	}
+
+	public int deleteSchedule(int sch_no) {
+		return sqlSession.delete("Schedule.deleteSchedule", sch_no);
+	}
+
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ez.work.dao.AnnualLeaveDAO;
+import com.ez.work.domain.ALList;
 import com.ez.work.domain.ALRequest;
 import com.ez.work.domain.Member;
 
@@ -45,5 +46,11 @@ public class AnnualLeaveServiceImpl implements AnnualLeaveService {
 	@Override
 	public List<ALRequest> getTeamInfo(String M_PART_C) {
 		return dao.getTeamInfo(M_PART_C);
+	}
+
+	@Override
+	public int ALlistInsert(Member member) {
+		System.out.println(member.getLG_NAME());
+		return dao.ALlistInsert(member);
 	}
 }

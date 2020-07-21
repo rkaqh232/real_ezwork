@@ -78,7 +78,7 @@ public class AnnualLeaveController {
 			jsonObject.addProperty("title", teamInfo.get(i).getAL_M_NAME());
 			jsonObject.addProperty("start", teamInfo.get(i).getAL_STARTDATE());
 			jsonObject.addProperty("end", teamInfo.get(i).getAL_ENDDATE());
-			jsonObject.addProperty("backgroundColor", "orange");
+			jsonObject.addProperty("backgroundColor", "white");
 			jsonObject.addProperty("description", teamInfo.get(i).getAL_REASON());
 			teamInfoarray.add(jsonObject);
 		}

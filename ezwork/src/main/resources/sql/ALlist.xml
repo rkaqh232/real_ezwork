@@ -3,6 +3,12 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ALlist">
-
-
+<insert id="insert" parameterType="member">
+<selectKey resultType ="String" order="BEFORE" keyProperty ="M_CODE">
+	select M.M_CODE from (select M_CODE, ROWNUM from member where M_CODE != 'admin' order by ROWNUM desc) M where ROWNUM = 1
+</selectKey>
+insert into list_al
+(AL_M_CODE, AL_M_NAME, AL_M_PART_C, AL_M_JOIN_DATE )
+values(#{M_CODE}, #{M_NAME}, #{M_PART_C}, #{M_JOIN_DATE} )
+</insert>
 </mapper>

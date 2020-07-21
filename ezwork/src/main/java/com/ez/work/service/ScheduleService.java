@@ -15,4 +15,11 @@ public interface ScheduleService {
 	
 	//로그인 정보 가져오기
 	public Member getInfo(String m_code);
+	
+	//일정 상세정보 가져오기
+	public Schedule getDetailSchedule(int sch_no);
+	
+	//일정 삭제하기
+	public int deleteSchedule(int sch_no);
+	
 }

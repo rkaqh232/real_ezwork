@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ez.work.domain.ALList;
 import com.ez.work.domain.ALRequest;
 import com.ez.work.domain.Member;
 
@@ -35,6 +36,10 @@ public class AnnualLeaveDAO {
 
 	public int getListCount(String id) {
 		return sqlSession.selectOne("RequestAL.count", id);
+	}
+
+	public int ALlistInsert(Member member) {
+		return sqlSession.insert("ALlist.insert", member);
 	}
 
 }

@@ -27,18 +27,19 @@ public class AnnualLeaveServiceImpl implements AnnualLeaveService {
 	}
 
 	@Override
-	public List<ALRequest> getRequestList(int page, int limit) {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+	public List<ALRequest> getRequestList(int page, int limit, String id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		int startrow = (page - 1) * limit + 1;
 		int endrow = startrow + limit - 1;
 		map.put("start", startrow);
 		map.put("end", endrow);
+		map.put("id", id);
 		return dao.getRequestList(map);
 	}
 
 	@Override
-	public int getListCount() {
-			return dao.getListCount();
+	public int getListCount(String id) {
+			return dao.getListCount(id);
 	}
 
 	@Override

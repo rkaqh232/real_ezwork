@@ -76,7 +76,7 @@
 		where rnum
 		&gt;=#{start} and rnum
 		&lt;=
-		#{end}
+		#{end} and CM_MCODE = #{id}
 	</select>
 
 	<!-- list 개수 -->

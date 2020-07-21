@@ -14,11 +14,12 @@ public interface AnnualLeaveService {
 	public int insertAL(ALRequest alrequest);
 	
 	//휴가 신청 list
-	public List<ALRequest> getRequestList(int page, int limit);
+	public List<ALRequest> getRequestList(int page, int limit, String id);
 	
 	// 목록 갯수 구하기
-	public int getListCount();
+	public int getListCount(String id);
 	
 	// 부서 휴가 목록
 	public List<ALRequest> getTeamInfo(String M_PART_C);
+
 }

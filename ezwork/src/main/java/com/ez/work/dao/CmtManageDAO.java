@@ -45,7 +45,7 @@ public class CmtManageDAO {
 	public int getListCount() {
 		return sqlSession.selectOne("CmtManage.count");
 	}
-	public List<CmtManage> getCmtList(HashMap<String, Integer> map) {
+	public List<CmtManage> getCmtList(HashMap<String, Object> map) {
 		return sqlSession.selectList("CmtManage.list", map);
 	}
 

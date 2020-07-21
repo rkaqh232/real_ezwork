@@ -28,7 +28,7 @@ public class AnnualLeaveController {
 	// 휴가신청 화면
 	@RequestMapping(value = "/Request.al")
 	public ModelAndView RequestAL(ModelAndView mv, HttpSession session) {
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = annualLeaveSerivice.getInfo(id); // 로그인 된 id정보 가져오기
 		mv.addObject("page", "annualleave/requestAL.jsp");
 		mv.setViewName("home");
@@ -66,7 +66,7 @@ public class AnnualLeaveController {
 	// 부서별 월간 휴가 현황 화면
 	@RequestMapping(value = "/Teamlist.al")
 	public ModelAndView teamlistAL(ModelAndView mv, HttpSession session, ALRequest alrequest) {
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = annualLeaveSerivice.getInfo(id); // 로그인 된 id정보 가져오기
 		List<ALRequest> teamInfo = annualLeaveSerivice.getTeamInfo(memberinfo.getM_PART_C());
 		
@@ -97,11 +97,12 @@ public class AnnualLeaveController {
 	@RequestMapping(value = "/Personallist.al")
 	public ModelAndView personnallistAL(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
 			ModelAndView mv, HttpSession session) {
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = annualLeaveSerivice.getInfo(id); // 로그인 된 id정보 가져오기
 		
 		int limit = 10;
-		int listcount = annualLeaveSerivice.getListCount();
+		int listcount = annualLeaveSerivice.getListCount(id);
+		System.out.println("listcount : " + listcount );
 
 		// 총 페이지수
 		int maxpage = (listcount + limit - 1) / limit;
@@ -115,7 +116,7 @@ public class AnnualLeaveController {
 		if (endpage > maxpage)
 			endpage = maxpage;
 
-		List<ALRequest> allist = annualLeaveSerivice.getRequestList(page, limit); // 리스트를 받아옴
+		List<ALRequest> allist = annualLeaveSerivice.getRequestList(page, limit, id); // 리스트를 받아옴
 
 		mv.setViewName("home");
 		mv.addObject("page", "annualleave/personallist.jsp");

@@ -35,7 +35,7 @@ public class CmtManageController {
 	@GetMapping(value = "/DailyCommute.cm")
 	public ModelAndView DailyCommute(@RequestParam(value = "page", defaultValue = "1", required = false) int page, HttpServletRequest request, 
 			ModelAndView mv, HttpSession session, @RequestParam(value="check", defaultValue="0" )int check) {
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = cmtManageService.getInfo(id); //로그인 된 ID정보 가져옴
 		CmtManage memberinfo2 = cmtManageService.getDetail(id);
 		
@@ -54,7 +54,7 @@ public class CmtManageController {
 		if (endpage > maxpage)
 			endpage = maxpage;
 
-		List<CmtManage> cmtlist = cmtManageService.getCmtList(page, limit); // 리스트를 받아옴
+		List<CmtManage> cmtlist = cmtManageService.getCmtList(page, limit, id); // 리스트를 받아옴
 		
 		mv.setViewName("home");
 		mv.addObject("page", "CmtManage/dailyCmt.jsp");
@@ -125,7 +125,7 @@ public class CmtManageController {
 				//하루근무시간계산
 				cmtManageService.dailyWorkHours();
 				//누적근무시간계산
-				String id = (String) session.getAttribute("id");
+				String id = (String) session.getAttribute("M_CODE");
 				cmtManageService.accumulativeHours(id);
 				//연장근무있을시 연장근무계산
 				//cmtManageService.extendedHours(CmtManage);
@@ -143,19 +143,19 @@ public class CmtManageController {
 	
 	
 	//일일근태목록 list
-	@GetMapping(value = "/CmtList.cm")
-		public ModelAndView CmtList(ModelAndView mv) {
-			List<CmtManage> Cmtlist = cmtManageService.getCmtList(); // 리스트를 받아옴
-			mv.setViewName("home");
-			mv.addObject("page", "CmtManage/dailyCmt.jsp");
-			mv.addObject("Cmtlist", Cmtlist);
-			return mv;
-		}
+//	@GetMapping(value = "/CmtList.cm")
+	//	public ModelAndView CmtList(ModelAndView mv) {
+		//	List<CmtManage> Cmtlist = cmtManageService.getCmtList(); // 리스트를 받아옴
+			//mv.setViewName("home");
+		//	mv.addObject("page", "CmtManage/dailyCmt.jsp");
+		//	mv.addObject("Cmtlist", Cmtlist);
+		//	return mv;
+	//	}
 	
 	//월간근태목록
 	@GetMapping(value = "/monthlyCmt.cm")
 	public ModelAndView monthlyCmt(ModelAndView mv, Member member, HttpSession session) {
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = cmtManageService.getInfo(id); //로그인 된 ID정보 가져옴
 		List<CmtManage> monthlylist = cmtManageService.monthlyCmt(id); // 리스트를 받아옴
 

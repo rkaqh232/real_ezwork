@@ -16,11 +16,6 @@ public class CmtManageServiceImpl implements CmtManageService{
 	@Autowired
 	private CmtManageDAO dao;
 
-	@Override
-	public List<CmtManage> getCmtList() {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		return dao.getCmtList(map);
-	}
 
 	@Override
 	public void insertOntime(CmtManage cmtManageOn) {
@@ -62,12 +57,13 @@ public class CmtManageServiceImpl implements CmtManageService{
 	
 	//근태 리스트
 	@Override
-	public List<CmtManage> getCmtList(int page, int limit) {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+	public List<CmtManage> getCmtList(int page, int limit, String id){
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		int startrow = (page - 1) * limit + 1;
 		int endrow = startrow + limit - 1;
 		map.put("start", startrow);
 		map.put("end", endrow);
+		map.put("id", id);
 		return dao.getCmtList(map);
 	}
 

@@ -145,11 +145,11 @@
 												<td colspan="3"><div>
 														<div class="col-10">
 															<select class="form-control col-5" id="ALsort" name="AL_SORT">
-																<option value="연차">연차 (8h)</option>
-																<option value="반차">반차 (4h)</option>
-																<option value="병가">병가 (0h)</option>
-																<option value="예비군">예비군 (8h)</option>
-																<option value="경조사">경조사 (4h)</option>
+																<option value="0">연차 (8h)</option>
+																<option value="1">반차 (4h)</option>
+																<option value="2">병가 (0h)</option>
+																<option value="3">예비군 (8h)</option>
+																<option value="4">경조사 (4h)</option>
 															</select>
 														</div>
 													</div></td>

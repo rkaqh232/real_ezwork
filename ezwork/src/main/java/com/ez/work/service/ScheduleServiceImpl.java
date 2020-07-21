@@ -32,5 +32,16 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return dao.getInfo(m_code);
 	}
 	
+	//일정 상세정보 가져오기
+	@Override
+	public Schedule getDetailSchedule(int sch_no) {
+		return dao.getDetailSchedule(sch_no);
+	}
+
+	@Override
+	public int deleteSchedule(int sch_no) {
+		return dao.deleteSchedule(sch_no);
+	}
+	
 
 }

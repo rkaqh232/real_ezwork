@@ -3,13 +3,13 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Schedule">
-<insert id="addSchedule" parameterType="schedule">
-	insert into schedule
+	<insert id="addSchedule" parameterType="schedule">
+		insert into schedule
 		(SCH_NO,
 		SCH_TITLE,
 		SCH_NAME,
 		SCH_STARTDATE,
-		SCH_ENDDATE, 
+		SCH_ENDDATE,
 		SCH_PARTICIPANT,
 		SCH_PLACE,
 		SCH_COLOR,
@@ -26,10 +26,19 @@
 		#{SCH_COLOR},
 		#{SCH_CONTENT}
 		)
-</insert>
+	</insert>
 
-<select id="showSchedule" resultType="Schedule">
-select 
-* from schedule
-</select>
+	<select id="showSchedule" resultType="Schedule">
+		select
+		* from schedule
+	</select>
+
+	<select id="getDetail" parameterType="int" resultType="Schedule">
+		select * from schedule where SCH_NO = #{SCH_NO}
+	</select>
+
+	<delete id="deleteSchedule" parameterType="int">
+		delete from schedule
+		where SCH_NO = #{SCH_NO}
+	</delete>
 </mapper>

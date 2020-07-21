@@ -24,7 +24,13 @@ public class MemberDAO {
 	
 	
 	public int insert(Member m) {
-		return sqlSession.insert("Members.insert", m);
+		int result1 = sqlSession.insert("Members.insert", m);
+		int result2 = sqlSession.insert("ALlist.insert",m);
+	
+		if (result1 > 0 && result2 >0)
+			return 1;
+		else
+			return 0;
 		
 	}
 

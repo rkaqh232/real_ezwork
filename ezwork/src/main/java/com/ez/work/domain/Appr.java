@@ -2,22 +2,22 @@ package com.ez.work.domain;
 
 public class Appr {
 	
-	private int APPR_CODE;                          //°áÀç ¹øÈ£         
-	private String M_CODE;                          //»ç¿ø ÄÚµå(id)
+	private int APPR_CODE;                          //ê²°ì¬ ë²ˆí˜¸         
+	private String M_CODE;                          //ì‚¬ì› ì½”ë“œ(id)
 	private String M_PART; 
-	private String APPR_TITLE;                      //Á¦¸ñ            
-	private String APPR_CONTENT;                    //³»¿ë            
-	private String FIRST_CODE;                      //1-»ç¿ø
+	private String APPR_TITLE;                      //ì œëª©            
+	private String APPR_CONTENT;                    //ë‚´ìš©            
+	private String FIRST_CODE;                      //1-ì‚¬ì›
 	private String M_PART_F; 
-	private String SECOND_CODE;                     //2-»ç¿ø
+	private String SECOND_CODE;                     //2-ì‚¬ì›
 	private String M_PART_S; 
-	private String THIRD_CODE;                      //3-»ç¿ø
+	private String THIRD_CODE;                      //3-ì‚¬ì›
 	private String M_PART_T; 	
-	private String APPR_FILE;                       //º¯°æµÈ ÆÄÀÏ¸í       
-	private String APPR_ORIGIN;                     //original ÆÄÀÏ¸í  
-	private int APPR_STAT;                               //°áÀç »óÅÂ         
-	private String APPR_DATE;                       //Á¦Ãâ ³¯Â¥         
-	private String APPR_COMP_DATE;                  //¿Ï·á ³¯Â¥         
+	private String APPR_FILE;                       //ë³€ê²½ëœ íŒŒì¼ëª…       
+	private String APPR_ORIGIN;                     //original íŒŒì¼ëª…  
+	private int APPR_STAT;                               //ê²°ì¬ ìƒíƒœ         
+	private String APPR_DATE;                       //ì œì¶œ ë‚ ì§œ         
+	private String APPR_COMP_DATE;                  //ì™„ë£Œ ë‚ ì§œ         
 	private int APPR_VAL;                           //??            
 	
 	public int getAPPR_CODE() {

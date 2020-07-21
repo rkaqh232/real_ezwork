@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +9,12 @@
 #kt_content {
 	padding-top: 0px;
 }
-
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<div class="content d-flex flex-column flex-column-fluid"
+	<div class="content d-flex flex-column flex-column-fluid"
 		id="kt_content">
 		<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
 			<div
@@ -69,8 +70,7 @@
 								<div class="d-flex justify-content-between flex-wrap mt-1">
 									<div class="d-flex mr-3">
 										<a href="#"
-											class="text-dark-75 text-hover-primary font-size-h2 font-weight-bold mr-3"></a> 
-										</a>
+											class="text-dark-75 text-hover-primary font-size-h2 font-weight-bold mr-3">${memberinfo.m_NAME }</a>
 									</div>
 									<div class="my-lg-0 my-3"></div>
 								</div>
@@ -78,22 +78,26 @@
 								<!--begin::Content-->
 								<div class="d-flex flex-wrap justify-content-between mt-1">
 									<div class="d-flex flex-column flex-grow-1 pr-8">
-										<div class="d-flex flex-wrap mb-4" style="margin-top: 14px; margin-bottom:8px;">
-										<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-placeholder mr-2 font-size-lg"></i>
+										<div class="d-flex flex-wrap mb-4"
+											style="margin-top: 14px; margin-bottom: 8px;">
+											<span
+												class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+												<i class="flaticon2-placeholder mr-2 font-size-lg"></i>${memberinfo.m_PART_C }
+											</span> <span
+												class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+												<i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>Level
+												${memberinfo.m_LEVEL }
 											</span>
-												<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>
-											</span> 
-											
+
 										</div>
-											<span class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-												<i class="flaticon2-new-email mr-2 font-size-lg"></i>
-											</span>
+										<span
+											class="text-dark-50  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+											<i class="flaticon2-new-email mr-2 font-size-lg"></i>${memberinfo.m_EMAIL }
+										</span>
 									</div>
 									<div
 										class="d-flex align-items-center w-25 flex-fill float-right mt-lg-12 mt-8">
-										
+
 									</div>
 								</div>
 								<!--end::Content-->
@@ -104,8 +108,8 @@
 						<div class="separator separator-solid"></div>
 						<!--begin::Items-->
 						<div class="d-flex align-items-center flex-wrap mt-8">
-						
-									<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
+
+							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> <i
 									class="flaticon-more-v5 display-4 text-muted font-weight-bold"></i>
 								</span>
@@ -116,11 +120,11 @@
 									</span>
 								</div>
 							</div>
-						
+
 							<!--begin::Item-->
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> <i
-									class= "flaticon-more-v5 display-4 text-muted font-weight-bold"></i>
+									class="flaticon-more-v5 display-4 text-muted font-weight-bold"></i>
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">연차잔여현황</span> <span
@@ -158,101 +162,120 @@
 						</div>
 					</div>
 				</div>
-				
-				
-						<!--end::Row-->
+
+
+				<!--end::Row-->
 				<div class="card card-custom">
 					<div class="card-header flex-wrap border-0 pt-6 pb-0">
 						<div class="card-title">
 							<h3 class="card-label">
-							<i class="flaticon-list-2 text-info"></i>&nbsp;
-								휴가 사용 내역<span
+								<i class="flaticon-list-2 text-info"></i>&nbsp; 휴가 사용 내역<span
 									class="text-muted pt-2 font-size-sm d-block"></span>
 							</h3>
 						</div>
 						<div class="card-toolbar"></div>
 					</div>
 					<div class="card-body pt-0 pb-3">
-										<div class="tab-content">
-											<!--begin::Table-->
-											<div class="table-responsive">
-												<table class="table table-hover" >
-													<thead style="text-align:center;">
-														<tr>
-														<th>신청날짜</th>
-															<th>신청자</th>
-															<th>소속</th>
-															<th>휴가구분</th>
-															<th>시작일자</th>
-															<th>종료일자</th>
-															<th>휴가사유</th>
-														</tr>
-													</thead>
-													<tbody style="text-align:center;">
-														<tr>
-															<td>
-															2020-07-11
-															</td>
-															<td>
-															이재희
-															</td>
-															<td>
-															총무팀
-															</td>
-															<td>
-															연차 (8h)
-															</td>
-															<td>
-															2020-08-11
-															</td>
-															<td>
-															2020-08-14
-															</td>
-															<td>
-															리프레쉬 휴가
-															</td>
-														</tr>
-														
-														<!-- 삭제ok -->
-																<tr>
-															<td>
-															2020-07-11
-															</td>
-															<td>
-															이재희
-															</td>
-															<td>
-															총무팀
-															</td>
-															<td>
-															연차 (8h)
-															</td>
-															<td>
-															2020-08-11
-															</td>
-															<td>
-															2020-08-14
-															</td>
-															<td>
-															리프레쉬 휴가
-															</td>
-														</tr>
-														
-													</tbody>
-												</table>
-											</div>
-											<!--end::Table-->
-										</div>
+						<div class="tab-content">
+							<!--begin::Table-->
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<colgroup>
+										<col width="10%">
+										<col width="10%">
+										<col width="10%">
+										<col width="10%">
+										<col width="10%">
+										<col width="10%">
+										<col width="10%">
+										<col width="30%">
+									</colgroup>
+									<thead style="text-align: center;">
+										<tr>
+											<th>NO</th>
+											<th>신청날짜</th>
+											<th>신청자</th>
+											<th>소속</th>
+											<th>휴가구분</th>
+											<th>시작일자</th>
+											<th>종료일자</th>
+											<th>휴가사유</th>
+										</tr>
+									</thead>
+									<tbody style="text-align: center; font-size:14px;">
+										<c:set var="num" value="${listcount-(page1-1)*limit}" />
+										<c:forEach var="a" items="${allist}">
+											<tr>
+												<td>
+													<%--글번호--%> <c:out value="${num}" /> <%--num 출력 --%> <c:set
+														var="num" value="${num-1}" /> <%--num = num-1; 의미 --%>
+												</td>
+												<td>${fn:substring(a.AL_DATE,0,9) }</td>
+												<td>${a.AL_M_NAME }</td>
+												<td>${a.AL_M_PART_C }</td>
+												<td>${a.AL_SORT }</td>
+												<td>${fn:substring(a.AL_STARTDATE,0,10) }</td>
+												<td>${fn:substring(a.AL_ENDDATE,0,10) }</td>
+												<td>${a.AL_REASON }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+								<!-- 레코드가 없으면 -->
+								<c:if test="${listcount == 0}">
+									<div style="text-align: center; margin-bottom: 10px;">신청
+										내역이 없습니다.</div>
+								</c:if>
+
+							</div>
+							<div class="card-footer d-flex justify-content-between">
+
+								<!--begin::Pagination-->
+								<div
+									class="d-flex justify-content-between align-items-center flex-wrap"
+									style="margin: auto;">
+									<div class="d-flex flex-wrap py-2 mr-3">
+										<c:if test="${page1 <= 1 }">
+											<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-back icon-xs"></i></a>
+										</c:if>
+										<c:if test="${page1 > 1}">
+											<a href="./BoardList.ev?page=${page1 - 1}"
+												class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-back icon-xs"></i></a>
+										</c:if>
+
+										<c:forEach var="a" begin="${startpage}" end="${endpage}">
+											<c:if test="${a == page1 }">
+												<a
+													class="btn btn-icon btn-sm border-0 btn-hover-info active mr-2 my-1">${a }</a>
+											</c:if>
+											<c:if test="${a != page1}">
+												<!-- 같지 않으면, 이동할 수 있다 -->
+												<a href="./BoardList.ev?page=${a}"
+													class="btn btn-icon btn-sm border-0 btn-light mr-2 my-1">${a }</a>
+											</c:if>
+										</c:forEach>
+
+										<c:if test="${page1 >= maxpage}">
+											<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-next icon-xs"></i></a>
+										</c:if>
+										<c:if test="${page1 < maxpage}">
+											<a href="./BoardList.ev?page=${page1 + 1 }"
+												class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+												class="ki ki-bold-arrow-next icon-xs"></i></a>
+										</c:if>
 									</div>
-					</div>
+								</div>
+							</div>
+						</div>
+						<!--end::Table-->
 					</div>
 				</div>
-			
 			</div>
-				
-</div>
-</div>
-</div>
+		</div>
+	</div>
 
 </body>
 </html>

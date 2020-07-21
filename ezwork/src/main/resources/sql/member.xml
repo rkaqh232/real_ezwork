@@ -10,7 +10,9 @@
 
 
 
-	<!-- 혜정 - 사원등록 -->
+
+    
+    <!-- 혜정 - 사원등록 -->
     <insert id="insert" parameterType="member">
         insert into member
       values
@@ -18,9 +20,11 @@
          #{M_PART_C}, #{M_LEVEL}, #{M_NAME},
          #{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE}, 
          #{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, TO_DATE(SYSDATE,'YYYY-MM-DD'), 
-         #{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, #{SC_GRAD_DAY},
+         #{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, TO_DATE(SYSDATE,'YYYY-MM-DD'),
          #{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
-         #{LI_NAME}, #{LI_ORGAN}, #{LI_DATE}
+         #{LI_NAME}, #{LI_ORGAN}, #{LI_DATE},
+         #{M_POSTCODE}, #{M_ADDRESS2}
+         
          )   
     </insert> 
 

@@ -106,7 +106,7 @@ font-size:12px !important;
 													<div class="my-5 step" data-wizard-type="step-content"
 														data-wizard-state="current">
 														<h3 class="text-dark font-weight-bold mb-10"
-															font-weight="bold";>사원 정보 수정<a style="color:#BF00FF"> * 표시 - 해당 정보만 수정가능합니다. 이외의 추가, 수정사항은 인사팀으로 문의부탁드립니다.</a></h3>
+															font-weight="bold";>사원 정보 수정<a style="color:red">   * 일부항목만 수정이 가능합니다. </a> </h3>
 														<!--begin::Group-->
 														<!-- <div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
@@ -146,48 +146,140 @@ font-size:12px !important;
 																<input
 																	class="form-control form-control-solid form-control-lg"
 																	name="M_CODE" id="M_CODE" type="text" placeholder="${info.m_CODE}" 
-																	readonly /><span class="form-text text-muted">참고 : 수정불가
+																	readonly /><span class="form-text text-muted">참고 : 사원번호는 수정이 불가능합니다. 
 																	</span>
 															</div>
 														</div>
 														<!--  비밀번호  -->
 														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호<a style="color:#BF00FF">  ▶</a></label>
+															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호<a style="color:red"> * </a></label>
 															<div class="col-lg-9 col-xl-9">
 																<input
-																	class="form-control"
+																	class="form-control form-control-solid form-control-lg"
 																	name="M_PASS" type="text" id="password" value="${info.m_PASS}" /> <span
-																	class="form-text text-muted"> 참고 : 비밀번호는 반드시 숫자 6자리로 입력해주세요. </span>
+																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
 															</div>
 														</div>
 														<!--end::Group-->
 														<!--begin::Group-->
 														
+														
+														
+														
+														
+														
+								
+														
+
+														<!-- <div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
+																<div class="col-lg-9 col-xl-9">
+																	<div class="dropdown">
+    																	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       																		&nbsp;&nbsp;&nbsp;선택해주세요.&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  													  <div class="dropdown-menu" >
+      														  <a class="dropdown-item" href="#" value="A1">A1   총무</a>
+        													  <a class="dropdown-item" href="#" value="A2">A2   재무</a>
+     													      <a class="dropdown-item" href="#" value="A3">A3   인사</a>
+     													      <a class="dropdown-item" href="#" value="B1">B1   경영지원</a>
+     													      <a class="dropdown-item" href="#" value="B2">B2  S/W지원</a>
+     													      <a class="dropdown-item" href="#" value="B3">B3   기술지원</a>
+     													      <a class="dropdown-item" href="#" value="C1">C1   영업1팀</a>
+     													      <a class="dropdown-item" href="#" value="C2">C2   영업2팀</a>
+     													      <a class="dropdown-item" href="#" value="Q">Q  임원</a>
+   															 </div>
+															</div>
+															<span
+																	class="form-text text-muted">참고 : 기타 부서의 경우 A1으로 선택해주세요.</span>
+															</div>
+														</div> -->
+														
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
-															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="M_PART_C" type="text" id="M_PART_C" value="${info.m_PART_C}" readonly/> <span
-																	class="form-text text-muted"> 참고 : 수정불가 </span>
+																<div class="col-lg-9 col-xl-9">
+																	<label class="radio radio-rounded radio-info">															
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="${info.m_PART_C}" />A1 총무 <span></span>
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" />A2   재무<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C"/>A3   인사<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C"/>B1   경영지원<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" />B2  S/W지원<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" />B3   기술지원<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+																 
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" />C1   영업1팀<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" />C2   영업2팀<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" />Q  임원<span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																
+																
+																</label><span
+																	class="form-text text-muted">
+																	참고 : 기타 부서의 경우 A1으로 선택해주세요. </span>
 															</div>
 														</div>
-											
+														
+														
+														
+														
+														
 														
 													<!-- 직급코드 -->
-													
-													<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">직급코드</label>
+														<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">
+																직급코드 </label>
 															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="M_LEVEL" type="text" id="M_LEVEL" value="level ${info.m_LEVEL}" readonly/> <span
-																	class="form-text text-muted"> 참고 : 수정불가 </span>
+																<label class="radio radio-rounded radio-info">															
+																<input type="radio" name="M_LEVEL" id="M_LEVEL" checked="checked" value="1" /> Level 1 <span></span>
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_LEVEL" value="2" /> Level 2 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_LEVEL" value="3" /> Level 3 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_LEVEL" value="4" /> Level 4 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_LEVEL" value="5"/> Level 5 <span></span>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																
+																
+																
+																</label><span
+																	class="form-text text-muted">
+																	참고 : 사원(Level-1) , 대리(Level-2), 과장(Level-3), 차장(Level-4), 임원(Level-5) </span>
 															</div>
 														</div>
 														
-														
-														
+														<!-- 직급코드  -->
 					
 
 
@@ -262,19 +354,6 @@ font-size:12px !important;
 																</label>
 															</div>
 														</div>
-														
-														
-														<!--  비밀번호  -->
-														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호<a style="color:#BF00FF">  ▶</a></label>
-															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control"
-																	name="M_PASS" type="text" id="password" value="${info.m_PASS}" /> <span
-																	class="form-text text-muted"> 참고 : 비밀번호는 반드시 숫자 6자리로 입력해주세요. </span>
-															</div>
-														</div>
-														<!--end::Group-->
 
 
 
@@ -289,16 +368,17 @@ font-size:12px !important;
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
-																핸드폰<a style="color:#BF00FF"> * </a></label>
+																핸드폰<a style="color:red"> *</a> </label>
 															<div class="col-lg-9 col-xl-9">
 																<div
 																	class="input-group input-group-solid input-group-lg">
 																	<div class="input-group-prepend">
-																		<span class="form-control"> <i
+																		<span class="input-group-text"> <i
 																			class="la la-phone"></i>
 																		</span>
 																	</div>
-																	<input class="form-control" type="text"
+																	<input type="text"
+																		class="form-control form-control-solid form-control-lg"
 																		name="M_MOBILE_TEL" id="M_MOBILE_TEL" value="${info.m_MOBILE_TEL}" />
 																</div>
 																<span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
@@ -308,14 +388,16 @@ font-size:12px !important;
 
 
 														<div class="form-group row">
-															<label class="col-3"> 이메일 (Email)<a style="color:#BF00FF"> * </a> </label>
+															<label class="col-3"> 이메일 (Email)<a style="color:red"> *</a> </label>
 															<div class="col-9">
 																<div class="input-group input-group-solid">
 																	<div class="input-group-prepend">
 																		<span class="input-group-text"><i
 																			class="la la-at"></i></span>
 																	</div>
-																	<input class="form-control" type="email" name="M_EMAIL" id="M_EMAIL"  value="${info.m_EMAIL}" />
+																	<input type="text"
+																		class="form-control form-control-solid"
+																		name="M_EMAIL" id="M_EMAIL"  value="${info.m_EMAIL}" />
 																</div><span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
 																	(ex: sample@Ezwork.com)</span>
 															</div>
@@ -356,7 +438,7 @@ font-size:12px !important;
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
-																	<label>우편번호<a style="color:#BF00FF"> * </a></label> <input type="text"
+																	<label>우편번호</label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
 																		name="M_POSTCODE" placeholder="우편번호"
 																		id="sample6_postcode"
@@ -426,7 +508,7 @@ font-size:12px !important;
 												
 												
 												<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">학력정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀으로 요청해주세요. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">학력정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
 														<!--begin::Group-->
 														
 
@@ -524,7 +606,7 @@ font-size:12px !important;
 													<!--begin::Wizard Step 3-->
 													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
 														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">어학정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀으로 요청해주세요. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">어학정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
 														<!--begin::Group-->
 
 
@@ -619,7 +701,7 @@ font-size:12px !important;
 													
 													
 														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">자격증정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀으로 요청해주세요. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">자격증정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
 														<!--begin::Group-->
 
 

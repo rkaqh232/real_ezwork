@@ -30,7 +30,7 @@ create table member(
    LG_NAME               VARCHAR2(50),                                -- 외국어명  (어학정보)
    LG_TEST               VARCHAR2(50),                                -- 시험명
    LG_GRADE              VARCHAR2(20),                                -- 시험점수
-   LG_ORGAN              VARCHAR2(20),                                -- 발급처 
+   LG_ORGAN              VARCHAR2(20),                                -- 발급기관 
    LG_DATE               VARCHAR2(20),                                -- 발급일자 kt_datepicker_3
    LI_NAME               VARCHAR2(50),                                -- 자격증명  (자격정보)
    LI_ORGAN              VARCHAR2(50),                                -- 발급기관
@@ -38,7 +38,17 @@ create table member(
    
   );
    
+ALTER TABLE member
+MODIFY(LG_ORGAN VARCHAR2(100));
 
+ALTER TABLE member
+MODIFY(SC_ADDRESS VARCHAR2(100));
+
+ALTER TABLE member
+ADD(M_POSTCODE VARCHAR(20));
+
+ALTER TABLE member
+ADD(M_ADDRESS2 VARCHAR(50));
 
 insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL) -- 임시생성재희
 values('jaehee','1','이재희', '총무팀','3','ex@Exwork.com');

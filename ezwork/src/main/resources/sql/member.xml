@@ -7,11 +7,6 @@
 <!-- 혜정 - 사원등록 -->
 
 <mapper namespace="Members">
-
-
-
-
-    
     <!-- 혜정 - 사원등록 -->
     <insert id="insert" parameterType="member">
         insert into member(M_CODE,M_PASS,M_FILE,M_ORIGINAL,M_PART_C,M_LEVEL,
@@ -32,14 +27,6 @@
          )   
     </insert> 
 
-
- 	<!--  혜정 - 사원정보수정 --> 
-    <update id="update" parameterType="member">
-    	update member
-    	set M_PASS = #{M_PASS}, M_MOBILE_TEL = #{M_MOBILE_TEL}, M_EMAIL = #{M_EMAIL}, 
-    	M_POSTCODE = #{M_POSTCODE}, M_ADDRESS = #{M_ADDRESS}, M_ADDRESS2 = #{M_ADDRESS2}
-    	where M_CODE = #{M_CODE}
- 	</update>
 
 
 
@@ -67,6 +54,14 @@
 		</if>
 	</select>
 	
+	
+	 <!--  혜정 - 정보 업데이트 --> 
+    <update id="update" parameterType="member">
+    	update member
+    	set	 name = #{name}, age = #{age},
+    	 	 gender = #{gender}, email=#{email}
+    	where id=#{id}
+ 	</update>
 
 
 

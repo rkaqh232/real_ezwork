@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +58,8 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">입사일</span> <span
-										class="font-weight-bolder font-size-h5">2020-04-01<span
+										class="font-weight-bolder font-size-h5">
+										${fn:substring(allist.AL_M_JOIN_DATE,0,10) }<span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>
@@ -69,7 +72,7 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">연차일수</span> <span
-										class="font-weight-bolder font-size-h5">16일<span
+										class="font-weight-bolder font-size-h5">${allist.AL_TOTALDAY }일<span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>
@@ -82,7 +85,7 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">사용완료연차</span> <span
-										class="font-weight-bolder font-size-h5">3일<span
+										class="font-weight-bolder font-size-h5">${allist.AL_USED/8}일<span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>
@@ -95,7 +98,7 @@
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">잔여연차</span> <span
-										class="font-weight-bolder font-size-h5">13일<span
+										class="font-weight-bolder font-size-h5">${allist.AL_TOTALDAY - allist.AL_USED/8}일<span
 										class="text-dark-50 font-weight-bold"></span>
 									</span>
 								</div>

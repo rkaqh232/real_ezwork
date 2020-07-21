@@ -50,4 +50,7 @@
 	<select id="teamInfo" parameterType="String" resultType="alrequest">
 	select * from REQUEST_AL where AL_M_PART_C = #{AL_M_PART_C}
 	</select>
+	
+	
+
 </mapper>

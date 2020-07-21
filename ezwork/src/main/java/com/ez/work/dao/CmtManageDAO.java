@@ -21,8 +21,8 @@ public class CmtManageDAO {
 		 sqlSession.insert("CmtManage.insert", cmtManageOn);
 	}
 
-	public int insertOfftime(CmtManage cmtManageOff) {
-		return sqlSession.update("CmtManage.modify", cmtManageOff);
+	public int insertOfftime(HashMap<String, Object> map) {
+		return sqlSession.update("CmtManage.modify", map);
 	}
 
 

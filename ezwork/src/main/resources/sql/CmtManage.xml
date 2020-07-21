@@ -25,13 +25,13 @@
 	</insert>
 
 	<!-- 퇴근등록 -->
-	<update id="modify" parameterType="cmtmanage">
+	<update id="modify" parameterType="java.util.Map">
 		update commute
 		set
 		CM_OFFTIME =
 		to_char(sysdate,'HH24:MI'), CM_OFFDATE = sysdate
 		where
-		CM_CODE=to_char(sysdate,'yyyymmdd')
+		CM_CODE=to_char(sysdate,'yyyymmdd') and CM_MCODE = #{id}
 	</update>
 
 	<!-- 당일 근태 현황만 출력 -->

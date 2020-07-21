@@ -37,7 +37,8 @@ create table member(
    LI_DATE               VARCHAR2(20)                                 -- 발급일자 , 총 28개의 컬럼-kt_datepicker_3
    
   );
-  ALTER TABLE member
+
+ALTER TABLE member
 MODIFY(SC_GRAD_DAY DATE);
   
    

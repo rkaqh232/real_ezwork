@@ -29,7 +29,6 @@ public class AnnualLeaveDAO {
 		return sqlSession.selectList("RequestAL.list", map);
 	}
 
-
 	public List<ALRequest> getTeamInfo(String m_PART_C) {
 		return sqlSession.selectList("RequestAL.teamInfo", m_PART_C);
 	}
@@ -40,6 +39,30 @@ public class AnnualLeaveDAO {
 
 	public int ALlistInsert(Member member) {
 		return sqlSession.insert("ALlist.insert", member);
+	}
+
+	public int ALlistUpdate(Member member) {
+		 return sqlSession.update("ALlist.update", member);
+	}
+
+	public int updateOverOneYear(Member member) {
+		return sqlSession.update("ALlist.updateOver", member);
+	}
+
+	public void updateUnderOneYear() {
+		 sqlSession.update("ALlist.updateUnder");
+	}
+
+	public void calculateHour() {
+		 sqlSession.update("ALlist.calHour");		
+	}
+
+	public ALList getALInfo(String id) {
+		return sqlSession.selectOne("ALlist.getALInfo", id);
+	}
+
+	public void calUsedHour(HashMap<String, Object> map) {
+		sqlSession.update("ALlist.calUsedHour", map);
 	}
 
 }

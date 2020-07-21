@@ -13,7 +13,7 @@ public interface CmtManageService {
 	public void insertOntime(CmtManage cmtManageOn);
 
 	// 퇴근 정보 입력
-	public int insertOfftime(CmtManage cmtManageOff);
+	public int insertOfftime(CmtManage cmtManageOff, String id);
 
 	//당일 근태 현황 select
 	public CmtManage getDetail(String datecode);

@@ -10,6 +10,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -139,9 +140,9 @@ public class MailController {
 	@RequestMapping(value="/MailInboxAjax.mail")
 	public Map<String, Object> InboxListAjax(
 			@RequestParam(value="page", defaultValue="1", required=false) int page,
-			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
-			@RequestParam(value="id") String id)
+			@RequestParam(value="limit", defaultValue="10", required=false) int limit, HttpSession session)
 	{
+		String id = (String) session.getAttribute("M_CODE");
 		int listcount=mailService.getListCount(id);
 		int maxpage = (listcount+limit-1)/limit;
 		int startpage = ((page-1)/10)*10+1;
@@ -174,8 +175,9 @@ public class MailController {
 	public Map<String, Object> OutboxListAjax(
 			@RequestParam(value="page", defaultValue="1", required=false) int page,
 			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
-			@RequestParam(value="id") String id)
+			HttpSession session)
 	{
+		String id = (String) session.getAttribute("M_CODE");
 		int listcount=mailService.getOutListCount(id);
 		int maxpage = (listcount+limit-1)/limit;
 		int startpage = ((page-1)/10)*10+1;
@@ -207,8 +209,9 @@ public class MailController {
 	public Map<String, Object> BinListAjax(
 			@RequestParam(value="page", defaultValue="1", required=false) int page,
 			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
-			@RequestParam(value="id") String id)
+			HttpSession session)
 	{
+		String id = (String) session.getAttribute("M_CODE");
 		int listcount=mailService.getBinListCount(id);
 		int maxpage = (listcount+limit-1)/limit;
 		int startpage = ((page-1)/10)*10+1;
@@ -239,8 +242,9 @@ public class MailController {
 	public Map<String, Object> TempListAjax(
 			@RequestParam(value="page", defaultValue="1", required=false) int page,
 			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
-			@RequestParam(value="id") String id)
+			HttpSession session)
 	{
+		String id = (String) session.getAttribute("M_CODE");
 		int listcount=mailService.getTempListCount(id);
 		int maxpage = (listcount+limit-1)/limit;
 		int startpage = ((page-1)/10)*10+1;

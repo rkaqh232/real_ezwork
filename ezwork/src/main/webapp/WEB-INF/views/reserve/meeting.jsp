@@ -44,7 +44,7 @@
 			   <div class="form-group row">
 			    <label  class="col-2 col-form-label">예약자</label>
 			    <div class="col-10">
-			     <input class="form-control form-control-solid" name="USER_NAME" type="text" value="${id}" id="example-text-input" readOnly/>
+			     <input class="form-control form-control-solid" name="USER_NAME" type="text" value="${M_CODE}" id="example-text-input" readOnly/>
 			    </div>
 			   </div>
 			   <div class="form-group row">

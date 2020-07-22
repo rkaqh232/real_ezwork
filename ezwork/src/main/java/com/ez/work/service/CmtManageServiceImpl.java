@@ -23,8 +23,11 @@ public class CmtManageServiceImpl implements CmtManageService{
 	}
 
 	@Override
-	public int insertOfftime(CmtManage cmtManageOff) {
-		return dao.insertOfftime(cmtManageOff);
+	public int insertOfftime(CmtManage cmtManageOff, String id) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("cmtManageOff", cmtManageOff);
+		map.put("id", id);
+		return dao.insertOfftime(map);
 	}
 
 	@Override

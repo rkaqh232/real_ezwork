@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ez.work.domain.ALList;
 import com.ez.work.domain.ALRequest;
 import com.ez.work.domain.Member;
 import com.ez.work.service.AnnualLeaveService;
@@ -30,17 +31,26 @@ public class AnnualLeaveController {
 	public ModelAndView RequestAL(ModelAndView mv, HttpSession session) {
 		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = annualLeaveSerivice.getInfo(id); // 로그인 된 id정보 가져오기
+		ALList allist = annualLeaveSerivice.getALInfo(id); //휴가정보 불러오기
+		System.out.println("입사일 : " + allist.getAL_M_JOIN_DATE());
+		
 		mv.addObject("page", "annualleave/requestAL.jsp");
 		mv.setViewName("home");
 		mv.addObject("memberinfo", memberinfo);
-
+		mv.addObject("allist", allist);
 		return mv;
 	}
 
 	// 휴가 등록
 	@RequestMapping(value = "/RequestInsert.al", method = RequestMethod.POST)
-	public void RequestALInsert(ALRequest alrequest, HttpServletResponse response) throws Exception {
+	public void RequestALInsert(ALRequest alrequest, HttpServletResponse response, HttpSession session) throws Exception {
+		String id = (String) session.getAttribute("M_CODE");
+		Member memberinfo = annualLeaveSerivice.getInfo(id); // 로그인 된 id정보 가져오기
 		int result = annualLeaveSerivice.insertAL(alrequest);
+		System.out.println("start : " + alrequest.getAL_STARTDATE());
+		System.out.println("end : " +alrequest.getAL_ENDDATE() );
+		System.out.println("sort " + alrequest.getAL_SORT());
+		annualLeaveSerivice.calUsedHour(id,alrequest.getAL_STARTDATE() ,alrequest.getAL_ENDDATE(),alrequest.getAL_SORT());
 
 		if (result == 1) {
 			System.out.println("휴가 신청 등록 완료");
@@ -68,6 +78,7 @@ public class AnnualLeaveController {
 	public ModelAndView teamlistAL(ModelAndView mv, HttpSession session, ALRequest alrequest) {
 		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = annualLeaveSerivice.getInfo(id); // 로그인 된 id정보 가져오기
+		
 		List<ALRequest> teamInfo = annualLeaveSerivice.getTeamInfo(memberinfo.getM_PART_C());
 		
 		if(teamInfo.size() !=0){
@@ -78,7 +89,7 @@ public class AnnualLeaveController {
 			jsonObject.addProperty("title", teamInfo.get(i).getAL_M_NAME());
 			jsonObject.addProperty("start", teamInfo.get(i).getAL_STARTDATE());
 			jsonObject.addProperty("end", teamInfo.get(i).getAL_ENDDATE());
-			jsonObject.addProperty("backgroundColor", "orange");
+			jsonObject.addProperty("backgroundColor", "white");
 			jsonObject.addProperty("description", teamInfo.get(i).getAL_REASON());
 			teamInfoarray.add(jsonObject);
 		}
@@ -99,6 +110,7 @@ public class AnnualLeaveController {
 			ModelAndView mv, HttpSession session) {
 		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = annualLeaveSerivice.getInfo(id); // 로그인 된 id정보 가져오기
+		ALList allist1 = annualLeaveSerivice.getALInfo(id); //휴가정보 불러오기
 		
 		int limit = 10;
 		int listcount = annualLeaveSerivice.getListCount(id);
@@ -128,6 +140,7 @@ public class AnnualLeaveController {
 		mv.addObject("allist", allist);
 		mv.addObject("limit", limit);
 		mv.addObject("memberinfo", memberinfo);
+		mv.addObject("allist1", allist1);
 		return mv;
 
 	}

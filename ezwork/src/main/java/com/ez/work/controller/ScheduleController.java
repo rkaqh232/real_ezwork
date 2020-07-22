@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -89,9 +90,22 @@ public class ScheduleController {
 		
 		@RequestMapping(value = "/getScheduleDetail.sche", method = RequestMethod.POST)
 		@ResponseBody
-		public Schedule getDetailSchedule(@RequestParam (value = "scheduleNo") int scheduleNo) throws Exception{
-			System.out.println("no" + scheduleNo);
-			return null;
+		public Schedule getDetailSchedule(@RequestParam (value = "scheduleNo") int scheduleNo, ModelAndView mv) throws Exception{
+			System.out.println("no=" + scheduleNo);
+			Schedule scheduleDetail = scheduleService.getDetailSchedule(scheduleNo);
+			System.out.println("제목 : " + scheduleDetail.getSCH_TITLE());
+			mv.addObject("page","schedule/calendar.jsp");
+			mv.setViewName("home");
+			mv.addObject("scheduleDetail", scheduleDetail);	
+			return scheduleDetail;
 		}
+		
+		@PostMapping(value="/deleteSchedule.sche")
+		public void deleteSchedule(@RequestParam (value = "scheduleNo") int scheduleNo, ModelAndView mv) throws Exception{
+			System.out.println("no=" + scheduleNo);
+			int result = scheduleService.deleteSchedule(scheduleNo);
+			
+		}
+		
 		
 }

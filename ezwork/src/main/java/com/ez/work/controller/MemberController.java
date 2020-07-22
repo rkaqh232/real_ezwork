@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Member;
+import com.ez.work.service.AnnualLeaveService;
 import com.ez.work.service.LoginMemberService;
 
 /* 혜정  */
@@ -36,6 +37,7 @@ public class MemberController {
 
 	@Autowired
 	private LoginMemberService loginmemberservice; // MemberService로 이동해서 주입
+	private AnnualLeaveService annualleaveservice;
 
 	// 로그인화면으로 이동
 	@RequestMapping(value = "/login.net")
@@ -172,9 +174,8 @@ public class MemberController {
 	       //바뀐 파일명 저장
 	       member.setM_FILE(fileDBName);
 	    }
-	       
 	       loginmemberservice.insert(member); //저장 메서드 호출
-								 
+	       
 		// Member member 정보를 받아왔어요 간단하게 command로.. 간편
 		// 우린 더이상 new MemberDAO를 쓰지 않습니다.
 		response.setContentType("text/html;charset=utf-8");

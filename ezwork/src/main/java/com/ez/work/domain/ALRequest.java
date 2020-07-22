@@ -1,8 +1,8 @@
 package com.ez.work.domain;
 
 public class ALRequest {
-	private String AL_DATE, AL_M_NAME, AL_M_PART_C, AL_M_CODE, AL_SORT,
-	AL_STARTDATE, AL_ENDDATE, AL_REASON;
+	private String AL_DATE, AL_M_NAME, AL_M_PART_C, AL_M_CODE, AL_STARTDATE, AL_ENDDATE, AL_REASON;
+	int AL_SORT;
 
 	public String getAL_DATE() {
 		return AL_DATE;
@@ -36,11 +36,11 @@ public class ALRequest {
 		AL_M_CODE = aL_M_CODE;
 	}
 
-	public String getAL_SORT() {
+	public int getAL_SORT() {
 		return AL_SORT;
 	}
 
-	public void setAL_SORT(String aL_SORT) {
+	public void setAL_SORT(int aL_SORT) {
 		AL_SORT = aL_SORT;
 	}
 

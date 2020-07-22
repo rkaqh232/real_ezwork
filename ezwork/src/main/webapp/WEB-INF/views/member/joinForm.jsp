@@ -311,6 +311,18 @@ font-size:12px !important;
 																</div>
 															</div>
 														</div>
+														
+														<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">
+																입사날짜<a style="color:red"> *</a> </label>
+															<div class="col-lg-9 col-xl-9">
+																<input
+																	class="form-control form-control-solid form-control-lg"
+																	name="M_JOIN_DATE" type="text" placeholder="2020-01-01 형식으로 입력해주세요"/>
+															</div>
+														</div>
+														
+													
 
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">

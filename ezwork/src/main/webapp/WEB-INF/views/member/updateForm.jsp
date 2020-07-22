@@ -108,7 +108,7 @@ font-size:12px !important;
 														<h3 class="text-dark font-weight-bold mb-10"
 															font-weight="bold";>사원 정보 수정<a style="color:#BF00FF">   ▶  해당 정보만 수정가능합니다. 이 외의 수정사항은 인사팀(내선번호 : 2114)으로 문의부탁드립니다.</a></h3>
 														<!--begin::Group-->
-														<!-- <div class="form-group row">
+														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
 																사진 </label>
 															<div class="col-lg-9 col-xl-9">
@@ -135,7 +135,7 @@ font-size:12px !important;
 																	</span>
 																</div>
 															</div>
-														</div> -->
+														</div>
 														<!--end::Group-->
 														<!--begin::Group-->
 														<!--  사원번호  -->

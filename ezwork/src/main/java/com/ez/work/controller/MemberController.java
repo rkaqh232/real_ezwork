@@ -225,7 +225,7 @@ public class MemberController {
 				out.println("alert('수정되었습니다.')");
 				out.println("location.href='update.hr';");
 			} else {
-				out.println("alert('회원 정보 수정에 실패했습니다.');");
+				out.println("alert('사원 정보 수정에 실패했습니다.');");
 				out.println("history.back()"); // 비밀번호를 제외한 다른 데이터는 유지 되어 있습니다
 			}
 			out.println("</script>");

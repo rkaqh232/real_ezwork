@@ -18,8 +18,22 @@ tr>th:nth-child(5){width:10%}
 tr>th:nth-child(6){width:10%}
 .modal {
 	display: none;
+    width: 850px;
+    position: relative;
+    top: -500px;
+    left: 15%;	
+}
+.appr{
+	margin-bottom:1rem;
 }
 
+.fileup, .writer{
+	line-height:37px;
+}
+.filelabel{
+	width:60%;
+	left:12;
+}
 
 </style>
 <div class="d-flex flex-column-fluid">
@@ -170,36 +184,41 @@ tr>th:nth-child(6){width:10%}
 				<div class="card-title">
 					<i class="flaticon2-chat-1 text-info"></i>
 					<h3 class="card-label">&nbsp;글 등록</h3>
-					<small>경조사게시판</small>
+					<small>전자 결재</small>
 				</div>
 			</div>
 			<!--begin::Form-->
-			<form action="Board_write_ok.ev" method="post"
+			<form action="Appr_insert.appr" method="get"
 				enctype="multipart/form-data" name="boardform">
 				<div class="card-body">
-					<div class="form-group row">
-						<label class="col-lg-3 col-form-label text-lg-right">말머리
-							선택</label>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">업무 구분</label>
 						<div class="col-lg-2">
 							<div class="rows">
 								<select name ="EV_SORT" class="form-control" id="viewcount">
-									<option value="결혼" selected>결혼</option>
-									<option value="부고">부고</option>
-									<option value="기타">기타</option>
+									<option value="업무" selected>업무</option>
+									<option value="업무1">업무</option>
+									<option value="업무2">업무</option>
 								</select>
 							</div>
 						</div>
 					</div>
 
-					<div class="form-group row">
+					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">글쓴이</label>
-						<div class="col-lg-4">
-							<input name="EV_NAME" id="board_name" value="인사팀" readOnly
-								type="text" size="10" maxlength="30" class="form-control">
+						<div class="col-lg-4 writer">
+							<!-- <input name="EV_NAME" id="board_name" value="인사팀" readOnly
+								type="text" size="10" maxlength="30" class="form-control"> -->
+							<span class="label label-lg font-weight-bold label-light-info label-inline">
+								${part}
+							</span>
+							<span>
+							${name}
+							</span>
 						</div>
 					</div>
 
-					<div class="form-group row">
+					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
 						<div class="col-lg-7">
 							<input name="EV_TITLE" id="board_subject" type="text"
@@ -207,31 +226,49 @@ tr>th:nth-child(6){width:10%}
 								placeholder="제목을 입력하세요">
 						</div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
 						<div class="col-lg-7">
 							<textarea name ="EV_CONTENT" style="height: 325px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
 						</div>
 					</div>
 
-					<div class="form-group row">
+					<div class="form-group row appr fileup">
 						<label class="col-lg-3 col-form-label text-lg-right">파일첨부</label>
 						<div class="col-lg-9">
 							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
 								<div class="dropzone-panel mb-lg-0 mb-2">
-									<input type="file" id="upfile" name="uploadfile"> <span
-										id="filevalue"></span>
+									<input type="file" id="upfile" name="uploadfile" class="custom-file-input">
+									 <label class="custom-file-label filelabel" for="upfile">Choose file</label>
 								</div>
 								<div class="dropzone-items"></div>
 							</div>
 						</div>
 					</div>
 
-					<div class="form-group row">
-						<label class="col-lg-3 col-form-label text-lg-right">비밀번호</label>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">1차 결재자</label>
+						<div class="col-lg-4 fmemdiv">
+							<input type="text" name = "fmember" list="fmemlist" 
+									class="form-control fmem" autocomplete=off>
+								<datalist id="fmemlist">
+									<option value="11">11</option>
+								</datalist>			
+							<input type="hidden" name="FIRST_CODE" >				
+						</div>
+					</div>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">2차 결재자</label>
 						<div class="col-lg-4">
-							<input type="password" class="form-control" id="pass"
-								placeholder="비밀번호를 입력하세요" name="EV_PASS">
+							<input type="password" class="form-control" id="SECOND_CODE"
+								placeholder="비밀번호를 입력하세요" name="SECOND_CODE">
+						</div>
+					</div>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">3차 결재자</label>
+						<div class="col-lg-4">
+							<input type="password" class="form-control" id="THIRD_CODE"
+								placeholder="비밀번호를 입력하세요" name="THIRD_CODE">
 						</div>
 					</div>
 				</div>
@@ -249,7 +286,7 @@ tr>th:nth-child(6){width:10%}
 		</div>
 		<!--end::Card-->
 		</div>
-		</div>
+		</div>		
 		<!--end: Datatable-->
 	</div>
 </div>

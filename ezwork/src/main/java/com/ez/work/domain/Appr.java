@@ -20,6 +20,12 @@ public class Appr {
 	private String APPR_COMP_DATE;                  //완료 날짜         
 	private int APPR_VAL;                           //??            
 	
+	public String getM_PART_T() {
+		return M_PART_T;
+	}
+	public void setM_PART_T(String m_PART_T) {
+		M_PART_T = m_PART_T;
+	}
 	public int getAPPR_CODE() {
 		return APPR_CODE;
 	}

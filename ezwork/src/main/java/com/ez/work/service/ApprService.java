@@ -3,10 +3,15 @@ package com.ez.work.service;
 import java.util.List;
 
 import com.ez.work.domain.Appr;
+import com.ez.work.domain.Member;
 
 public interface ApprService {
 
 	public int getListCount();
 	public List<Appr> getApprList(int page, int limit, String id);
+	public String getPart(String m_code);
+	public String getName(String m_code);
+	public List<Member> searchMemList(String keyword);
+	public int getMemCount();
 	
 }

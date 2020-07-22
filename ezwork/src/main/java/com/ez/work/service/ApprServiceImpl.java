@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ez.work.dao.ApprDAO;
 import com.ez.work.domain.Appr;
+import com.ez.work.domain.Member;
 
 @Service
 public class ApprServiceImpl implements ApprService {
@@ -28,6 +29,23 @@ public class ApprServiceImpl implements ApprService {
 		map.put("id", id);
 		return dao.getApprList(map);
 		
+	}
+	
+	public String getPart(String m_code) {		
+		return dao.getPart(m_code);
+	}
+	
+	public String getName(String m_code) {		
+		return dao.getName(m_code);
+	}
+
+	public List<Member> searchMemList(String keyword) {
+		keyword = "%"+keyword +"%";
+		return dao.searchMemList(keyword);
+	}
+
+	public int getMemCount() {
+		return dao.getMemCount();
 	}
 	
 }

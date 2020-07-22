@@ -9,6 +9,28 @@ $(function(){
 	$("#allcheck").click(function(){
 		$('input:checkbox').prop('checked',this.checked);
 	})
+
+	
+	$('.fmemdiv').on('focus','#fmemlist', function(){
+		
+		console.log('datavalue 테스트 >>'+ $(this).attr('value'));
+		
+	})
+
+	var timeout = null
+	$('.fmem').on('keyup', function() {
+		var text = this.value
+		clearTimeout(timeout)
+		timeout = setTimeout(function() {
+			var key = $(".fmem").val()
+			var str = "keyword="+key;
+			//console.log(str);
+			fmemajax(str);
+			console.log(text)
+		}, 500)
+	})
+	
+	
 	
 })
 
@@ -27,6 +49,41 @@ function setPaging(href, digit){
 	}
 	anchor = "<a class='btn btn-icon btn-sm btn-light mr-2 my-1"+ active + "'" + href + ">" + digit + "</a></li>";
 	output += anchor;
+}
+
+var output = "";
+function fmemajax(str) {
+	output = "";
+	$.ajax({
+		type : "POST",
+		data : str,
+		url : "SearchMemAjax.appr",
+		dataType : "json",
+		cache : false,
+		success : function(data) {
+			var totalData = data.memcount;
+			console.log(totalData);
+			if(totalData>0){
+			$('#fmemlist').children('option').remove();
+			$(data.memberlist).each(
+					function(index, item) {
+						//console.log(item.m_PART_C + ' ' + item.m_NAME);
+						
+						output+='<option data-value="'+item.m_CODE+'" value="'+ item.m_PART_C+' '+item.m_NAME  +'">' +'</option>'
+
+			})
+			
+			$("#fmemlists").append(output);
+			}else if(totalData==0){
+				console.log("dfdf");
+			}
+
+		}, // success end
+		error : function() {
+			console.log('에러')
+		}
+	})
+
 }
 
 function ajax(sdata){

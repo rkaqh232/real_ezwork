@@ -26,16 +26,32 @@
 		value
 	</insert>
 	
-	<select id="getname" parameterType="string">
+	<select id="getname" parameterType="String" resultType="String">
 		select M_NAME
 		from member
-		where M_NAME=
+		where M_CODE = #{m_code}
 	</select>
 	
-	<select id="getpart" parameterType="string">
+	<select id="getpart" parameterType="String" resultType="String">
 		select M_PART_C
 		from member
-		where M_PART_C=
+		where M_CODE = #{m_code}
 	</select>
+	
+	<select id="getmemList" resultType="member" parameterType="String">
+		select *
+		from member
+		where m_code != 'admin' AND 
+		( m_part_c like #{keyword} OR m_name like #{keyword}  )
+		order by m_part_c asc, m_level asc 
+	</select>
+	
+	<select id="getmemcount" resultType="int">
+		select count(*) from member
+		where m_code != 'admin'
+	</select>
+	
+	
+	
 	
 </mapper>

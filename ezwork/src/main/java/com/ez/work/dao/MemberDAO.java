@@ -1,5 +1,8 @@
 package com.ez.work.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -46,5 +49,19 @@ public class MemberDAO {
 	public int update(Member m) {
 		return sqlSession.update("Members.update",m);
 	}
+	
+	//사원 조회 페이지
+	
+	public List<Member> getSearchList(Map<String, Object> map) {
+		return sqlSession.selectOne("Members.getSearchList", map);
+	}
+
+
+
+	public int getSearchListCount(Map<String, String> map) {
+		return sqlSession.selectOne("Members.searchcount", map);
+	}
+	
+	
 
 }

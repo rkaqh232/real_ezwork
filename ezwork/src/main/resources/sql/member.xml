@@ -55,12 +55,12 @@
 	</select>
 	
 	
-	 <!--  혜정 - 정보 업데이트 --> 
+<!--  혜정 - 사원정보수정 --> 
     <update id="update" parameterType="member">
     	update member
-    	set	 name = #{name}, age = #{age},
-    	 	 gender = #{gender}, email=#{email}
-    	where id=#{id}
+    	set M_PASS = #{M_PASS}, M_MOBILE_TEL = #{M_MOBILE_TEL}, M_EMAIL = #{M_EMAIL}, 
+    	M_POSTCODE = #{M_POSTCODE}, M_ADDRESS = #{M_ADDRESS}, M_ADDRESS2 = #{M_ADDRESS2}
+    	where M_CODE = #{M_CODE}
  	</update>
 
 

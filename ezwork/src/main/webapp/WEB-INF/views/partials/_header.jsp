@@ -40,9 +40,13 @@
 										<span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">안녕하세요, </span>
 										<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">${M_CODE } 님</span>
 										<span class="symbol symbol-35 symbol-light-success">
-											<span class="symbol-label font-size-h5 font-weight-bold">S</span>
+											
+										
 										</span>
 									</div>
+									<a href="logout.net" class="btn btn-success font-weight-bold mr-2">
+   											 <i class="flaticon-logout"></i> Logout
+															</a>
 								</div>
 
 								<!--end::User-->

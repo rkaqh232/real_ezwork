@@ -54,8 +54,8 @@ public class CmtManageServiceImpl implements CmtManageService{
 
 	//근태 수
 	@Override
-	public int getListCount() {
-		return dao.getListCount();
+	public int getListCount(String id) {
+		return dao.getListCount(id);
 	}
 	
 	//근태 리스트

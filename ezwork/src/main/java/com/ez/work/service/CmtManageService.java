@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.ez.work.domain.CmtManage;
 import com.ez.work.domain.Member;
-import com.ez.work.domain.Schedule;
 
 public interface CmtManageService {
 
@@ -28,7 +27,7 @@ public interface CmtManageService {
 	public void dailyWorkHours();
 
 	//근태 찍은 날짜 수
-	public int getListCount();
+	public int getListCount(String id);
 
 	//누적근무 계산
 	public void accumulativeHours(String id);

@@ -40,7 +40,7 @@ public class CmtManageController {
 		CmtManage memberinfo2 = cmtManageService.getDetail(id);
 
 		int limit = 10;
-		int listcount = cmtManageService.getListCount();
+		int listcount = cmtManageService.getListCount(id);
 
 		// 총 페이지수
 		int maxpage = (listcount + limit - 1) / limit;

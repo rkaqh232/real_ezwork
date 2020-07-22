@@ -80,8 +80,8 @@
 	</select>
 
 	<!-- list 개수 -->
-	<select id="count" resultType="int">
-		select count(*) from commute
+	<select id="count" parameterType="String" resultType="int">
+		select count(*) from commute where CM_MCODE = #{id}
 	</select>
 
 	<!-- 누적계산 -->

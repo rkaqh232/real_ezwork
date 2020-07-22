@@ -42,8 +42,8 @@ public class CmtManageDAO {
 		sqlSession.update("CmtManage.dailyWork");
 	}
 
-	public int getListCount() {
-		return sqlSession.selectOne("CmtManage.count");
+	public int getListCount(String id) {
+		return sqlSession.selectOne("CmtManage.count", id);
 	}
 	public List<CmtManage> getCmtList(HashMap<String, Object> map) {
 		return sqlSession.selectList("CmtManage.list", map);

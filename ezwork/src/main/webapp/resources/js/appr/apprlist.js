@@ -69,11 +69,11 @@ function fmemajax(str) {
 					function(index, item) {
 						//console.log(item.m_PART_C + ' ' + item.m_NAME);
 						
-						output+='<option data-value="'+item.m_CODE+'" value="'+ item.m_PART_C+' '+item.m_NAME  +'">' +'</option>'
+						output+='<option value="'+ item.m_PART_C+' '+item.m_NAME  +'">' +'</option>'
 
 			})
 			
-			$("#fmemlists").append(output);
+			$("#fmemlist").append(output);
 			}else if(totalData==0){
 				console.log("dfdf");
 			}

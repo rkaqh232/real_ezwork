@@ -28,7 +28,7 @@ appr_file, appr_origin, appr_stat, appr_date,appr_comp_date, appr_val
 values(
 appr_seq.nextval , 'test', 'title','content','test1','test2','test3',
 null,null,0,sysdate,null,0
-)
+);
 
 select * from approve;
 

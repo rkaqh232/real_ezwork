@@ -30,7 +30,7 @@
 
 	<select id="showSchedule" resultType="Schedule">
 		select
-		* from schedule
+		* from schedule where SCH_NAME = #{id}
 	</select>
 
 	<select id="getDetail" parameterType="int" resultType="Schedule">
@@ -41,4 +41,10 @@
 		delete from schedule
 		where SCH_NO = #{SCH_NO}
 	</delete>
+	
+	<select id="searchSchedule" resultType="Schedule">
+		select
+		* from schedule where SCH_NAME = #{m_code}
+	</select>
+	
 </mapper>

@@ -10,6 +10,7 @@
 	.bg-mountain{background:#2d8659;}
 	.bg-ocean{background:#4d4dff}
 	.bg-desert{background:#ffd966}
+	span{cursor:pointer;}
 </style>
 <script src="resources/js/reserve.js"></script>
 
@@ -171,101 +172,100 @@
 							<th>
 								<p class="text-blue">Ocean</p>
 							</th>
-							<td>
+							<td id="o8">
 							</td>
-							<td>
+							<td id="o9">
 							</td>
-							<td>
+							<td id="o10">
 							</td>
-							<td>
-							<span class="label label-light-dark label-inline mr-2">Susan</span>
+							<td id="o11">
 							</td>
-							<td>
+							<td id="o12">
 							</td>
-							<td>
+							<td id="o13">
 							</td>
-							<td>
+							<td id="o14">
 							</td>
-							<td>
+							<td id="o15">
 							</td>
-							<td>
+							<td id="o16">
 							</td>
-							<td>
-							</td>													
+							<td id="o17">
+							</td>												
 						</tr>
 						<tr>
 							<th>
 								<p class="text-danger">Desert</p>
 							</th>
-							<td>
+							<td id="d8">
 							</td>
-							<td>
+							<td id="d9">
 							</td>
-							<td>
+							<td id="d10">
 							</td>
-							<td>
+							<td id="d11">
 							</td>
-							<td>
+							<td id="d12">
 							</td>
-							<td>
+							<td id="d13">
 							</td>
-							<td>
+							<td id="d14">
 							</td>
-							<td>
+							<td id="d15">
 							</td>
-							<td>
+							<td id="d16">
 							</td>
-							<td>
-							</td>													
+							<td id="d17">
+							</td>												
 						</tr>
 						<tr>
 							<th>
 								<p class="text-warning">Mountain</p>
 							</th>
-							<td>
+							<td id="m8">
 							</td>
-							<td>
+							<td id="m9">
 							</td>
-							<td>
+							<td id="m10">
 							</td>
-							<td>
+							<td id="m11">
 							</td>
-							<td>
+							<td id="m12">
 							</td>
-							<td>
+							<td id="m13">
 							</td>
-							<td>
+							<td id="m14">
 							</td>
-							<td>
+							<td id="m15">
 							</td>
-							<td>
+							<td id="m16">
 							</td>
-							<td>
+							<td id="m17">
 							</td>														
 						</tr>
 						<tr>
 							<th>
 								<p class="text-info">Sky</p>
 							</th>
-							<td>
+							<td id="s8">
 							</td>
-							<td>
+							<td id="s9">
 							</td>
-							<td>
+							<td id="s10">
 							</td>
-							<td>
+							<td id="s11">
 							</td>
-							<td>
+							<td id="s12">
 							</td>
-							<td>
+							<td id="s13">
 							</td>
-							<td>
+							<td id="s14">
 							</td>
-							<td>
+							<td id="s15">
 							</td>
-							<td>
+							<td id="s16">
 							</td>
-							<td>
+							<td id="s17">
 							</td>														
 						</tr>
 					</tbody>

@@ -19,6 +19,7 @@ sysdate,'안혜정','총무팀','part','연차','2020-07-18', '2020-07-21 00:00:
 );
 
 select * from request_al;
+DROP TABLE LIST_AL;
 
 create table LIST_AL(
 AL_M_CODE varchar2(20), --사번

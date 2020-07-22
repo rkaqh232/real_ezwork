@@ -4,22 +4,46 @@
 <html>
 <head>
 
-<!--  혜정 사원 등록 페이지  -->
-<!--  혜정 사원 등록 페이지  -->
-<!--  혜정 사원 등록 페이지  -->
-
-<meta charset="UTF-8">
-<title>신규 사원 등록</title>
 <link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4" rel="stylesheet" type="text/css" />
 <style>
 a{
 font-size:12px !important;
 }
-
+#kt_content {
+	padding-top: 0px;
+}
 </style>
 
 <body>
+<div class="content d-flex flex-column flex-column-fluid"
+		id="kt_content">
+		<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+			<div
+				class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+				<!--begin::Info-->
+				<div class="d-flex align-items-center flex-wrap mr-1">
+					<!--begin::Mobile Toggle-->
+					<button
+						class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none"
+						id="kt_subheader_mobile_toggle">
+						<span></span>
+					</button>
+					<!--end::Mobile Toggle-->
+					<!--begin::Page Heading-->
+					<div class="d-flex align-items-baseline mr-5">
+						<!--begin::Page Title-->
+						<h5 class="text-dark font-weight-bold my-2 mr-5">
+							<i class="flaticon-users-1 text-info"></i> &nbsp;사원등록
+						</h5>
+						<!--end::Page Title-->
+						<small style="color: gray;">사원관리</small>
+					</div>
+					<!--end::Page Heading-->
+				</div>
+				<!--end::Info-->
 
+			</div>
+		</div>
 
 
 
@@ -27,7 +51,7 @@ font-size:12px !important;
 	
 	<div class="d-flex flex-column-fluid">
 		<!--begin::Container-->
-		<div class="container">
+		<div class="container" style="margin-top: 23px;">
 			<!--begin::Card-->
 			<div class="card card-custom card-transparent">
 				<div class="card-body p-0">
@@ -108,7 +132,7 @@ font-size:12px !important;
 													<div class="my-5 step" data-wizard-type="step-content"
 														data-wizard-state="current">
 														<h3 class="text-dark font-weight-bold mb-10"
-															font-weight="bold";>사원 등록<a style="color:red">   * 필수항목입니다. </a> </h3>
+															font-weight="bold";>신규 사원 등록<a style="color:red">   * 필수항목입니다. </a> </h3>
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
@@ -816,7 +840,7 @@ font-size:12px !important;
 		</div>
 		<!--end::Container-->
 	</div>
-
+</div>
 
 	<!--end::Entry-->
 	<!--begin::Global Theme Bundle(used by all pages)-->

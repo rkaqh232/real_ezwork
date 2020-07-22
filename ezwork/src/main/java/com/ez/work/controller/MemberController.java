@@ -37,7 +37,6 @@ public class MemberController {
 
 	@Autowired
 	private LoginMemberService loginmemberservice; // MemberService로 이동해서 주입
-	private AnnualLeaveService annualleaveservice;
 
 	// 로그인화면으로 이동
 	@RequestMapping(value = "/login.net")
@@ -103,6 +102,15 @@ public class MemberController {
 
 		}
 	}
+	
+	  //로그아웃
+	  
+	  @RequestMapping(value="/logout.net", method=RequestMethod.GET) 
+	  public String logout(HttpSession session) throws Exception{
+		  session.invalidate();
+		  return "redirect:login.net";
+	 
+	 }
 
 	// 사원등록
 	@RequestMapping(value = "/joinProcess.net", method = RequestMethod.POST)
@@ -198,6 +206,7 @@ public class MemberController {
 		// 수정폼
 		@RequestMapping(value="/update.hr", method=RequestMethod.GET)
 		public String member_update(HttpSession session, Model m) throws Exception {
+		//@RequestParam(value="M_CODE",required=false)String user_id
 			String id = (String) session.getAttribute("M_CODE");			
 			Member member = loginmemberservice.member_info(id);
 			
@@ -226,7 +235,7 @@ public class MemberController {
 				out.println("alert('수정되었습니다.')");
 				out.println("location.href='update.hr';");
 			} else {
-				out.println("alert('회원 정보 수정에 실패했습니다.');");
+				out.println("alert('사원 정보 수정에 실패했습니다.');");
 				out.println("history.back()"); // 비밀번호를 제외한 다른 데이터는 유지 되어 있습니다
 			}
 			out.println("</script>");

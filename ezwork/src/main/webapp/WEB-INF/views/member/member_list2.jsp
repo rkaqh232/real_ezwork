@@ -151,6 +151,17 @@ font-size:12px !important;
 												<div class="col-lg-9 col-xl-8">
 													<div class="row align-items-center">
 														<div class="col-md-4 my-2 my-md-0">
+															<div class="d-flex align-items-center">
+																<label class="mr-3 mb-0 d-none d-md-block"></label>
+																<select class="form-control" id="kt_datatable_search_type">
+																	<option value="">전체목록</option>
+																	<option value="1">이름</option>
+																	<option value="2">부서</option>
+																	<option value="3">연락처</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-8 my-2 my-md-0">
 															<div class="input-icon">
 																<input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
 																<span>
@@ -159,17 +170,6 @@ font-size:12px !important;
 															</div>
 														</div>
 														
-														<div class="col-md-4 my-2 my-md-0">
-															<div class="d-flex align-items-center">
-																<label class="mr-3 mb-0 d-none d-md-block">Type:</label>
-																<select class="form-control" id="kt_datatable_search_type">
-																	<option value="">All</option>
-																	<option value="1">Online</option>
-																	<option value="2">Retail</option>
-																	<option value="3">Direct</option>
-																</select>
-															</div>
-														</div>
 													</div>
 												</div>
 												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
@@ -180,8 +180,10 @@ font-size:12px !important;
 										<!--end::Search Form-->
 										<!--end: Search Form-->
 										<!--begin: Datatable-->
-										<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-										<!--end: Datatable-->
+										<!--  데이터 들어가는 부분 -->
+										<!-- <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+										 --><!--end: Datatable-->
+										<!--  데이터 들어가는 부분 -->
 									</div>
 								</div>
 								<!--end::Card-->

@@ -41,4 +41,12 @@ public class EmpDao {
 		return sqlSession.selectList("Members.bkinf", owner);
 	}
 
+	public List<bookmark> getOwnerId(String owner) {
+		return sqlSession.selectList("Members.getOwnerId", owner);
+	}
+
+	public List<Member> EmpWishlist(String owner) {
+		return sqlSession.selectList("Members.EmpWishlist", owner);
+	}
+
 }

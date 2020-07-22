@@ -25,10 +25,10 @@ public class MemberServiceImp implements MemberService {
 			String[] search_field = new String[] { "M_CODE", "M_PART_C", "M_NAME", "M_LEVEL" };
 			map.put("search_field", search_field[index]);
 			map.put("search_word", "%" + search_word + "%");
-			map.put("owner", owner);
 		}
 		int startrow = (page - 1) * limit + 1;
 		int endrow = startrow + limit - 1;
+		map.put("owner", owner);
 		map.put("start", startrow);
 		map.put("end", endrow);
 		return dao.getSearchList(map);
@@ -79,6 +79,16 @@ public class MemberServiceImp implements MemberService {
 	public List<bookmark> bookmarklist(String owner) {
 		System.out.println("서비스단으로 넘어온 owner값은 " + owner);
 		return dao.bkinf(owner);
+	}
+
+	@Override
+	public List<bookmark> getOwnerId(String owner) {
+		return dao.getOwnerId(owner);
+	}
+
+	@Override
+	public List<Member> EmpWishlist(String owner) {
+		return dao.EmpWishlist(owner);
 	}
 
 	/*

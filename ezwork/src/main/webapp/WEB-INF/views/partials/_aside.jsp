@@ -511,9 +511,9 @@
                                        </i> <span class="menu-text">직원검색</span>
                                     </a></li>
                                     <li class="menu-item" aria-haspopup="true"><a
-                                       href="tree.org" class="menu-link"> <i
+                                       href="EmpWishlist" class="menu-link"> <i
                                           class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">사내 조직도</span>
+                                       </i> <span class="menu-text">사원 즐겨찾기 목록</span>
                                     </a></li>
 
                                  </ul>

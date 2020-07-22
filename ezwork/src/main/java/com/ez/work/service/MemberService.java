@@ -18,4 +18,8 @@ public interface MemberService {
 
 	public List<bookmark> bookmarklist(String owner);
 
+	public List<bookmark> getOwnerId(String owner);
+
+	public List<Member> EmpWishlist(String owner);
+
 }

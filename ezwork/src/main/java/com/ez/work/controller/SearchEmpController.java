@@ -28,7 +28,7 @@ public class SearchEmpController {
 
 	@RequestMapping(value = "/member_list", method = RequestMethod.GET)
 	public ModelAndView memberList(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
-			@RequestParam(value = "limit", defaultValue = "3", required = false) int limit, ModelAndView mv,
+			@RequestParam(value = "limit", defaultValue = "4", required = false) int limit, ModelAndView mv,
 			@RequestParam(value = "search_field", defaultValue = "-1") int index,
 			@RequestParam(value = "search_word", defaultValue = "") String search_word, Model m, HttpSession session)
 			throws Exception {
@@ -36,9 +36,10 @@ public class SearchEmpController {
 		List<Member> list = null;
 		int listcount = 0;
 
-		String owner = (String) session.getAttribute("id");
+		String owner = (String) session.getAttribute("M_CODE");
 		list = memberservice.getSearchList(index, search_word, page, limit, owner);
 		listcount = memberservice.getSearchListCount(index, search_word);
+		List<bookmark> realowner = memberservice.getOwnerId(owner);
 
 		int maxpage = (listcount + limit - 1) / limit;
 		int startpage = ((page - 1) / 10) * 10 + 1;
@@ -54,6 +55,8 @@ public class SearchEmpController {
 		mv.addObject("endpage", endpage);
 		mv.addObject("listcount", listcount);
 		mv.addObject("memberlist", list);
+		mv.addObject("owner", owner);// 현재 로그인 되어있는 id
+		mv.addObject("realowner", realowner);// 선택한 사람
 		mv.addObject("limit", limit);
 		mv.addObject("search_field", index);
 		mv.addObject("search_word", search_word);
@@ -74,8 +77,9 @@ public class SearchEmpController {
 	public @ResponseBody List<bookmark> updatebookmark(@RequestParam("id") String user, HttpSession session,
 			@RequestParam("bookmark") int bookmark, ModelAndView mv, Model n) throws Exception {
 		System.out.println("컨트롤러단에서의 bookmark값은 " + bookmark);
-
-		String owner = (String) session.getAttribute("id"); // 로그인한 사람 id
+		System.out.println("id값은 " + user);
+		System.out.println("bookmark값은 " + bookmark);
+		String owner = (String) session.getAttribute("M_CODE"); // 로그인한 사람 id
 		System.out.println("owner의 값은 " + owner);
 		memberservice.choosebookmark(user, owner, bookmark); // 서비스측에 즐겨찾기 선택 당한 id와 선택한 id, 즐겨찾기 버튼 값을 보냄
 
@@ -95,6 +99,17 @@ public class SearchEmpController {
 		 */
 		return bminf;
 
+	}
+
+	@RequestMapping(value = "/EmpWishlist", method = RequestMethod.GET)
+	public ModelAndView EmpWishlist(ModelAndView mv, Model n, HttpSession session) throws Exception {
+		String owner = (String) session.getAttribute("M_CODE");
+		List<Member> m = memberservice.EmpWishlist(owner);
+		n.addAttribute("page", "Search/EmpWishlist.jsp");
+		mv.setViewName("home");
+		mv.addObject("owner", owner);
+		mv.addObject("EmpWishlist", m);
+		return mv;
 	}
 
 }

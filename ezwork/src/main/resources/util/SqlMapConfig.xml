@@ -14,6 +14,7 @@
 		<typeAlias alias ="schedule" type="com.ez.work.domain.Schedule" />
 		<typeAlias alias ="allist" type="com.ez.work.domain.ALList" />
 		<typeAlias alias="alrequest" type="com.ez.work.domain.ALRequest" />
+		<typeAlias alias="bookmark" type="com.ez.work.domain.bookmark" />
 	</typeAliases>
 
 	<mappers>

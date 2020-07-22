@@ -19,8 +19,8 @@ public class ScheduleDAO {
 		return sqlSession.insert("Schedule.addSchedule", sche);
 	}
 
-	public List<Schedule> showSchedule() {
-		return sqlSession.selectList("Schedule.showSchedule");
+	public List<Schedule> showSchedule(String id) {
+		return sqlSession.selectList("Schedule.showSchedule", id);
 	}
 
 	public Member getInfo(String m_code) {
@@ -33,6 +33,10 @@ public class ScheduleDAO {
 
 	public int deleteSchedule(int sch_no) {
 		return sqlSession.delete("Schedule.deleteSchedule", sch_no);
+	}
+
+	public List<Schedule> searchSchedule(String m_code) {
+		return sqlSession.selectList("Schedule.searchSchedule", m_code);
 	}
 
 }

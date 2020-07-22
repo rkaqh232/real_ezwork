@@ -11,7 +11,7 @@ public interface ScheduleService {
 	public int addSchedule(Schedule sche) throws Exception;
 	
 	//일정 view
-	public List<Schedule> showSchedule()  throws Exception;
+	public List<Schedule> showSchedule(String id)  throws Exception;
 	
 	//로그인 정보 가져오기
 	public Member getInfo(String m_code);
@@ -22,4 +22,6 @@ public interface ScheduleService {
 	//일정 삭제하기
 	public int deleteSchedule(int sch_no);
 	
+	//다른 사람의 일정 검색하기
+	public List<Schedule> searchSchedule(String m_code) throws Exception;
 }

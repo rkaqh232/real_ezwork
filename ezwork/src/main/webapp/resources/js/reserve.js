@@ -15,27 +15,28 @@ $(function(){
 	var today = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
 	document.getElementById("today").innerHTML=today;
 	ajax();
-	
+})
 	function ajax(){
 		$.ajax({
-			type : "POST",
-			url  : "meeting.res",
+			type : "GET",
+			url  : "meetingAjax.res",
 			dataType : "json",
 			cache : false,
 			success : function(data){
 				$(data.list).each(
 					function(index, item){
-						if(item.RNAME=="forest"){
+						if(item.RNAME=="Forest"){
 							var output = "<span class='label label-success label-inline mr-2'>"
-							output += item.user_NAME + '</span>'
+							output += item.USER_NAME + '</span>'
 							$('#f'+item.MTIME).append(output);
 						}
 					})
 			},
-			error : function(){
-				console.log('meeting.res : ajax 에러')
+			error : function(request, error){
+				console.log('meetingAjax.res : ajax 에러'+
+						'\n'+request.responseText+'\n'+request.status+error)
 			}
 		})
 	}
-})
+
 

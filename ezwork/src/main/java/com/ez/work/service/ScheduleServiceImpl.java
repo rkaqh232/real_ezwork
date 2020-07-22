@@ -22,8 +22,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 	//일정 view
 	@Override
-	public List<Schedule> showSchedule() {
-		return dao.showSchedule();
+	public List<Schedule> showSchedule(String id) {
+		return dao.showSchedule(id);
 	}
 	
 	//로그인 정보 가져오기
@@ -41,6 +41,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 	@Override
 	public int deleteSchedule(int sch_no) {
 		return dao.deleteSchedule(sch_no);
+	}
+
+	//다른사람의 일정 검색하기
+	@Override
+	public List<Schedule> searchSchedule(String m_code) throws Exception {
+		return dao.searchSchedule(m_code);
 	}
 	
 

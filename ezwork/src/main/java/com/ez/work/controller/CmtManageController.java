@@ -124,13 +124,6 @@ public class CmtManageController {
 			mv.addObject("url", request.getRequestURI());
 			mv.addObject("message", "퇴근 등록 실패");
 		} else { // 퇴근 등록 성공의 경우
-			// 하루근무시간계산
-			cmtManageService.dailyWorkHours();
-			// 누적근무시간계산
-			//String id = (String) session.getAttribute("M_CODE");
-			//cmtManageService.accumulativeHours(id);
-			// 연장근무있을시 연장근무계산
-			// cmtManageService.extendedHours(CmtManage);
 			System.out.println("퇴근 등록 완료");
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();

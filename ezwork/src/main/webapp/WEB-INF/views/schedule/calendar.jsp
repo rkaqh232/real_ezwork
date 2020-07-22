@@ -80,7 +80,6 @@
 							events : ${schearray},
 							
 							eventClick : function(date, allDay, jsEvent, view){
-								
 								var scheduleNo = date.event.extendedProps.description;
 								console.log(scheduleNo);
 								$.ajax({
@@ -95,11 +94,19 @@
 								$("#content1").val(data.sch_CONTENT);
 								$("#participant1").val(data.sch_PARTICIPANT);
 								$("#place1").val(data.sch_PLACE);
+								$('#myModal2 a').attr('href','deleteSchedule.sche?scheduleNo='+scheduleNo);
 								 $("#myModal2").modal();
+								 
+								 
 									}
 								})
 								
-							 }
+									
+							}								
+							 
+								
+							
+						
 							
 				            });
 
@@ -107,16 +114,17 @@
 			}
 		};
 	}();
+	
+	
+
+	
 
 
 	
 	jQuery(document).ready(function() {
 		KTCalendarBasic.init();
-	});
+	})
 	
-	
-	
-
 	
 	
 </script>
@@ -164,108 +172,45 @@
 				<div class="card-header">
 					<div class="card-title">
 						<i class="flaticon-calendar-3 text-info"></i>
-						<h3 class="card-label">&nbsp;&nbsp;${memberinfo.m_NAME }님의 캘린더</h3>
+						
+						<h3 class="card-label">&nbsp;&nbsp;
+						캘린더</h3>
 					</div>
 
 					<div class="d-flex flex-column-fluid">
 						<div class="form-group">
 							<label>&nbsp;</label>
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="사번으로 검색" />
-								<div class="input-group-append">
-									<button class="btn btn-outline-info" type="button">검색</button>
-								</div>
+							<form action="searchSchedule.sche" method="POST" style="margin-bottom:0px;">
+								<div class="input-group">
+									<input type="text" class="form-control" name="m_code" placeholder="사번으로 검색" />
+									<div class="input-group-append">
+										<button type="submit" class="btn btn-outline-info" id="search">검색</button>
+									</div>
+							</form>
 
-
-							</div>
 						</div>
 					</div>
+				</div>
 
 
 
 
-					<div class="card-toolbar">
-						<button type="button" id="addevent"
-							class="btn btn-light-info font-weight-bold" data-toggle="modal"
-							data-target="#myModal">
-							<i class="ki ki-plus icon-md mr-2"></i>일정추가
-						</button>
-					</div>
-					<!-- 일정추가 모달 -->
-					<form action="addSchedule.sche" method="get">
-						<div id="myModal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<!-- Modal content-->
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title">
-											<i class="flaticon-add text-info"></i>&nbsp;일정 추가
-										</h4>
-										<button type="button" class="close" data-dismiss="modal">
-											<i class="flaticon2-cancel-music"></i>
-										</button>
-									</div>
-									<div class="modal-body">
-										<div class="form-group">
-											<input type="hidden" name="SCH_NAME"
-												value="${memberinfo.m_CODE }"> <label>일정명</label> <input
-												type="text" class="form-control form-control-solid"
-												name="SCH_TITLE" placeholder="일정 제목을 입력하세요." />
-										</div>
-										<div class="form-group">
-											<label>시작 날짜 및 시간 선택</label> <input
-												class="form-control form-control-solid"
-												type="datetime-local" id="startDate" name="SCH_STARTDATE" />
-										</div>
-
-										<div class="form-group">
-											<label>종료 날짜 및 시간 선택</label> <input
-												class="form-control form-control-solid"
-												type="datetime-local" id="endDate" name="SCH_ENDDATE" />
-										</div>
-
-										<div class="form-group">
-											<label for="exampleTextarea">상세내용</label>
-											<textarea class="form-control form-control-solid" rows="3"
-												name="SCH_CONTENT"></textarea>
-										</div>
-
-										<div class="form-group">
-											<label>참가자</label> <input type="text"
-												class="form-control form-control-solid"
-												placeholder="참가자명을 입력하세요" name="SCH_PARTICIPANT" />
-										</div>
-
-										<div class="form-group">
-											<label>장소</label> <input type="text"
-												class="form-control form-control-solid"
-												placeholder="장소를 입력하세요" name="SCH_PLACE" />
-										</div>
-
-										<div class="form-group">
-											<label>색상</label> <input
-												class="form-control  form-control-solid" type="color"
-												value="#563d7c" id="example-color-input" name="SCH_COLOR" />
-										</div>
-									</div>
-
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">취소</button>
-										<button type="submit" class="btn btn-info" id="save-event">저장</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
-					<!-- 일정상세보기 모달 -->
-					<div id="myModal2" class="modal fade" role="dialog">
+				<div class="card-toolbar">
+					<button type="button" id="addevent"
+						class="btn btn-light-info font-weight-bold" data-toggle="modal"
+						data-target="#myModal">
+						<i class="ki ki-plus icon-md mr-2"></i>일정추가
+					</button>
+				</div>
+				<!-- 일정추가 모달 -->
+				<form action="addSchedule.sche" method="get">
+					<div id="myModal" class="modal fade" role="dialog">
 						<div class="modal-dialog">
 							<!-- Modal content-->
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title">
-										<i class="flaticon-add text-info"></i>&nbsp;일정 상세 보기
+										<i class="flaticon-add text-info"></i>&nbsp;일정 추가
 									</h4>
 									<button type="button" class="close" data-dismiss="modal">
 										<i class="flaticon2-cancel-music"></i>
@@ -273,56 +218,122 @@
 								</div>
 								<div class="modal-body">
 									<div class="form-group">
-										<label>일정명</label> <input type="text"
-											class="form-control form-control-solid" id="title1" />
+										<input type="hidden" name="SCH_NAME"
+											value="${memberinfo.m_CODE }"> <label>일정명</label> <input
+											type="text" class="form-control form-control-solid"
+											name="SCH_TITLE" placeholder="일정 제목을 입력하세요." />
 									</div>
 									<div class="form-group">
-										<label>시작 날짜 및 시간</label> <input
+										<label>시작 날짜 및 시간 선택</label> <input
 											class="form-control form-control-solid" type="datetime-local"
-											id="startDate1" />
+											id="startDate" name="SCH_STARTDATE" />
 									</div>
 
 									<div class="form-group">
-										<label>종료 날짜 및 시간</label> <input
+										<label>종료 날짜 및 시간 선택</label> <input
 											class="form-control form-control-solid" type="datetime-local"
-											id="endDate1" />
+											id="endDate" name="SCH_ENDDATE" />
 									</div>
 
 									<div class="form-group">
 										<label for="exampleTextarea">상세내용</label>
 										<textarea class="form-control form-control-solid" rows="3"
-											id="content1"></textarea>
+											name="SCH_CONTENT"></textarea>
 									</div>
 
 									<div class="form-group">
 										<label>참가자</label> <input type="text"
-											class="form-control form-control-solid" id="participant1" />
+											class="form-control form-control-solid"
+											placeholder="참가자명을 입력하세요" name="SCH_PARTICIPANT" />
 									</div>
 
 									<div class="form-group">
 										<label>장소</label> <input type="text"
-											class="form-control form-control-solid" id="place1" />
+											class="form-control form-control-solid"
+											placeholder="장소를 입력하세요" name="SCH_PLACE" />
+									</div>
+
+									<div class="form-group">
+										<label>색상</label> <input
+											class="form-control  form-control-solid" type="color"
+											value="#563d7c" id="example-color-input" name="SCH_COLOR" />
 									</div>
 								</div>
 
 								<div class="modal-footer">
-									<a href="#" id="delete"
-										class="btn btn-warning">일정 삭제</a>
-									<button type="button" data-dismiss="modal" aria-label="Close"
-										class="btn btn-default">닫기</button>
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">취소</button>
+									<button type="submit" class="btn btn-info" id="save-event">저장</button>
 								</div>
 							</div>
 						</div>
 					</div>
+				</form>
+				<!-- 일정상세보기 모달 -->
+				<div id="myModal2" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">
+									<i class="flaticon-add text-info"></i>&nbsp;일정 상세 보기
+								</h4>
+								<button type="button" class="close" data-dismiss="modal">
+									<i class="flaticon2-cancel-music"></i>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label>일정명</label> <input type="text"
+										class="form-control form-control-solid" id="title1" />
+								</div>
+								<div class="form-group">
+									<label>시작 날짜 및 시간</label> <input
+										class="form-control form-control-solid" type="datetime-local"
+										id="startDate1" />
+								</div>
 
+								<div class="form-group">
+									<label>종료 날짜 및 시간</label> <input
+										class="form-control form-control-solid" type="datetime-local"
+										id="endDate1" />
+								</div>
+
+								<div class="form-group">
+									<label for="exampleTextarea">상세내용</label>
+									<textarea class="form-control form-control-solid" rows="3"
+										id="content1"></textarea>
+								</div>
+
+								<div class="form-group">
+									<label>참가자</label> <input type="text"
+										class="form-control form-control-solid" id="participant1" />
+								</div>
+
+								<div class="form-group">
+									<label>장소</label> <input type="text"
+										class="form-control form-control-solid" id="place1" />
+								</div>
+							</div>
+
+							<div class="modal-footer">
+								<a href="deleteSchedule.sche" id="delete"
+									class="btn btn-warning">일정 삭제</a>
+								<button type="button" data-dismiss="modal" aria-label="Close"
+									class="btn btn-default">닫기</button>
+							</div>
+						</div>
+					</div>
 				</div>
 
-				<div class="card-body">
-					<div id="kt_calendar"></div>
-				</div>
 			</div>
-			<!--end::Card-->
+
+			<div class="card-body">
+				<div id="kt_calendar"></div>
+			</div>
 		</div>
+		<!--end::Card-->
+	</div>
 	</div>
 	<!--end::Card-->
 

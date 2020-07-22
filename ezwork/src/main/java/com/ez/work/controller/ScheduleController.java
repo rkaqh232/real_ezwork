@@ -36,7 +36,7 @@ public class ScheduleController {
 		//addAtrribute 저장 결과를 json형식으로 뿌림
 		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = scheduleService.getInfo(id);
-		List<Schedule> scheduleList = scheduleService.showSchedule();
+		List<Schedule> scheduleList = scheduleService.showSchedule(id);
 		
 		if(scheduleList.size() !=0){
 			System.out.println(scheduleList.get(0).getSCH_STARTDATE());
@@ -88,24 +88,78 @@ public class ScheduleController {
 			}
 		}
 		
-		@RequestMapping(value = "/getScheduleDetail.sche", method = RequestMethod.POST)
+		@RequestMapping(value = "/getScheduleDetail.sche", method = {RequestMethod.GET, RequestMethod.POST})
 		@ResponseBody
 		public Schedule getDetailSchedule(@RequestParam (value = "scheduleNo") int scheduleNo, ModelAndView mv) throws Exception{
 			System.out.println("no=" + scheduleNo);
 			Schedule scheduleDetail = scheduleService.getDetailSchedule(scheduleNo);
-			System.out.println("제목 : " + scheduleDetail.getSCH_TITLE());
 			mv.addObject("page","schedule/calendar.jsp");
 			mv.setViewName("home");
 			mv.addObject("scheduleDetail", scheduleDetail);	
 			return scheduleDetail;
 		}
 		
-		@PostMapping(value="/deleteSchedule.sche")
-		public void deleteSchedule(@RequestParam (value = "scheduleNo") int scheduleNo, ModelAndView mv) throws Exception{
+		@RequestMapping(value = "/deleteSchedule.sche", method = {RequestMethod.GET, RequestMethod.POST})
+		public void deleteSchedule(@RequestParam (value = "scheduleNo") int scheduleNo, HttpServletRequest request, ModelAndView mv,  HttpServletResponse response) throws Exception{
 			System.out.println("no=" + scheduleNo);
 			int result = scheduleService.deleteSchedule(scheduleNo);
+			if (result == 0) {
+				System.out.println("일정 삭제 실패");
+				mv.setViewName("error/error");
+				mv.addObject("url", request.getRequestURI());
+				mv.addObject("message", "일정 등록 실패");
+			} else {
+				System.out.println("일정 삭제 완료");
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('일정이 삭제되었습니다.');");
+				out.println("location.href="+"'calendar.sche';");
+				out.println("</script>");
+				out.close();
+			}
 			
 		}
 		
+		//검색 
+		@PostMapping(value="/searchSchedule.sche")
+		public ModelAndView searchSchedule(@RequestParam (value = "m_code") String m_code, HttpServletRequest request, ModelAndView mv, Model m, 
+				HttpSession session, HttpServletResponse response) throws Exception {
+			List<Schedule> searchList = scheduleService.searchSchedule(m_code);
+			
+			if(searchList.size() !=0){
+				System.out.println(searchList.get(0).getSCH_STARTDATE());
+			JsonArray schearray = new JsonArray();
+			
+			for(int i=0; i<searchList.size(); i++) {
+				JsonObject jsonObject = new JsonObject();
+				jsonObject.addProperty("title", searchList.get(i).getSCH_TITLE());
+				jsonObject.addProperty("start", searchList.get(i).getSCH_STARTDATE());
+				jsonObject.addProperty("end", searchList.get(i).getSCH_ENDDATE());
+				jsonObject.addProperty("backgroundColor", searchList.get(i).getSCH_COLOR());
+				jsonObject.addProperty("id", searchList.get(i).getSCH_NO());
+				jsonObject.addProperty("description", searchList.get(i).getSCH_NO());
+				schearray.add(jsonObject);
+			}
+				System.out.println(schearray);
+				mv.addObject("schearray", schearray);
+			
+			}
+			
+			else if(searchList.size() == 0) {
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('검색 결과가 없습니다.');");
+				out.println("location.href="+"'calendar.sche';");
+				out.println("</script>");
+				out.close();
+			}
+			mv.addObject("searchList", searchList);
+			mv.addObject("page","schedule/calendar.jsp");
+			mv.setViewName("home");
+			return mv;
+		
+			}
 		
 }

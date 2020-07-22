@@ -40,18 +40,17 @@ create table member(
 
 ALTER TABLE member
 MODIFY(SC_GRAD_DAY DATE);
-  
    
-ALTER TABLE member
+ALTER TABLE member -- 데이터크기 추가
 MODIFY(LG_ORGAN VARCHAR2(100));
 
-ALTER TABLE member
+ALTER TABLE member-- 데이터크기 추가
 MODIFY(SC_ADDRESS VARCHAR2(100));
 
-ALTER TABLE member
+ALTER TABLE member -- 컬럼 추가
 ADD(M_POSTCODE VARCHAR(20));
 
-ALTER TABLE member
+ALTER TABLE member-- 컬럼 추가
 ADD(M_ADDRESS2 VARCHAR(50));
 
 insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL) -- 임시생성재희

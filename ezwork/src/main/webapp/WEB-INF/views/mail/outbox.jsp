@@ -3,6 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="resources/js/jquery-3.5.0.js"></script>
 <script src="resources/js/mail/outboxlist.js"></script>
+
+<script>
+	$(function(){
+			$("#deleteall").click(function(){
+				var nums = [];
+				$.each($("input[name='onum']:checked"), function() {
+					nums.push($(this).val());
+				});
+				$("#mail_num").val(nums);
+			})
+	}) 
+</script>
+
 <style>
 p{margin-top:1rem}
 </style>
@@ -69,7 +82,7 @@ p{margin-top:1rem}
 									</span>
 									<span class="navi-text font-weight-bolder font-size-lg">임시 보관함</span>
 									<span class="navi-label">
-										<span class="label label-rounded label-light-warning font-weight-bolder">5</span>
+										<span class="label label-rounded label-light-warning font-weight-bolder">${tcount}</span>
 									</span>
 								</a>
 							</div>
@@ -157,6 +170,7 @@ p{margin-top:1rem}
 										<!--end::Svg Icon-->
 									</span>
 								</span>
+								<button data-toggle="modal" id="deleteall" data-target="#myModal" style="border:none;background:transparent">
 								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="삭제">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
@@ -170,7 +184,31 @@ p{margin-top:1rem}
 										<!--end::Svg Icon-->
 									</span>
 								</span>
+								</button>
 							</div>
+							
+							<!-- begin: 삭제 모달 -->
+							<div class="modal" id="myModal">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							     <!-- Modal body -->
+							      <div class="modal-body">
+							        <form name="deleteForm" id="deleteForm" action="OuttoBinAll.mail" method="post">
+							          <input type="hidden" name="num" value="" id="mail_num">
+								          <div class="modal-body" style="text-align:center">
+								          <h4>선택된 메일을 삭제하시겠습니까?</h4>
+								          </div>
+							          <div style="margin:0 auto;width:25%">
+								          <button type="submit" class="btn btn-light-primary font-weight-bold" >삭제</button>
+								          <button type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">취소</button>
+							          </div>
+							        </form>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<!-- end: 삭제 모달 -->
+							
 						</div>
 						<!--end::Toolbar-->
 						<!--begin::Search-->

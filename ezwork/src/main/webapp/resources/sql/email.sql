@@ -55,7 +55,7 @@ insert into sentMAIL
 	   MAIL_CONTENT, MAIL_FILE, MAIL_ORIGINAL,
 	   MAIL_RCHECK, MAIL_TYPE, MAIL_DATE)
 	 values(3, 'admin', 'admin', '세번째 메일', 'ㅎㅇ',
-	 null, null, 0, 'bin', sysdate); --휴지통
+	 null, null, 0, 'sbin', sysdate); --휴지통
 
 select* from
 	(select rownum rnum, u.*

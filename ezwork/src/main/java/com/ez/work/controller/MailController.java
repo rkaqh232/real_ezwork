@@ -38,25 +38,37 @@ public class MailController {
 	private String mailsaveFolder;	
 	
 	@GetMapping(value="/inbox.mail")
-	public String inbox(HttpServletRequest request, Model m) {
+	public String inbox(HttpServletRequest request, HttpSession session, Model m) {
+		String id = (String) session.getAttribute("M_CODE");
+		int listcount=mailService.getTempListCount(id);
+		m.addAttribute("tcount", listcount);
 		m.addAttribute("page","mail/inbox.jsp");
 		return "home";
 	}
 	
 	@GetMapping(value="/outbox.mail")
-	public String outbox(HttpServletRequest request, Model m) {
+	public String outbox(HttpServletRequest request, HttpSession session, Model m) {
+		String id = (String) session.getAttribute("M_CODE");
+		int listcount=mailService.getTempListCount(id);
+		m.addAttribute("tcount", listcount);
 		m.addAttribute("page","mail/outbox.jsp");
 		return "home";
 	}
 	
 	@GetMapping(value="/temp.mail")
-	public String temp(HttpServletRequest request, Model m) {
+	public String temp(HttpServletRequest request, HttpSession session, Model m) {
+		String id = (String) session.getAttribute("M_CODE");
+		int listcount=mailService.getTempListCount(id);
+		m.addAttribute("tcount", listcount);
 		m.addAttribute("page","mail/temp.jsp");
 		return "home";
 	}
 	
 	@GetMapping(value="/bin.mail")
-	public String bin(HttpServletRequest request, Model m) {
+	public String bin(HttpServletRequest request, HttpSession session, Model m) {
+		String id = (String) session.getAttribute("M_CODE");
+		int listcount=mailService.getTempListCount(id);
+		m.addAttribute("tcount", listcount);
 		m.addAttribute("page","mail/bin.jsp");
 		return "home";
 	}
@@ -93,6 +105,8 @@ public class MailController {
 			mail.setMAIL_FILE(fileDBName);
 		}
 		mailService.insertMail(mail);
+		System.out.println("sender: " + mail.getMAIL_SENDER());
+		System.out.println("subject: " + mail.getMAIL_SUBJECT());
 		PrintWriter out = response.getWriter();
 		out.println("<script>history.back();</script>");
 		out.close();
@@ -190,7 +204,6 @@ public class MailController {
 		
 		System.out.println("sender:"+id);
 		System.out.println("listcount:" + listcount);
-		System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("sender",id);
@@ -325,46 +338,86 @@ public class MailController {
 	}*/
 	
 	@PostMapping("InToBin.mail")
-	public ModelAndView IntoBin(int num, ModelAndView mv) {
+	public String IntoBin(int num) {
 		int result = mailService.InToBin(num);
 		if(result == 0) {
 			System.out.println("메일 삭제 실패");
-			mv.setViewName("error/error");
-			mv.addObject("message", "메일 삭제 실패");
+			return "redirect:error";
 		}else {
 			System.out.println("휴지통 이동 성공");
-			mv.setViewName("home");
-			mv.addObject("page", "mail/inbox.jsp");
-			mv.addObject("message", "메일이 삭제되었습니다.");
+			return "redirect:inbox.mail";
 		}
-		return mv;
+	}
+	
+	@PostMapping("OutToBin.mail")
+	public String OuttoBin(int num) {
+		int result = mailService.OutToBin(num);
+		if(result == 0) {
+			System.out.println("메일 삭제 실패");
+			return "redirect:error";
+		}else {
+			System.out.println("휴지통 이동 성공");
+			return "redirect:outbox.mail";
+		}
+	}
+	
+	@PostMapping("IntoBinAll.mail")
+	public String IntoBinAll(String[] num, String before_file) {
+		int result = 0;
+		for (int i = 0; i < num.length; i++) {
+			result += mailService.InToBin(Integer.parseInt(num[i]));
+		}
+		System.out.println(result + "개 메일 휴지통으로 이동");
+		return "redirect:inbox.mail";
+	}
+	
+	@PostMapping("OuttoBinAll.mail")
+	public String OuttoBinAll(String[] num, String before_file) {
+		int result = 0;
+		for (int i = 0; i < num.length; i++) {
+			result += mailService.OutToBin(Integer.parseInt(num[i]));
+		}
+		System.out.println(result + "개 메일 휴지통으로 이동");
+		return "redirect:outbox.mail";
 	}
 	
 	@PostMapping("TempDelete.mail")
-	public ModelAndView TempDelete(Mail mail, String before_file, int num, ModelAndView mv, 
+	public String TempDelete(Mail mail, String before_file, int num,
 			HttpServletResponse response, HttpServletRequest request) throws Exception {
 		int result = mailService.tempDelete(num);
 		if (result==0) {
 			System.out.println("temp 삭제 실패");
-			mv.setViewName("error/error");
-			return mv;
+			return "redirect:error";
 		}
 		System.out.println("temp 삭제 성공");
-		mv.addObject("page", "mail/temp.jsp");
-		mv.setViewName("home");
-		return mv;
+		return "redirect:temp.mail";
 	}
 	
 	@PostMapping("DeleteAll.mail")
-	public ModelAndView DeleteAll(String[] num, String before_file, ModelAndView mv) {
+	public String DeleteAll(String[] num, String before_file) {
 		int result = 0;
 		for (int i = 0; i < num.length; i++) {
 			result += mailService.tempDelete(Integer.parseInt(num[i]));
 		}
-		mv.setViewName("home");
-		mv.addObject("page", "mail/temp.jsp");
 		System.out.println(result + "개 메일 영구삭제");
-		return mv;
+		return "redirect:temp.mail";
+	}
+	
+	@PostMapping("BinDeleteAll.mail")
+	public String BinDeleteAll(String[] num, String before_file) {
+		int result = 0;
+		for (int i = 0; i < num.length; i++) {
+			String mailt = num[i].substring(num[i].length()-4, num[i].length());
+			int mailn = Integer.parseInt(num[i].substring(0, num[i].length()-4));
+			System.out.println(mailt + "/" + mailn); 
+			if(mailt.equals("sbin")){
+				result += mailService.sentDelete(mailn);
+			}else if(mailt.equals("rbin")) {
+				result += mailService.receiptDelete(mailn);
+			}
+		}
+		System.out.println(result + "개 메일 영구삭제");
+		return "redirect:bin.mail";
 	}
 	
 }

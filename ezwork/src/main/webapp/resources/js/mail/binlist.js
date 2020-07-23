@@ -43,7 +43,7 @@ function ajax(sdata){
 				$(data.maillist).each(
 					function(index, item){							
 						output += "<tr><td><p><label class='checkbox'>"
-					    output += "<input type='checkbox'/>"
+					    output += "<input type='checkbox' name=" + "'bnum' value="+ "'" + item.mail_NUM + item.mail_TYPE +"'/>"
 						output += ' <span></span></label></p></td><td><p class="font-size-lg">'
 						output += item.mail_RECIPIENT + '</p></td>'
 						output += '<td><div class="btn btn-text-primary font-weight-bold mr-2"' 

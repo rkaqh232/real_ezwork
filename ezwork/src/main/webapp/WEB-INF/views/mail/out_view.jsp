@@ -43,7 +43,7 @@ function hideRe(){
 		    <div class="modal-content">
 		     <!-- Modal body -->
 		      <div class="modal-body">
-		        <form name="deleteForm" action="InToBin.mail" method="post">
+		        <form name="deleteForm" action="OutToBin.mail" method="post">
 		          <%-- http://localhost:8088/Board_Ajax_bootstrap/BoardDetailAction.bo?num
 		          	     주소를 보면 num을 파라미터로 넘기고 있다. 
 		          	     이 값을 가져와서 ${param.num}을 사용 또는 ${boarddata.BOARD_NUM}
@@ -83,7 +83,7 @@ function hideRe(){
 		<!--begin::Title-->
 		<div class="d-flex align-items-center mr-2 py-2">
 			<div class="font-weight-bold font-size-h3 mr-3">${maildata.MAIL_SUBJECT}</div>
-			<span class="label label-light-primary font-weight-bold label-inline mr-2">inbox</span>
+			<span class="label label-light-primary font-weight-bold label-inline mr-2">보낸 메일함</span>
 		</div>
 		<!--end::Title-->
 	</div>

@@ -1,5 +1,7 @@
 package com.ez.work.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Appr {
 	
 	private int APPR_CODE;                          //결재 번호         
@@ -18,8 +20,15 @@ public class Appr {
 	private int APPR_STAT;                               //결재 상태         
 	private String APPR_DATE;                       //제출 날짜         
 	private String APPR_COMP_DATE;                  //완료 날짜         
-	private int APPR_VAL;                           //??            
+	private int APPR_VAL;    
+	private MultipartFile uploadfile;    
 	
+	public MultipartFile getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(MultipartFile uploadfile) {
+		this.uploadfile = uploadfile;
+	}
 	public String getM_PART_T() {
 		return M_PART_T;
 	}

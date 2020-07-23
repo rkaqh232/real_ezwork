@@ -47,5 +47,10 @@ public class ApprServiceImpl implements ApprService {
 	public int getMemCount() {
 		return dao.getMemCount();
 	}
+
+	public void insertappr(Appr appr) {
+		dao.insertAppr(appr);
+		
+	}
 	
 }

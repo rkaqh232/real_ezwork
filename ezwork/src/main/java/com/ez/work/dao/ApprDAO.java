@@ -38,5 +38,10 @@ public class ApprDAO {
 	public int getMemCount() {
 		return sqlSession.selectOne("Apprs.getmemcount");
 	}
+
+	public void insertAppr(Appr appr) {
+		sqlSession.insert("Apprs.insertappr",appr);
+		
+	}
 	
 }

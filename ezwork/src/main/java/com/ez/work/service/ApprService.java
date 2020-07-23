@@ -13,5 +13,6 @@ public interface ApprService {
 	public String getName(String m_code);
 	public List<Member> searchMemList(String keyword);
 	public int getMemCount();
+	public void insertappr(Appr appr);
 	
 }

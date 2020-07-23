@@ -21,7 +21,7 @@
 						<div class="d-block">
 							<!--begin::To-->
 							<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-45px">
-							<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
+							<input type="text" name="MAIL_SENDER" id="SENDER" value="${M_CODE}" style="display:none"/>
 								<div class="text-dark-50 w-25px">To:</div>
 								<div class="d-flex align-items-center flex-grow-1">
 									<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" required/>
@@ -90,18 +90,24 @@
 									</div>
 								</div>
 								<!--end::Send-->
-								<!--begin::Other-->
-								<label for="upfile">
-								<span class="btn btn-icon btn-sm btn-clean mr-2" id="kt_inbox_compose_attachments_select">
-								<i class="flaticon2-clip-symbol">
+								
+								<!--begin::파일 첨부-->
+								<label for="upfile" style="margin-bottom:0;cursor:pointer">
+								<span class="svg-icon svg-icon-primary svg-icon-2x">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								        <rect x="0" y="0" width="24" height="24"/>
+								        <path d="M14,16 L12,16 L12,12.5 C12,11.6715729 11.3284271,11 10.5,11 C9.67157288,11 9,11.6715729 9,12.5 L9,17.5 C9,19.4329966 10.5670034,21 12.5,21 C14.4329966,21 16,19.4329966 16,17.5 L16,7.5 C16,5.56700338 14.4329966,4 12.5,4 L12,4 C10.3431458,4 9,5.34314575 9,7 L7,7 C7,4.23857625 9.23857625,2 12,2 L12.5,2 C15.5375661,2 18,4.46243388 18,7.5 L18,17.5 C18,20.5375661 15.5375661,23 12.5,23 C9.46243388,23 7,20.5375661 7,17.5 L7,12.5 C7,10.5670034 8.56700338,9 10.5,9 C12.4329966,9 14,10.5670034 14,12.5 L14,16 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.500000, 12.500000) rotate(-315.000000) translate(-12.500000, -12.500000) "/>
+								    </g>
+								</svg>
 								<input type="file" id="upfile" name="uploadfile" style="display:none">
 								<span id="filevalue"></span>
-								</i>
 								</span></label>
-								<!--end::Other-->
+								<!--end::파일 첨부-->
 								
 							</div>
 							<!--end::Actions-->
+							
 							<!--begin::Toolbar-->
 							<div class="d-flex align-items-center">
 							<button style="border:none;background:transparent;" type="reset">

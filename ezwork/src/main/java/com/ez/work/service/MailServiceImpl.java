@@ -92,7 +92,11 @@ public class MailServiceImpl implements MailService{
 	public int InToBin(int num) {
 		return dao.InToBin(num);
 	}
-
+	
+	public int OutToBin(int num) {
+		return dao.OutToBin(num);
+	}
+	
 	public int tempDelete(int num) {
 		int result = 0;
 		//파일 삭제 처리하기

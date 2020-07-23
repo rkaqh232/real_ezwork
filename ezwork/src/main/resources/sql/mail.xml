@@ -63,12 +63,12 @@
 	
 	<select id="binoutcount" parameterType="String" resultType="int">
 		select count(*) from SENTMAIL
-		where MAIL_SENDER=#{id} and MAIL_TYPE='bin'
+		where MAIL_SENDER=#{id} and MAIL_TYPE='sbin'
 	</select>
 	
 	<select id="binincount" parameterType="String" resultType="int">
 		select count(*) from RECEIPTMAIL
-		where MAIL_RECIPIENT=#{id} and MAIL_TYPE='bin'
+		where MAIL_RECIPIENT=#{id} and MAIL_TYPE='rbin'
 	</select>
 	
 	<select id="tempcount" parameterType="String" resultType="int">
@@ -113,10 +113,10 @@
 				(select* 
 				from 
 					(select* from SENTMAIL
-				 	 where MAIL_SENDER='admin' and MAIL_TYPE='bin'
+				 	 where MAIL_SENDER='admin' and MAIL_TYPE='sbin'
 				 	 union 
 					 select* from RECEIPTMAIL
-				 	 where MAIL_RECIPIENT='admin' and MAIL_TYPE='bin') 
+				 	 where MAIL_RECIPIENT='admin' and MAIL_TYPE='rbin') 
 				order by MAIL_DATE desc) u)
 		where rnum &gt;=#{start} and rnum &lt;=#{end}
 	</select>	
@@ -137,7 +137,13 @@
 	
 	<update id="intobin" parameterType="int">
 		update RECEIPTMAIL
-		set MAIL_TYPE='bin'
+		set MAIL_TYPE='rbin'
+		where MAIL_NUM=#{number}
+	</update>
+	
+	<update id="outtobin" parameterType="int">
+		update SENTMAIL
+		set MAIL_TYPE='sbin'
 		where MAIL_NUM=#{number}
 	</update>
 	

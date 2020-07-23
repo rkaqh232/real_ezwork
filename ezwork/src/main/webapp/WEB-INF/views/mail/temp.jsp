@@ -82,7 +82,7 @@
 									</span>
 									<span class="navi-text font-weight-bolder font-size-lg">임시 보관함</span>
 									<span class="navi-label">
-										<span class="label label-rounded label-light-warning font-weight-bolder">5</span>
+										<span class="label label-rounded label-light-warning font-weight-bolder">${tcount}</span>
 									</span>
 								</a>
 							</div>
@@ -173,17 +173,13 @@
 								</button>
 							</div>
 							
-							<!-- 삭제 모달 -->
+							<!-- begin: 삭제 모달 -->
 							<div class="modal" id="myModal">
 							  <div class="modal-dialog">
 							    <div class="modal-content">
 							     <!-- Modal body -->
 							      <div class="modal-body">
 							        <form name="deleteForm" id="deleteForm" action="DeleteAll.mail" method="post">
-							          <%-- http://localhost:8088/Board_Ajax_bootstrap/BoardDetailAction.bo?num
-							          	     주소를 보면 num을 파라미터로 넘기고 있다. 
-							          	     이 값을 가져와서 ${param.num}을 사용 또는 ${boarddata.BOARD_NUM}
-							          --%>
 							          <input type="hidden" name="num" value="" id="mail_num">
 								          <div class="modal-body" style="text-align:center">
 								          <h4>선택된 메일을 영구 삭제하시겠습니까?</h4>
@@ -197,6 +193,8 @@
 							    </div>
 							  </div>
 							</div>
+							<!-- end: 삭제 모달 -->
+							
 						</div>
 						<!--end::Toolbar-->
 						<!--begin::Search-->

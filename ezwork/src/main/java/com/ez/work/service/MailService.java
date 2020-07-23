@@ -20,4 +20,5 @@ public interface MailService {
 	public int setRCheckUpdate(int num);
 	public int InToBin(int num);
 	public int tempDelete(int num);
+	public int OutToBin(int num);
 }

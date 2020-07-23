@@ -82,7 +82,7 @@ function hideRe(){
 		<!--begin::Title-->
 		<div class="d-flex align-items-center mr-2 py-2">
 			<div class="font-weight-bold font-size-h3 mr-3">${maildata.MAIL_SUBJECT}</div>
-			<span class="label label-light-primary font-weight-bold label-inline mr-2">inbox</span>
+			<span class="label label-light-primary font-weight-bold label-inline mr-2">받은 메일함</span>
 		</div>
 		<!--end::Title-->
 	</div>

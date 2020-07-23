@@ -69,7 +69,7 @@ p{margin-top:1rem}
 									</span>
 									<span class="navi-text font-weight-bolder font-size-lg">임시 보관함</span>
 									<span class="navi-label">
-										<span class="label label-rounded label-light-warning font-weight-bolder">5</span>
+										<span class="label label-rounded label-light-warning font-weight-bolder">${tcount}</span>
 									</span>
 								</a>
 							</div>

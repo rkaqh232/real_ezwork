@@ -5,32 +5,15 @@
 <html>
 <script src="resources/js/jquery-3.5.0.js"></script>
 <head>
-<title>ezWork 사원 검색 페이지</title>
-
+<title>ezWork 사원 검색</title>
 <style>
-table caption {
-	caption-side: top;
-	text-align: center;
-}
-
-body>div>table {
-	width: 60%;
-	margin: auto;
-}
-
-h1 {
-	text-align: center;
+#kt_content {
+	padding-top: 0px;
 }
 
 .center-block {
 	display: flex;
 	justify-content: center; /*가운데 정렬*/
-}
-
-#kt_subheader {
-	width: 700px;
-	left: 550px;
-	position: absolute;
 }
 
 #kt_content>div>div.container>div {
@@ -40,8 +23,21 @@ h1 {
 	top: 180px;
 }
 
+#kt_content>div.container>div>h5 {
+	width: 100px;
+	margin-left: 70px;
+}
+
+#kt_content>div:nth-child(6)>div.d-flex.flex-column-fluid>div>div {
+	margin-left: 140px;
+}
+
+#kt_content>font {
+	margin-left: 140px;
+}
+
 #kt_subheader_search>form>div>input {
-	width: 330px;
+	width: 340px;
 	height: 40px;
 	position: absolute;
 	left: 100px;
@@ -80,6 +76,11 @@ select {
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+#kt_content>div:nth-child(8)>div.d-flex.justify-content-between.align-items-center.flex-wrap>div
+	{
+	margin-left: 580px;
+}
+
 .container {
 	width: 100%
 }
@@ -92,22 +93,24 @@ td:nth-child(1) {
 	width: 33%
 }
 </style>
-</head>
 
 <script>
 	$(function() {
 		//즐겨찾기 버튼 클릭 시 즐겨찾기 추가 또는 삭제
 		$(".bookmarkbutton").click(
 				function() {
-					senddata = $(this).parent().parent().parent().find("input")
-							.first().val();
-					senddata2 = $(this).parent().parent().parent()
-							.find("input").eq(1).val();
+					senddata = $(this).parent().parent().parent().parent()
+							.parent().parent().parent().find("input").first()
+							.val();
+					senddata2 = $(this).parent().parent().parent().parent()
+							.parent().parent().parent().find("input").eq(1)
+							.val();
 					t = $(this);
 					if (senddata2 == 0) {
-						t.addClass('yellow');
+						t.addClass('flaticon-star text-warning');
 					} else {
-						t.removeClass('yellow');
+						t.removeClass('flaticon-star text-warning');
+						t.addClass('flaticon-star');
 					}
 					$.ajax({
 						url : "updatebookmark",
@@ -122,15 +125,16 @@ td:nth-child(1) {
 							console.log("data값은" + data.m_CODE);
 							console.log("data값은" + data.m_OWNER);
 							if (data.length == 0) {
-								t.parent().parent().parent().find("input")
-										.eq(1).val(0);
+								t.parent().parent().parent().find(
+												"input").eq(1).val(0);
 							} else {
 								$.each(data, function(i, item) {
-									t.parent().parent().parent().find("input")
-											.eq(1).val(item.m_BOOKMARK);
-
+									alert("즐겨찾기 목록에 추가되었습니다.");
+									t.parent().parent()
+											.parent().find("input").eq(1).val(
+													item.m_BOOKMARK);
 								})
-							} // 결론은 db에 저장된 변경된 bookmark 1값을 SearchEmp.jsp에 반영시켜주고 싶습니다.
+							}
 
 							/*
 							t.parent().parent().parent().find("input").eq(1).val(bminf.bookmark);
@@ -146,133 +150,232 @@ td:nth-child(1) {
 				});//click
 	});
 </script>
-<body>
-	<div class="container">
 
-		<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+</head>
+<body>
+	<div class="content d-flex flex-column flex-column-fluid"
+		id="kt_content">
+		<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader"
+			style="margin-bottom: 25px;">
 			<div
 				class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-				<!--begin::Details-->
-				<div class="d-flex align-items-center flex-wrap mr-2">
-					<!--begin::Title-->
-					<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">사원 검색</h5>
-					<!--end::Title-->
-					<!--begin::Separator-->
-					<div
-						class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
-					<!--end::Separator-->
-					<!--begin::Search Form-->
-					<div class="d-flex align-items-center" id="kt_subheader_search">
-						<form action="member_list">
-							<div class="input-group">
-								<select id="viewcount" name="search_field">
-									<option value="0" selected>사원번호</option>
-									<option value="1">부서</option>
-									<option value="2">이름</option>
-									<option value="3">직급</option>
-								</select> <input name="search_word" type="text" class="form-control"
-									placeholder="Search" value="${search_word}">
-								<button class="btn btn-primary" type="submit">검색</button>
-							</div>
-						</form>
+				<!--begin::Info-->
+				<div class="d-flex align-items-center flex-wrap mr-1">
+					<!--begin::Mobile Toggle-->
+					<button
+						class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none"
+						id="kt_subheader_mobile_toggle">
+						<span></span>
+					</button>
+					<!--end::Mobile Toggle-->
+					<!--begin::Page Heading-->
+					<div class="d-flex align-items-baseline mr-5">
+						<!--begin::Page Title-->
+						<h5 class="text-dark font-weight-bold my-2 mr-5">
+							<i class="flaticon-users-1 text-info"></i> &nbsp;사원검색
+						</h5>
+						<!--end::Page Title-->
+						<small style="color: gray;">조직도</small>
 					</div>
-					<!--end::Search Form-->
+					<!--end::Page Heading-->
 				</div>
-				<!--end::Details-->
+				<!--end::Info-->
+
 			</div>
 		</div>
 
-		<br>
-
 		<div class="container">
-			<!--begin::Card-->
-			<div class="card card-custom gutter-b">
-				<div class="card-body">
-					<%--회원이 있는 경우--%>
-					<c:if test="${listcount > 0 }">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<font size=3>사원 수: ${listcount }</font>
-								</tr>
-								<tr>
-									<td>사원 번호</td>
-									<td>소속 부서</td>
-									<td>이름</td>
-									<td>직급</td>
-								</tr>
-								<hr>
-							</thead>
-							<tbody>
-								<c:forEach var="m" items="${memberlist}">
-									<tr>
-										<input type="hidden" name="ajaxmcode" value="${m.m_CODE}">
-										<input type="hidden" name="bookmark" value="${m.m_BOOKMARK}">
-										<td><a href="member_info?m_code=${m.m_CODE}">${m.m_CODE}</a></td>
-										<td>${m.m_PART_C}</td>
-										<td>${m.m_NAME}</td>
-										<td>${m.m_LEVEL}</td>
-										<td><p>
-												<c:set var="bk" value="${m.m_BOOKMARK}" />
-												<c:if test="${bk == 1 }">
-													<button class="bookmarkbutton yellow">☆</button>
-												</c:if>
-												<c:if test="${bk == 0 }">
-													<button class="bookmarkbutton">☆</button>
-												</c:if>
-											</p></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<div class="center-block">
-							<div class="row">
-								<div class="col">
-									<ul class="pagination">
-										<c:if test="${page1 <= 1}">
-											<li class="page=item"><a class="page-link current"
-												href="#">이전&nbsp;</a></li>
-										</c:if>
-										<c:if test="${page1 > 1}">
-											<li class="page-item"><a
-												href="member_list?page=${page-1}&search_field=${search_field}&search_word=${search_word}"
-												class="page-link">이전</a>&nbsp;</li>
-										</c:if>
+			<div
+				class="alert alert-custom alert-white alert-shadow fade show gutter-b"
+				role="alert" style="margin-bottom: 0;">
+				<!--begin::Title-->
+				<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">사원 검색</h5>
+				<!--end::Title-->
+				<!--begin::Separator-->
+				<!--end::Separator-->
+				<!--begin::Search Form-->
+				<div class="d-flex align-items-center" id="kt_subheader_search">
+					<form action="member_list">
+						<div class="input-group">
+							<select id="viewcount" name="search_field">
+								<option value="0" selected>사원번호</option>
+								<option value="1">부서</option>
+								<option value="2">이름</option>
+								<option value="3">직급</option>
+							</select> <input name="search_word" type="text" class="form-control"
+								placeholder="Search" value="${search_word}">
+							<button class="btn btn-primary" type="submit">검색</button>
+						</div>
+					</form>
+				</div>
+				<!--end::Search Form-->
+			</div>
+			<!--end::Details-->
+		</div>
+	</div>
 
-										<c:forEach var="a" begin="${startpage}" end="${endpage}">
-											<c:if test="${a eq page1 }">
-												<li class="page-item"><a class="page-link current"
-													href="#">${a}</a></li>
-											</c:if>
-											<c:if test="${a ne page1 }">
-												<li class="page-item"><a
-													href="member_list?page=${a}&search_field=${search_field}&search_word=${search_word}"
-													class="page-link">${a}</a></li>
-											</c:if>
-										</c:forEach>
 
-										<c:if test="${page1>=maxpage }">
-											<li class="page-item"><a class="page-link current"
-												href="#">&nbsp;다음</a></li>
-										</c:if>
-										<c:if test="${page1< maxpage}">
-											<li class="page-item"><a
-												href="member_list?page=${page+1}&search_field=${search_field}&search_word=${search_word}"
-												class="page-link">&nbsp;다음</a></li>
-										</c:if>
-									</ul>
+
+
+
+
+
+	<!-- 카드시작 -->
+	<c:if test="${listcount > 0 }">
+		<font size=3>사원 수: ${listcount }</font>
+		<br>
+		<div>
+			<div class="d-flex flex-column-fluid">
+				<!--begin::Container-->
+				<div class="container">
+					<!--begin::Row-->
+					<div class="row">
+						<!--begin::Col-->
+
+						<c:forEach var="m" items="${memberlist}">
+							<!-- 여기서부터 -->
+							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+								<!--begin::Card-->
+								<div class="card card-custom gutter-b card-stretch">
+									<!--begin::Body-->
+									<div class="card-body pt-4">
+										<!--begin::User-->
+										<div class="d-flex align-items-end mb-7">
+											<!--begin::Pic-->
+											<div class="d-flex align-items-center">
+												<!--begin::Pic-->
+												<div class="flex-shrink-0 mr-4 mt-lg-0 mt-3">
+													<div class="symbol symbol-circle symbol-lg-75">
+														<img src="resources/assets/media/users/NINIZ.jpg"
+															alt="image">
+													</div>
+													<div
+														class="symbol symbol-lg-75 symbol-circle symbol-primary d-none">
+														<span class="font-size-h3 font-weight-boldest">JM</span>
+													</div>
+
+												</div>
+												<!--end::Pic-->
+												<!--begin::Title-->
+												<div class="d-flex flex-column">
+													<a href="member_info?m_code=${m.m_CODE}"
+														class="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">${m.m_NAME}</a>
+													<span class="text-muted font-weight-bold">${m.m_PART_C}</span>
+												</div>
+												<!--end::Title-->
+											</div>
+											<!--end::Title-->
+										</div>
+										<!--end::User-->
+										<!--begin::Desc-->
+										<p class="mb-7">안녕하세요. ${m.m_PART_C}의 ${m.m_NAME} 입니다.</p>
+										<!--end::Desc-->
+										<!--begin::Info-->
+										<div class="mb-7">
+											<div
+												class="d-flex justify-content-between align-items-center">
+												<span class="text-dark-75 font-weight-bolder mr-2">E-mail:</span>
+												<a href="#" class="text-muted text-hover-primary">${m.m_EMAIL}</a>
+											</div>
+											<div
+												class="d-flex justify-content-between align-items-cente my-1">
+												<span class="text-dark-75 font-weight-bolder mr-2">전화번호:</span>
+												<a href="#" class="text-muted text-hover-primary">${m.m_MOBILE_TEL}</a>
+											</div>
+											<div
+												class="d-flex justify-content-between align-items-center">
+												<span class="text-dark-75 font-weight-bolder mr-2">즐겨찾기:</span>
+												<span class="text-muted font-weight-bold"> <input
+													type="hidden" name="ajaxmcode" value="${m.m_CODE}" />
+													<input type="hidden" name="bookmark"
+													value="${m.m_BOOKMARK}" />
+													<p>
+														
+														<!-- 즐겨찾기 버튼을 눌렀을때 로그인 되어있던 id값 -->
+														<c:set var="sessionOwner" value="${owner}" />
+														<!-- session에 저장된 로그인 id값 -->
+														
+														
+														<c:if test="${sessionOwner == m.m_OWNER}">
+																<!-- <button class="bookmarkbutton"> -->
+																	<i class="bookmarkbutton flaticon-star text-warning"></i>
+																
+														</c:if>
+														<c:if test="${m.m_OWNER == null}">
+															<!-- <button class="bookmarkbutton"> -->
+																<i class="bookmarkbutton flaticon-star"></i>
+															
+														</c:if>
+														
+														<!-- session의 로그인 id값과 즐겨찾기 버튼 누른 사람의 값이 같으면 노란별 표시 -->
+													</p>
+												</span>
+											</div>
+										</div>
+										<!--end::Info-->
+										<a href="#"
+											class="btn btn-block btn-sm btn-light-info font-weight-bolder text-uppercase py-4">write
+											message</a>
+									</div>
 								</div>
 							</div>
-						</div>
+							<!-- 여기까지 -->
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<!--end::Row-->
+
+
+			<!--begin::Pagination-->
+			<div
+				class="d-flex justify-content-between align-items-center flex-wrap"
+				style="margin: auto;">
+				<div class="d-flex flex-wrap py-2 mr-3">
+					<c:if test="${page1 <= 1 }">
+						<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+							class="ki ki-bold-arrow-back icon-xs"></i></a>
+					</c:if>
+					<c:if test="${page1 > 1}">
+						<a
+							href="member_list?page=${page1-1}&search_field=${search_field}&search_word=${search_word}"
+							class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+							class="ki ki-bold-arrow-back icon-xs"></i></a>
+					</c:if>
+
+					<c:forEach var="a" begin="${startpage}" end="${endpage}">
+						<c:if test="${a == page1 }">
+							<a
+								class="btn btn-icon btn-sm border-0 btn-hover-info active mr-2 my-1">${a }</a>
+						</c:if>
+						<c:if test="${a != page1}">
+							<!-- 같지 않으면, 이동할 수 있다 -->
+							<a
+								href="member_list?page=${a}&search_field=${search_field}&search_word=${search_word}"
+								class="btn btn-icon btn-sm border-0 btn-light mr-2 my-1">${a }</a>
+						</c:if>
+					</c:forEach>
+
+					<c:if test="${page1 >= maxpage}">
+						<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+							class="ki ki-bold-arrow-next icon-xs"></i></a>
+					</c:if>
+					<c:if test="${page1 < maxpage}">
+						<a
+							href="member_list?page=${page1+1}&search_field=${search_field}&search_word=${search_word}"
+							class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
+							class="ki ki-bold-arrow-next icon-xs"></i></a>
 					</c:if>
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
+		</div>
+		<!--end:: Pagination-->
 
-	<%--회원이 없는 경우 --%>
-	<c:if test="${listcount eq 0 }">
-		<h1>검색 결과가 없습니다.</h1>
+		</div>
 	</c:if>
+	</div>
+	</div>
 </body>
 </html>

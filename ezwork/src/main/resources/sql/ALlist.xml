@@ -38,7 +38,7 @@
 			'admin' order by ROWNUM desc) M where ROWNUM = 1
 		</selectKey>
 		update list_al
-		set AL_TOTALDAY = (select 15 + TRUNC((AL_YEARS - 1) / 2
+		set AL_TOTALDAY = (select 11 + 15 + TRUNC((AL_YEARS - 1) / 2
 		)
 		from list_al where
 		AL_YEARS >= 1 and AL_M_CODE = #{M_CODE} ) where

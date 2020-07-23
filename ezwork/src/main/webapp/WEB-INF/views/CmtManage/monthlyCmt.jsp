@@ -40,7 +40,7 @@
 				var calendarEl = document.getElementById('kt_calendar');
 				var calendar = new FullCalendar.Calendar(calendarEl,
 						{
-							plugins : [ 'bootstrap', 'interaction', 'dayGrid'
+							plugins : [ 'bootstrap', 'interaction', 'dayGrid' 
 								 ],
 							themeSystem : 'bootstrap',
 

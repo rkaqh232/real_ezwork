@@ -8,6 +8,7 @@ create table bookmark (
 
 select *
 from bookmark;
+
 select *
 from member
 
@@ -15,7 +16,7 @@ select *
 		from bookmark
 		where m_owner = 'park'
 		
-select mem.M_CODE, bookmark.M_BOOKMARK		
+select mem.M_CODE, bookmark.M_BOOKMARK, bookmark.M_OWNER		
 from bookmark right join (select *
 		         	from ( select rownum rnum, b.*
 		                from (select * from member 
@@ -25,5 +26,10 @@ from bookmark right join (select *
 		          	   )
 		         where rnum>=1 and rnum<=10) mem
 on bookmark.m_code = mem.m_code
+
+select member.m_code, member.m_name, member.m_part_c, member.m_level, member.m_email, member.m_mobile_tel, bookmark.m_owner
+		from member
+		inner join bookmark on member.m_code = bookmark.m_code
+		where bookmark.m_owner = 'test2'
 		
 		

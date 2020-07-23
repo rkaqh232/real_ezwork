@@ -25,10 +25,42 @@ $(function(){
 			success : function(data){
 				$(data.list).each(
 					function(index, item){
+						var info = "회의내용 : "+ item.MSUBJECT + "\n전화번호 : " + item.USER_TEL;
 						if(item.RNAME=="Forest"){
-							var output = "<span class='label label-success label-inline mr-2'>"
+							var output = "<span class='label label-success label-inline mr-2'" +
+									"data-container='body' data-toggle=" +
+									"'tooltip' data-placement='top' title='" +
+									info + "'>"
 							output += item.USER_NAME + '</span>'
 							$('#f'+item.MTIME).append(output);
+						} else if(item.RNAME=="Ocean"){
+							var output = "<span class='label label-light-dark label-inline mr-2'" +
+							"data-container='body' data-toggle=" +
+							"'tooltip' data-placement='top' title='" +
+							info + "'>"
+							output += item.USER_NAME + '</span>'
+							$('#o'+item.MTIME).append(output);
+						} else if(item.RNAME=="Desert"){
+							var output = "<span class='label label-danger label-inline mr-2'" +
+							"data-container='body' data-toggle=" +
+							"'tooltip' data-placement='top' title='" +
+							info + "'>"
+							output += item.USER_NAME + '</span>'
+							$('#d'+item.MTIME).append(output);
+						} else if(item.RNAME=="Mountain"){
+							var output = "<span class='label label-warning label-inline mr-2'" +
+							"data-container='body' data-toggle=" +
+							"'tooltip' data-placement='top' title='" +
+							info + "'>"
+							output += item.USER_NAME + '</span>'
+							$('#m'+item.MTIME).append(output);
+						} else if(item.RNAME=="Sky"){
+							var output = "<span class='label label-info label-inline mr-2'" +
+							"data-container='body' data-toggle=" +
+							"'tooltip' data-placement='top' title='" +
+							info + "'>"
+							output += item.USER_NAME + '</span>'
+							$('#s'+item.MTIME).append(output);
 						}
 					})
 			},

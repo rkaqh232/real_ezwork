@@ -13,11 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Appr;
+import com.ez.work.domain.Member;
 import com.ez.work.service.ApprServiceImpl;
 
 /*영민*/
@@ -33,7 +35,16 @@ public class ApprController {
 	
 	
 	@GetMapping(value="/wait.appr")
-	public String inbox(HttpServletRequest request, Model m) {
+	public String inbox(HttpServletRequest request, Model m, HttpSession session) {
+		String m_code = (String) session.getAttribute("M_CODE");
+		System.out.println("apprcontroller : "+ m_code);
+		String part = apprservice.getPart(m_code);
+		String name = apprservice.getName(m_code);
+		List<Member> memberlist = apprservice.searchMemList("");
+		
+		m.addAttribute("memberlist",memberlist);
+		m.addAttribute("part", part);
+		m.addAttribute("name", name);
 		m.addAttribute("page","appr/appr.jsp");
 		return "home";
 	}
@@ -46,14 +57,9 @@ public class ApprController {
 		String id = (String) session.getAttribute("id");		
 		
 		int limit = 10; 
-
-		int listcount = apprservice.getListCount(); 
-
-	
+		int listcount = apprservice.getListCount(); 	
 		int maxpage = (listcount + limit - 1) / limit;
-
 		int startpage = ((page - 1) / 10) * 10 + 1;
-
 		int endpage = startpage + 10 - 1;
 
 		if (endpage > maxpage)
@@ -74,6 +80,24 @@ public class ApprController {
 		
 		return map;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/SearchMemAjax.appr")
+	public Map<String, Object> searchmem(
+			@RequestParam(value="keyword", defaultValue="", required=false) String keyword
+			){
+		
+		int memcount = apprservice.getMemCount();
+		List<Member> memberlist = apprservice.searchMemList(keyword);
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		
+		map.put("memcount",memberlist.size());
+		map.put("memberlist",memberlist);		
+		return map;
+	}
+	
 	
 	
 }

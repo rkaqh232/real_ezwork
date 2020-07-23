@@ -77,4 +77,12 @@ public class MailDAO {
 	public int tempDelete(int num) {
 		return sqlSession.delete("Mails.tempdelete", num);
 	}
+
+	public int receiptDelete(int num) {
+		return sqlSession.delete("Mails.receiptdelete", num);
+	}
+
+	public int sentDelete(int num) {
+		return sqlSession.delete("Mails.sentdelete", num);
+	}
 }

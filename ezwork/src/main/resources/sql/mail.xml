@@ -152,4 +152,13 @@
 		where MAIL_NUM=#{number} and MAIL_TYPE='temp'
 	</delete>
 	
+	<delete id="sentdelete" parameterType="int">
+		delete from SENTMAIL 
+		where MAIL_NUM=#{number} and MAIL_TYPE='sbin'
+	</delete>
+	
+	<delete id="receiptdelete" parameterType="int">
+		delete from RECEIPTMAIL 
+		where MAIL_NUM=#{number} and MAIL_TYPE='rbin'
+	</delete>
 </mapper>

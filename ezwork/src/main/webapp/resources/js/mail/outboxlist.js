@@ -44,7 +44,7 @@ function ajax(sdata){
 				$(data.maillist).each(
 					function(index, item){							
 						output += "<tr><td><p><label class='checkbox'>"
-					    output += "<input type='checkbox'/>"
+					    output += "<input type='checkbox' name=" + "'onum' value="+ "'" + item.mail_NUM +"'/>"
 						output += ' <span></span></label></p></td><td><p class="font-size-lg">'
 						output += item.mail_RECIPIENT + '</p></td>'
 						output += '<td><div class="btn btn-text-primary font-weight-bold mr-2"' 
@@ -83,7 +83,7 @@ function ajax(sdata){
 				$('.pagination').append(output)
 			}//if(data.listcount) end
 			else if(totalData==0){
-				output = "<tr><th colspan='4'><h3>받은 메일이 없습니다.</h3></th></tr>";
+				output = "<tr><th colspan='4'><h3>보낸 메일이 없습니다.</h3></th></tr>";
 				$('table').append(output)
 			}			
 		}, //success end

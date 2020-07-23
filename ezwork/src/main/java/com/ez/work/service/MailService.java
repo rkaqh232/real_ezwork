@@ -21,4 +21,6 @@ public interface MailService {
 	public int InToBin(int num);
 	public int tempDelete(int num);
 	public int OutToBin(int num);
+	public int sentDelete(int mailn);
+	public int receiptDelete(int mailn);
 }

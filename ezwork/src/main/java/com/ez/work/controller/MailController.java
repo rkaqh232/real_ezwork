@@ -204,7 +204,6 @@ public class MailController {
 		
 		System.out.println("sender:"+id);
 		System.out.println("listcount:" + listcount);
-		System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("sender",id);
@@ -362,6 +361,26 @@ public class MailController {
 		}
 	}
 	
+	@PostMapping("IntoBinAll.mail")
+	public String IntoBinAll(String[] num, String before_file) {
+		int result = 0;
+		for (int i = 0; i < num.length; i++) {
+			result += mailService.InToBin(Integer.parseInt(num[i]));
+		}
+		System.out.println(result + "개 메일 휴지통으로 이동");
+		return "redirect:inbox.mail";
+	}
+	
+	@PostMapping("OuttoBinAll.mail")
+	public String OuttoBinAll(String[] num, String before_file) {
+		int result = 0;
+		for (int i = 0; i < num.length; i++) {
+			result += mailService.OutToBin(Integer.parseInt(num[i]));
+		}
+		System.out.println(result + "개 메일 휴지통으로 이동");
+		return "redirect:outbox.mail";
+	}
+	
 	@PostMapping("TempDelete.mail")
 	public String TempDelete(Mail mail, String before_file, int num,
 			HttpServletResponse response, HttpServletRequest request) throws Exception {
@@ -382,6 +401,23 @@ public class MailController {
 		}
 		System.out.println(result + "개 메일 영구삭제");
 		return "redirect:temp.mail";
+	}
+	
+	@PostMapping("BinDeleteAll.mail")
+	public String BinDeleteAll(String[] num, String before_file) {
+		int result = 0;
+		for (int i = 0; i < num.length; i++) {
+			String mailt = num[i].substring(num[i].length()-4, num[i].length());
+			int mailn = Integer.parseInt(num[i].substring(0, num[i].length()-4));
+			System.out.println(mailt + "/" + mailn); 
+			if(mailt.equals("sbin")){
+				result += mailService.sentDelete(mailn);
+			}else if(mailt.equals("rbin")) {
+				result += mailService.receiptDelete(mailn);
+			}
+		}
+		System.out.println(result + "개 메일 영구삭제");
+		return "redirect:bin.mail";
 	}
 	
 }

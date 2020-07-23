@@ -25,7 +25,7 @@ $(function(){
 			success : function(data){
 				$(data.list).each(
 					function(index, item){
-						var info = "회의내용 : "+ item.MSUBJECT + "\n전화번호 : " + item.USER_TEL;
+						var info = "회의내용 : "+ item.MSUBJECT + " / 전화번호 : " + item.USER_TEL;
 						if(item.RNAME=="Forest"){
 							var output = "<span class='label label-success label-inline mr-2'" +
 									"data-container='body' data-toggle=" +
@@ -33,6 +33,7 @@ $(function(){
 									info + "'>"
 							output += item.USER_NAME + '</span>'
 							$('#f'+item.MTIME).append(output);
+							$('[data-toggle="tooltip"]').tooltip();
 						} else if(item.RNAME=="Ocean"){
 							var output = "<span class='label label-light-dark label-inline mr-2'" +
 							"data-container='body' data-toggle=" +

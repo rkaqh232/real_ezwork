@@ -3,6 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="resources/js/jquery-3.5.0.js"></script>
 <script src="resources/js/mail/inboxlist.js"></script>
+
+<script>
+	$(function(){
+			$("#deleteall").click(function(){
+				var nums = [];
+				$.each($("input[name='inum']:checked"), function() {
+					nums.push($(this).val());
+				});
+				$("#mail_num").val(nums);
+			})
+	}) 
+</script>
+
 <style>
 p{margin-top:1rem}
 </style>
@@ -193,7 +206,7 @@ p{margin-top:1rem}
 							    <div class="modal-content">
 							     <!-- Modal body -->
 							      <div class="modal-body">
-							        <form name="deleteForm" id="deleteForm" action="DeleteAll.mail" method="post">
+							        <form name="deleteForm" id="deleteForm" action="IntoBinAll.mail" method="post">
 							          <input type="hidden" name="num" value="" id="mail_num">
 								          <div class="modal-body" style="text-align:center">
 								          <h4>선택된 메일을 삭제하시겠습니까?</h4>

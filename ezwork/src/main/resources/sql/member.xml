@@ -161,4 +161,10 @@
 		from bookmark
 		where m_owner = #{owner}
 	</select>
+	
+	<!--  민혁 - 사원 즐겨찾기 삭제  -->
+	<select id="DeleteWishEmp" resultType="int" parameterType="String">
+		delete from bookmark
+		where m_code = #{m_CODE}
+	</select>
 </mapper>

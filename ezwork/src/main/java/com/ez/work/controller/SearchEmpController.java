@@ -1,9 +1,9 @@
 package com.ez.work.controller;
 
-import java.util.HashMap;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class SearchEmpController {
 
 	@RequestMapping(value = "/member_list", method = RequestMethod.GET)
 	public ModelAndView memberList(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
-			@RequestParam(value = "limit", defaultValue = "4", required = false) int limit, ModelAndView mv,
+			@RequestParam(value = "limit", defaultValue = "8", required = false) int limit, ModelAndView mv,
 			@RequestParam(value = "search_field", defaultValue = "-1") int index,
 			@RequestParam(value = "search_word", defaultValue = "") String search_word, Model m, HttpSession session)
 			throws Exception {
@@ -112,4 +112,19 @@ public class SearchEmpController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/deleteWishEmp", method = RequestMethod.GET)
+	public void DeleteWishEmp(@RequestParam("m_code") String M_CODE, HttpServletResponse response) throws Exception {
+		System.out.println("M_CODE의 값은" + M_CODE);
+		int m = memberservice.DeleteWishEmp(M_CODE);
+
+		if (m == 1)
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('목록에서 제외되었습니다.');");
+			out.println("location.href=" + "'EmpWishlist';");
+			out.println("</script>");
+			out.close();
+		
+	}
 }

@@ -11,11 +11,6 @@ $(function(){
 	})
 
 	
-	$('.fmemdiv').on('focus','#fmemlist', function(){
-		
-		console.log('datavalue 테스트 >>'+ $(this).attr('value'));
-		
-	})
 
 	var timeout = null
 	$('.fmem').on('keyup', function() {
@@ -23,6 +18,28 @@ $(function(){
 		clearTimeout(timeout)
 		timeout = setTimeout(function() {
 			var key = $(".fmem").val()
+			var str = "keyword="+key;
+			//console.log(str);
+			fmemajax(str);
+			console.log(text)
+		}, 500)
+	})
+	$('.smem').on('keyup', function() {
+		var text = this.value
+		clearTimeout(timeout)
+		timeout = setTimeout(function() {
+			var key = $(".smem").val()
+			var str = "keyword="+key;
+			//console.log(str);
+			fmemajax(str);
+			console.log(text)
+		}, 500)
+	})
+	$('.tmem').on('keyup', function() {
+		var text = this.value
+		clearTimeout(timeout)
+		timeout = setTimeout(function() {
+			var key = $(".tmem").val()
 			var str = "keyword="+key;
 			//console.log(str);
 			fmemajax(str);

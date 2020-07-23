@@ -21,10 +21,18 @@
 		select count(*) from approve
 	</select>
 	
-	<insert id="insert" parameterType="appr">
+	<insert id="insertappr" parameterType="appr" >
 		insert into approve
-		value
+		(APPR_CODE, M_CODE, M_PART, APPR_TITLE, APPR_CONTENT, FIRST_CODE, M_PART_F, SECOND_CODE, M_PART_S,
+		 THIRD_CODE, M_PART_T, APPR_FILE, APPR_ORIGIN, APPR_STAT, APPR_DATE, APPR_COMP_DATE, APPR_VAL
+		 )	
+		 appr_seq.nextval, #{M_CODE}, #{M_PART}, #{APPR_TITLE}, #{APPR_CONTENT}, #{FIRST_CODE}, #{M_PART_f},
+		 #{SECOND_CODE}, #{M_PART_S}, #{THIRD_CODE}, #{M_PART_T}, #{APPR_FILE, jdbcType=VARCHAR},
+		 #{APPR_ORIGIN, jdbcType=VARCHAR}, #{APPR_STAT}, systdate, #{APPR_COMP_DATE}, 0
+	
+	
 	</insert>
+	
 	
 	<select id="getname" parameterType="String" resultType="String">
 		select M_NAME
@@ -50,7 +58,6 @@
 		select count(*) from member
 		where m_code != 'admin'
 	</select>
-	
 	
 	
 	

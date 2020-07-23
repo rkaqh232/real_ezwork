@@ -176,6 +176,7 @@ tr>th:nth-child(6){width:10%}
 	        </div>
 	    </div>
 		<!-- pagination 끝 -->
+		
 		<div class="modal" id="myModal">
 		<div class="modal-content">
 		<!--begin::Card-->
@@ -188,24 +189,24 @@ tr>th:nth-child(6){width:10%}
 				</div>
 			</div>
 			<!--begin::Form-->
-			<form action="Appr_insert.appr" method="get"
-				enctype="multipart/form-data" name="boardform">
+			<form action="Apprinsert.appr" method="post" name="appr" enctype="multipart/form-data">
 				<div class="card-body">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">업무 구분</label>
 						<div class="col-lg-2">
 							<div class="rows">
-								<select name ="EV_SORT" class="form-control" id="viewcount">
-									<option value="업무" selected>업무</option>
-									<option value="업무1">업무</option>
-									<option value="업무2">업무</option>
+								<select name ="APPR_STAT" class="form-control" id="viewcount">
+									<option value="0" selected>업무</option>
+									<option value="1">휴가</option>
+									<option value="2">업무2</option>
 								</select>
 							</div>
 						</div>
 					</div>
-
+					<input type="hidden" value="${part}" name="M_PART">
+					<input type="hidden" value="${code}" name="M_CODE">
 					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">글쓴이</label>
+						<label class="col-lg-3 col-form-label text-lg-right">제출자</label>
 						<div class="col-lg-4 writer">
 							<!-- <input name="EV_NAME" id="board_name" value="인사팀" readOnly
 								type="text" size="10" maxlength="30" class="form-control"> -->
@@ -221,7 +222,7 @@ tr>th:nth-child(6){width:10%}
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
 						<div class="col-lg-7">
-							<input name="EV_TITLE" id="board_subject" type="text"
+							<input name="APPR_TITLE" id="appr_title" type="text"
 								size="50" maxlength="100" class="form-control"
 								placeholder="제목을 입력하세요">
 						</div>
@@ -229,7 +230,7 @@ tr>th:nth-child(6){width:10%}
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
 						<div class="col-lg-7">
-							<textarea name ="EV_CONTENT" style="height: 325px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
+							<textarea name ="APPR_CONTENT" style="height: 160px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
 						</div>
 					</div>
 
@@ -248,27 +249,38 @@ tr>th:nth-child(6){width:10%}
 
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">1차 결재자</label>
-						<div class="col-lg-4 fmemdiv">
-							<input type="text" name = "fmember" list="fmemlist" 
+						<div class="col-lg-4">
+							<input type="text" name = "FIRST_CODE" list="fmemlist" 
 									class="form-control fmem" autocomplete=off>
 								<datalist id="fmemlist">
-									<option value="11">11</option>
+								<c:forEach var="m" items="${memberlist}">
+									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
+								</c:forEach>
 								</datalist>			
-							<input type="hidden" name="FIRST_CODE" >				
 						</div>
 					</div>
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">2차 결재자</label>
 						<div class="col-lg-4">
-							<input type="password" class="form-control" id="SECOND_CODE"
-								placeholder="비밀번호를 입력하세요" name="SECOND_CODE">
+							<input type="text" name = "SECOND_CODE" list="smemlist" 
+									class="form-control smem" autocomplete=off>
+								<datalist id="smemlist">
+									<c:forEach var="m" items="${memberlist}">
+									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
+								</c:forEach>
+								</datalist>			
 						</div>
 					</div>
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">3차 결재자</label>
 						<div class="col-lg-4">
-							<input type="password" class="form-control" id="THIRD_CODE"
-								placeholder="비밀번호를 입력하세요" name="THIRD_CODE">
+							<input type="text" name = "THIRD_CODE" list="tmemlist" 
+									class="form-control tmem" autocomplete=off>
+								<datalist id="tmemlist">
+									<c:forEach var="m" items="${memberlist}">
+									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
+								</c:forEach>
+								</datalist>			
 						</div>
 					</div>
 				</div>

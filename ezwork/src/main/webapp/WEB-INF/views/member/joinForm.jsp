@@ -224,46 +224,51 @@ font-size:12px !important;
 															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
 																<div class="col-lg-9 col-xl-9">
 																	<label class="radio radio-rounded radio-info">															
-																<input type="radio" name="M_PART_C" id="M_PART_C" checked="checked" value="A1_총무" />A1 총무 <span></span>
-																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																<input type="radio" name="M_PART_C" id="M_PART_C" checked="checked" value="총무팀" />총무팀 <span></span>
+																	&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="A2_재무" />A2   재무<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="인사팀" />인사팀<span></span>
+																&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="A3_인사" />A3   인사<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="법무팀" />법무팀<span></span>
+																&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="B1_경영지원" />B1   경영지원<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="정보시스템팀" />정보시스템팀<span></span>
+																&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="B2_S/W지원"/>B2  S/W지원<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="IT 지원팀"/>IT 지원팀<span></span>
+																&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="B3_기술지원"/>B3   기술지원<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="마케팅 지원팀"/>마케팅 지원팀<span></span>
+																&nbsp;&nbsp;</label> 
+																
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="상품 개발팀"/>상품 개발팀<span></span>
+																&nbsp;&nbsp;</label>
+															
+																<label class="radio radio-rounded radio-info">
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="영업관리팀"/>영업 관리팀<span></span>
+																&nbsp;&nbsp;</label> 
 																 
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="C1_영업1팀"/>C1   영업1팀<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="영업 1팀"/>영업 1팀<span></span>
+																&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="C2_영업2팀"/>C2   영업2팀<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+																<input type="radio" name="M_PART_C" id="M_PART_C" value="영업 2팀"/>영업 2팀<span></span>
+																</label> 
 																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="Q_임원"/>Q  임원<span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
 																
 																
 																
 																</label><span
 																	class="form-text text-muted">
-																	참고 : 기타 부서의 경우 A1으로 선택해주세요. </span>
+																	참고 : 기타 부서의 경우 으로 선택해주세요. </span>
 															</div>
 														</div>
 														
@@ -279,23 +284,23 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info">															
 																<input type="radio" name="M_LEVEL" id="M_LEVEL" checked="checked" value="1" /> Level 1 <span></span>
-																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																	&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
 																<input type="radio" name="M_LEVEL" value="2" /> Level 2 <span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
 																<input type="radio" name="M_LEVEL" value="3" /> Level 3 <span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																&nbsp;&nbsp;</label> 
 																
 																<label class="radio radio-rounded radio-info">
 																<input type="radio" name="M_LEVEL" value="4" /> Level 4 <span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																&nbsp;&nbsp;</label>
 																
 																<label class="radio radio-rounded radio-info">
 																<input type="radio" name="M_LEVEL" value="5"/> Level 5 <span></span>
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
+																&nbsp;&nbsp;</label> 
 																
 																
 																

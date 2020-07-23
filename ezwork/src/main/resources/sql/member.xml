@@ -47,6 +47,37 @@
  	</update>
  	
  	
+ 	<!-- 혜정 - 사원 목록 -->
+    <select id="getList" resultType="member">
+    	select * from member    	
+    </select>
+ 	
+ 	
+ 	<!--  혜정 - 사원 조회 --> 
+ 	<select id="getSearchList2" parameterType="map" resultType="member">
+      select *
+      
+     	from (select * from member where id != 'admin'
+                  <if test="search_field!=null">
+                     and
+                     <choose>
+                        <when test="search_field=='M_NAME'">M_NAME</when>
+                        <when test="search_field=='M_PART_C'">M_PART_C</when>
+                        <when test="search_field=='M_MOBILE_TEL'">M_MOBILE_TEL</when>
+                      </choose>
+                        like #{search_word}
+                  </if>
+               order by id
+                  )b
+            )
+      where rnum &gt;= #{start} and rnum &lt; = #{end}
+   </select>
+   
+   
+   
+   
+ 	
+ 	
  	
  	
  	
@@ -129,5 +160,11 @@
 		select *
 		from bookmark
 		where m_owner = #{owner}
+	</select>
+	
+	<!--  민혁 - 사원 즐겨찾기 삭제  -->
+	<select id="DeleteWishEmp" resultType="int" parameterType="String">
+		delete from bookmark
+		where m_code = #{m_CODE}
 	</select>
 </mapper>

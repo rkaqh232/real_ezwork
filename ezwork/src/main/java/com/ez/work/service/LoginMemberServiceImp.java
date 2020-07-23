@@ -1,8 +1,9 @@
 package com.ez.work.service;
 
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 //혜정
 //혜정
@@ -55,31 +56,47 @@ public class LoginMemberServiceImp implements LoginMemberService{
 		return dao.update(m);
 	}
 
+
+
+	@Override
+	public List<Member> getSearchList2(int index, String search_word, int page, int limit) {
+		  Map<String, Object> map = new HashMap<String, Object> ();
+	    
+		  if(index != -1) {
+	         String[] search_field = new String[] { "m_code","m_part_c","m_mobile_tel"};
+	         map.put("search_field", search_field[index]);
+	         map.put("search_word", "%" + search_word + "%");
+	      }
+		  
+	      int startrow = (page-1)*limit+1;
+	      int endrow=startrow+limit-1;
+	      map.put("start", startrow);
+	      map.put("end", endrow);
+	      return dao.getSearchList2(map);
+	   }
+
+
+	@Override
+	public int getSearchListCount(int index, String search_word) {
+		  Map<String, String> map = new HashMap<String, String>();
+	      if(index!=-1) {
+	    	  String[] search_field = new String[] { "m_code","m_part_c","m_mobile_tel"};
+	         map.put("search_field", search_field[index]);
+	         map.put("search_word", "%" + search_word + "%");
+	      }
+	      return dao.getSearchListCount(map);
+	   }   
+
 	@Override
 	public int isId(String id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public void delete(String id) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-	@Override
-	public List<Member> getSearchList(int index, String search_word, int page, int limit) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public int getSearchListCount(int index, String search_word) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 
 }

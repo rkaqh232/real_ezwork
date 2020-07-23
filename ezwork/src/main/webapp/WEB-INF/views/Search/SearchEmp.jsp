@@ -11,9 +11,17 @@
 	padding-top: 0px;
 }
 
+#kt_content > div:nth-child(8) > div.d-flex.flex-column-fluid > div {
+	
+}
+
 .center-block {
 	display: flex;
 	justify-content: center; /*가운데 정렬*/
+}
+
+#kt_content > font {
+	margin-top: 100px;
 }
 
 #kt_content>div>div.container>div {
@@ -35,6 +43,7 @@
 #kt_content>font {
 	margin-left: 140px;
 }
+
 
 #kt_subheader_search>form>div>input {
 	width: 340px;
@@ -106,9 +115,9 @@ td:nth-child(1) {
 							.parent().parent().parent().find("input").eq(1)
 							.val();
 					t = $(this);
-					if (senddata2 == 0) {
+					if (senddata2 == 0) { //노란색
 						t.addClass('flaticon-star text-warning');
-					} else {
+					} else {  //회색
 						t.removeClass('flaticon-star text-warning');
 						t.addClass('flaticon-star');
 					}
@@ -120,30 +129,35 @@ td:nth-child(1) {
 							"bookmark" : senddata2
 						},
 						success : function(data) {
+							console.log(data);
 							//[{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"},{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"},{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"}]
-							console.log("data값은" + data.m_BOOKMARK);
-							console.log("data값은" + data.m_CODE);
-							console.log("data값은" + data.m_OWNER);
-							if (data.length == 0) {
-								t.parent().parent().parent().find(
-												"input").eq(1).val(0);
-							} else {
-								$.each(data, function(i, item) {
-									alert("즐겨찾기 목록에 추가되었습니다.");
-									t.parent().parent()
-											.parent().find("input").eq(1).val(
-													item.m_BOOKMARK);
-								})
-							}
-
+							after = 0 ;
+							if(senddata2==0)
+								after = 1 
+								
+							
+							t.parent().parent().parent().parent().parent().parent().parent().find("input").eq(1).val(after);
+							
 							/*
+							지금까지 success에서 시도하다 오류 났던 것(시행 착오)
 							t.parent().parent().parent().find("input").eq(1).val(bminf.bookmark);
 							if (data != null) {
 								t.addClass('yellow');
 							} else {
 								t.removeClass('yellow');
 							}
-							 */
+							
+							
+							if (data.length == 0) {
+								t.parent().parent().parent().find("input").eq(1).val(0);
+							} else {
+								$.each(data, function(i, item) {
+									//t.parent().parent().parent().find("input").eq(1).val(item.m_BOOKMARK);
+									t.parent().parent().parent().parent().parent().parent().parent().find("input").eq(1).val(item.m_BOOKMARK);
+								})
+							}
+							*/
+							
 
 						}//success
 					});//ajax
@@ -222,7 +236,7 @@ td:nth-child(1) {
 
 	<!-- 카드시작 -->
 	<c:if test="${listcount > 0 }">
-		<font size=3>사원 수: ${listcount }</font>
+		<font size=3>사원 수  :  ${listcount }</font>
 		<br>
 		<div>
 			<div class="d-flex flex-column-fluid">
@@ -313,9 +327,7 @@ td:nth-child(1) {
 											</div>
 										</div>
 										<!--end::Info-->
-										<a href="#"
-											class="btn btn-block btn-sm btn-light-info font-weight-bolder text-uppercase py-4">write
-											message</a>
+										<a href="" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
 									</div>
 								</div>
 							</div>

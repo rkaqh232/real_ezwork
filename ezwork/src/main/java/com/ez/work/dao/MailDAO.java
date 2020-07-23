@@ -70,7 +70,19 @@ public class MailDAO {
 		return sqlSession.update("Mails.intobin",num);
 	}
 	
+	public int OutToBin(int num) {
+		return sqlSession.update("Mails.outtobin",num);
+	}
+	
 	public int tempDelete(int num) {
 		return sqlSession.delete("Mails.tempdelete", num);
+	}
+
+	public int receiptDelete(int num) {
+		return sqlSession.delete("Mails.receiptdelete", num);
+	}
+
+	public int sentDelete(int num) {
+		return sqlSession.delete("Mails.sentdelete", num);
 	}
 }

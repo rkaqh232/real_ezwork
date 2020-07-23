@@ -8,7 +8,9 @@ var KTDatatableColumnRenderingDemo = function() {
 	var demo = function() {
 
 		var datatable = $('#kt_datatable').KTDatatable({
-			// datasource definition
+			
+			
+			// 데이터 소스 정의
 			data: {
 				type: 'remote',
 				source: {
@@ -22,10 +24,10 @@ var KTDatatableColumnRenderingDemo = function() {
 				serverSorting: true,
 			},
 
-			// layout definition
+			// 레이아웃 정의
 			layout: {
-				scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
-				footer: false, // display/hide footer
+				scroll: false, // 필요할 때 데이터 테이블 스크롤을 가로 / 세로로 활성화 / 비활성화합니다.
+				footer: false, // 바닥 글 표시 / 숨기기
 			},
 
 			// column sorting
@@ -40,6 +42,7 @@ var KTDatatableColumnRenderingDemo = function() {
 			},
 
 			// columns definition
+			// 순번
 			columns: [
 				{
 					field: 'RecordID',
@@ -49,7 +52,10 @@ var KTDatatableColumnRenderingDemo = function() {
 					type: 'number',
 					selector: false,
 					textAlign: 'center',
-				}, {
+				}, 
+				
+				//사용자 이름
+				{
 					field: 'OrderID',
 					title: 'Customer',
 					width: 250,
@@ -97,7 +103,9 @@ var KTDatatableColumnRenderingDemo = function() {
 
 						return output;
 					},
-				}, {
+				}, 
+				//
+				{
 					field: 'Country',
 					title: 'Country',
 					template: function(row) {

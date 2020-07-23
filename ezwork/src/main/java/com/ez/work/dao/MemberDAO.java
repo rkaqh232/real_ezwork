@@ -50,12 +50,15 @@ public class MemberDAO {
 		return sqlSession.update("Members.update",m);
 	}
 	
-	//사원 조회 페이지
-	
-	public List<Member> getSearchList(Map<String, Object> map) {
-		return sqlSession.selectOne("Members.getSearchList", map);
+	//사원 검색 페이지2
+	public List<Member> getSearchList2(Map<String, Object> map) {
+		return sqlSession.selectOne("Members.getSearchList2", map);
 	}
-
+	
+	//사원 조회 페이지
+	 public List<Member> getList(Map<String, Integer> map){
+	      return sqlSession.selectList("Members.getList", map);
+	   }
 
 
 	public int getSearchListCount(Map<String, String> map) {

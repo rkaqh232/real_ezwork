@@ -58,7 +58,7 @@ font-size:12px !important;
 									<div class="card-header flex-wrap border-0 pt-6 pb-0">
 										<div class="card-title">
 											<h3 class="card-label">전체 임직원 목록
-											<span class="d-block text-muted pt-2 font-size-sm">관리자모드 - 수정, 삭제 가능합니다.</span></h3>
+											<span class="d-block text-muted pt-2 font-size-sm">관리자모드에서는 사원 정보 수정, 사원 삭제가 가능합니다.</span></h3>
 										</div>
 										<div class="card-toolbar">
 											<!--begin::Dropdown-->
@@ -126,6 +126,11 @@ font-size:12px !important;
 												end::Dropdown Menu
 											</div> -->
 											<!--end::Dropdown-->
+											
+											
+											
+											
+											
 											<!--begin::신규 사원 등록신규 사원 등록신규 사원 등록Button-->
 											<a href="insert.hr" class="btn btn-primary font-weight-bolder">
 											<span class="svg-icon svg-icon-md">
@@ -140,8 +145,17 @@ font-size:12px !important;
 												<!--end::Svg Icon-->
 											</span>신규 사원 등록</a>
 											<!--end::신규 사원 등록 신규 사원 등록신규 사원 등록Button-->
+											
+											
+											
+											
 										</div>
 									</div>
+									
+									
+									
+									
+									
 									<div class="card-body">
 										<!--begin: Search Form-->
 
@@ -151,6 +165,18 @@ font-size:12px !important;
 												<div class="col-lg-9 col-xl-8">
 													<div class="row align-items-center">
 														<div class="col-md-4 my-2 my-md-0">
+														
+															<div class="d-flex align-items-center">
+																<label class="mr-3 mb-0 d-none d-md-block"></label>
+																<select class="form-control" id="kt_datatable_search_type">
+																	<option value="">전체목록</option>
+																	<option value="1">이름</option>
+																	<option value="2">부서</option>
+																	<option value="3">연락처</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-8 my-2 my-md-0">
 															<div class="input-icon">
 																<input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
 																<span>
@@ -159,17 +185,6 @@ font-size:12px !important;
 															</div>
 														</div>
 														
-														<div class="col-md-4 my-2 my-md-0">
-															<div class="d-flex align-items-center">
-																<label class="mr-3 mb-0 d-none d-md-block">Type:</label>
-																<select class="form-control" id="kt_datatable_search_type">
-																	<option value="">All</option>
-																	<option value="1">Online</option>
-																	<option value="2">Retail</option>
-																	<option value="3">Direct</option>
-																</select>
-															</div>
-														</div>
 													</div>
 												</div>
 												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
@@ -179,16 +194,30 @@ font-size:12px !important;
 										</div>
 										<!--end::Search Form-->
 										<!--end: Search Form-->
+										
+										
 										<!--begin: Datatable-->
-										<!--  데이터 들어가는 부분  -->
-										<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-										
-										
-										
-										
-										
-										
-										<!--  데이터 들어가는 부분  -->
+										<!--  데이터 들어가는 부분 -->
+										<!-- <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+										 --><!--end: Datatable-->
+										 
+										 <div class="datatable datatable-bordered datatable-head-custom"
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										 
+										<!--  데이터 들어가는 부분 -->
 									</div>
 								</div>
 								<!--end::Card-->

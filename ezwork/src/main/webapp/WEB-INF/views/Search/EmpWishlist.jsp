@@ -11,9 +11,12 @@
 	margin-top: -50px;
 }
 
-#kt_content>div.container-fluid.d-flex.align-items-stretch.justify-content-between
-	{
-	margin-left: 240px;
+#kt_content > div.container-fluid.d-flex.align-items-stretch.justify-content-between > div > div {
+	width: 1200px;
+}
+
+#kt_content>div.container-fluid.d-flex.align-items-stretch.justify-content-between {
+	margin-left: 10px;
 }
 </style>
 </head>
@@ -141,9 +144,8 @@
 										<!--begin::User-->
 										<!--begin::Actions-->
 										<div class="my-lg-0 my-1">
-											<a href="#"
-												class="btn btn-sm btn-light-danger font-weight-bolder text-uppercase mr-2">목록
-												제외</a>
+											<a href="deleteWishEmp?m_code=${wish.m_CODE}" 
+											class="btn btn-sm btn-light-danger font-weight-bolder text-uppercase mr-2" >목록 제외</a>
 										</div>
 										<!--end::Actions-->
 									</div>

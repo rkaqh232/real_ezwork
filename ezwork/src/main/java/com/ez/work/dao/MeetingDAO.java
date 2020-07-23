@@ -25,4 +25,8 @@ public class MeetingDAO {
 	public List<MeetingRoom> getList(){
 		return sqlSession.selectList("Reserves.list");
 	}
+
+	public void truncate() {
+		sqlSession.delete("Reserves.reset");
+	}
 }

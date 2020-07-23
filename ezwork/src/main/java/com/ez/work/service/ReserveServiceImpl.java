@@ -26,4 +26,8 @@ public class ReserveServiceImpl implements ReserveService{
 	public List<MeetingRoom> getList() {
 		return dao.getList();
 	}
+
+	public void truncate() {
+		dao.truncate();
+	}
 }

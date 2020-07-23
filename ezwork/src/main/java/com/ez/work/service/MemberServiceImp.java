@@ -91,6 +91,11 @@ public class MemberServiceImp implements MemberService {
 		return dao.EmpWishlist(owner);
 	}
 
+	@Override
+	public int DeleteWishEmp(String m_CODE) {
+		return dao.DeleteWishEmp(m_CODE);
+	}
+
 	/*
 	 * @Override public int updatebookmark(String id, int bookmark) {
 	 * System.out.println("if문 전의 bookmark의 값은 " + bookmark); if (bookmark == 0) {

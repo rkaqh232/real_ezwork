@@ -22,4 +22,6 @@ public interface MemberService {
 
 	public List<Member> EmpWishlist(String owner);
 
+	public int DeleteWishEmp(String m_CODE);
+
 }

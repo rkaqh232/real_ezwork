@@ -49,4 +49,9 @@ public class EmpDao {
 		return sqlSession.selectList("Members.EmpWishlist", owner);
 	}
 
+	public int DeleteWishEmp(String m_CODE) {
+		return sqlSession.delete("Members.DeleteWishEmp", m_CODE);
+		
+	}
+
 }

@@ -52,5 +52,9 @@ public class ApprServiceImpl implements ApprService {
 		dao.insertAppr(appr);
 		
 	}
+
+	public Appr getDetail(int num) {
+		return dao.getDetail(num);
+	}
 	
 }

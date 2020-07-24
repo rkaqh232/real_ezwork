@@ -14,5 +14,6 @@ public interface ApprService {
 	public List<Member> searchMemList(String keyword);
 	public int getMemCount();
 	public void insertappr(Appr appr);
+	public Appr getDetail(int num);
 	
 }

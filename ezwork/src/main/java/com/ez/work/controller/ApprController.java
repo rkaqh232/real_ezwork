@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Appr;
+import com.ez.work.domain.Mail;
 import com.ez.work.domain.Member;
 import com.ez.work.service.ApprServiceImpl;
 
@@ -157,6 +158,28 @@ public class ApprController {
 		PrintWriter out = response.getWriter();
 		out.println("<script>history.back();</script>");
 		out.close();
+	}
+	
+	@RequestMapping(value="/ApprDetailAction.appr")
+	public ModelAndView apprdetail(HttpServletRequest request, ModelAndView mv, int num, HttpSession session) {
+		Appr appr = apprservice.getDetail(num);
+		String m_code = (String) session.getAttribute("M_CODE");
+		System.out.println("apprcontroller : "+ m_code);
+		String part = apprservice.getPart(m_code);
+		String name = apprservice.getName(m_code);
+		
+		if(appr == null) {
+			System.out.println("appr detail view");
+			mv.setViewName("error/error");
+		}else {
+			System.out.println("appr detail view");
+			mv.addObject("page", "appr/apprdetail.jsp");
+			mv.addObject("apprdata", appr);
+			mv.addObject("part",part);
+			mv.addObject("name",name);
+			mv.setViewName("home");
+		}		
+		return mv;
 	}
 	
 	

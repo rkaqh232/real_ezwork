@@ -31,7 +31,7 @@ $(function(){
 			var key = $(".smem").val()
 			var str = "keyword="+key;
 			//console.log(str);
-			fmemajax(str);
+			smemajax(str);
 			console.log(text)
 		}, 500)
 	})
@@ -42,7 +42,7 @@ $(function(){
 			var key = $(".tmem").val()
 			var str = "keyword="+key;
 			//console.log(str);
-			fmemajax(str);
+			tmemajax(str);
 			console.log(text)
 		}, 500)
 	})
@@ -92,7 +92,8 @@ function fmemajax(str) {
 			
 			$("#fmemlist").append(output);
 			}else if(totalData==0){
-				console.log("dfdf");
+				output+='<option value="일치하는 정보가 없습니다. "</option>';
+				$("#fmemlist").append(output);
 			}
 
 		}, // success end
@@ -100,8 +101,77 @@ function fmemajax(str) {
 			console.log('에러')
 		}
 	})
-
 }
+function smemajax(str) {
+	output = "";
+	$.ajax({
+		type : "POST",
+		data : str,
+		url : "SearchMemAjax.appr",
+		dataType : "json",
+		cache : false,
+		success : function(data) {
+			var totalData = data.memcount;
+			console.log(totalData);
+			if(totalData>0){
+			$('#smemlist').children('option').remove();
+			$(data.memberlist).each(
+					function(index, item) {
+						//console.log(item.m_PART_C + ' ' + item.m_NAME);
+						
+						output+='<option value="'+ item.m_PART_C+' '+item.m_NAME  +'">' +'</option>'
+
+			})
+			
+			$("#smemlist").append(output);
+			}else if(totalData==0){
+				output+='<option value="일치하는 정보가 없습니다. "</option>';
+				$("#fmemlist").append(output);
+			}
+
+		}, // success end
+		error : function() {
+			console.log('에러')
+		}
+	})
+}
+function tmemajax(str) {
+	output = "";
+	$.ajax({
+		type : "POST",
+		data : str,
+		url : "SearchMemAjax.appr",
+		dataType : "json",
+		cache : false,
+		success : function(data) {
+			var totalData = data.memcount;
+			console.log(totalData);
+			if(totalData>0){
+			$('#tmemlist').children('option').remove();
+			$(data.memberlist).each(
+					function(index, item) {
+						//console.log(item.m_PART_C + ' ' + item.m_NAME);
+						
+						output+='<option value="'+ item.m_PART_C+' '+item.m_NAME  +'">' +'</option>'
+
+			})
+			
+			$("#tmemlist").append(output);
+			}else if(totalData==0){
+				output+='<option value="일치하는 정보가 없습니다. "</option>';
+				$("#fmemlist").append(output);
+			}
+
+		}, // success end
+		error : function() {
+			console.log('에러')
+		}
+	})
+}
+
+
+
+
 
 function ajax(sdata){
 	output="";
@@ -124,7 +194,7 @@ function ajax(sdata){
 							stat = '업무';
 							break;
 						case 1:
-							stat = 'test';
+							stat = '휴가';
 							break;
 						}
 						

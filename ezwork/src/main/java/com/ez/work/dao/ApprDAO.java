@@ -43,5 +43,9 @@ public class ApprDAO {
 		sqlSession.insert("Apprs.insertappr",appr);
 		
 	}
+
+	public Appr getDetail(int num) {
+		return sqlSession.selectOne("Apprs.getdetail",num);
+	}
 	
 }

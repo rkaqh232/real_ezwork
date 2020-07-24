@@ -25,10 +25,11 @@
 		insert into approve
 		(APPR_CODE, M_CODE, M_PART, APPR_TITLE, APPR_CONTENT, FIRST_CODE, M_PART_F, SECOND_CODE, M_PART_S,
 		 THIRD_CODE, M_PART_T, APPR_FILE, APPR_ORIGIN, APPR_STAT, APPR_DATE, APPR_COMP_DATE, APPR_VAL
-		 )	
-		 appr_seq.nextval, #{M_CODE}, #{M_PART}, #{APPR_TITLE}, #{APPR_CONTENT}, #{FIRST_CODE}, #{M_PART_f},
+		 )values(	
+		 appr_seq.nextval, #{M_CODE}, #{M_PART}, #{APPR_TITLE}, #{APPR_CONTENT}, #{FIRST_CODE}, #{M_PART_F},
 		 #{SECOND_CODE}, #{M_PART_S}, #{THIRD_CODE}, #{M_PART_T}, #{APPR_FILE, jdbcType=VARCHAR},
-		 #{APPR_ORIGIN, jdbcType=VARCHAR}, #{APPR_STAT}, systdate, #{APPR_COMP_DATE}, 0
+		 #{APPR_ORIGIN, jdbcType=VARCHAR}, #{APPR_STAT}, sysdate, #{APPR_COMP_DATE, jdbcType=VARCHAR}, 0
+		 )
 	
 	
 	</insert>
@@ -57,6 +58,11 @@
 	<select id="getmemcount" resultType="int">
 		select count(*) from member
 		where m_code != 'admin'
+	</select>
+	
+	<select id="getdetail" resultType="appr" parameterType="int">
+		select * from approve
+		where APPR_CODE = #{num}
 	</select>
 	
 	

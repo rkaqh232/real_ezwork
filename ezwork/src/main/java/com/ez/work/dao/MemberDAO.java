@@ -1,5 +1,6 @@
 package com.ez.work.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +53,7 @@ public class MemberDAO {
 	
 	//사원 검색 페이지2
 	public List<Member> getSearchList2(Map<String, Object> map) {
-		return sqlSession.selectOne("Members.getSearchList2", map);
+		return sqlSession.selectList("Members.getSearchList2", map);
 	}
 	
 	//사원 조회 페이지
@@ -62,7 +63,7 @@ public class MemberDAO {
 
 
 	public int getSearchListCount(Map<String, String> map) {
-		return sqlSession.selectOne("Members.searchcount", map);
+		return sqlSession.selectOne("Members.searchcount2", map);
 	}
 	
 	

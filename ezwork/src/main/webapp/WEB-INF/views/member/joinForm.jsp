@@ -849,6 +849,22 @@ font-size:12px !important;
 
 	<!--end::Entry-->
 	<!--begin::Global Theme Bundle(used by all pages)-->
+	<script type="text/javascript">
+                           var today = new Date();
+                           var dd = today.getDate();
+                           var mm = today.getMonth() + 1;
+                           var yyyy = today.getFullYear();
+                           if (dd < 10) {
+                              dd = '0' + dd
+                           }
+                           if (mm < 10) {
+                              mm = '0' + mm
+                           }
+
+                           today = yyyy + '-' + mm + '-' + dd;
+                           document.getElementById("kt_datepicker_3")
+                                 .setAttribute("max", today);
+                        </script>
 	<script src="resources/js/jquery-3.5.0.js"></script>
 	<script src="resources/js/join.js"></script>
 	<script src="resources/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>

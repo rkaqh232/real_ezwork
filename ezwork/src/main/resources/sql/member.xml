@@ -18,7 +18,7 @@
       values
          ('EMP'||emp_seq.nextval, #{M_PASS}, #{M_FILE, jdbcType=VARCHAR},#{M_ORIGINAL, jdbcType=VARCHAR}, 
          #{M_PART_C}, #{M_LEVEL}, #{M_NAME},
-         #{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE}, 
+         #{M_GENDER}, TO_DATE(#{M_BIRTH},'YYYY-MM-DD'), #{M_ARMY}, #{M_MARRIAGE}, 
          #{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, TO_DATE(#{M_JOIN_DATE},'YYYY-MM-DD'), 
          #{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, SYSDATE,
          #{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
@@ -48,32 +48,44 @@
  	
  	
  	<!-- 혜정 - 사원 목록 -->
-    <select id="getList" resultType="member">
-    	select * from member    	
+ 	<select id="getList" resultType="member">
+    	select M_CODE, M_NAME, M_PART_C, M_LEVEL, M_JOIN_DATE, M_MOBILE_TEL  
+      from member  	
     </select>
  	
- 	
+	
  	<!--  혜정 - 사원 조회 --> 
- 	<select id="getSearchList2" parameterType="map" resultType="member">
-      select *
-      
-     	from (select * from member where id != 'admin'
+ 	
+   <select id="getSearchList2" parameterType="map" resultType="member"> 
+ 	 select M_CODE, M_NAME, M_PART_C, M_LEVEL, M_BIRTH, M_EMAIL, M_MOBILE_TEL
+      from (select * from member where M_CODE != 'admin'
                   <if test="search_field!=null">
-                     and
-                     <choose>
-                        <when test="search_field=='M_NAME'">M_NAME</when>
-                        <when test="search_field=='M_PART_C'">M_PART_C</when>
-                        <when test="search_field=='M_MOBILE_TEL'">M_MOBILE_TEL</when>
-                      </choose>
-                        like #{search_word}
-                  </if>
-               order by id
-                  )b
-            )
-      where rnum &gt;= #{start} and rnum &lt; = #{end}
+			and
+			<choose>
+				   <when test="search_field=='M_NAME'">M_NAME</when>
+                   <when test="search_field=='M_PART_C'">M_PART_C</when>
+                   <when test="search_field=='M_MOBILE_TEL'">M_MOBILE_TEL</when>
+			</choose>
+			like #{search_word}
+			
+			
+		</if>
+     )
    </select>
    
-   
+   <!-- 혜정 - 사원 수 검색 -->
+	<select id="searchcount2" parameterType="map" resultType="int">
+		select count(*) from member where M_CODE != 'admin'
+		<if test="search_field!=null">
+			and
+			<choose>
+				   <when test="search_field=='M_NAME'">M_NAME</when>
+                   <when test="search_field=='M_PART_C'">M_PART_C</when>
+                   <when test="search_field=='M_MOBILE_TEL'">M_MOBILE_TEL</when>
+			</choose>
+			like #{search_word}
+		</if>
+	</select>
    
    
  	

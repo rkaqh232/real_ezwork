@@ -70,7 +70,8 @@ a {
 						</div>
 						<div class="card-toolbar">
 
-
+							
+								
 							<!--begin::신규 사원 등록신규 사원 등록신규 사원 등록Button-->
 							<a href="insert.hr" class="btn btn-primary font-weight-bolder">
 								<span class="svg-icon svg-icon-md"> <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
@@ -101,44 +102,50 @@ a {
 
 
 					<div class="card-body">
-					<form action="member_list.net">
+					
 						<!--begin: Search Form-->
 
 						<!--begin::Search Form-->
 						<div class="mb-7">
+						<form action="list.hr">
 							<div class="row align-items-center">
 								<div class="col-lg-9 col-xl-8">
+							
 									<div class="row align-items-center">
 										<div class="col-md-4 my-2 my-md-0">
+										
 
 											<div class="d-flex align-items-center">
 												<label class="mr-3 mb-0 d-none d-md-block"></label> 
 												<select class="form-control" id="viewcount" name="search_field">
-													<option value="0">전체목록</option>
-													<option value="1">이름</option>
-													<option value="2">부서</option>
-													<option value="3">연락처</option>
+													<option value="0" selected>이름</option>
+													<option value="1">부서</option>
+													<option value="2">연락처</option>
+													
 												</select>
 											</div>
+											
 										</div>
 										<div class="col-md-8 my-2 my-md-0">
 											<div class="input-icon">
-												<input name="search_word" class="form-control"
-													placeholder="검색어를 입력하세요" id="kt_datatable_search_query" value="${search_word}"/>
+												<input name="search_word" type="text" class="form-control"
+													placeholder="검색어를 입력하세요" value="${search_word}"/>
 												<span> <i class="flaticon2-search-1 text-muted"></i>
 												</span>
 											</div>
 										</div>
 
 									</div>
+									</form>
 								</div>
 								<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-									<a href="#" class="btn btn-light-primary px-6 font-weight-bold" type="submit">Search</a>
+									<button class="btn btn-light-primary px-6 font-weight-bold" type="submit">Search</a>
 								</div>
 							</div>
+							</form>
 						</div>
-						<!--end::Search Form-->
-						<!--end: Search Form-->
+						<!--end:: 검색 폼  검색 폼  검색 폼  검색 폼  검색 폼  검색 폼 -->
+
 
 
 						<!--begin: Datatable-->
@@ -211,7 +218,7 @@ a {
 										<!--  사번    -->
 										<td class="datatable-cell-center datatable-cell"
 											data-field="RecordID" aria-label="M_CODE"><span
-											style="width: 40px;">${m.m_CODE}</span></td>
+											style="width: 40px;">${M_CODE}</span></td>
 
 
 										<!--  사원이름    -->
@@ -224,7 +231,7 @@ a {
 													<div class="ml-2">
 														<div class="text-dark-75 font-weight-bold line-height-sm">배수지</div>
 														<a href="#"
-															class="font-size-sm text-dark-50 text-hover-primary">${m.m_NAME}</a>
+															class="font-size-sm text-dark-50 text-hover-primary">${M_NAME}</a>
 													</div>
 												</div></span></td>
 												
@@ -277,35 +284,7 @@ a {
 																	fill="#000000"></path>	                                        </g>	                                    </svg>
 													</span>
 													</a>
-													<div
-														class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-														<ul class="navi flex-column navi-hover py-2">
-															<li
-																class="navi-header font-weight-bolder text-uppercase font-size-xs text-primary pb-2">
-																Choose an action:</li>
-															<li class="navi-item"><a href="#" class="navi-link">
-																	<span class="navi-icon"><i class="la la-print"></i></span>
-																	<span class="navi-text">Print</span>
-															</a></li>
-															<li class="navi-item"><a href="#" class="navi-link">
-																	<span class="navi-icon"><i class="la la-copy"></i></span>
-																	<span class="navi-text">Copy</span>
-															</a></li>
-															<li class="navi-item"><a href="#" class="navi-link">
-																	<span class="navi-icon"><i
-																		class="la la-file-excel-o"></i></span> <span
-																	class="navi-text">Excel</span>
-															</a></li>
-															<li class="navi-item"><a href="#" class="navi-link">
-																	<span class="navi-icon"><i
-																		class="la la-file-text-o"></i></span> <span class="navi-text">CSV</span>
-															</a></li>
-															<li class="navi-item"><a href="#" class="navi-link">
-																	<span class="navi-icon"><i
-																		class="la la-file-pdf-o"></i></span> <span class="navi-text">PDF</span>
-															</a></li>
-														</ul>
-													</div>
+													
 												</div> <a href="javascript:;"
 												class="btn btn-sm btn-clean btn-icon mr-2"
 												title="Edit details"> <span class="svg-icon svg-icon-md">
@@ -454,7 +433,7 @@ a {
 																fill="#000000" opacity="0.3" x="5" y="20" width="15"
 																height="2" rx="1"></rect>	                                    </g>	                                </svg>
 												</span>
-											</a> <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
+											</a> <a href="member_delete.net?id=${m.m_CODE}" class="btn btn-sm btn-clean btn-icon"
 												title="Delete"> <span class="svg-icon svg-icon-md">
 														<svg xmlns="http://www.w3.org/2000/svg"
 															xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -683,10 +662,10 @@ a {
 				<!--end::Card-->
 			</div>
 			<!--end::Container-->
-		</div>
+		
 		
 		<!--end::Entry-->
-	</div>
+	
 
 	
 	<!--end::Scrolltop-->
@@ -717,6 +696,7 @@ a {
 		</a></li>
 		<!--end::Item-->
 	</ul>
+	
 	
 	
 	
@@ -803,8 +783,8 @@ a {
 <!-- 	 <script
 		src="resources/assets/js/pages/crud/ktdatatable/advanced/column-rendering.js?v=7.0.4"></script> -->
 
-	 <script
-		src="resources/js/member_list.js"></script>
+	<!--  <script
+		src="resources/js/member_list.js"></script> -->
 
 
 	<link rel="stylesheet"

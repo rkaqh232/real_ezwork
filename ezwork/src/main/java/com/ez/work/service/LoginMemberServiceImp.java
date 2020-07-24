@@ -63,7 +63,7 @@ public class LoginMemberServiceImp implements LoginMemberService{
 		  Map<String, Object> map = new HashMap<String, Object> ();
 	    
 		  if(index != -1) {
-	         String[] search_field = new String[] { "m_code","m_part_c","m_mobile_tel"};
+	         String[] search_field = new String[] { "M_NAME","M_PART_C","M_MOBILE_TEL"};
 	         map.put("search_field", search_field[index]);
 	         map.put("search_word", "%" + search_word + "%");
 	      }
@@ -80,7 +80,7 @@ public class LoginMemberServiceImp implements LoginMemberService{
 	public int getSearchListCount(int index, String search_word) {
 		  Map<String, String> map = new HashMap<String, String>();
 	      if(index!=-1) {
-	    	  String[] search_field = new String[] { "m_code","m_part_c","m_mobile_tel"};
+	    	  String[] search_field = new String[] { "M_NAME","M_PART_C","M_MOBILE_TEL"};
 	         map.put("search_field", search_field[index]);
 	         map.put("search_word", "%" + search_word + "%");
 	      }

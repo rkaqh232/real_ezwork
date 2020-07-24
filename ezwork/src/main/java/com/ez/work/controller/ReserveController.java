@@ -34,7 +34,6 @@ public class ReserveController {
 		mv.setViewName("home");
 		mv.addObject("page", "reserve/meeting.jsp");
 		mv.addObject("list", list);
-		System.out.println("list : " + list.get(0).getMSUBJECT());
 		return mv;
 	}
 /*

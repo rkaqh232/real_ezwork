@@ -235,30 +235,7 @@
 						   </thead>
 						   
 						   <!--begin::mailList-->
-						   <c:if test="${listcount > 0 }">
-						   <tbody>
-							<c:set var="num" value="${listcount-(page-1)*limit}"/>	
-							<c:forEach var="m" items="${maillist}">	
-							<tr>
-							  <td><%--번호 --%>
-								<label class="checkbox">
-					                <input type="checkbox"/>
-					                <span></span>
-					            </label>
-							  </td>
-							  <td><%--제목 --%>
-							     <div>		
-									<a href="#">
-										${m.MAIL_SUBJECT}
-									</a>
-									</div>
-								</td>
-								<td><div>${m.MAIL_SENDER}</div></td>
-								<td><div>${m.MAIL_DATE}</div></td>
-							   </tr>
-							  </c:forEach>
-							 </tbody>	
-							 </c:if>
+						   <tbody></tbody>
 						</table>						
 						<!--end::mailList-->
 					<!--end::Body-->

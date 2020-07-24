@@ -12,6 +12,7 @@ $(function(){
 })
 
 function go(page){
+	$("tbody").empty(); 
 	var limit = 10;
 	var id = document.getElementById('SENDER').value;
 	var data = "limit=" + limit + "&start=ajax&page=" + page + "&id=" + id ;
@@ -40,7 +41,7 @@ function ajax(sdata){
 			var totalData = data.listcount;			
 			if(totalData > 0){
 				var num = totalData - (data.page -1) * data.limit;
-				output = "<tbody>";
+				output = "";
 				$(data.maillist).each(
 					function(index, item){							
 						output += "<tr><td><p><label class='checkbox'>"
@@ -52,8 +53,7 @@ function ajax(sdata){
 							+item.mail_NUM+'&page=' + data.page+'">' + item.mail_SUBJECT +'</a></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
-				output += "</tbody>"
-				$('table').append(output)//table 완성
+				$('tbody').append(output)//table 완성
 				
 				$(".pagination").empty(); //페이징 처리 영역 내용 제거
 				output = "";
@@ -84,7 +84,7 @@ function ajax(sdata){
 			}//if(data.listcount) end
 			else if(totalData==0){
 				output = "<tr><th colspan='4'><h3>보낸 메일이 없습니다.</h3></th></tr>";
-				$('table').append(output)
+				$('tbody').append(output)
 			}			
 		}, //success end
 		error : function(){

@@ -13,6 +13,7 @@ $(function(){
 })
 
 function go(page){
+	$("tbody").empty(); 
 	var limit = 10;
 	var id = document.getElementById('SENDER').value;
 	var data = "limit=" + limit + "&start=ajax&page=" + page + "&id=" + id ;
@@ -20,7 +21,6 @@ function go(page){
 }
 
 function setPaging(href, digit){
-	output += '';
 	active="";
 	if(href==""){
 		active=" btn-hover-info active";
@@ -41,7 +41,7 @@ function ajax(sdata){
 			var totalData = data.listcount;			
 			if(totalData > 0){
 				var num = totalData - (data.page -1) * data.limit;
-				output = "<tbody>";
+				output = "";
 				$(data.maillist).each(
 					function(index, item){							
 						output += "<tr><td><p><label class='checkbox'>"
@@ -53,8 +53,7 @@ function ajax(sdata){
 								+item.mail_NUM+'&page=' + data.page+'">'+ item.mail_SUBJECT +'</a></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
-				output += "</tbody>"
-				$('table').append(output)//table 완성
+				$('tbody').append(output)//table 완성
 				
 				$(".pagination").empty(); //페이징 처리 영역 내용 제거
 				output = "";
@@ -62,7 +61,7 @@ function ajax(sdata){
 				digit = '<i class="ki ki-bold-arrow-back icon-xs"></i>'; //이전 버튼							
 				href="";	
 				if (data.page > 1) {
-					href = 'href=javascript:go(' + (data.page - 1) + ')';
+					href = "' href=javascript:go(" + (data.page - 1) + ')';
 				}
 				setPaging(href, digit);
 				
@@ -78,14 +77,14 @@ function ajax(sdata){
 				digit = '<i class="ki ki-bold-arrow-next icon-xs"></i>'; //다음 버튼
 				href="";
 				if (data.page < data.maxpage) {
-					href = 'href=javascript:go(' + (data.page + 1) + ')';
+					href = "' href=javascript:go(" + (data.page + 1) + ')';
 				} 
 				setPaging( href, digit);
 				$('.pagination').append(output)
 			}//if(data.listcount) end
 			else if(totalData==0){
 				output = "<tr><th colspan='4'><h3>받은 메일이 없습니다.</h3></th></tr>";
-				$('table').append(output)
+				$('tbody').append(output)
 			}			
 		}, //success end
 		error : function(){

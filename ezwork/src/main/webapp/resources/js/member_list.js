@@ -16,7 +16,7 @@
 			selectedValue = $(this).val();
 			$("input").val('');
  
-			message = ["전체목록","이름", "부서", "연락처" ]
+			message = ["이름을", "부서를", "연락처를" ]
 			$("input").attr("placeholder", message[selectedValue] + " 입력하세요");
 
 		})

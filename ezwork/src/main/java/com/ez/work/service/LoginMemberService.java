@@ -13,6 +13,7 @@ public interface LoginMemberService {
 	public Member member_info(String id);
 	public void delete(String id);
 	public int update(Member m);
+
 	public List<Member> getSearchList2(int index, String search_word, int page, int limit);
 	public int getSearchListCount(int index, String search_word);
 

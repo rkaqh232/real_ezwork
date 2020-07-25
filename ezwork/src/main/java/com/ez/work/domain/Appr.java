@@ -6,15 +6,22 @@ public class Appr {
 	
 	private int APPR_CODE;                          //결재 번호         
 	private String M_CODE;                          //사원 코드(id)
-	private String M_PART; 
+	private String M_PART;
+	private String APPR_NAME;	
 	private String APPR_TITLE;                      //제목            
 	private String APPR_CONTENT;                    //내용            
 	private String FIRST_CODE;                      //1-사원
 	private String M_PART_F; 
+	private int FIRST_VAL;
+	private String FIRST_COMMENT;
 	private String SECOND_CODE;                     //2-사원
 	private String M_PART_S; 
+	private int SECOND_VAL;
+	private String SECOND_COMMENT;	
 	private String THIRD_CODE;                      //3-사원
 	private String M_PART_T; 	
+	private int THIRD_VAL;
+	private String THIRD_COMMENT;
 	private String APPR_FILE;                       //변경된 파일명       
 	private String APPR_ORIGIN;                     //original 파일명  
 	private int APPR_STAT;                               //결재 상태         
@@ -23,6 +30,42 @@ public class Appr {
 	private int APPR_VAL;    
 	private MultipartFile uploadfile;    
 	
+	public int getFIRST_VAL() {
+		return FIRST_VAL;
+	}
+	public void setFIRST_VAL(int fIRST_VAL) {
+		FIRST_VAL = fIRST_VAL;
+	}
+	public String getFIRST_COMMENT() {
+		return FIRST_COMMENT;
+	}
+	public void setFIRST_COMMENT(String fIRST_COMMENT) {
+		FIRST_COMMENT = fIRST_COMMENT;
+	}
+	public int getSECOND_VAL() {
+		return SECOND_VAL;
+	}
+	public void setSECOND_VAL(int sECOND_VAL) {
+		SECOND_VAL = sECOND_VAL;
+	}
+	public String getSECOND_COMMENT() {
+		return SECOND_COMMENT;
+	}
+	public void setSECOND_COMMENT(String sECOND_COMMENT) {
+		SECOND_COMMENT = sECOND_COMMENT;
+	}
+	public int getTHIRD_VAL() {
+		return THIRD_VAL;
+	}
+	public void setTHIRD_VAL(int tHIRD_VAL) {
+		THIRD_VAL = tHIRD_VAL;
+	}
+	public String getTHIRD_COMMENT() {
+		return THIRD_COMMENT;
+	}
+	public void setTHIRD_COMMENT(String tHIRD_COMMENT) {
+		THIRD_COMMENT = tHIRD_COMMENT;
+	}
 	public MultipartFile getUploadfile() {
 		return uploadfile;
 	}
@@ -131,5 +174,11 @@ public class Appr {
 	}
 	public void setM_PART_S(String m_PART_S) {
 		M_PART_S = m_PART_S;
+	}
+	public String getAPPR_NAME() {
+		return APPR_NAME;
+	}
+	public void setAPPR_NAME(String aPPR_NAME) {
+		APPR_NAME = aPPR_NAME;
 	}
 }

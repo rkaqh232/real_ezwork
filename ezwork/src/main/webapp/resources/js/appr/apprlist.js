@@ -225,7 +225,7 @@ function ajax(sdata){
 						
 						output += '<tr><td><div><p class="font-size-lg">'+item.appr_CODE + '</p></div></td>'
 						output += '<td><div><p class="font-size-lg">'+'<span class="label label-lg font-weight-bold label-light-info label-inline">'
-						output += '인사팀</span>'+ item.m_CODE + '</p></div></td>'
+						output += item.m_PART+ '</span>'+ item.appr_NAME + '</p></div></td>'
 						
 						output += '<td><div><p class="font-size-lg">' + '<a href="ApprDetailAction.appr?num='
 								+item.appr_CODE+'&page=' + data.nowpage+'">'+ item.appr_TITLE +'</a></p></div></td>'

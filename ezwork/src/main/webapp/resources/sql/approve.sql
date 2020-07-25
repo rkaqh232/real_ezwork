@@ -1,32 +1,39 @@
 drop table approve;
 
 create table approve(
-	APPR_CODE		NUMBER			PRIMARY KEY,	--°áÀç ¹øÈ£
-	M_CODE			VARCHAR2(50),					--»ç¿ø ÄÚµå(id)
+	APPR_CODE		NUMBER			PRIMARY KEY,	--ê²°ì¬ ë²ˆí˜¸
+	M_CODE			VARCHAR2(50),					--ì‚¬ì› ì½”ë“œ(id)
+	APPR_NAME		VARCHAR2(50),
 	M_PART			VARCHAR2(30),
-	APPR_TITLE		VARCHAR2(200),					--Á¦¸ñ
-	APPR_CONTENT	VARCHAR2(1000),					--³»¿ë
-	FIRST_CODE		VARCHAR2(50),					--1-»ç¿ø
+	APPR_TITLE		VARCHAR2(200),					--ì œëª©
+	APPR_CONTENT	VARCHAR2(1000),					--ë‚´ìš©
+	FIRST_CODE		VARCHAR2(50),					--1-ì‚¬ì›
 	M_PART_F		VARCHAR2(30),
-	SECOND_CODE		VARCHAR2(50),					--2-»ç¿ø
+	FIRST_COMMENT	VARCHAR2(500),
+	FIRST_VAL		NUMBER,
+	SECOND_CODE		VARCHAR2(50),					--2-ì‚¬ì›
 	M_PART_S		VARCHAR2(30),
-	THIRD_CODE		VARCHAR2(50),					--3-»ç¿ø
+	SECOND_COMMENT	VARCHAR2(500),
+	SECOND_VAL		NUMBER,
+	THIRD_CODE		VARCHAR2(50),					--3-ì‚¬ì›
 	M_PART_T		VARCHAR2(30),
-	APPR_FILE		VARCHAR2(500),					--º¯°æµÈ ÆÄÀÏ¸í
-	APPR_ORIGIN		VARCHAR2(500),					--original ÆÄÀÏ¸í
-	APPR_STAT		NUMBER,							--°áÀç »óÅÂ
-	APPR_DATE		date,							--Á¦Ãâ ³¯Â¥
-	APPR_COMP_DATE	date,							--¿Ï·á ³¯Â¥
+	THIRD_COMMENT	VARCHAR2(500),
+	THIRD_VAL		NUMBER,
+	APPR_FILE		VARCHAR2(500),					--ë³€ê²½ëœ íŒŒì¼ëª…
+	APPR_ORIGIN		VARCHAR2(500),					--original íŒŒì¼ëª…
+	APPR_STAT		NUMBER,							--ê²°ì¬ ìƒíƒœ
+	APPR_DATE		date,							--ì œì¶œ ë‚ ì§œ
+	APPR_COMP_DATE	date,							--ì™„ë£Œ ë‚ ì§œ
 	APPR_VAL		NUMBER							--??
 
 );
 
 insert into approve(
-appr_code, m_code, appr_title, appr_content, first_code, second_code, third_code,
+appr_code, m_code,  m_part ,appr_name , appr_title, appr_content, first_code, second_code, third_code,
 appr_file, appr_origin, appr_stat, appr_date,appr_comp_date, appr_val
 )
 values(
-appr_seq.nextval , 'test', 'title','content','test1','test2','test3',
+appr_seq.nextval , 'test', 'team','name', 'title','content','test1','test2','test3',
 null,null,0,sysdate,null,0
 );
 

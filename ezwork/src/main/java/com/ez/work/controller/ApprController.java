@@ -137,20 +137,36 @@ public class ApprController {
 			uploadfile.transferTo(new File(apprsaveFolder + fileDBName));
 			appr.setAPPR_FILE(fileDBName);
 		}
-		if(appr.getFIRST_CODE()!=null) {
-			String[] str= appr.getFIRST_CODE().split(" ");
-			appr.setM_PART_F(str[0]);
-			appr.setFIRST_CODE(str[1]);		
-		}		
-		if(appr.getSECOND_CODE()!="") {
-			String[] str= appr.getSECOND_CODE().split(" ");
-			appr.setM_PART_S(str[0]);
-			appr.setSECOND_CODE(str[1]);
+		
+		System.out.println(appr.getFIRST_CODE());
+		System.out.println("ApprinsertAction : "+appr.getSECOND_CODE());
+		
+		String[] str1= appr.getFIRST_CODE().split(" ");
+		String[] str2= appr.getSECOND_CODE().split(" ");
+		String[] str3= appr.getTHIRD_CODE().split(" ");
+		
+		if(str1.length==2) {
+			appr.setM_PART_F(str1[0]);
+			appr.setFIRST_CODE(str1[1]);		
+		}else {
+			appr.setM_PART_F("");
+			appr.setFIRST_CODE("");	
 		}
-		if(appr.getTHIRD_CODE()!="") {
-			String[] str= appr.getTHIRD_CODE().split(" ");
-			appr.setM_PART_T(str[0]);
-			appr.setTHIRD_CODE(str[1]);
+		
+		if(str2.length==2) {
+			appr.setM_PART_S(str2[0]);
+			appr.setSECOND_CODE(str2[1]);
+		}else {
+			appr.setM_PART_S("");
+			appr.setSECOND_CODE("");
+		}
+		
+		if(str3.length==2) {
+			appr.setM_PART_T(str3[0]);
+			appr.setTHIRD_CODE(str3[1]);
+		}else {
+			appr.setM_PART_T("");
+			appr.setTHIRD_CODE("");
 		}
 		
 		System.out.println("insert appr : "+ appr);

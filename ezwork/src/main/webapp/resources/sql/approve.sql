@@ -1,22 +1,22 @@
 drop table approve;
 
 create table approve(
-	APPR_CODE		NUMBER			PRIMARY KEY,	--°áÀç ¹øÈ£
-	M_CODE			VARCHAR2(50),					--»ç¿ø ÄÚµå(id)
+	APPR_CODE		NUMBER			PRIMARY KEY,	--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+	M_CODE			VARCHAR2(50),					--ï¿½ï¿½ï¿½ ï¿½Úµï¿½(id)
 	M_PART			VARCHAR2(30),
-	APPR_TITLE		VARCHAR2(200),					--Á¦¸ñ
-	APPR_CONTENT	VARCHAR2(1000),					--³»¿ë
-	FIRST_CODE		VARCHAR2(50),					--1-»ç¿ø
+	APPR_TITLE		VARCHAR2(200),					--ï¿½ï¿½ï¿½ï¿½
+	APPR_CONTENT	VARCHAR2(1000),					--ï¿½ï¿½ï¿½ï¿½
+	FIRST_CODE		VARCHAR2(50),					--1-ï¿½ï¿½ï¿½
 	M_PART_F		VARCHAR2(30),
-	SECOND_CODE		VARCHAR2(50),					--2-»ç¿ø
+	SECOND_CODE		VARCHAR2(50),					--2-ï¿½ï¿½ï¿½
 	M_PART_S		VARCHAR2(30),
-	THIRD_CODE		VARCHAR2(50),					--3-»ç¿ø
+	THIRD_CODE		VARCHAR2(50),					--3-ï¿½ï¿½ï¿½
 	M_PART_T		VARCHAR2(30),
-	APPR_FILE		VARCHAR2(500),					--º¯°æµÈ ÆÄÀÏ¸í
-	APPR_ORIGIN		VARCHAR2(500),					--original ÆÄÀÏ¸í
-	APPR_STAT		NUMBER,							--°áÀç »óÅÂ
-	APPR_DATE		date,							--Á¦Ãâ ³¯Â¥
-	APPR_COMP_DATE	date,							--¿Ï·á ³¯Â¥
+	APPR_FILE		VARCHAR2(500),					--ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½
+	APPR_ORIGIN		VARCHAR2(500),					--original ï¿½ï¿½ï¿½Ï¸ï¿½
+	APPR_STAT		NUMBER,							--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	APPR_DATE		date,							--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
+	APPR_COMP_DATE	date,							--ï¿½Ï·ï¿½ ï¿½ï¿½Â¥
 	APPR_VAL		NUMBER							--??
 
 );

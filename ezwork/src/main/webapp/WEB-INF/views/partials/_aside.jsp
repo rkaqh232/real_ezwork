@@ -9,7 +9,7 @@
          <!--begin::Brand-->
          <div class="brand flex-column-auto" id="kt_brand">
             <!--begin::Logo-->
-            <br> <a href="home" class="brand-logo"> 
+            <br> <a href="main" class="brand-logo"> 
             <img
                alt="Logo" src="resources/assets/media/logos/ezlogo.png" width="80%" style="margin:20px 0 0 30px;" />
             </a>

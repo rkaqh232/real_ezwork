@@ -57,7 +57,7 @@
  	<!--  혜정 - 사원 조회 --> 
  	
    <select id="getSearchList2" parameterType="map" resultType="member"> 
- 	 select M_CODE, M_NAME, M_PART_C, M_LEVEL, M_BIRTH, M_EMAIL, M_MOBILE_TEL
+ 	 select M_CODE, M_NAME, M_PART_C, M_LEVEL, M_BIRTH ,M_JOIN_DATE, M_EMAIL, M_MOBILE_TEL
       from (select * from member where M_CODE != 'admin'
                   <if test="search_field!=null">
 			and

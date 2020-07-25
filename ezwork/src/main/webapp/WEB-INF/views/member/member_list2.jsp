@@ -111,9 +111,11 @@ a {
 
 
 												<div class="d-flex align-items-center">
-													<label class="mr-3 mb-0 d-none d-md-block"></label> <select
-														class="form-control" id="viewcount" name="search_field">
-														<option value="0" selected>이름</option>
+													<label class="mr-3 mb-0 d-none d-md-block"></label> 
+													
+													<select class="form-control" id="viewcount" name="search_field">
+														<option value="전체목록">전체 목록</option>
+														<option value="0">이름</option>
 														<option value="1">부서</option>
 														<option value="2">연락처</option>
 
@@ -153,9 +155,11 @@ a {
 							<th title="Field #3">부서</th>
 							<th title="Field #4">직급</th>
 							<th title="Field #5">생년월일</th>
+							<th>입사일</th>
 							<th title="Field #6">이메일</th>
-							<th title="Field #7">연락처</th>
-							<!--  <th title="Field #8">연락처</th>-->
+							<th title="Field #6">연락처</th>
+							<th>연락처</th>
+	
 	
 					
 						</tr>
@@ -166,9 +170,9 @@ a {
 							<td>${m.m_CODE}</td>
 							<td>${m.m_NAME}</td>
 							<td>${m.m_PART_C}</td>
-							<td>${m.m_LEVEL}</td>
-							<!--  <td>${m.m_JOIN_DATE}</td>-->
+							<td>level ${m.m_LEVEL}</td>
 							<td>${m.m_BIRTH}</td>
+							<td>${m.m_JOIN_DATE}</td>
 							<td>${m.m_EMAIL}</td>
 							<td>${m.m_MOBILE_TEL}</td>
 	

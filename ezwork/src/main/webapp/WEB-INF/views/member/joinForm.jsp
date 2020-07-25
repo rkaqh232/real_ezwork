@@ -331,7 +331,7 @@ font-size:12px !important;
 															<div class="col-lg-4 col-md-9 col-sm-12">
 																<div class="input-group date">
 																	<input type="text" class="form-control"
-																		value="17/08/1984" id="kt_datepicker_3" name="M_BIRTH"/>
+																		value="1984/07/05" id="kt_datepicker_3" name="M_BIRTH"/>
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>

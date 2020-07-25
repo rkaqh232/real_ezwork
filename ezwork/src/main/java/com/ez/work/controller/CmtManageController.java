@@ -37,7 +37,7 @@ public class CmtManageController {
 			@RequestParam(value = "check", defaultValue = "0") int check) {
 		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = cmtManageService.getInfo(id); // 로그인 된 ID정보 가져옴
-		CmtManage memberinfo2 = cmtManageService.getDetail(id);
+		CmtManage memberinfo2 = cmtManageService.getDetail(id); //당일 근태 정보
 
 		int limit = 10;
 		int listcount = cmtManageService.getListCount(id);

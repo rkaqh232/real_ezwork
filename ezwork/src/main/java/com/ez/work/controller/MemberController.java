@@ -84,7 +84,7 @@ public class MemberController {
 				savecookie.setMaxAge(0); // 저장 안된 경우입니다.
 			}
 			response.addCookie(savecookie); // 모두 값을 담습니다.
-			return "redirect:home"; // 그리고 리턴합니다. -> BoardController로 이동~
+			return "redirect:main"; // 그리고 리턴합니다. -> BoardController로 이동~
 
 		} else {
 			String message = "비밀번호가 일치하지 않습니다.";

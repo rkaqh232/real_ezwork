@@ -148,10 +148,10 @@
 				<div class="d-flex align-items-baseline mr-5">
 					<!--begin::Page Title-->
 					<h5 class="text-dark font-weight-bold my-2 mr-5">
-						<i class="flaticon-event-calendar-symbol text-info"></i> &nbsp;캘린더
+						<i class="flaticon-event-calendar-symbol text-info"></i> &nbsp;스케줄러
 					</h5>
 					<!--end::Page Title-->
-					<small style="color: gray;">일정관리 ㆍ 월간보기</small>
+					<small style="color: gray;">일정관리</small>
 				</div>
 				<!--end::Page Heading-->
 			</div>

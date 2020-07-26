@@ -83,7 +83,7 @@ function ajax(sdata){
 			}//if(data.listcount) end
 			else if(totalData==0){
 				output = "<tr><th colspan='4'><h3>받은 메일이 없습니다.</h3></th></tr>";
-				$('tbody').append(output)
+				$('#mailtable').append(output)
 			}			
 		}, //success end
 		error : function(){

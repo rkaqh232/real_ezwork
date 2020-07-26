@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -35,6 +36,10 @@ import com.ez.work.service.LoginMemberService;
 @Controller
 public class MemberController {
 
+
+	@Value("${membersavefoldername}")
+	private String membersaveFolder;	
+	
 	@Autowired
 	private LoginMemberService loginmemberservice; // MemberService로 이동해서 주입
 
@@ -116,10 +121,12 @@ public class MemberController {
 	@RequestMapping(value = "/joinProcess.net", method = RequestMethod.POST)
 	public void joinProcess(Member member, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		  System.out.println(member.getM_PASS());
-		  String saveFolder = 
-		             request.getSession().getServletContext().getRealPath("resources")
-		             + "/upload/";
-		  System.out.println(saveFolder);
+		/*
+		 * String saveFolder =
+		 * request.getSession().getServletContext().getRealPath("resources") +
+		 * "/upload/";
+		 */
+		  //System.out.println(saveFolder);
 		  System.out.println(member.getM_BIRTH());
 		  MultipartFile uploadfile = member.getProfile_avatar(); //자료형이  MultipartFile로 가져온겁니다.
 	       
@@ -137,10 +144,7 @@ public class MemberController {
 	       int month = c.get(Calendar.MONTH) +  1; // 오늘 월 구합니다.
 	       int date = c.get(Calendar.DATE); // 오늘 일 구합니다.
 	       
-	        saveFolder = 
-	             request.getSession().getServletContext().getRealPath("resources")
-	             + "/upload/";
-	       String homedir = saveFolder + year + "-" + month + "-" + date;
+	       String homedir = membersaveFolder + year + "-" + month + "-" + date;
 	       System.out.println(homedir);
 	       File path1 = new File(homedir);
 	       if (!(path1.exists())) {
@@ -175,7 +179,7 @@ public class MemberController {
 	       
 	       // tranferTo 업로드한 파일을 매개변수 경로에저장하는것! 매우 중요합니다.
 	       //transferTo(File path) : 업로드한 파일을 매개변수의 경로에 저장합니다.
-	       uploadfile.transferTo(new File(saveFolder + fileDBName));
+	       uploadfile.transferTo(new File(membersaveFolder + fileDBName));
 	       
 	       
 	       // bbs.연월일. 난수발생. fileExtension(확장자 구한것)= 생성된 새로운 파일명

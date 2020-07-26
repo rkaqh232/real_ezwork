@@ -19,9 +19,7 @@
    <annotation-driven />
    
    <context:property-placeholder location="classpath:pro/mailsavefolder.properties"/>
-   
-   
-   
+      
    <!-- Enables the Spring MVC @Controller programming model -->
 	
 	<!-- 스케쥴 기능  -->

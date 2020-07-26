@@ -92,7 +92,7 @@
 						<div class="col-lg-3"></div>
 						<div class="col-lg-9">
 							<button type="submit" class="btn btn-info">등록</button>
-							<button type="reset" class="btn btn-outline-secondary">취소</button>
+							<a href="javascript:window.history.back();" class="btn btn-outline-secondary">취소</button>
 						</div>
 					</div>
 				</div>

@@ -190,6 +190,8 @@ public class ApprController {
 		System.out.println("apprcontroller : "+ m_code);
 		String part = apprservice.getPart(m_code);
 		String name = apprservice.getName(m_code);
+		
+		if(appr != null) {
 		int curCount = appr.getAPPR_CUR_COUNT(); //진행된 결재
 		int count = 0;	//결재 순서
 		int chkCode=-1;
@@ -209,7 +211,7 @@ public class ApprController {
 			chkCode=1; //결재할 순서 아님
 		
 		
-		if(appr != null) {
+		
 			System.out.println("appr detail view");
 			mv.addObject("page", "appr/apprdetail.jsp");
 			mv.addObject("apprdata", appr);

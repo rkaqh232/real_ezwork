@@ -92,7 +92,7 @@ function hideRe(){
 		<div class="cursor-pointer toggle-on" data-inbox="message">
 			<div class="d-flex align-items-center card-spacer-x py-6">
 				<span class="symbol symbol-50 mr-4">
-					<span class="symbol-label" style="background-image: url('assets/media/users/100_13.jpg')"></span>
+					<span class="symbol-label" style="background-image: url('resources/memberupload${M_FILE}')"></span>
 				</span>
 				<div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
 					<div class="d-flex">
@@ -146,6 +146,7 @@ function hideRe(){
 						<!--begin::To-->
 						<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-50px">
 						<input type="text" name="MAIL_SENDER" id="SENDER" value="${M_CODE}" style="display:none"/>
+						<input type="text" name="M_FILE" id="MFILE" value="${M_FILE}" style="display:none"/>
 							<div class="text-dark-50 w-25px">To:</div>
 							<div class="d-flex align-items-center flex-grow-1">
 								<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" value="${maildata.MAIL_SENDER}" />

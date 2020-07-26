@@ -394,47 +394,12 @@
                            </span>
                            </li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
-                              class="menu-link menu-toggle"> <i
+                              data-menu-toggle="hover"><a
+                                       href="calendar.sche" class="menu-link"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">일정조회</span> <i class="menu-arrow"></i>
+                              </i> <span class="menu-text">스케줄러</span> <i class="menu-arrow"></i>
                            </a>
-                              <div class="menu-submenu">
-                                 <i class="menu-arrow"></i>
-                                 <ul class="menu-subnav">
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="calendar.sche" class="menu-link">
-                                          <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">월간보기</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="weekly.sch"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">주간보기</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="daily.sch"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">일간보기</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="list.sch"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">목록보기</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="view.sch"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">일정상세조회</span>
-                                    </a></li>
-
-                                 </ul>
-                              </div></li>
-
+                            
                         </ul>
                      </div></li>
 

@@ -28,4 +28,3 @@ AL_UNUSED number -- 남은연차
 );
 
 select * from list_al;
-

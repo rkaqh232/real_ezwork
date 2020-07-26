@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Member;
 import com.ez.work.service.AnnualLeaveService;
+import com.ez.work.service.CmtManageService;
 import com.ez.work.service.LoginMemberService;
 
 /* 혜정  */
@@ -42,7 +43,10 @@ public class MemberController {
 	
 	@Autowired
 	private LoginMemberService loginmemberservice; // MemberService로 이동해서 주입
-
+	
+	@Autowired
+	private CmtManageService cmtManageService;
+	
 	// 로그인화면으로 이동
 	@RequestMapping(value = "/login.net")
 	public ModelAndView login(ModelAndView mv, @CookieValue(value = "saveid", required = false) Cookie readCookie)
@@ -79,6 +83,8 @@ public class MemberController {
 
 			// 로그인 성공
 			session.setAttribute("M_CODE", id);
+			Member memberinfo = cmtManageService.getInfo(id);
+			session.setAttribute("M_FILE", memberinfo.getM_FILE());
 			Cookie savecookie = new Cookie("saveid", id);
 			if (!remember.equals("")) {
 				savecookie.setMaxAge(60 * 60);

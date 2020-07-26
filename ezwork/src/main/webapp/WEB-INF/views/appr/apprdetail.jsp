@@ -164,11 +164,15 @@ p{margin-top:0rem;
 							<div class="input-group-prepend statdiv">
 								<span class="input-group-text stat">${val_str}</span>
 							</div>														
-							<span class="form-control is-invalid inputname">${apprdata.m_PART_F} ${apprdata.FIRST_CODE}</span>
-							<div class="input-group-append">
-								<input type="text" class="form-control input-group-text commentinput" value="abcd">
-							</div>			
+							<span class="form-control is-invalid inputname">${apprdata.m_PART_F} ${apprdata.FIRST_CODE}</span>									
 						</div>
+						
+						<label class="col-lg-3 col-form-label text-lg-right">의견</label>
+						<div class="col-lg-7 input-group">																
+							<input type="text" class="form-control" value="이건 좀 아닌것 같은데">									
+						</div>
+						
+								
 					</div>
 					</c:if>
 					

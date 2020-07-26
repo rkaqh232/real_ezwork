@@ -84,6 +84,7 @@ public class MailController {
 	
 	@PostMapping("/MailAddaction.mail")
 	public void mailadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		System.out.println("file : "+mail.getM_FILE());
 		MultipartFile uploadfile=mail.getUploadfile();
 		if(!uploadfile.isEmpty()) {
 			String fileName = uploadfile.getOriginalFilename();

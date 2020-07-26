@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Mail {
 	private int MAIL_NUM, MAIL_RCHECK;
-	private String MAIL_SENDER, MAIL_RECIPIENT;
+	private String MAIL_SENDER, MAIL_RECIPIENT, M_FILE;
 	private String MAIL_SUBJECT, MAIL_CONTENT, MAIL_FILE, MAIL_DATE, MAIL_TYPE;
 	
 	private MultipartFile uploadfile;
@@ -76,5 +76,11 @@ public class Mail {
 	}
 	public void setMAIL_ORIGINAL(String mAIL_ORIGINAL) {
 		MAIL_ORIGINAL = mAIL_ORIGINAL;
-	}		
+	}
+	public String getM_FILE() {
+		return M_FILE;
+	}
+	public void setM_FILE(String m_FILE) {
+		M_FILE = m_FILE;
+	}	
 }

@@ -41,11 +41,23 @@ public class ScheduleController {
 		String id = (String) session.getAttribute("M_CODE");
 		Member memberinfo = scheduleService.getInfo(id);
 		List<Schedule> scheduleList = scheduleService.showSchedule(id);
+		String name = apprservice.getName(id);
 		
-		if(scheduleList.size() !=0){
-			System.out.println(scheduleList.get(0).getSCH_STARTDATE());
+		if(scheduleList.size() == 0){ //default값 입력
 		JsonArray schearray = new JsonArray();
+			JsonObject jsonObject = new JsonObject();
+			jsonObject.addProperty("title", "default");
+			jsonObject.addProperty("start", "2010-07-28T18:10");
+			jsonObject.addProperty("end", "2010-07-29T18:10");
+			jsonObject.addProperty("backgroundColor", "#000000");
+			jsonObject.addProperty("id", "0");
+			jsonObject.addProperty("description", "0");
+			schearray.add(jsonObject);
+			mv.addObject("schearray", schearray);
+		}
 		
+		else if(scheduleList.size() !=0){
+		JsonArray schearray = new JsonArray();
 		for(int i=0; i<scheduleList.size(); i++) {
 			JsonObject jsonObject = new JsonObject();
 			jsonObject.addProperty("title", scheduleList.get(i).getSCH_TITLE());
@@ -59,6 +71,7 @@ public class ScheduleController {
 		System.out.println(schearray);
 		mv.addObject("schearray", schearray);
 		}
+		mv.addObject("name", name);
 		mv.addObject("Schedulelist", scheduleList);
 		mv.addObject("page","schedule/calendar.jsp");
 		mv.setViewName("home");

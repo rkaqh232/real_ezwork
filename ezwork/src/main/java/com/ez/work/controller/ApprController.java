@@ -202,6 +202,7 @@ public class ApprController {
 			count=2;
 		}
 		
+		//진행된 결재와 현재 결재 순서가 같으면
 		if(curCount==count) 
 			chkCode=0; //결재할 순서
 		else

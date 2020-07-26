@@ -63,7 +63,7 @@ p{margin-bottom:0}
 									<div class="symbol symbol-60 symbol-circle symbol-xl-90"
 										style="margin-top: 57px;">
 										<div class="symbol-label"
-											style="background-image: url('resources/assets/media/users/300_21.jpg')"></div>
+											style="background-image: url('resources/memberupload/${memberinfo.m_FILE}')"></div>
 									</div>
 
 									<div

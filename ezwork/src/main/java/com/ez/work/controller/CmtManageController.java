@@ -108,6 +108,35 @@ public class CmtManageController {
 			out.close();
 		}
 	}
+	
+	// 출근등록
+		@PostMapping(value = "/OnTimeMain.cm")
+		public void OnTimeMain_ok(ModelAndView mv, CmtManage CmtManage, Member member, HttpServletResponse response)
+				throws Exception {
+			System.out.println(member.getM_CODE());
+			CmtManage result = cmtManageService.getDetail(member.getM_CODE());
+
+			if (result == null) {
+				cmtManageService.insertOntime(CmtManage); // 저장 메서드 호출
+				System.out.println("출근 등록 완료");
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('출근 처리 되었습니다.');");
+				out.println("location.href=" + "'main?check=1';");
+				out.println("</script>");
+				out.close();
+			} else {
+				System.out.println("출근 등록 실패");
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('금일 근태 등록은 완료되었습니다.');");
+				out.println("location.href=" + "'main?check=0';");
+				out.println("</script>");
+				out.close();
+			}
+		}
 
 	// 퇴근등록
 	@PostMapping("/OffTime.cm")

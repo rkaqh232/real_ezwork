@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Member;
 import com.ez.work.domain.Schedule;
+import com.ez.work.service.ApprService;
 import com.ez.work.service.ScheduleService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -29,6 +30,9 @@ public class ScheduleController {
 	
 	@Autowired
 	private ScheduleService scheduleService;
+	
+	@Autowired
+	private ApprService	apprservice;
 
 	@GetMapping(value="/calendar.sche")
 	public ModelAndView monthlySchedule(HttpServletRequest request, ModelAndView mv, Model m, HttpSession session) throws Exception {
@@ -126,6 +130,7 @@ public class ScheduleController {
 		public ModelAndView searchSchedule(@RequestParam (value = "m_code") String m_code, HttpServletRequest request, ModelAndView mv, Model m, 
 				HttpSession session, HttpServletResponse response) throws Exception {
 			List<Schedule> searchList = scheduleService.searchSchedule(m_code);
+			String name = apprservice.getName(m_code);
 			
 			if(searchList.size() !=0){
 				System.out.println(searchList.get(0).getSCH_STARTDATE());
@@ -151,10 +156,12 @@ public class ScheduleController {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('검색 결과가 없습니다.');");
-				out.println("location.href="+"'calendar.sche';");
+				//out.println("location.href="+"'calendar.sche';");
+				out.println("history.back();");
 				out.println("</script>");
 				out.close();
 			}
+			mv.addObject("name",name);
 			mv.addObject("searchList", searchList);
 			mv.addObject("page","schedule/calendar.jsp");
 			mv.setViewName("home");

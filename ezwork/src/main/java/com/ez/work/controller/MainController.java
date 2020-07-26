@@ -91,6 +91,8 @@ public class MainController {
 				HttpServletResponse response, Model m, HttpSession session) throws Exception {
 			String id = (String) session.getAttribute("M_CODE");
 			// 퇴근 메소드 호출
+			
+			System.out.println("메인에서 퇴근등록 : " + CmtManage.getCM_MCODE()+" / "+CmtManage.getCM_OFFTIME());
 			int result = cmtManageService.insertOfftime(CmtManage, id);
 
 			// 퇴근 등록 실패한 경우

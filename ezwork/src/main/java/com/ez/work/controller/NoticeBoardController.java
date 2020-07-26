@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,9 @@ import com.ez.work.service.NoticeBoardService;
 public class NoticeBoardController {
 	@Autowired
 	private NoticeBoardService noticeboardService;
+	
+	@Value("${savefoldername}")
+	private String saveFolder;
 
 	// 글 목록 보기
 	@RequestMapping(value = "/notice.bo")
@@ -56,7 +60,7 @@ public class NoticeBoardController {
 		List<NoticeBoard> boardlist = noticeboardService.getBoardList(page, limit); // 리스트를 받아옴
 
 		m.addAttribute("page", "noticeboard/noticeboard_list.jsp");
-		System.out.println("값잘넘어옴" + boardlist.get(0).getNO_SORT());
+		//System.out.println("값잘넘어옴" + boardlist.get(0).getNO_SORT());
 		mv.setViewName("home");
 		mv.addObject("page1", page);
 		mv.addObject("maxpage", maxpage);
@@ -112,8 +116,58 @@ public class NoticeBoardController {
 
 	// 글저장
 	@PostMapping(value = "/Board_write_ok.no")
-	public ModelAndView board_write_ok(NoticeBoard board) {
+	public ModelAndView board_write_ok(NoticeBoard board) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:notice.bo");
+		 MultipartFile uploadfile = board.getUploadfile();
+
+	      if (!uploadfile.isEmpty()) {
+	         String fileName = uploadfile.getOriginalFilename();// 원래 파일명
+	         board.setNO_ORIGINAL(fileName); // 원래 파일명 저장
+
+	         // 새로운 폴더 이름 : 오늘 - 년 - 월 - 일
+	         Calendar c = Calendar.getInstance();
+	         int year = c.get(Calendar.YEAR); // 오늘 년도 구합니다.
+	         int month = c.get(Calendar.MONTH) + 1; // 오늘 월 구합니다.
+	         int date = c.get(Calendar.DATE); // 오늘 일 구합니다.
+	         //String saveFolder = request.getSession().getServletContext().getRealPath("resources") + "/upload/";
+	         String homedir = saveFolder + year + "-" + month + "-" + date;
+	         System.out.println(homedir);
+	         File path1 = new File(homedir);
+	         if (!(path1.exists())) {
+	            path1.mkdir(); // 새로운 폴더를 생성
+	         }
+
+	         // 난수를 구합니다.
+	         Random r = new Random();
+	         int random = r.nextInt(100000000);
+
+	         /* 확장자 구하기 시작 */
+	         int index = fileName.lastIndexOf(".");
+	         // 문자열에서 특정 문자열의 위치 값 (index)를 반환한다.
+	         // indexOf가 처음 발견되는 문자열에 대한 index를 반환하는 반면,
+	         // lastIndextOf는 마지막ㄷ으로 발견되는 문자열의 index를 반환합니다.
+	         // (파일명에 점이 여러개 있을 경우 맨 마지막에 발견되는 문자열의 위치를 리턴합니다.)
+	         System.out.println("index = " + index);
+
+	         String fileExtension = fileName.substring(index + 1);
+	         System.out.println("fileExtension = " + fileExtension);
+	         /* 확장자 구하기 끝 */
+
+	         // 새로운 파일명
+	         String refileName = "bbs" + year + month + date + random + "." + fileExtension;
+	         System.out.println("refileName = " + refileName);
+
+	         // 오라클 디비에 저장될 파일 명
+	         String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
+	         System.out.println("fileDBName = " + fileDBName);
+
+	         // transferTo(File path) : 업로드한 파일을 매개변수의 경로에 저장합니다.
+	         uploadfile.transferTo(new File(saveFolder + fileDBName));
+
+	         // 바뀐 파일명 저장
+	         board.setNO_FILE(fileDBName);
+	      }
+		
 		noticeboardService.insertBoard(board); // 저장 메서드 호출
 		return mv;
 	}
@@ -321,7 +375,7 @@ public class NoticeBoardController {
 	public void BoardFileDown(String filename, HttpServletRequest request, String original,
 			HttpServletResponse response) throws Exception {
 
-		String savePath = "resources/boardupload";
+		String savePath = "resources/upload";
 
 		// 서블릿의 실행 환경 정보를 담고 있는 객체를 리턴합니다.
 		ServletContext context = request.getSession().getServletContext();

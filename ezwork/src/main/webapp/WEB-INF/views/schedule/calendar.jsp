@@ -174,7 +174,7 @@
 						<i class="flaticon-calendar-3 text-info"></i>
 						
 						<h3 class="card-label">&nbsp;&nbsp;
-						캘린더</h3>
+						${name}님의 캘린더</h3>
 					</div>
 
 					<div class="d-flex flex-column-fluid">

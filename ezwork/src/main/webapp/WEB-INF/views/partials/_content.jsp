@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <style>
 #memo {
 	-ms-overflow-style: none; /* IE and Edge */
@@ -77,14 +77,17 @@
 										class="label label-light-info label-inline font-weight-bold label-lg">${memberinfo.m_PART_C }</div>
 								</div>
 
+								<input type="hidden" name="CM_MCODE" value="${memberinfo.m_CODE }"> 
+								<input type="hidden" name="CM_TEAMNAME" value="${memberinfo.m_PART_C }">
+								 <input type="hidden" name="CM_NAME" value="${memberinfo.m_NAME }">
 								<input type="hidden" name="M_CODE" value="${memberinfo.m_CODE }">
-								<span class="mr-4">
+								<span class="mr-4"> </span>
 
-									<button type="submit" style="width: 160px"
+									<button type="submit" style="width: 150px"
 										class="btn btn-info btn-shadow-hover font-weight-bolder py-3 px-6 mb-2 "
-										id="start" formaction="OnTime.main">출근 등록</button>
+										id="start" formaction="OnTimeMain.cm">출근 등록</button>
 
-									<button type="submit" style="width: 160px"
+									<button type="submit" style="width: 150px"
 										class="btn btn-outline-info btn-shadow-hover font-weight-bolder py-3 px-6 mb-2 "
 										id="end" formaction="OffTime.main" disabled="">퇴근 등록</button>
 
@@ -503,17 +506,21 @@
 		<div class="card-body pt-8">
 			<div class="form-group">
 				<label>입사일</label> <input type="text" disabled="disabled"
-					class="form-control form-control-lg" value="${fn:substring(allist.AL_M_JOIN_DATE,0,10) }" /> <br>
+					class="form-control form-control-lg"
+					value="${fn:substring(allist.AL_M_JOIN_DATE,0,10) }" /> <br>
 				<label>연차휴가</label> <input type="text" disabled="disabled"
-					class="form-control form-control-lg" value="${allist.AL_TOTALDAY } 일 남았습니다" /> <br>
-				<label>사용휴가</label> <input type="text" disabled="disabled"
-					class="form-control form-control-lg" value="${allist.AL_USED/8} 일 사용하셨습니다" /> <br>
-				<label>잔여휴가</label> <input type="text" disabled="disabled"
-					class="form-control form-control-lg" value="${allist.AL_TOTALDAY - allist.AL_USED/8} 일 남았습니다" />
+					class="form-control form-control-lg"
+					value="${allist.AL_TOTALDAY } 일 남았습니다" /> <br> <label>사용휴가</label>
+				<input type="text" disabled="disabled"
+					class="form-control form-control-lg"
+					value="${allist.AL_USED/8} 일 사용하셨습니다" /> <br> <label>잔여휴가</label>
+				<input type="text" disabled="disabled"
+					class="form-control form-control-lg"
+					value="${allist.AL_TOTALDAY - allist.AL_USED/8} 일 남았습니다" />
 
 				<div>
-					<a href="Personallist.al" type="button" class="btn btn-info btn-lg" style="margin-top: 34px;
-    margin-left: 121px;">상세보기</a>
+					<a href="Personallist.al" type="button" class="btn btn-info btn-lg"
+						style="margin-top: 34px; margin-left: 121px;">상세보기</a>
 				</div>
 
 

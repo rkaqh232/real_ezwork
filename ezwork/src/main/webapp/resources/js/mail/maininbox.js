@@ -44,9 +44,9 @@ function ajax(sdata){
 				output = "";
 				$(data.maillist).each(
 					function(index, item){							
-						output += '<tr><td class="pl-0 py-4"><div class="symbol symbol-50 symbol-light mr-1">'
-						output += '<span class="symbol-label"><img src="" class="h-50 align-self-center" alt="photo">'
-						output += '</span></div></td>'
+						output += '<tr><td class="pl-0 py-4"><div class="symbol symbol-50 mr-4">'
+						output += '<div class="symbol-label" style="background-image: url('+"'resources/memberupload"+item.m_FILE+"')"+'"'+ "class='h-50 align-self-center' alt='photo'>"
+						output += '</div></div></td>'
 						output += '<td class="pl-0" style="width:150px"><p class="text-muted font-size-sm">보낸사람</p><p class="font-size-h6 font-weight-boldest">'
 						output += item.mail_SENDER + '</p></td>'
 						output += '<td style="width:500px"><div class="btn-text-primary font-weight-bold mr-2"' 

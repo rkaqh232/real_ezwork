@@ -29,6 +29,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Mail;
+import com.ez.work.domain.Member;
+import com.ez.work.service.CmtManageService;
 import com.ez.work.service.MailService;
 
 /*수진*/
@@ -37,6 +39,9 @@ import com.ez.work.service.MailService;
 public class MailController {
 	@Autowired
 	private MailService mailService;
+	
+	@Autowired
+	private CmtManageService cmtManageService;
 	
 	@Value("${mailsavefoldername}")
 	private String mailsaveFolder;	

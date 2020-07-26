@@ -29,7 +29,22 @@ public class Appr {
 	private String APPR_COMP_DATE;                  //완료 날짜         
 	private int APPR_VAL;    
 	private MultipartFile uploadfile;    
+	private int APPR_COUNT;
+	private int APPR_CUR_COUNT;
 	
+	
+	public int getAPPR_COUNT() {
+		return APPR_COUNT;
+	}
+	public void setAPPR_COUNT(int aPPR_COUNT) {
+		APPR_COUNT = aPPR_COUNT;
+	}
+	public int getAPPR_CUR_COUNT() {
+		return APPR_CUR_COUNT;
+	}
+	public void setAPPR_CUR_COUNT(int aPPR_CUR_COUNT) {
+		APPR_CUR_COUNT = aPPR_CUR_COUNT;
+	}
 	public int getFIRST_VAL() {
 		return FIRST_VAL;
 	}

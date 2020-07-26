@@ -56,7 +56,7 @@
 							<!--begin: Pic-->
 							<div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
 								<div class="symbol symbol-50 symbol-lg-120">
-									<img src="resources/assets/media/users/300_1.jpg" alt="image">
+									<img src="resources/memberupload/${memberinfo.m_FILE}"  alt="image">
 								</div>
 								<div
 									class="symbol symbol-50 symbol-lg-120 symbol-primary d-none">

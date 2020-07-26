@@ -11,6 +11,7 @@ public interface LoginMemberService {
 	public int insert(Member m);
 	public int isId(String id);
 	public Member member_info(String id);
+	public Member admin_info(String id);
 	public void delete(String id);
 	public int update(Member m);
 

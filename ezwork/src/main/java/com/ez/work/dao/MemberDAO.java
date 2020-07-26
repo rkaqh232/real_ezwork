@@ -25,7 +25,8 @@ public class MemberDAO {
 
 	public int insert(Member m) {
 		int result1 = sqlSession.insert("Members.insert", m);
-		int result2 = sqlSession.insert("ALlist.insert",m);
+		//int result2 = sqlSession.insert("ALlist.insert",m);
+		int result2 = sqlSession.insert("ALlist.insertRe",m);
 		int result3 = sqlSession.insert("ALlist.update",m);
 		sqlSession.update("ALlist.updateUnder");
 		int result4 = sqlSession.update("ALlist.updateOver", m);
@@ -44,6 +45,10 @@ public class MemberDAO {
 	
 	public Member member_info(String id) {
 		return sqlSession.selectOne("Members.idcheck",id);
+	}
+	
+	public Member admin_info(String id) {
+		return sqlSession.selectOne("Members.admin_idcheck",id);
 	}
 
 

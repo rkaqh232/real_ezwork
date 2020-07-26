@@ -1,6 +1,9 @@
 package com.ez.work.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,14 +14,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.ALList;
 import com.ez.work.domain.CmtManage;
 import com.ez.work.domain.Member;
+import com.ez.work.domain.NoticeBoard;
 import com.ez.work.service.AnnualLeaveService;
 import com.ez.work.service.CmtManageService;
+import com.ez.work.service.NoticeBoardService;
 
 @Controller
 public class MainController {
@@ -29,10 +36,14 @@ public class MainController {
 	@Autowired
 	private AnnualLeaveService annualLeaveService;
 	
+	@Autowired
+	private NoticeBoardService noticeboardService;
+	
 	// 메인화면
 		@GetMapping(value = "/main")
 		public ModelAndView DailyCommute(HttpServletRequest request, ModelAndView mv, HttpSession session,
 				@RequestParam(value = "check", defaultValue = "0") int check) {
+		
 			String id = (String) session.getAttribute("M_CODE");
 			Member memberinfo = cmtManageService.getInfo(id); // 로그인 된 ID정보 가져옴
 			CmtManage memberinfo2 = cmtManageService.getDetail(id); //당일 근태 정보
@@ -110,6 +121,58 @@ public class MainController {
 				out.close();
 			}
 
+		}
+		
+		
+		// 글 목록 보기
+		@RequestMapping(value = "/noticelist.bo")
+		public ModelAndView boardList(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+				ModelAndView mv, Model m) {
+			int limit = 10; 
+
+
+			List<NoticeBoard> boardlist = noticeboardService.getBoardList(page, limit); // 리스트를 받아옴
+
+			m.addAttribute("page", "noticeboard/noticeboard_list.jsp");
+			mv.addObject("page1", page);
+			mv.addObject("boardlist", boardlist);
+			mv.addObject("limit", limit);
+			return mv;
+		}
+		
+		@ResponseBody
+		@RequestMapping(value = "/NoticeBoardListAjax2.no")
+		public Map<String, Object> NoticeBoardListAjax(
+				@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+				@RequestParam(value = "limit", defaultValue = "10", required = false) int limit, Model m) {
+
+			int listcount = noticeboardService.getListCount(); // 총 리스트 수를 받아옴
+
+			// 총 페이지수
+			int maxpage = (listcount + limit - 1) / limit;
+
+			// 시작 페이지수
+			int startpage = ((page - 1) / 10) * 10 + 1;
+
+			// 마지막 페이지수
+			int endpage = startpage + 10 - 1;
+
+			if (endpage > maxpage)
+				endpage = maxpage;
+
+			List<NoticeBoard> boardlist = noticeboardService.getBoardList(page, limit); // 리스트를 받아옴
+
+			Map<String, Object> map = new HashMap<String, Object>();
+
+			map.put("page", page);
+			map.put("maxpage", maxpage);
+			map.put("startpage", startpage);
+			map.put("endpage", endpage);
+			map.put("listcount", listcount);
+			map.put("boardlist", boardlist);
+			map.put("limit", limit);
+
+			return map;
 		}
 
 }

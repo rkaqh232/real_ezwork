@@ -4,13 +4,7 @@
 		if (selectedValue != '-1')
 			$("#viewcount").val(selectedValue);
 		
-		//검색어 공백 유효성 검사합니다.1
-		$("button").click(function() {
-			if ($("input").val() == '') {
-				alert("검색어를 입력하세요");
-				return false;
-			}
-		});
+		
 		
 		$("#viewcount").change(function() {
 			selectedValue = $(this).val();
@@ -30,4 +24,6 @@
 
 			}
 		})
-	})
+	});
+	
+	

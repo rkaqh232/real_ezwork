@@ -99,4 +99,10 @@ public class LoginMemberServiceImp implements LoginMemberService{
 		
 	}
 
+
+	@Override
+	public Member admin_info(String id) {
+		return dao.admin_info(id);
+	}
+
 }

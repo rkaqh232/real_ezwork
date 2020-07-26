@@ -115,7 +115,7 @@ var KTDatatableColumnRenderingDemo = function() {
 					field: 'ShipDate',
 					title: 'Ship Date',
 					type: 'date',
-					format: 'MM/DD/YYYY',
+					format: 'YYYY/MM/DD',
 				}, {
 					field: 'CompanyName',
 					title: 'Company Name',

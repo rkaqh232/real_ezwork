@@ -1,6 +1,5 @@
 package com.ez.work.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +23,20 @@ public class MemberDAO {
 	private SqlSessionTemplate sqlSession;
 
 	public int insert(Member m) {
-		int result1 = sqlSession.insert("Members.insert", m);
-		int result2 = sqlSession.insert("ALlist.insert",m);
-		int result3 = sqlSession.insert("ALlist.update",m);
-		sqlSession.update("ALlist.updateUnder");
-		int result4 = sqlSession.update("ALlist.updateOver", m);
-		sqlSession.update("ALlist.calHour");		
-		if (result1 > 0 && result2 >0 && result3 >0 && result4 >0)
+		int result1 = sqlSession.insert("Members.insert", m); //회원가입 테이블에 정보 입력
+		String code = sqlSession.selectOne("ALlist.getcode");
+		code = "EMP"+code;
+		m.setM_CODE(code);
+		
+		int result2=-1;
+		
+		if(result1 != 0)
+			result2 = sqlSession.insert("ALlist.insert",m);
+		 int result3 = sqlSession.insert("ALlist.update",m); //연차 테이블 근속년수 계산 입력
+		 sqlSession.update("ALlist.updateUnder"); //연차 일수 일자로 계산 
+		 int result4 = sqlSession.update("ALlist.updateOver", m);
+		 sqlSession.update("ALlist.calHour"); // 연차 일수를 시간으로 계산
+		if (result1 > 0 && result2 >0  && result3 > 0 && result4 > 0)
 			return 1;
 		else
 			return 0;

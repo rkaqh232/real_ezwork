@@ -18,7 +18,7 @@
       values
          ('EMP'||emp_seq.nextval, #{M_PASS}, #{M_FILE, jdbcType=VARCHAR},#{M_ORIGINAL, jdbcType=VARCHAR}, 
          #{M_PART_C}, #{M_LEVEL}, #{M_NAME},
-         #{M_GENDER}, TO_DATE(#{M_BIRTH},'YYYY-MM-DD'), #{M_ARMY}, #{M_MARRIAGE}, 
+         #{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE}, 
          #{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, TO_DATE(#{M_JOIN_DATE},'YYYY-MM-DD'), 
          #{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, SYSDATE,
          #{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},

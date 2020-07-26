@@ -76,5 +76,3 @@ values('admin','1');
 select *
 from member;
 
-    
- 

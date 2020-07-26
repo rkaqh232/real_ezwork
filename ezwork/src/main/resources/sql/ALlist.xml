@@ -3,26 +3,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ALlist">
-	<insert id="insert" parameterType="member">
-		<selectKey resultType="String" order="BEFORE"
-			keyProperty="M_CODE">
-			select M.M_CODE from (select M_CODE, ROWNUM from member
-			where M_CODE !=
-			'admin' order by ROWNUM desc) M where ROWNUM = 1
-		</selectKey>
+	<select id="getcode" resultType="String">
+		select emp_seq.currval
+		from dual 
+	</select>
+
+	<insert id="insert" parameterType="member">		
 		insert into list_al
 		(AL_M_CODE, AL_M_NAME, AL_M_PART_C, AL_M_JOIN_DATE
 		)
 		values(#{M_CODE}, #{M_NAME}, #{M_PART_C}, #{M_JOIN_DATE} )
 	</insert>
-
+	<!-- 'EMP'||emp_seq.currval -->
 	<update id="update" parameterType="member">
-		<selectKey resultType="String" order="BEFORE"
-			keyProperty="M_CODE">
-			select M.M_CODE from (select M_CODE, ROWNUM from member
-			where M_CODE !=
-			'admin' order by ROWNUM desc) M where ROWNUM = 1
-		</selectKey>
+	
 		update list_al
 		set AL_YEARS = (select
 		floor(months_between(sysdate,AL_M_JOIN_DATE)/12)
@@ -31,17 +25,12 @@
 	</update>
 
 	<update id="updateOver" parameterType="member">
-		<selectKey resultType="String" order="BEFORE"
-			keyProperty="M_CODE">
-			select M.M_CODE from (select M_CODE, ROWNUM from member
-			where M_CODE !=
-			'admin' order by ROWNUM desc) M where ROWNUM = 1
-		</selectKey>
+		
 		update list_al
 		set AL_TOTALDAY = (select 11 + 15 + TRUNC((AL_YEARS - 1) / 2
 		)
 		from list_al where
-		AL_YEARS >= 1 and AL_M_CODE = #{M_CODE} ) where
+		AL_YEARS >= 1 and AL_M_CODE =#{M_CODE} ) where
 		AL_M_CODE =
 		#{M_CODE}
 	</update>

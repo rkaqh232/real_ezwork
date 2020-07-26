@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -36,12 +36,12 @@ import com.ez.work.service.LoginMemberService;
 @Controller
 public class MemberController {
 
+
+	@Value("${membersavefoldername}")
+	private String membersaveFolder;	
+	
 	@Autowired
 	private LoginMemberService loginmemberservice; // MemberService로 이동해서 주입
-	
-	@Autowired // 비밀번호 암호화
-	private PasswordEncoder passwordEncoder;
-	
 
 	// 로그인화면으로 이동
 	@RequestMapping(value = "/login.net")
@@ -121,10 +121,12 @@ public class MemberController {
 	@RequestMapping(value = "/joinProcess.net", method = RequestMethod.POST)
 	public void joinProcess(Member member, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		  System.out.println(member.getM_PASS());
-		  String saveFolder = 
-		             request.getSession().getServletContext().getRealPath("resources")
-		             + "/upload/";
-		  System.out.println(saveFolder);
+		/*
+		 * String saveFolder =
+		 * request.getSession().getServletContext().getRealPath("resources") +
+		 * "/upload/";
+		 */
+		  //System.out.println(saveFolder);
 		  System.out.println(member.getM_BIRTH());
 		  MultipartFile uploadfile = member.getProfile_avatar(); //자료형이  MultipartFile로 가져온겁니다.
 	       
@@ -142,10 +144,7 @@ public class MemberController {
 	       int month = c.get(Calendar.MONTH) +  1; // 오늘 월 구합니다.
 	       int date = c.get(Calendar.DATE); // 오늘 일 구합니다.
 	       
-	        saveFolder = 
-	             request.getSession().getServletContext().getRealPath("resources")
-	             + "/upload/";
-	       String homedir = saveFolder + year + "-" + month + "-" + date;
+	       String homedir = membersaveFolder + year + "-" + month + "-" + date;
 	       System.out.println(homedir);
 	       File path1 = new File(homedir);
 	       if (!(path1.exists())) {
@@ -180,7 +179,7 @@ public class MemberController {
 	       
 	       // tranferTo 업로드한 파일을 매개변수 경로에저장하는것! 매우 중요합니다.
 	       //transferTo(File path) : 업로드한 파일을 매개변수의 경로에 저장합니다.
-	       uploadfile.transferTo(new File(saveFolder + fileDBName));
+	       uploadfile.transferTo(new File(membersaveFolder + fileDBName));
 	       
 	       
 	       // bbs.연월일. 난수발생. fileExtension(확장자 구한것)= 생성된 새로운 파일명
@@ -193,19 +192,13 @@ public class MemberController {
 		// 우린 더이상 new MemberDAO를 쓰지 않습니다.
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
-		// 비밀번호 암호화 추가
-		String encPassword = passwordEncoder.encode(member.getM_PASS());
-		System.out.println(encPassword);
-		member.setM_PASS(encPassword);
-
 
 		out.println("<script>");
 
 		// 삽입이 된 경우
 
 		out.println("alert('신규사원 등록이 완료되었습니다.');");
-		out.println("location.href='home';");
+		out.println("location.href='main';");
 
 		out.println("</script>");
 		out.close();
@@ -218,10 +211,8 @@ public class MemberController {
 		@RequestMapping(value="/update.hr", method=RequestMethod.GET)
 		public String member_update(HttpSession session, Model m) throws Exception {
 		//@RequestParam(value="M_CODE",required=false)String user_id
-			String id = (String) session.getAttribute("M_CODE");		
-			
-			
-			Member member = loginmemberservice.admin_info(id);
+			String id = (String) session.getAttribute("M_CODE");			
+			Member member = loginmemberservice.member_info(id);
 			
 			//mv.setViewName("member/updateForm2");
 			//mv.setViewName("member/joinForm");
@@ -257,53 +248,6 @@ public class MemberController {
 		}
 		
 		
-		
-		// 관리자의 정보수정	 관리자의 정보수정	
-		// 수정폼
-		@RequestMapping(value="/update_admin.hr", method=RequestMethod.GET)
-		public String member_update_admin(HttpServletRequest request, Model m) throws Exception {				
-				
-				String code=request.getParameter("code");
-						
-				Member member = loginmemberservice.member_info(code);
-					
-				//mv.setViewName("member/updateForm2");
-				//mv.setViewName("member/joinForm");
-					
-					m.addAttribute("page", "member/updateForm_admin.jsp");
-					m.addAttribute("info", member);
-					
-					return "home";
-				}
-				
-				
-			// 관리자- 수정처리
-			@RequestMapping(value = "/admin_updateProcess.net", method = RequestMethod.POST)
-			public void updateProcess_admin(Member member, HttpServletResponse response) throws Exception {
-
-					response.setContentType("text/html;charset=utf-8");
-					PrintWriter out = response.getWriter();
-					int result = loginmemberservice.update(member);
-					System.out.println(member);
-					System.out.println("결과는 " + result);
-					out.println("<script>");
-
-					// 삽입이 된 경우
-					if (result == 1) {
-						out.println("alert('수정되었습니다.')");
-						out.println("location.href='update.hr';");
-					} else {
-						out.println("alert('사원 정보 수정에 실패했습니다.');");
-						out.println("history.back()"); // 비밀번호를 제외한 다른 데이터는 유지 되어 있습니다
-					}
-					out.println("</script>");
-					out.close();
-				}
-				
-				
-				
-		
-		
 		// 사원 조회 리스트
 		@GetMapping(value = "/list.hr")
 		public String member_list(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
@@ -330,7 +274,7 @@ public class MemberController {
 		      if(endpage > maxpage)
 		         endpage = maxpage;
 			
-			m.addAttribute("page", "member/member_list.jsp");
+			m.addAttribute("page", "member/member_list2.jsp");
 			m.addAttribute("mem_info", list);
 			mv.addObject("maxpage", maxpage);
 			m.addAttribute("startpage", startpage);
@@ -346,7 +290,51 @@ public class MemberController {
 
 		
 
-		
+		/*
+		// 사원 조회 리스트
+		//@RequestMapping(value = "/list.hr", method = RequestMethod.GET)
+		public ModelAndView member_list(
+
+				@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+				@RequestParam(value = "limit", defaultValue = "3", required = false) int limit, ModelAndView mv,
+				@RequestParam(value = "search_field", defaultValue = "-1") int index,
+				@RequestParam(value = "search_word", defaultValue = "") String search_word, Model m) throws Exception {
+
+			List<Member> list = null;
+			int listcount = 0;
+
+			list = loginmemberservice.getSearchList2(index, search_word, page, limit);
+			listcount = loginmemberservice.getSearchListCount(index, search_word); // 총 리스트 수를 받아옴
+			
+
+			// 총 페이지 수
+			int maxpage = (listcount + limit - 1) / limit;
+
+			// 현재 페이지에 보여줄 시작 페이지 수
+			int startpage = ((page - 1) / 10) * 10 + 1;
+
+			// 현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30 등...)
+			int endpage = startpage + 10 - 1;
+
+			if (endpage > maxpage)
+				endpage = maxpage;
+			
+			m.addAttribute("page", "member/member_list2.jsp");
+			mv.setViewName("home");
+			
+			mv.addObject("page", page);
+			mv.addObject("maxpage", maxpage);
+			mv.addObject("startpage", startpage);
+			mv.addObject("endpage", endpage);
+			mv.addObject("listcount", listcount);
+			mv.addObject("memberlist", list);
+			mv.addObject("limit", limit);
+			
+			
+			mv.addObject("search_field", index);
+			mv.addObject("search_word", search_word);
+			return mv;
+		}*/
 
 
 }

@@ -1,6 +1,9 @@
 package com.ez.work.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -8,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,6 +29,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.work.domain.Mail;
+import com.ez.work.domain.Member;
+import com.ez.work.service.CmtManageService;
 import com.ez.work.service.MailService;
 
 /*수진*/
@@ -33,6 +39,9 @@ import com.ez.work.service.MailService;
 public class MailController {
 	@Autowired
 	private MailService mailService;
+	
+	@Autowired
+	private CmtManageService cmtManageService;
 	
 	@Value("${mailsavefoldername}")
 	private String mailsaveFolder;	
@@ -84,7 +93,7 @@ public class MailController {
 			int year = c.get(Calendar.YEAR);
 			int month = c.get(Calendar.MONTH)+1;
 			int date = c.get(Calendar.DATE);
-			String homedir = mailsaveFolder + year + "-" + "-" + date;
+			String homedir = mailsaveFolder + year + "-" +  month + "-" + date;
 			System.out.println(homedir);
 			File path1 = new File(homedir);
 			if(!(path1.exists())) {
@@ -111,6 +120,54 @@ public class MailController {
 		out.println("<script>history.back();</script>");
 		out.close();
 	}
+	
+	@GetMapping("MailFileDown.mail")
+	 public void BoardFileDown(String filename, HttpServletRequest request, String original,
+			 HttpServletResponse response) throws Exception {
+		 String savePath = "resources/mailupload";
+		 
+		 //서블릿의 실행 환경 정보를 담고 있는 객체를 리턴한다.
+		 ServletContext context = request.getSession().getServletContext();
+		 String sDownloadPath = context.getRealPath(savePath);
+		 
+		 //String sFilePath = sDownloadPath + "\\" + fileName;
+		 //"\" 추가하기 위해 "\\" 사용한다.
+		 String sFilePath = sDownloadPath + "/" + filename;
+		 System.out.println(sFilePath);
+		 
+		 byte b[] = new byte[4096];
+		 
+		 //sFilePath에 있는 파일의 MimeType을 구해온다.
+		 String sMimeType = context.getMimeType(sFilePath);
+		 System.out.println("sMimeType>>>" + sMimeType);
+		 
+		 if(sMimeType == null)
+			 sMimeType = "application/octet-stream";
+		 
+		 response.setContentType(sMimeType);
+		 
+		 // 한글 파일명 깨지는 것 방지
+		 String sEncoding = new String(original.getBytes("utf-8"), "ISO-8859-1");
+		 System.out.println(sEncoding);
+		 
+		 //Content-Disposition : attachment : 브라우저는 해당 Content를 처리하지 않고 다운로드하게 된다.
+		 response.setHeader("Content-Disposition", "attachment; filename= "+ sEncoding);
+		 try (
+				 //웹 브라우저로의 출력 스트림 생성한다.
+				 BufferedOutputStream out2 = new BufferedOutputStream(response.getOutputStream());
+				 //sFilePath로 지정한 파일에 대한 입력 스트림을 생성한다.
+				 BufferedInputStream in = new BufferedInputStream(new FileInputStream(sFilePath));
+				 ) {
+			 int numRead;
+			 //read (b, 0, b.length) : 바이트 배열 b의 0번 부터 b.length 크기만큼 읽어온다.
+			 while ((numRead=in.read(b,0,b.length)) != -1) { //읽을 데이터가 존재하는 경우
+				 //바이트 배열 b의 0번부터 numRead크기 만큼 브라우저로 출력
+				 out2.write(b,0,numRead);
+			 }
+		 } catch (Exception e) {
+			 e.printStackTrace();
+		 }
+	 }
 	
 	@PostMapping("/Tempaction.mail")
 	public void tempadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{

@@ -63,7 +63,7 @@ p{margin-bottom:0}
 									<div class="symbol symbol-60 symbol-circle symbol-xl-90"
 										style="margin-top: 57px;">
 										<div class="symbol-label"
-											style="background-image: url('resources/assets/media/users/300_21.jpg')"></div>
+											style="background-image: url('resources/memberupload/${memberinfo.m_FILE}')"></div>
 									</div>
 
 									<div
@@ -154,7 +154,7 @@ p{margin-bottom:0}
 		<!--begin::Header-->
 		<div class="card-header border-0 pt-5">
 			<h3 class="card-title align-items-start flex-column">
-				<span class="card-label font-weight-bolder text-dark">받은 메일</span>
+				<span class="card-label font-weight-bolder text-dark">받은 메일함</span>
 			</h3>
 		</div>
 
@@ -165,7 +165,7 @@ p{margin-bottom:0}
 
 			<!--begin::Table-->
 			<div class="table-responsive">
-				<table class="table table-borderless table-vertical-center">
+				<table class="table table-hover table-vertical-center">
 					<tbody id="mailtable">
 						
 					</tbody>

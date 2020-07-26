@@ -55,8 +55,6 @@ ADD(M_ADDRESS2 VARCHAR(50));
 
 
 
-
-
 insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL, M_MOBILE_TEL, m_address, m_join_date, m_gender) -- 임시생성재희
 values('jaehee','1','이재희', '총무팀','3','ex@Exwork.com', '010-9080-9080', '서울시 강남구', sysdate, '여');
 
@@ -77,8 +75,4 @@ values('admin','1');
 
 select *
 from member;
-
-
-DELETE member WHERE M_CODE = 'jaehee';
-
 

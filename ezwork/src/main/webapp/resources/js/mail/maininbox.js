@@ -14,7 +14,7 @@ $(function(){
 
 function go(page){
 	$("#mailtable").empty(); 
-	var limit = 7;
+	var limit = 6;
 	var id = document.getElementById('M_CODE').value;
 	var data = "limit=" + limit + "&start=ajax&page=" + page + "&id=" + id ;
 	ajax(data);
@@ -44,13 +44,16 @@ function ajax(sdata){
 				output = "";
 				$(data.maillist).each(
 					function(index, item){							
-						output += '<tr><td class="pl-0" style="width:150px"><p class="text-muted font-size-sm">보낸사람</p><p class="font-size-h6 font-weight-boldest">'
+						output += '<tr><td class="pl-0 py-4"><div class="symbol symbol-50 symbol-light mr-1">'
+						output += '<span class="symbol-label"><img src="" class="h-50 align-self-center" alt="photo">'
+						output += '</span></div></td>'
+						output += '<td class="pl-0" style="width:150px"><p class="text-muted font-size-sm">보낸사람</p><p class="font-size-h6 font-weight-boldest">'
 						output += item.mail_SENDER + '</p></td>'
 						output += '<td style="width:500px"><div class="btn-text-primary font-weight-bold mr-2"' 
 								+'style="margin-top:0">' + '<a href="DetailAction.mail?num='
 								+item.mail_NUM+'&page=' + data.page+'">'+ item.mail_SUBJECT +'</a>'
 								+'</div></td>'
-						output += '<td style="text-align:right; width:180px;"><div><p class="text-muted font-size-sm">날짜</p><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
+						output += '<td style="text-align:right; width:200px;"><div><p class="text-muted font-size-sm">날짜</p><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
 				$('#mailtable').append(output)//table 완성
 				
@@ -83,7 +86,7 @@ function ajax(sdata){
 			}//if(data.listcount) end
 			else if(totalData==0){
 				output = "<tr><th colspan='4'><h3>받은 메일이 없습니다.</h3></th></tr>";
-				$('tbody').append(output)
+				$('#mailtable').append(output)
 			}			
 		}, //success end
 		error : function(){

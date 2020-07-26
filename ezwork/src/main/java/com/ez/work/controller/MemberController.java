@@ -198,7 +198,7 @@ public class MemberController {
 		// 삽입이 된 경우
 
 		out.println("alert('신규사원 등록이 완료되었습니다.');");
-		out.println("location.href='home';");
+		out.println("location.href='main';");
 
 		out.println("</script>");
 		out.close();

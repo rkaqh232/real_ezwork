@@ -4,24 +4,12 @@
 <script src="resources/js/jquery-3.5.0.js"></script>
 
 <style>
+.inputname{
+	width:130px !important;
+	flex:none !important;
+}
 p{margin-top:0rem;
   margin-bottom:0rem;
-	}
-table, tr, th ,td{
-	text-align:center;
-}
-tr>th:nth-child(1){width:5%}
-tr>th:nth-child(2){width:15%}
-tr>th:nth-child(3){width:40%;}
-tr>th:nth-child(4){width:7%}
-tr>th:nth-child(5){width:10%}
-tr>th:nth-child(6){width:10%}
-.modal {
-	display: none;
-    width: 850px;
-    position: relative;
-    top: -500px;
-    left: 15%;	
 }
 .appr{
 	margin-bottom:1rem;
@@ -34,6 +22,20 @@ tr>th:nth-child(6){width:10%}
 	width:60%;
 	left:12;
 }
+.stat{
+	width:60px;
+	text-align:center;
+}
+.statdiv{
+	text-align:center;
+	align-items:center;
+}
+.commentinput{
+	width:300px;
+}
+
+
+
 
 </style>
 <div class="d-flex flex-column-fluid">
@@ -79,7 +81,7 @@ tr>th:nth-child(6){width:10%}
 				<div class="card-body">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">업무 구분</label>
-						<div class="col-lg-2">
+						<div class="col-lg-1">
 							<div class="rows">
 								<c:if test="${apprdata.APPR_STAT==0}" >
 									<c:set var="stat" value="업무" />	 
@@ -127,7 +129,7 @@ tr>th:nth-child(6){width:10%}
 
 					<div class="form-group row appr fileup">
 						<label class="col-lg-3 col-form-label text-lg-right">파일첨부</label>
-						<div class="col-lg-9">
+						<div class="col-lg-7">
 							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
 								<div class="dropzone-panel mb-lg-0 mb-2">
 								<c:if test="${!empty apprdata.APPR_FILE }" >
@@ -146,53 +148,53 @@ tr>th:nth-child(6){width:10%}
 							</div>
 						</div>
 					</div>
-
+					<c:if test="${!empty apprdata.m_PART_F}">	
+					<c:if test="${apprdata.FIRST_VAL==0 }">
+						<c:set var="val_str" value="미결재" />
+					</c:if>
+					<c:if test="${apprdata.FIRST_VAL==1 }">
+						<c:set var="val_str" value="승인"/>
+					</c:if>
+					<c:if test="${apprdata.FIRST_VAL==2 }">
+						<c:set var="val_str" value="반려"/>
+					</c:if>
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">1차 결재자</label>
-						<div class="col-lg-4">
-							<input type="text" name = "FIRST_CODE" list="fmemlist" 
-									class="form-control fmem" autocomplete=off>
-								<datalist id="fmemlist">
-								<c:forEach var="m" items="${memberlist}">
-									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
-								</c:forEach>
-								</datalist>			
+						<div class="col-lg-7 input-group">
+							<div class="input-group-prepend statdiv">
+								<span class="input-group-text stat">${val_str}</span>
+							</div>														
+							<span class="form-control is-invalid inputname">${apprdata.m_PART_F} ${apprdata.FIRST_CODE}</span>
+							<div class="input-group-append">
+								<input type="text" class="form-control input-group-text commentinput" value="abcd">
+							</div>			
 						</div>
 					</div>
+					</c:if>
+					
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">2차 결재자</label>
-						<div class="col-lg-4">
-							<input type="text" name = "SECOND_CODE" list="smemlist" 
-									class="form-control smem" autocomplete=off>
-								<datalist id="smemlist">
-									<c:forEach var="m" items="${memberlist}">
-									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
-								</c:forEach>
-								</datalist>			
+						<div class="col-lg-7 input-group">
+							<div class="input-group-prepend statdiv">
+								<span class="input-group-text stat">반려</span>
+							</div>	
+							<input type="text" name="SECOND_CODE" class="form-control" autocomplete=off 
+									value="${apprdata.m_PART_S} ${apprdata.SECOND_CODE}">				
+							<div class="input-group-append">
+								<span class="input-group-text apprcomm">승인</span>
+							</div>								
 						</div>
 					</div>
+					<c:if test="${!empty apprdata.m_PART_T}">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">3차 결재자</label>
 						<div class="col-lg-4">
-							<input type="text" name = "THIRD_CODE" list="tmemlist" 
-									class="form-control tmem" autocomplete=off>
-								<datalist id="tmemlist">
-									<c:forEach var="m" items="${memberlist}">
-									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
-								</c:forEach>
-								</datalist>			
+							<input type="text" name="THIRD_CODE" class="form-control" autocomplete=off 
+									value="${apprdata.m_PART_T} ${apprdata.THIRD_CODE}">										
 						</div>
 					</div>
-				</div>
-				<div class="card-footer">
-					<div class="row">
-						<div class="col-lg-3"></div>
-						<div class="col-lg-9">
-							<button type="submit" class="btn btn-info">등록</button>
-							<button type="reset" class="btn btn-outline-secondary">취소</button>
-						</div>
-					</div>
-				</div>
+					</c:if>
+				</div>				
 			<!--end::Form-->
 		</div>
 		<!--end::Card-->

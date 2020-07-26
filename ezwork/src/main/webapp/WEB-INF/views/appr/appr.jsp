@@ -205,6 +205,7 @@ tr>th:nth-child(6){width:10%}
 					</div>
 					<input type="hidden" value="${part}" name="M_PART">
 					<input type="hidden" value="${code}" name="M_CODE">
+					<input type="hidden" value="${name}" name="APPR_NAME">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">제출자</label>
 						<div class="col-lg-4 writer">
@@ -218,7 +219,7 @@ tr>th:nth-child(6){width:10%}
 							</span>
 						</div>
 					</div>
-
+					
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
 						<div class="col-lg-7">

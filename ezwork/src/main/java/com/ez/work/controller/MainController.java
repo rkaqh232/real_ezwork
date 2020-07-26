@@ -48,7 +48,7 @@ public class MainController {
 			Member memberinfo = cmtManageService.getInfo(id); // 로그인 된 ID정보 가져옴
 			CmtManage memberinfo2 = cmtManageService.getDetail(id); //당일 근태 정보
 			ALList allist = annualLeaveService.getALInfo(id); //휴가정보 불러오기
-			System.out.println("입사일 : " + allist.getAL_M_JOIN_DATE());
+			//System.out.println("입사일 : " + allist.getAL_M_JOIN_DATE());
 
 			mv.setViewName("home");
 			mv.addObject("memberinfo", memberinfo);
@@ -102,6 +102,8 @@ public class MainController {
 				HttpServletResponse response, Model m, HttpSession session) throws Exception {
 			String id = (String) session.getAttribute("M_CODE");
 			// 퇴근 메소드 호출
+			
+			System.out.println("메인에서 퇴근등록 : " + CmtManage.getCM_MCODE()+" / "+CmtManage.getCM_OFFTIME());
 			int result = cmtManageService.insertOfftime(CmtManage, id);
 
 			// 퇴근 등록 실패한 경우
@@ -175,4 +177,5 @@ public class MainController {
 			return map;
 		}
 
+		
 }

@@ -206,6 +206,22 @@
 									<tbody style="text-align: center; font-size:14px;">
 										<c:set var="num" value="${listcount-(page1-1)*limit}" />
 										<c:forEach var="a" items="${allist}">
+										<c:if test="${a.AL_SORT==0}">
+											<c:set var="sort" value="연차" />
+										</c:if>
+										<c:if test="${a.AL_SORT==1}">
+											<c:set var="sort" value="반차" />
+										</c:if>
+										<c:if test="${a.AL_SORT==2}">
+											<c:set var="sort" value="병가" />
+										</c:if>
+										<c:if test="${a.AL_SORT==3}">
+											<c:set var="sort" value="예비군" />
+										</c:if>
+										<c:if test="${a.AL_SORT==4}">
+											<c:set var="sort" value="경조사" />
+										</c:if>
+										
 											<tr>
 												<td>
 													<%--글번호--%> <c:out value="${num}" /> <%--num 출력 --%> <c:set
@@ -214,7 +230,7 @@
 												<td>${fn:substring(a.AL_DATE,0,9) }</td>
 												<td>${a.AL_M_NAME }</td>
 												<td>${a.AL_M_PART_C }</td>
-												<td>${a.AL_SORT }</td>
+												<td>${sort}</td>
 												<td>${fn:substring(a.AL_STARTDATE,0,10) }</td>
 												<td>${fn:substring(a.AL_ENDDATE,0,10) }</td>
 												<td>${a.AL_REASON }</td>

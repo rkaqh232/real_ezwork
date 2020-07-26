@@ -15,5 +15,4 @@ public interface ApprService {
 	public int getMemCount();
 	public void insertappr(Appr appr);
 	public Appr getDetail(int num);
-	
 }

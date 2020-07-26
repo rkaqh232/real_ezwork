@@ -288,11 +288,21 @@ td:nth-child(1) {
 										<div class="mb-7">
 											<div
 												class="d-flex justify-content-between align-items-center">
-												<span class="text-dark-75 font-weight-bolder mr-2">E-mail:</span>
+												<span class="text-dark-75 font-weight-bolder mr-2">사원번호:</span>
+												<a href="#" class="text-muted text-hover-primary">${m.m_CODE}</a>
+											</div>
+											<div
+												class="d-flex justify-content-between align-items-center">
+												<span class="text-dark-75 font-weight-bolder mr-2">직급:</span>
+												<a href="#" class="text-muted text-hover-primary">${m.m_LEVEL}</a>
+											</div>
+											<div
+												class="d-flex justify-content-between align-items-center">
+												<span class="text-dark-75 font-weight-bolder mr-2">이메일:</span>
 												<a href="#" class="text-muted text-hover-primary">${m.m_EMAIL}</a>
 											</div>
 											<div
-												class="d-flex justify-content-between align-items-cente my-1">
+												class="d-flex justify-content-between align-items-center">
 												<span class="text-dark-75 font-weight-bolder mr-2">전화번호:</span>
 												<a href="#" class="text-muted text-hover-primary">${m.m_MOBILE_TEL}</a>
 											</div>

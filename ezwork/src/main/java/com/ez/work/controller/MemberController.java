@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -43,6 +44,10 @@ public class MemberController {
 	
 	@Autowired
 	private LoginMemberService loginmemberservice; // MemberService로 이동해서 주입
+	
+	@Autowired // 비밀번호 암호화
+	private PasswordEncoder passwordEncoder;
+
 	
 	@Autowired
 	private CmtManageService cmtManageService;
@@ -198,6 +203,12 @@ public class MemberController {
 		// 우린 더이상 new MemberDAO를 쓰지 않습니다.
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		
+		// 비밀번호 암호화 추가
+				String encPassword = passwordEncoder.encode(member.getM_PASS());
+				System.out.println(encPassword);
+				member.setM_PASS(encPassword);
+
 
 		out.println("<script>");
 

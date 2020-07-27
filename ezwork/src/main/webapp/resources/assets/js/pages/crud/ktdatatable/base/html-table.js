@@ -21,7 +21,7 @@ var KTDatatableHtmlTableDemo = function() {
 					type: 'number',
 				},
 				{
-					field: '생년월일',
+					field: 'date',
 					type: 'date',
 					format: 'YYYY-MM-DD',
 				}, {

@@ -320,7 +320,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_NAME" type="text" id="M_NAME"  value="" placeholder="이제훈"/>
+																	name="M_NAME" type="text" id="M_NAME"  value="" placeholder="사원명"/>
 															</div>
 														</div>
 

@@ -136,34 +136,18 @@ font-size:12px !important;
 														<h3 class="text-dark font-weight-bold mb-10"
 															font-weight="bold";>나의 정보 수정<a style="color:#BF00FF">   ▶  해당 정보만 수정가능합니다. 이 외의 수정사항은 인사팀(내선번호 : 2114)으로 문의부탁드립니다.</a></h3>
 														<!--begin::Group-->
-														<!-- <div class="form-group row">
+														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
 																사진 </label>
 															<div class="col-lg-9 col-xl-9">
 																<div class="image-input image-input-outline"
 																	id="kt_user_add_avatar">
 																	<div class="image-input-wrapper"
-																		style="background-image: url(resources/assets/media/users/LEE.PNG)"></div>
-																	<label
-																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-																		data-action="change" data-toggle="tooltip" title=""
-																		data-original-title="Change avatar"> <i
-																		class="fa fa-pen icon-sm text-muted"></i> 
-																		
-																		<input type="file" id="upfile" name="profile_avatar" accept=".png, .jpg, .jpeg" /> 
-																		
-																		<input type="hidden" name="profile_avatar_remove" />
-																		<input type="file" id="upfile" name="uploadfile">
-																		
-																	</label> <span
-																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-																		data-action="cancel" data-toggle="tooltip"
-																		title="Cancel avatar"> <i
-																		class="ki ki-bold-close icon-xs text-muted"></i>
-																	</span>
+																			style="background-image: url('resources/memberupload/${info.m_FILE}')" readonly></div>
+																	
 																</div>
 															</div>
-														</div> -->
+														</div> 
 														<!--end::Group-->
 														<!--begin::Group-->
 														<!--  사원번호  -->

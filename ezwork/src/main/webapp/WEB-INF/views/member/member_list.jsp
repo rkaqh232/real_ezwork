@@ -193,7 +193,7 @@ a {
 							<th data-field="date">입사일</th>
 							<th title="Field #6">이메일</th>
 							<th title="Field #7">연락처</th>
-							<th title="Field #8">주의 :</th>
+							<th title="Field #8">설정 :</th>
 
 
 						</tr>
@@ -209,6 +209,7 @@ a {
 								<td>${m.m_JOIN_DATE}</td>
 								<td>${m.m_EMAIL}</td>
 								<td>${m.m_MOBILE_TEL}</td>
+								
 								<td class="dropdown dropdown-inline"><a href=""
 									class="btn btn-light-primary font-weight-bold dropdown-toggle"
 									data-toggle="dropdown" aria-expanded="false"> <span
@@ -221,10 +222,15 @@ a {
 												if ("admin".equals(u_id)){%>
 											<li class="navi-item"><a class="navi-link"
 												href="update_admin.hr?code=${m.m_CODE }">  <span class="navi-icon"></i></span>
-													<span class="navi-text">정보수정</span><% }%>
+													<span class="navi-text">정보수정</span>
 											</a></li>
 											<li class="navi-item"><a class="navi-link" href="#">
 													<span class="navi-icon"></span> <span class="navi-text">퇴사절차</span></span>
+													</span>
+											</a></li><% }%>
+											
+											<li class="navi-item"><a class="navi-link" href="#">
+													<span class="navi-icon"></span> <span class="navi-text">권한없음</span></span>
 													</span>
 											</a></li>
 

@@ -100,11 +100,12 @@ public class LoginMemberServiceImp implements LoginMemberService{
 	}
 
 
+	//관리자의 사원정보수정
 	@Override
-	public Member admin_info(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public int update_admin(Member m) {
+		return dao.updateadmin(m);
 	}
+
 
 
 

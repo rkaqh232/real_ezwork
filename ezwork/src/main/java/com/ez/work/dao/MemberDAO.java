@@ -71,6 +71,10 @@ public class MemberDAO {
 	public int getSearchListCount(Map<String, String> map) {
 		return sqlSession.selectOne("Members.searchcount2", map);
 	}
+
+	public int updateadmin(Member m) {
+		return sqlSession.update("Members.update_admin",m);
+	}
 	
 	
 

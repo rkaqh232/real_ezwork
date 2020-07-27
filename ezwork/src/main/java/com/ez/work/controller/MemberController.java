@@ -265,6 +265,49 @@ public class MemberController {
 		}
 		
 		
+		// 관리자의 정보수정	 관리자의 정보수정	
+		// 수정폼
+		@RequestMapping(value="/update_admin.hr", method=RequestMethod.GET)
+		public String member_update_admin(HttpServletRequest request, Model m) throws Exception {				
+				
+				String code=request.getParameter("code");
+						
+				Member member = loginmemberservice.member_info(code);
+					
+				//mv.setViewName("member/updateForm2");
+				//mv.setViewName("member/joinForm");
+					
+					m.addAttribute("page", "member/updateForm_admin.jsp");
+					m.addAttribute("info", member);
+					
+					return "home";
+				}
+				
+				
+			// 관리자- 수정처리
+			@RequestMapping(value = "/admin_updateProcess.net", method = RequestMethod.POST)
+			public void updateProcess_admin(Member member, HttpServletResponse response) throws Exception {
+
+					response.setContentType("text/html;charset=utf-8");
+					PrintWriter out = response.getWriter();
+					int result = loginmemberservice.update(member);
+					System.out.println(member);
+					System.out.println("결과는 " + result);
+					out.println("<script>");
+
+					// 삽입이 된 경우
+					if (result == 1) {
+						out.println("alert('수정되었습니다.')");
+						out.println("location.href='update.hr';");
+					} else {
+						out.println("alert('사원 정보 수정에 실패했습니다.');");
+						out.println("history.back()"); // 비밀번호를 제외한 다른 데이터는 유지 되어 있습니다
+					}
+					out.println("</script>");
+					out.close();
+				}
+
+		
 		// 사원 조회 리스트
 		@GetMapping(value = "/list.hr")
 		public String member_list(@RequestParam(value = "page", defaultValue = "1", required = false) int page,

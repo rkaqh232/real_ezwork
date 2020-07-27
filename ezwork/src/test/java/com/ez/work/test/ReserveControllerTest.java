@@ -53,7 +53,7 @@ public class ReserveControllerTest {
 				   .param("RNAME","Ocean")
 				   .param("USER_TEL","010-123-1234")
 				   .param("MSUBJECT","7월 팀미팅")
-				   .param("MTIME","11")
+				   .param("MTIME","12")
 				   .param("USER_NAME","EMP202002"))
 			.andDo(print())
 			.andExpect(status().isOk())
@@ -65,3 +65,4 @@ public class ReserveControllerTest {
 		}
 	}
 }
+

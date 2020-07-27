@@ -5,7 +5,7 @@
 <style>
 	p{margin:0}
 	table{text-align:center;}
-	.table th, td{padding-left:0;padding-right:0;}
+	.table th, .table td{padding-left:0;padding-right:0;}
 	.bg-forest{background:#ff9900}
 	.bg-mountain{background:#2d8659;}
 	.bg-ocean{background:#4d4dff}
@@ -130,16 +130,16 @@
 					<thead>
 						<tr>
 							<th style="min-width: 120px;text-align:center"><p class="font-size-lg">회의실</p></th>
-							<th style="min-width: 70px">08:00-09:00</th>
-							<th style="min-width: 70px;">09:00-10:00</th>
-							<th style="min-width: 70px">10:00-11:00</th>
-							<th style="min-width: 70px">11:00-12:00</th>
-							<th style="min-width: 70px">12:00-13:00</th>
-							<th style="min-width: 70px">13:00-14:00</th>
-							<th style="min-width: 70px">14:00-15:00</th>
-							<th style="min-width: 70px">15:00-16:00</th>
-							<th style="min-width: 70px">16:00-17:00</th>
-							<th style="min-width: 70px">17:00-18:00</th>
+							<th style="min-width: 90px">08:00-09:00</th>
+							<th style="min-width: 90px;">09:00-10:00</th>
+							<th style="min-width: 90px">10:00-11:00</th>
+							<th style="min-width: 90px">11:00-12:00</th>
+							<th style="min-width: 90px">12:00-13:00</th>
+							<th style="min-width: 90px">13:00-14:00</th>
+							<th style="min-width: 90px">14:00-15:00</th>
+							<th style="min-width: 90px">15:00-16:00</th>
+							<th style="min-width: 90px">16:00-17:00</th>
+							<th style="min-width: 90px">17:00-18:00</th>
 						</tr>
 					</thead>
 					<tbody>

@@ -8,7 +8,6 @@ function reply(){
 }
 function hideRe(){
 	document.getElementById("kt_inbox_reply").style.display="none";	
-	
 }
 </script>
 <div class="container">
@@ -43,7 +42,7 @@ function hideRe(){
 		    <div class="modal-content">
 		     <!-- Modal body -->
 		      <div class="modal-body">
-		        <form name="deleteForm" action="OutToBin.mail" method="post">
+		        <form name="deleteForm" action="InToBin.mail" method="post">
 		          <%-- http://localhost:8088/Board_Ajax_bootstrap/BoardDetailAction.bo?num
 		          	     주소를 보면 num을 파라미터로 넘기고 있다. 
 		          	     이 값을 가져와서 ${param.num}을 사용 또는 ${boarddata.BOARD_NUM}
@@ -83,7 +82,7 @@ function hideRe(){
 		<!--begin::Title-->
 		<div class="d-flex align-items-center mr-2 py-2">
 			<div class="font-weight-bold font-size-h3 mr-3">${maildata.MAIL_SUBJECT}</div>
-			<span class="label label-light-primary font-weight-bold label-inline mr-2">보낸 메일함</span>
+			<span class="label label-light-primary font-weight-bold label-inline mr-2">받은 메일함</span>
 		</div>
 		<!--end::Title-->
 	</div>
@@ -123,7 +122,19 @@ function hideRe(){
 		</div>
 	</div>
 	<!--end::Messages-->
-	
+	<c:if test="${!empty maildata.MAIL_FILE }">
+	<span class="svg-icon svg-icon-primary svg-icon-2x" style="padding-bottom:40px;">
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	        <rect x="0" y="0" width="24" height="24"></rect>
+	        <path d="M14,16 L12,16 L12,12.5 C12,11.6715729 11.3284271,11 10.5,11 C9.67157288,11 9,11.6715729 9,12.5 L9,17.5 C9,19.4329966 10.5670034,21 12.5,21 C14.4329966,21 16,19.4329966 16,17.5 L16,7.5 C16,5.56700338 14.4329966,4 12.5,4 L12,4 C10.3431458,4 9,5.34314575 9,7 L7,7 C7,4.23857625 9.23857625,2 12,2 L12.5,2 C15.5375661,2 18,4.46243388 18,7.5 L18,17.5 C18,20.5375661 15.5375661,23 12.5,23 C9.46243388,23 7,20.5375661 7,17.5 L7,12.5 C7,10.5670034 8.56700338,9 10.5,9 C12.4329966,9 14,10.5670034 14,12.5 L14,16 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.500000, 12.500000) rotate(-315.000000) translate(-12.500000, -12.500000) "></path>
+	    </g>
+	</svg>
+	<a type="file" id="upfile" href="MailFileDown.mail?filename=${maildata.MAIL_FILE}&original=${maildata.MAIL_ORIGINAL}">
+	${maildata.MAIL_ORIGINAL}</a>
+	<span id="filevalue"></span>
+	</span>
+	</c:if>
 	<!--begin::Reply-->
 	<div class="card-spacer mb-3" id="kt_inbox_reply" style="display:none">
 		<div class="card card-custom shadow-sm">
@@ -134,7 +145,7 @@ function hideRe(){
 					<div class="d-block">
 						<!--begin::To-->
 						<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-50px">
-						<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
+						<input type="text" name="MAIL_SENDER" id="SENDER" value="${M_CODE}" style="display:none"/>
 						<input type="text" name="M_FILE" id="MFILE" value="${M_FILE}" style="display:none"/>
 							<div class="text-dark-50 w-25px">To:</div>
 							<div class="d-flex align-items-center flex-grow-1">

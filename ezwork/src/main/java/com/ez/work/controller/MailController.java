@@ -383,6 +383,21 @@ public class MailController {
 		}		
 		return mv;
 	}
+	
+	@GetMapping(value="DetailBin.mail")
+	public ModelAndView binDetail(int num, ModelAndView mv, HttpServletRequest request) {
+		Mail mail = mailService.outDetail(num);
+		if(mail == null) {
+			System.out.println("mail view failed");
+			mv.setViewName("error/error");
+		}else {
+			System.out.println("mail view start");
+			mv.addObject("page", "mail/out_view.jsp");
+			mv.addObject("maildata", mail);
+			mv.setViewName("home");
+		}		
+		return mv;
+	}
 	/*@PostMapping("Delete.mail")
 	public ModelAndView MailDeleteAction(Mail mail, String before_file, int num, ModelAndView mv) {
 		int result = mailService.mailDelete(num);

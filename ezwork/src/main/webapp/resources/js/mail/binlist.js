@@ -51,7 +51,8 @@ function ajax(sdata){
 						output += ' <span></span></label></p></td><td><p class="font-size-lg">'
 						output += item.mail_RECIPIENT + '</p></td>'
 						output += '<td><div class="btn btn-text-primary font-weight-bold mr-2"' 
-							+'style="margin-top:4px">'+ '<a>' + item.mail_SUBJECT +'</a></div></td>'
+							+'style="margin-top:4px">'+ '<a href="DetailAction.mail?num='
+							+item.mail_NUM+'&page=' + data.page+'">' + item.mail_SUBJECT +'</a></div></td>'
 						output += '<td><div><p class="font-size-lg">' + item.mail_DATE+'</p></div></td></tr>'
 					})
 				$('tbody').append(output)//table 완성

@@ -56,5 +56,26 @@ public class ApprServiceImpl implements ApprService {
 	public Appr getDetail(int num) {
 		return dao.getDetail(num);
 	}
+
+	public void updateApproval(int apnum, String valcol, int approve_val,String commcol, String comment) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("apnum", apnum);
+		map.put("valcol",valcol);
+		map.put("approve_val",approve_val);
+		map.put("commcol", commcol);
+		map.put("comment",comment);
+		dao.updateApproval(map);
+	}
+
+	public void updateApprovalR(int apnum, String valcol, int approve_val, String commcol, String comment) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("apnum", apnum);
+		map.put("valcol",valcol);
+		map.put("approve_val",approve_val);
+		map.put("commcol", commcol);
+		map.put("comment",comment);
+		dao.updateApprovalR(map);
+		
+	}
 	
 }

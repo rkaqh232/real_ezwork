@@ -40,9 +40,6 @@ public class MailController {
 	@Autowired
 	private MailService mailService;
 	
-	@Autowired
-	private CmtManageService cmtManageService;
-	
 	@Value("${mailsavefoldername}")
 	private String mailsaveFolder;	
 	

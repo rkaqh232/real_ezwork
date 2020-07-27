@@ -65,7 +65,29 @@
 		where APPR_CODE = #{num}
 	</select>	
 	
+	<update id="updateAp" parameterType="java.util.Map">
+		update approve
+		set		 
+		${valcol} = #{approve_val},
+		${commcol} = #{comment},
+		
+		(APPR_VAL, APPR_COUNT, APPR_CUR_COUNT) = (
+		SELECT DECODE(APPR_CUR_COUNT+1 , APPR_COUNT, 3 , APPR_VAL+1 ) AS APPR_VAL, APPR_COUNT, APPR_CUR_COUNT+1
+		FROM APPROVE
+		WHERE APPR_CODE= 2)
+		
+		where APPR_CODE = #{apnum}
+	</update>
 	
-	
+	<update id="updateR" parameterType="java.util.Map">
+		update approve
+		set
+		${valcol} = #{approve_val},
+		${commcol} = #{comment},
+		
+		APPR_VAL = 4,
+		APPR_CUR_COUNT = APPR_COUNT
+		where APPR_CODE = #{apnum}
+	</update>	
 	
 </mapper>

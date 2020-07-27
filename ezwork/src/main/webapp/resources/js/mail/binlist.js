@@ -37,12 +37,15 @@ function ajax(sdata){
 		dataType : "json",
 		cache : false,
 		success : function(data){
-			var totalData = data.listcount;			
+			var totalData = data.listcount;
 			if(totalData > 0){
 				var num = totalData - (data.page -1) * data.limit;
+				console.log("data.maillist: "+data.maillist);
 				output = "";
 				$(data.maillist).each(
-					function(index, item){							
+					function(index, item){	
+						console.log("data.maillist: "+data.maillist);
+						console.log("item.mail_NUM: "+item);
 						output += "<tr><td><p><label class='checkbox'>"
 					    output += "<input type='checkbox' name=" + "'bnum' value="+ "'" + item.mail_NUM + item.mail_TYPE +"'/>"
 						output += ' <span></span></label></p></td><td><p class="font-size-lg">'

@@ -41,7 +41,7 @@
 						class="flaticon2-chat-1 text-info"></i>
 					</span>
 					<h3 class="card-label">
-						공지 <small>게시판</small>
+						공지사항 <small>게시판</small>
 					</h3>
 				</div>
 				<div class="card-toolbar">

@@ -55,7 +55,10 @@
        <!--  혜정 - 인사팀에서 사원정보수정 --> 
     <update id="update_admin" parameterType="member">
        update member
-       set (M_PASS,M_FILE,M_ORIGINAL,M_PART_C,M_LEVEL,
+       set M_PASS = #{M_PASS}, M_FILE= #{M_FILE, jdbcType=VARCHAR}, 
+       
+       
+       (M_PASS,M_FILE,M_ORIGINAL,M_PART_C,M_LEVEL,
         M_NAME,M_GENDER,M_BIRTH,M_ARMY,M_MARRIAGE,M_MOBILE_TEL,M_EMAIL,M_ADDRESS,
          M_JOIN_DATE,SC_NAME, SC_MAJOR,SC_DEGREE,SC_ADDRESS,SC_GRAD_DAY, 
          LG_NAME, LG_TEST,LG_GRADE,LG_ORGAN,LG_DATE, LI_NAME, LI_ORGAN,LI_DATE,

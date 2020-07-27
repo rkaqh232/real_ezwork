@@ -17,4 +17,7 @@ public interface ApprService {
 	public Appr getDetail(int num);
 	public void updateApproval(int apnum, String valcol, int approve_val, String commcol, String comment);
 	public void updateApprovalR(int apnum, String valcol, int approve_val, String commcol, String comment);
+	public void writeCompDate(int apnum);
+	public List<Appr> getSearchList(int number, String m_name, String contentitle, String start, String end,
+			String appr_stat, String appr_val, int page, int limit, String id);
 }

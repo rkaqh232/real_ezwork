@@ -17,6 +17,42 @@
 		&gt;=#{start} and rnum &lt;= #{end}
 	</select>
 	
+	<select id="getSearchList" parameterType="java.util.Map" resultType="appr">
+		select * from
+		(select rownum rnum, b.*
+		from
+		(select * from
+		approve
+		where 
+		<if test="number != null ">
+			APPR_CODE = #{number},
+		</if>
+		<if test="m_name != null">
+			APPR_NAME = #{m_name},
+		</if>
+		<if test="contentitle != null">
+			(APPR_TITLE LIKE #{contentitle}
+			OR
+			APPR_CONTENT LIKE #{contentitle}),
+		</if>
+		<if test="start != null and end != null">
+			(to_char(APPR_DATE,'YYYY-MM-DD') > #{start}
+			AND
+			#{start} > to_char(APPR_DATE,'YYYY-MM-DD') ),
+		</if>
+		<if test="appr_stat != null">
+			APPR_STAT = #{appr_stat},
+		</if>
+		<if test="appr_val != null">
+			APPR_VAL = #{VAL},
+		</if>
+		
+		order by APPR_CODE desc) b
+		)
+		where rnum
+		&gt;=#{startrow} and rnum &lt;= #{endrow}		
+	</select>
+	
 	<select id="count" resultType="int">
 		select count(*) from approve
 	</select>
@@ -89,5 +125,12 @@
 		APPR_CUR_COUNT = APPR_COUNT
 		where APPR_CODE = #{apnum}
 	</update>	
+	
+	<update id="writeComp" parameterType="int">
+		update approve
+		set
+		APPR_COMP_DATE = sysdate
+		where APPR_CODE = #{apnum}
+	</update>
 	
 </mapper>

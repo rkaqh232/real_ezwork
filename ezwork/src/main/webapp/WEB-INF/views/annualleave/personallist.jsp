@@ -111,7 +111,7 @@
 
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> <i
-									class="flaticon-more-v5 display-4 text-muted font-weight-bold"></i>
+									class="flaticon-clock-2 display-4 text-muted font-weight-bold"></i>
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">입사일</span> <span
@@ -125,7 +125,7 @@
 							<!--begin::Item-->
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> <i
-									class="flaticon-more-v5 display-4 text-muted font-weight-bold"></i>
+									class="flaticon-time-3 display-4 text-muted font-weight-bold"></i>
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">연차잔여현황</span> <span
@@ -138,7 +138,7 @@
 							<!--begin::Item-->
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> <i
-									class="flaticon-more-v5 display-4 text-muted font-weight-bold"></i>
+									class="flaticon-calendar-3 display-4 text-muted font-weight-bold"></i>
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">사용완료연차</span> <span
@@ -151,7 +151,7 @@
 							<!--begin::Item-->
 							<div class="d-flex align-items-center flex-lg-fill mr-5 mb-2">
 								<span class="mr-4"> <i
-									class="flaticon-more-v5 display-4 text-muted font-weight-bold"></i>
+									class="flaticon-calendar-2 display-4 text-muted font-weight-bold"></i>
 								</span>
 								<div class="d-flex flex-column text-dark-75">
 									<span class="font-weight-bolder font-size-sm">잔여연차</span> <span

@@ -60,7 +60,6 @@ public class EventBoardController {
 		List<EventBoard> boardlist = eventboardService.getBoardList(page, limit); // 리스트를 받아옴
 
 		m.addAttribute("page", "eventboard/eventboard_list.jsp");
-		System.out.println("값잘넘어옴" + boardlist.get(0).getEV_SORT());
 		mv.setViewName("home");
 		mv.addObject("page1", page);
 		mv.addObject("maxpage", maxpage);

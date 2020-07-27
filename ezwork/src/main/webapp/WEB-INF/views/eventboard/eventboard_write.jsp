@@ -22,7 +22,7 @@
 				<div class="card-title">
 					<i class="flaticon2-chat-1 text-info"></i>
 					<h3 class="card-label">&nbsp;글 등록</h3>
-					<small>경조사게시판</small>
+					<small>경조사 게시판</small>
 				</div>
 			</div>
 			<!--begin::Form-->
@@ -71,8 +71,8 @@
 						<div class="col-lg-9">
 							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
 								<div class="dropzone-panel mb-lg-0 mb-2">
-									<label for="image">
-										<input type="file" name="image" id="image" style="display: none;" />
+									<label for="upfile">
+										<input type="file" id="upfile" name="uploadfile" style="display: none;" />
 										<span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\Cloud-upload.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     									<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         								<polygon points="0 0 24 0 24 24 0 24"/>

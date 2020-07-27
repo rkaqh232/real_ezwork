@@ -43,7 +43,7 @@
 						class="flaticon2-chat-1 text-info"></i>
 					</span>
 					<h3 class="card-label">
-						경조사알림 <small>게시판</small>
+						인사이동 <small>게시판</small>
 					</h3>
 				</div>
 				<div class="card-toolbar">

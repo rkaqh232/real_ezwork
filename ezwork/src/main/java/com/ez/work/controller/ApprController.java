@@ -245,7 +245,7 @@ public class ApprController {
 	}
 
 	@RequestMapping(value = "Approve.appr")
-	public String Approve(HttpSession session, HttpServletRequest reqeust,
+	public String Approve(
 			@RequestParam(value = "approve_val", defaultValue = "", required = false) int approve_val, //val값
 			@RequestParam(value = "comment", defaultValue = "", required = false) String comment, //comm값
 			@RequestParam(value = "val", defaultValue = "-", required = false) String valcol, //val 컬럼명
@@ -263,6 +263,11 @@ public class ApprController {
 			System.out.println("반려");
 			apprservice.updateApprovalR(apnum,valcol,approve_val,commcol,comment);
 		}
+		
+		Appr appr = apprservice.getDetail(apnum);
+		
+		//if(appr.get)
+		
 		return "redirect:wait.appr";
 	}
 

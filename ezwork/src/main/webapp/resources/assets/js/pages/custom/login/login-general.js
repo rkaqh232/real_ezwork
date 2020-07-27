@@ -169,7 +169,7 @@ var KTLogin = function() {
     						confirmButton: "btn font-weight-bold btn-light-primary"
     					}
 		            }).then(function() {
-						KTUtil.scrollTop();
+		            	location.href="/loginProcess.net";
 					});
 				} else {
 					swal.fire({

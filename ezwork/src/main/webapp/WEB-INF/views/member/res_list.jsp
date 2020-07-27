@@ -36,10 +36,10 @@ a {
 					<div class="d-flex align-items-baseline mr-5">
 						<!--begin::Page Title-->
 						<h5 class="text-dark font-weight-bold my-2 mr-5">
-							<i class="flaticon-users-1 text-info"></i> &nbsp;사원 명부/조회
+							<i class="flaticon-users-1 text-info"></i> &nbsp;퇴사자 목록
 						</h5>
 						<!--end::Page Title-->
-						<small style="color: gray;">사원조회</small>
+						
 					</div>
 					<!--end::Page Heading-->
 				</div>
@@ -61,21 +61,29 @@ a {
 					<div class="card-header flex-wrap border-0 pt-6 pb-0">
 						<div class="card-title">
 							<h3 class="card-label">
-								전체 임직원 목록 <span class="d-block text-muted pt-2 font-size-sm"> 전체 사원 검색이 가능합니다 </span>
+								퇴사 사원 목록
 							</h3>
 						</div>
 						
 						<div class="card-toolbar">
 						
-						
+							<div class="dropdown dropdown-inline mr-2">
+							
+
+								<button type="button"
+									class="btn btn-secondary" href="javascript:history.back()"> 이전
+								</button>
+								<!--begin::Dropdown Menu-->
+								
+							</div>
 							<div class="dropdown dropdown-inline mr-2">
 							<% String u_id1 = (String)session.getAttribute("M_CODE");
 												if ("admin".equals(u_id1)){%>
 
 								<button type="button"
-									class="btn btn-secondary font-weight-bolder"><a href="res_list.hr">퇴사 사원 목록
+									class="btn btn-secondary font-weight-bolder" href="res_list.hr">퇴사 사원 목록
 								</button><% }%>
-								
+								<!--begin::Dropdown Menu-->
 								
 							</div>
 
@@ -116,7 +124,7 @@ a {
 						<!--begin: Search Form-->
 						<!--begin::Search Form-->
 						<div class="mb-7">
-							<form action="list.hr">
+							<form action="res_list.hr">
 								<div class="row align-items-center">
 									<div class="col-lg-9 col-xl-8">
 
@@ -125,23 +133,14 @@ a {
 
 
 												<div class="d-flex align-items-center">
-													<label class="mr-3 mb-0 d-none d-md-block"></label> <select
-														class="form-control" name="search_field"
-														" id="search_field">
-
-														<option value="0" selected>이름</option>
-														<option value="1">부서</option>
-														<option value="2">연락처</option>
-
-													</select>
+													<label class="mr-3 mb-0 d-none d-md-block"></label> 
 												</div>
 
 											</div>
 											<div class="col-md-8 my-2 my-md-0">
-												<div class="input-icon">
-													<input name="search_word" type="text" class="form-control"
-														placeholder="검색어를 입력하세요" value="${search_word}" /> <span>
-														<i class="flaticon2-search-1 text-muted"></i>
+												<div>
+													 <span>
+														<i></i>
 													</span>
 												</div>
 											</div>
@@ -150,9 +149,8 @@ a {
 							</form>
 						</div>
 						<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-							<button class="btn btn-light-primary px-6 font-weight-bold"
-								type="submit">
-								Search</a>
+							
+								</a>
 						</div>
 					</div>
 					</form>
@@ -163,13 +161,13 @@ a {
 				<table class="datatable" id="kt_datatable">
 					<thead>
 						<tr>
-							<th class="Field #1"> # </th>
-							<th class="Field #2">사원번호</th>
-							<th class="Field #3">이름</th>
-							<th title="Field #4">부서</th>
-							<th title="Field #5">직급</th>
 
-							
+							<th class="Field #1">사원번호</th>
+							<th class="Field #2">이름</th>
+							<th title="Field #3" id="kt_datatable_search_status">부서</th>
+							<th title="Field #4">직급</th>
+
+							<th data-field="date">퇴사일</th>
 							<th title="Field #6">이메일</th>
 							<th title="Field #7">연락처</th>
 							<th title="Field #8">설정 :</th>
@@ -180,16 +178,12 @@ a {
 					<tbody>
 						<c:forEach var="m" items="${mem_info}">
 							<tr>
-								<td><div class="symbol">
-										<div class="symbol-label"
-											style="background-image: url('resources/memberupload/${m.m_FILE}')"></div>
-									</div></td>
 								<td>${m.m_CODE}</td>
 								<td>${m.m_NAME}</td>
 								<td>${m.m_PART_C}</td>
 								<td>level ${m.m_LEVEL}</td>
 
-								
+								<td>${m.RES_DATE}</td>
 								<td>${m.m_EMAIL}</td>
 								<td>${m.m_MOBILE_TEL}</td>
 								

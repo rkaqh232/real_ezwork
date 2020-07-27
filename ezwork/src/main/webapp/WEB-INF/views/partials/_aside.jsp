@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <link href="resources/assets/css/themes/layout/aside/dark.css?v=7.0.4"
    rel="stylesheet" type="text/css" />
@@ -107,12 +108,18 @@
                            </a>
                               <div class="menu-submenu">
                                  <i class="menu-arrow"></i>
+                                 
                                  <ul class="menu-subnav">
+                                 
+                                 <!--  admin 계정만 접근 가능 -->
+                                 <% String u_id1 = (String)session.getAttribute("M_CODE");
+												if ("admin".equals(u_id1)){%>
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="insert.hr" class="menu-link">
                                           <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">사원등록</span>
-                                    </a></li>
+                                       </i><span class="menu-text">사원등록</span>
+                                    </a></li><% }%>
+                                    
                                     <li class="menu-item" aria-haspopup="true"><a
                                        href="list.hr"
                                        class="menu-link"> <i

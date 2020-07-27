@@ -427,46 +427,26 @@ public class MemberController {
 		System.out.println(list);
 		return "home";
 	}
+	
+	// 퇴사 사원 조회 리스트
+		@GetMapping(value = "/res_list.hr")
+		public String resign_list(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+				@RequestParam(value = "limit", defaultValue = "3", required = false) int limit, ModelAndView mv,
+				@RequestParam(value = "search_field", defaultValue = "-1") int index,
+				@RequestParam(value = "search_word", defaultValue = "") String search_word, Model m) throws Exception {
 
-	/*
-	 * // 사원 조회 리스트 //@RequestMapping(value = "/list.hr", method =
-	 * RequestMethod.GET) public ModelAndView member_list(
-	 * 
-	 * @RequestParam(value = "page", defaultValue = "1", required = false) int page,
-	 * 
-	 * @RequestParam(value = "limit", defaultValue = "3", required = false) int
-	 * limit, ModelAndView mv,
-	 * 
-	 * @RequestParam(value = "search_field", defaultValue = "-1") int index,
-	 * 
-	 * @RequestParam(value = "search_word", defaultValue = "") String search_word,
-	 * Model m) throws Exception {
-	 * 
-	 * List<Member> list = null; int listcount = 0;
-	 * 
-	 * list = loginmemberservice.getSearchList2(index, search_word, page, limit);
-	 * listcount = loginmemberservice.getSearchListCount(index, search_word); // 총
-	 * 리스트 수를 받아옴
-	 * 
-	 * 
-	 * // 총 페이지 수 int maxpage = (listcount + limit - 1) / limit;
-	 * 
-	 * // 현재 페이지에 보여줄 시작 페이지 수 int startpage = ((page - 1) / 10) * 10 + 1;
-	 * 
-	 * // 현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30 등...) int endpage = startpage + 10 - 1;
-	 * 
-	 * if (endpage > maxpage) endpage = maxpage;
-	 * 
-	 * m.addAttribute("page", "member/member_list2.jsp"); mv.setViewName("home");
-	 * 
-	 * mv.addObject("page", page); mv.addObject("maxpage", maxpage);
-	 * mv.addObject("startpage", startpage); mv.addObject("endpage", endpage);
-	 * mv.addObject("listcount", listcount); mv.addObject("memberlist", list);
-	 * mv.addObject("limit", limit);
-	 * 
-	 * 
-	 * mv.addObject("search_field", index); mv.addObject("search_word",
-	 * search_word); return mv; }
-	 */
+			List<Member> list = null;
+
+			list = loginmemberservice.resSearchList(index, search_word, page, limit);
+			
+			m.addAttribute("page", "member/res_list.jsp");
+			m.addAttribute("mem_info", list);
+			m.addAttribute("limit", limit);
+			m.addAttribute("search_field", index);
+			m.addAttribute("search_word", search_word);
+			System.out.println(list);
+			return "home";
+		}
+
 
 }

@@ -105,7 +105,7 @@ font-size:12px !important;
 													<div class="my-5 step" data-wizard-type="step-content"
 														data-wizard-state="current">
 														<h3 class="text-dark font-weight-bold mb-10"
-															font-weight="bold";>${info.m_NAME} 사원의 퇴사 정보<a style="color:RED"> ▶ 주의 : 절차 완료 전 재확인 필수</a></h3>
+															font-weight="bold";>${info.m_NAME} 사원의 퇴사 정보<a style="color:RED; size:50px !important;"> ▶ 주의 : 절차 완료 전 재확인 필수</a></h3>
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">

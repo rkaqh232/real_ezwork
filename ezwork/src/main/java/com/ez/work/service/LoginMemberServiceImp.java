@@ -91,13 +91,7 @@ public class LoginMemberServiceImp implements LoginMemberService{
 	public int isId(String id) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
-	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
-		
-	}
+	}	
 
 
 	//관리자의 사원정보수정
@@ -107,7 +101,9 @@ public class LoginMemberServiceImp implements LoginMemberService{
 	}
 
 
-
-
+	@Override
+	public int update_res(Member m) {
+		return dao.updateresignation(m);
+	}
 
 }

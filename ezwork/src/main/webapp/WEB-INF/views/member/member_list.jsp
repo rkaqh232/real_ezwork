@@ -224,7 +224,7 @@ a {
 												href="update_admin.hr?code=${m.m_CODE }">  <span class="navi-icon"></i></span>
 													<span class="navi-text">정보수정</span>
 											</a></li>
-											<li class="navi-item"><a class="navi-link" href="#">
+											<li class="navi-item"><a class="navi-link" href="update_resignation.hr?code=${m.m_CODE}"">
 													<span class="navi-icon"></span> <span class="navi-text">퇴사절차</span></span>
 													</span>
 											</a></li><% }%>

@@ -75,6 +75,11 @@ public class MemberDAO {
 	public int updateadmin(Member m) {
 		return sqlSession.update("Members.update_admin",m);
 	}
+
+	public int updateresignation(Member m) {
+		return sqlSession.update("Members.update_res",m);
+
+	}
 	
 	
 

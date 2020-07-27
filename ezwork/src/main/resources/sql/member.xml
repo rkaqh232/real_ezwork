@@ -43,7 +43,7 @@
    
    
    
-   <!--  혜정 - 사원정보수정 --> 
+   <!--  혜정 - 본인 사원 정보 수정 --> 
     <update id="update" parameterType="member">
        update member
        set M_PASS = #{M_PASS}, M_MOBILE_TEL = #{M_MOBILE_TEL}, M_EMAIL = #{M_EMAIL}, 
@@ -52,28 +52,24 @@
     </update>
     
     
-       <!--  혜정 - 인사팀에서 사원정보수정 --> 
+    <!--  혜정 - 인사팀에서 사원정보수정 --> 
     <update id="update_admin" parameterType="member">
        update member
-       set M_PASS = #{M_PASS}, M_FILE= #{M_FILE, jdbcType=VARCHAR}, 
-       
-       
-       (M_PASS,M_FILE,M_ORIGINAL,M_PART_C,M_LEVEL,
-        M_NAME,M_GENDER,M_BIRTH,M_ARMY,M_MARRIAGE,M_MOBILE_TEL,M_EMAIL,M_ADDRESS,
-         M_JOIN_DATE,SC_NAME, SC_MAJOR,SC_DEGREE,SC_ADDRESS,SC_GRAD_DAY, 
-         LG_NAME, LG_TEST,LG_GRADE,LG_ORGAN,LG_DATE, LI_NAME, LI_ORGAN,LI_DATE,
-          M_POSTCODE,M_ADDRESS2)
-      values
-         (#{M_PASS}, #{M_FILE, jdbcType=VARCHAR},#{M_ORIGINAL, jdbcType=VARCHAR}, 
-         #{M_PART_C}, #{M_LEVEL}, #{M_NAME},
-         #{M_GENDER}, #{M_BIRTH}, #{M_ARMY}, #{M_MARRIAGE}, 
-         #{M_MOBILE_TEL}, #{M_EMAIL}, #{M_ADDRESS}, TO_DATE(#{M_JOIN_DATE},'YYYY-MM-DD'), 
-         #{SC_NAME}, #{SC_MAJOR}, #{SC_DEGREE}, #{SC_ADDRESS}, SYSDATE,
-         #{LG_NAME}, #{LG_TEST}, #{LG_GRADE}, #{LG_ORGAN}, #{LG_DATE},
-         #{LI_NAME}, #{LI_ORGAN}, #{LI_DATE},
-         #{M_POSTCODE}, #{M_ADDRESS2}
-         
-         )   
+       set M_NAME= #{M_NAME},M_PASS = #{M_PASS}, M_FILE= #{M_FILE, jdbcType=VARCHAR}, M_ORIGINAL = #{M_ORIGINAL, jdbcType=VARCHAR},
+       	   M_PART_C = #{M_PART_C}, M_GENDER =#{M_GENDER}, M_BIRTH= #{M_BIRTH}, M_ARMY= #{M_ARMY}, M_MARRIAGE= #{M_MARRIAGE},
+       	   M_MOBILE_TEL= #{M_MOBILE_TEL},M_EMAIL= #{M_EMAIL}, M_POSTCODE=#{M_POSTCODE}, M_ADDRESS=#{M_ADDRESS}, 
+       	   M_ADDRESS2= #{M_ADDRESS2}, SC_NAME= #{SC_NAME}, SC_MAJOR= #{SC_MAJOR}, SC_DEGREE= #{SC_DEGREE}, SC_ADDRESS= #{SC_ADDRESS},
+       	   SC_GRAD_DAY= #{SC_GRAD_DAY}, 
+       	   LG_NAME= #{LG_NAME}, LG_TEST= #{LG_TEST}, LG_GRADE= #{LG_GRADE}, LG_ORGAN= #{LG_ORGAN},
+       	   LG_DATE= #{LG_DATE}, LI_NAME= #{LI_NAME}, LI_ORGAN= #{LI_ORGAN}, LI_DATE= #{LI_DATE}
+       	   where M_CODE = #{M_CODE}       
+    </update>
+    
+    <!--  혜정 - 인사팀에서 퇴사처리 수정 --> 
+    <update id="update_res" parameterType="member">
+       update member
+       set RES_DATE= #{RES_DATE}
+       where M_CODE = #{M_CODE}         
     </update>
     
     

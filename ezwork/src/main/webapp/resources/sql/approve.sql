@@ -1,5 +1,8 @@
 drop table approve;
 
+drop sequence appr_seq;
+create sequence appr_seq;
+
 create table approve(
 	APPR_CODE		NUMBER			PRIMARY KEY,	--결재 번호
 	M_CODE			VARCHAR2(50),					--사원 코드(id)
@@ -39,8 +42,4 @@ null,null,0,sysdate,null,0
 );
 
 select * from approve;
-
-drop sequence appr_seq;
-create sequence appr_seq;
-
 

@@ -15,4 +15,6 @@ public interface ApprService {
 	public int getMemCount();
 	public void insertappr(Appr appr);
 	public Appr getDetail(int num);
+	public void updateApproval(int apnum, String valcol, int approve_val, String commcol, String comment);
+	public void updateApprovalR(int apnum, String valcol, int approve_val, String commcol, String comment);
 }

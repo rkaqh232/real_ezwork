@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="resources/js/jquery-3.5.0.js"></script>
-
+<script src="resources/js/appr/apprdetail.js"></script>
 <style>
 .inputname{
 	width:130px !important;
@@ -34,7 +34,19 @@ p{margin-top:0rem;
 	width:300px;
 }
 
-
+.modal {
+	display: none;
+    width: 700px;
+    position: relative;
+    top: -500px;
+    left: 15%;	
+}
+.radio-inline{
+	line-height:37px;
+}
+.radio span{
+	margin-top:10px;
+}
 
 
 </style>
@@ -50,7 +62,7 @@ p{margin-top:0rem;
 		</div>
 		<div class="card-toolbar">						
 			<!--begin::Button-->
-			<button data-toggle="modal" data-target="#myModal" class="btn btn-primary font-weight-bolder">
+			<button id="apbtn" data-toggle="modal" data-target="#myModal" class="btn btn-primary font-weight-bolder">
 			<span class="svg-icon svg-icon-md">
 				<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -69,14 +81,7 @@ p{margin-top:0rem;
 		
 		
 		<!--begin::Card-->
-		<div class="card card-custom">
-			<div class="card-header">
-				<div class="card-title">
-					<i class="flaticon2-chat-1 text-info"></i>
-					<h3 class="card-label">&nbsp;글 등록</h3>
-					<small>전자 결재</small>
-				</div>
-			</div>
+		<div class="card card-custom">			
 			<!--begin::Form-->
 				<div class="card-body">
 					<div class="form-group row appr">
@@ -97,6 +102,7 @@ p{margin-top:0rem;
 					</div>
 					<input type="hidden" value="${part}" name="M_PART">
 					<input type="hidden" value="${code}" name="M_CODE">
+					<input type="hidden" value="${chkCode}" id="chkCode">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">제출자</label>
 						<div class="col-lg-4 writer">
@@ -149,57 +155,176 @@ p{margin-top:0rem;
 						</div>
 					</div>
 					<c:if test="${!empty apprdata.m_PART_F}">	
-					<c:if test="${apprdata.FIRST_VAL==0 }">
-						<c:set var="val_str" value="미결재" />
-					</c:if>
-					<c:if test="${apprdata.FIRST_VAL==1 }">
-						<c:set var="val_str" value="승인"/>
-					</c:if>
-					<c:if test="${apprdata.FIRST_VAL==2 }">
-						<c:set var="val_str" value="반려"/>
-					</c:if>
+						<c:if test="${apprdata.FIRST_VAL==0 }">
+							<c:set var="val_str" value="미결재" />
+						</c:if>
+						<c:if test="${apprdata.FIRST_VAL==1 }">
+							<c:set var="val_str" value="승인"/>
+						</c:if>
+						<c:if test="${apprdata.FIRST_VAL==2 }">
+							<c:set var="val_str" value="반려"/>
+						</c:if>
+						<input type="hidden" id="first_stat" value="${val_str }">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">1차 결재자</label>
 						<div class="col-lg-7 input-group">
 							<div class="input-group-prepend statdiv">
 								<span class="input-group-text stat">${val_str}</span>
 							</div>														
-							<span class="form-control is-invalid inputname">${apprdata.m_PART_F} ${apprdata.FIRST_CODE}</span>									
+							<span id="f_valid" class="form-control inputname">${apprdata.m_PART_F} ${apprdata.FIRST_CODE}</span>									
 						</div>
 						
 						<label class="col-lg-3 col-form-label text-lg-right">의견</label>
 						<div class="col-lg-7 input-group">																
-							<input type="text" class="form-control" value="이건 좀 아닌것 같은데">									
-						</div>
-						
-								
+							<input type="text" class="form-control" value="${apprdata.FIRST_COMMENT}" readOnly>									
+						</div>														
 					</div>
 					</c:if>
 					
+					<c:if test="${!empty apprdata.m_PART_S}">	
+						<c:if test="${apprdata.SECOND_VAL==0 }">
+							<c:set var="val_str" value="미결재" />
+						</c:if>
+						<c:if test="${apprdata.SECOND_VAL==1 }">
+							<c:set var="val_str" value="승인"/>
+						</c:if>
+						<c:if test="${apprdata.SECOND_VAL==2 }">
+							<c:set var="val_str" value="반려"/>
+						</c:if>
+						<input type="hidden" id="second_stat" value="${val_str }">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">2차 결재자</label>
 						<div class="col-lg-7 input-group">
 							<div class="input-group-prepend statdiv">
-								<span class="input-group-text stat">반려</span>
-							</div>	
-							<input type="text" name="SECOND_CODE" class="form-control" autocomplete=off 
-									value="${apprdata.m_PART_S} ${apprdata.SECOND_CODE}">				
-							<div class="input-group-append">
-								<span class="input-group-text apprcomm">승인</span>
-							</div>								
+								<span class="input-group-text stat">${val_str}</span>
+							</div>														
+							<span id="s_valid" class="form-control inputname">${apprdata.m_PART_S} ${apprdata.SECOND_CODE}</span>									
 						</div>
+						
+						<label class="col-lg-3 col-form-label text-lg-right">의견</label>
+						<div class="col-lg-7 input-group">																
+							<input type="text" class="form-control" value="${apprdata.SECOND_COMMENT}" readOnly>									
+						</div>														
 					</div>
-					<c:if test="${!empty apprdata.m_PART_T}">
+					</c:if>
+					
+					<c:if test="${!empty apprdata.m_PART_T}">	
+						<c:if test="${apprdata.THIRD_VAL==0 }">
+							<c:set var="val_str" value="미결재" />
+						</c:if>
+						<c:if test="${apprdata.THIRD_VAL==1 }">
+							<c:set var="val_str" value="승인"/>
+						</c:if>
+						<c:if test="${apprdata.THIRD_VAL==2 }">
+							<c:set var="val_str" value="반려"/>
+						</c:if>
+						<input type="hidden" id="third_stat" value="${val_str }">
 					<div class="form-group row appr">
 						<label class="col-lg-3 col-form-label text-lg-right">3차 결재자</label>
-						<div class="col-lg-4">
-							<input type="text" name="THIRD_CODE" class="form-control" autocomplete=off 
-									value="${apprdata.m_PART_T} ${apprdata.THIRD_CODE}">										
+						<div class="col-lg-7 input-group">
+							<div class="input-group-prepend statdiv">
+								<span class="input-group-text stat">${val_str}</span>
+							</div>														
+							<span id="t_valid" class="form-control inputname">${apprdata.m_PART_T} ${apprdata.THIRD_CODE}</span>									
 						</div>
+						
+						<label class="col-lg-3 col-form-label text-lg-right">의견</label>
+						<div class="col-lg-7 input-group">																
+							<input type="text" class="form-control" value="${apprdata.THIRD_COMMENT}" readOnly>									
+						</div>														
 					</div>
 					</c:if>
 				</div>				
 			<!--end::Form-->
+		<div class="modal" id="myModal">
+		<div class="modal-content">
+		<!--begin::Card-->
+		<div class="card card-custom">
+			<div class="card-header">
+				<div class="card-title">
+					<i class="flaticon2-chat-1 text-info"></i>
+					<h3 class="card-label">&nbsp;글 등록</h3>
+					<small>전자 결재</small>
+				</div>
+			</div>
+			
+			
+			
+			<!--begin::Form-->
+			<form action="Approve.appr" method="post" name="appr" enctype="multipart/form-data">
+				<div class="card-body">					
+					<input type="hidden" value="${part}" name="M_PART">
+					<input type="hidden" value="${code}" name="M_CODE">
+					<input type="hidden" value="${name}" name="APPR_NAME">
+					<input type="hidden" value="${apprdata.APPR_CODE}" name="APPR_CODE">
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">결재자</label>
+						<div class="col-lg-4 writer">
+							<!-- <input name="EV_NAME" id="board_name" value="인사팀" readOnly
+								type="text" size="10" maxlength="30" class="form-control"> -->
+							<span class="label label-lg font-weight-bold label-light-info label-inline">
+								${part}
+							</span>
+							<span>
+							${name}
+							</span>
+						</div>
+					</div>					
+					
+					
+					<c:if test="${apprdata.APPR_CUR_COUNT == 0}">
+						<c:set var="nowname" value="FIRST_VAL"/>
+						<c:set var="nowcomm" value="FIRST_COMMENT"/>
+					</c:if>
+					<c:if test="${apprdata.APPR_CUR_COUNT == 1}">
+						<c:set var="nowname" value="SECOND_VAL"/>
+						<c:set var="nowcomm" value="SECOND_COMMENT"/>
+					</c:if>
+					<c:if test="${apprdata.APPR_CUR_COUNT == 2}">
+						<c:set var="nowname" value="THIRD_VAL"/>
+						<c:set var="nowcomm" value="THIRD_COMMENT"/>
+					</c:if>
+					
+					<input type="hidden" name="val" value="${nowname}">
+					<input type="hidden" name="commname"value="${nowcomm}">
+					<div class="form-group row appr">
+			        	<label class="col-lg-3 col-form-label text-lg-right">라디오</label>
+			        	<div class="radio-inline">
+			            <label class="radio">
+			                <input type="radio" name="approve_val" value="1"/> 승인
+			                <span></span>
+			            </label>
+			            <label class="radio">
+			                <input type="radio" name="approve_val" value="2"/> 반려
+			                <span></span>
+			            </label>
+			        </div>
+					</div>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
+						<div class="col-lg-7">
+							<textarea name ="comment" style="height: 160px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
+						</div>
+					</div>					
+
+					
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						<div class="col-lg-3"></div>
+						<div class="col-lg-9">
+							<button type="submit" class="btn btn-info">등록</button>
+							<button class="btn btn-outline-secondary" data-dismiss="modal">취소</button>
+						</div>
+					</div>
+				</div>			  
+			</form>
+			<!--end::Form-->
+		</div>
+		<!--end::Card-->
+		</div>
+		</div>	
+			
 		</div>
 		<!--end::Card-->
 		</div>

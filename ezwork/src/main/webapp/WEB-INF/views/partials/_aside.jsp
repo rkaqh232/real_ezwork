@@ -291,7 +291,7 @@
 
 
                   <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                     data-menu-toggle="hover"><a href="javascript:;"
+                     data-menu-toggle="hover"><a href="wait.appr"
                      class="menu-link menu-toggle"> <span
                         class="svg-icon menu-icon"> <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
                            <svg xmlns="http://www.w3.org/2000/svg"
@@ -310,55 +310,7 @@
                      </span> <span class="menu-text">전자결재</span> <i class="menu-arrow"></i>
                   </a> 
                   
-            <!----------------------------------     하위 탭     ------------------------------------------>
-                        <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                           <li class="menu-item menu-item-parent" aria-haspopup="true">
-                              <span class="menu-link"> <span class="menu-text">Applications</span>
-                           </span>
-                           </li>
-
-                           <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
-                              class="menu-link menu-toggle"> <i
-                                 class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">결재</span> <i class="menu-arrow"></i>
-                           </a>
-                              <div class="menu-submenu">
-                                 <i class="menu-arrow"></i>
-                                 <ul class="menu-subnav">
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="wait.appr" class="menu-link">
-                                          <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">결재대기함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="ongoing.appr"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">결재진행함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="finished.appr"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">완료문서함</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="return.appr"
-                                       class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">반려문서함</span>
-                                    </a></li>
-
-                                 </ul>
-                              </div></li>
-
-
-
-                        </ul>
-                     </div></li>
+            </li>
 
 
 <!-- 일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리  일정 관리    -->

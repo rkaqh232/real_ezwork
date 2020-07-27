@@ -47,5 +47,13 @@ public class ApprDAO {
 	public Appr getDetail(int num) {
 		return sqlSession.selectOne("Apprs.getdetail",num);
 	}
+
+	public void updateApproval(HashMap<String,Object> map) {		
+		sqlSession.update("Apprs.updateAp",map);		
+	}
+
+	public void updateApprovalR(HashMap<String, Object> map) {
+		sqlSession.update("Apprs.updateR",map);		
+	}
 	
 }

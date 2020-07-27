@@ -65,7 +65,7 @@ public class ApprController {
 		int limit = 10;
 		int listcount = apprservice.getListCount();
 		int maxpage = (listcount + limit - 1) / limit;
-		int startpage = ((page - 1) / 10) * 10 + 1;
+		int startpage = ((page - 1) / 10) * 10 + 1; 
 		int endpage = startpage + 10 - 1;
 
 		if (endpage > maxpage)
@@ -86,6 +86,8 @@ public class ApprController {
 
 		return map;
 	}
+	
+	
 
 	@ResponseBody
 	@RequestMapping(value = "/SearchMemAjax.appr")
@@ -251,10 +253,10 @@ public class ApprController {
 			@RequestParam(value = "val", defaultValue = "-", required = false) String valcol, //val 컬럼명
 			@RequestParam(value = "APPR_CODE", defaultValue = "-", required = false) int apnum, //apprcode 
 			@RequestParam(value = "commname", defaultValue = "-", required = false) String commcol) { // comm컬럼명
+		
 		System.out.println("Approve.appr >> " +valcol); //결재 순서(FIRST_CODE,SECOND_CODE,THIRD_CODE)
 		System.out.println("Approve.appr >> " +approve_val); //승인,반려
 		System.out.println("Approve.appr >> " +comment); //의견
-		
 		
 		if(approve_val==1) {
 			System.out.println("승인");
@@ -265,10 +267,53 @@ public class ApprController {
 		}
 		
 		Appr appr = apprservice.getDetail(apnum);
+		int appr_val= appr.getAPPR_VAL();
 		
-		//if(appr.get)
+		if(appr_val == 3 || appr_val == 4 ) {
+			apprservice.writeCompDate(apnum);
+		}
 		
 		return "redirect:wait.appr";
+	}
+	
+	@RequestMapping(value="Search.appr")
+	public Map<String, Object> ApprSearch(
+			ModelAndView mv, HttpSession session,
+			@RequestParam(value = "number", defaultValue = "", required = false) int number,
+			@RequestParam(value = "name", defaultValue = "", required = false) String m_name,
+			@RequestParam(value = "contentitle", defaultValue = "", required = false) String contentitle,
+			@RequestParam(value = "start", defaultValue = "", required = false) String start,
+			@RequestParam(value = "end", defaultValue = "", required = false) String end,
+			@RequestParam(value = "appr_stat", defaultValue = "", required = false) String appr_stat,
+			@RequestParam(value = "appr_val", defaultValue = "", required = false) String appr_val,
+			@RequestParam(value = "page", defaultValue="1", required = false) int page
+			){	
+
+		String id = (String) session.getAttribute("id");
+
+		int limit = 10;
+		int listcount = apprservice.getListCount();
+		int maxpage = (listcount + limit - 1) / limit;
+		int startpage = ((page - 1) / 10) * 10 + 1; 
+		int endpage = startpage + 10 - 1;
+
+		if (endpage > maxpage)
+			endpage = maxpage;
+		
+		List<Appr> apprlist = apprservice.getSearchList(number,m_name,contentitle,start,end,appr_stat,appr_val, page,limit,id);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println(apprlist);
+
+		map.put("nowpage", page);
+		map.put("maxpage", maxpage);
+		map.put("startpage", startpage);
+		map.put("endpage", endpage);
+		map.put("listcount", listcount);
+		map.put("apprlist", apprlist);
+		map.put("limit", limit);
+
+		return map;		
 	}
 
 }

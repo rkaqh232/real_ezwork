@@ -47,15 +47,38 @@ $(function(){
 		}, 500)
 	})
 	
+	$("#search_btn").on('click',function(){
+		console.log();
+		
+	});
 	
 	
 })
 
 function go(page){
+	console.log("go");
 	var limit = 10;
 	//var id = document.getElementById('SENDER').value;
 	var data = "limit=" + limit + "&start=ajax&page=" + page  ;
 	ajax(data);
+}
+
+function search(page){
+	console.log("searchajax");
+	var limit = 10;
+	//var id = document.getElementById('SENDER').value;
+	var number=$("#search_number").val();
+	var name = $("#search_name").val();
+	var contentitle = $("#search_contentitle").val();
+	var start = $("#search_start").val();
+	var end = $("#search_end").val();
+	var appr_stat = $("#search_appr_stat").val();
+	var appr_val = $("#search_appr_val").val();
+	
+	var data = "limit=" + limit + "&start=ajax&page=" + page + "&number="+number+"&name="
+				+name+"&contentitle="+contentitle+"&start="+start+"&end="+end
+				+"&appr_stat="+appr_stat+"&appr_val="+appr_val  ;
+	searchajax(data);
 }
 
 function setPaging(href, digit){
@@ -170,7 +193,107 @@ function tmemajax(str) {
 }
 
 
-
+function searchajax(sdata){
+	output="";
+	$.ajax({
+		type : "POST",
+		data : sdata,
+		url : "Search.appr",
+		dataType : "json",
+		cache : false,
+		success : function(data){
+			var totalData = data.listcount;			
+			if(totalData > 0){
+				var num = totalData - (data.nowpage -1) * data.limit;
+				output = "<tbody>";
+				$(data.apprlist).each(
+					function(index, item){
+						var stat="",val="";
+						switch(item.appr_STAT){
+						case 0:
+							stat = '업무';
+							break;
+						case 1:
+							stat = '휴가';
+							break;
+						}
+						
+						switch(item.appr_VAL){
+						case 0:
+							val = '승인대기';
+							break;
+						case 1:
+							val = '승인(1차)';
+							break;
+						case 2:
+							val = '승인(2차)';
+							break;
+						case 3:
+							val = '승인(최종)';
+							break;
+						case 4:
+							val = '반려';
+							break;
+						}
+						var comp_date='';
+						if(item.appr_COMP_DATE==null){
+							comp_date='-';
+						}else{
+							comp_date = item.appr_COMP_DATE.substring(0,10);
+						}
+						
+						
+						output += '<tr><td><div><p class="font-size-lg">'+item.appr_CODE + '</p></div></td>'
+						output += '<td><div><p class="font-size-lg">'+'<span class="label label-lg font-weight-bold label-light-info label-inline">'
+						output += item.m_PART+ '</span>'+ item.appr_NAME + '</p></div></td>'
+						
+						output += '<td><div><p class="font-size-lg">' + '<a href="ApprDetailAction.appr?num='
+								+item.appr_CODE+'&page=' + data.nowpage+'">'+ item.appr_TITLE +'</a></p></div></td>'
+						output += '<td><div><p class="font-size-lg">'+stat+'</p></div></td>'
+						output += '<td><div><p class="font-size-lg">' + item.appr_DATE.substring(0,10)+'</p></div></td>'
+						output += '<td><div><p class="font-size-lg">' + comp_date +'</p></div></td>'
+						output += '<td><div><p class="font-size-lg">'+val + '</p></div></td>'
+					})
+				output += "</tbody>"
+				$('table').append(output)//table 완성
+				
+				$(".pagination").empty(); //페이징 처리 영역 내용 제거
+				output = "";
+				
+				digit = '<i class="ki ki-bold-arrow-back icon-xs"></i>'; //이전 버튼							
+				href="";	
+				if (data.nowpage > 1) {
+					href = 'href=javascript:go(' + (data.nowpage - 1) + ')';
+				}
+				setPaging(href, digit);
+				
+				for (var i = data.startpage; i <= data.endpage; i++) {
+					digit = i;
+					href="";
+					if (i != data.nowpage) {
+						href = 'href=javascript:search(' + i + ')';
+					} 
+					setPaging( href, digit);
+				}
+				
+				digit = '<i class="ki ki-bold-arrow-next icon-xs"></i>'; //다음 버튼
+				href="";
+				if (data.page < data.maxpage) {
+					href = 'href=javascript:search(' + (data.nowpage + 1) + ')';
+				} 
+				setPaging( href, digit);
+				$('.pagination').append(output)
+			}//if(data.listcount) end
+			else if(totalData==0){
+				output = "<tr><th colspan='4'><h3>등록된 결재가 없습니다.</h3></th></tr>";
+				$('table').append(output)
+			}			
+		}, //success end
+		error : function(){
+			console.log('searchajax 에러')
+		}
+	})
+}
 
 
 function ajax(sdata){

@@ -40,8 +40,7 @@ public class ApprDAO {
 	}
 
 	public void insertAppr(Appr appr) {
-		sqlSession.insert("Apprs.insertappr",appr);
-		
+		sqlSession.insert("Apprs.insertappr",appr);		
 	}
 
 	public Appr getDetail(int num) {
@@ -54,6 +53,14 @@ public class ApprDAO {
 
 	public void updateApprovalR(HashMap<String, Object> map) {
 		sqlSession.update("Apprs.updateR",map);		
+	}
+
+	public void writeCompDate(int apnum) {
+		sqlSession.update("Apprs.writeComp",apnum);
+	}
+
+	public List<Appr> getSearchList(HashMap<String, Object> map) {
+		return sqlSession.selectList("Apprs.getSearchList",map);
 	}
 	
 }

@@ -35,6 +35,24 @@
 p {
 	margin-bottom: 0
 }
+
+#kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td.pl-0.py-4 {
+	width: 35px;
+}
+
+#kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td:nth-child(2) {
+	width: 50px;
+}
+
+#kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td:nth-child(3) {
+	text-align: center;
+}
+
+#kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td:nth-child(4) {
+	width: 100px;
+}
+
+
 </style>
 
 <script src="resources/js/mail/maininbox.js"></script>
@@ -274,7 +292,7 @@ p {
 				<tr>
 					<td width=61px;></td>
 					<td width=250px;>#</td>
-					<td width=195px; >제목</td>
+					<td width=150px; >제목</td>
 					<td width=145px;>작성자</td>
 					<td>날짜</td>
 				</tr>
@@ -291,16 +309,17 @@ p {
 						<tbody>
 							<tr>
 								<td class="pl-0 py-4"></td>
-								<td class="pl-0">${m.NO_NO}</td>
-								<td class="text-right"><span
-									class="text-muted font-weight-500"> <a
-										href="./BoardDetailAction.no?num=${m.NO_NO}">
-											${m.NO_TITLE} </a>
-								</span></td>
-								<td class="text-right"><span
-									class="label label-lg label-light-warning label-inline">${m.NO_NAME}</span></td>
-								<td class="text-right"><span
-									class="text-muted font-weight-500">${m.NO_DATE}</span></td>
+									<td class="pl-0">${m.NO_NO}</td>
+										<td class="text-center">
+											<span class="text-muted font-weight-500">
+												<a href="./BoardDetailAction.no?num=${m.NO_NO}">${m.NO_TITLE}</a>
+											</span>
+										</td>
+									<td class="text-right">
+										<span class="label label-lg label-light-warning label-inline">${m.NO_NAME}</span></td>
+									<td class="text-right">
+										<span class="text-muted font-weight-500">${m.NO_DATE}</span>
+									</td>
 							</tr>
 						</tbody>
 					</table>

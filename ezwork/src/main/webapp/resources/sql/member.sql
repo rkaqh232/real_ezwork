@@ -70,6 +70,15 @@ values('test2','1','임수진', '회계팀','4','ex@Exwork.com', '010-2010-1002'
 insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL, M_MOBILE_TEL, m_address, m_join_date, m_gender) -- 임시생성 영민
 values('test3','1','안혜정', '인사팀','3','ex@Exwork.com', '010-3020-4030', '서울시 강동구', sysdate, '여');
 
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL, M_MOBILE_TEL, m_address, m_join_date, m_gender) -- 임시생성 영민
+values('test4','1','사나다', '인사팀','3','ex@Exwork.com', '010-3020-4030', '서울시 강동구', sysdate, '여');
+
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL, M_MOBILE_TEL, m_address, m_join_date, m_gender) -- 임시생성 영민
+values('test5','1','미유키', '인사팀','3','ex@Exwork.com', '010-3020-4030', '서울시 강동구', sysdate, '여');
+
+insert into member(M_CODE, M_PASS, M_NAME, M_PART_C, M_LEVEL, M_EMAIL, M_MOBILE_TEL, m_address, m_join_date, m_gender) -- 임시생성 영민
+values('test6','1','마리아', '인사팀','3','ex@Exwork.com', '010-3020-4030', '서울시 강동구', sysdate, '여');
+
 insert into member(M_CODE,M_PASS) -- 임시 관리자 계정
 values('admin','1');
 

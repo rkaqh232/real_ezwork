@@ -17,7 +17,7 @@
 				<div class="card-title">
 					<i class="flaticon2-chat-1 text-info"></i>
 					<h3 class="card-label">&nbsp;글 상세보기</h3>
-					<small>경조사게시판</small>
+					<small>경조사 게시판</small>
 				</div>
 				
 					<div class="card-toolbar">

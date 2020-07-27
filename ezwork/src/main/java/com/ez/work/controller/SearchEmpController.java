@@ -80,23 +80,12 @@ public class SearchEmpController {
 		System.out.println("id값은 " + user);
 		System.out.println("bookmark값은 " + bookmark);
 		String owner = (String) session.getAttribute("M_CODE"); // 로그인한 사람 id
-		System.out.println("owner의 값은 " + owner);
 		memberservice.choosebookmark(user, owner, bookmark); // 서비스측에 즐겨찾기 선택 당한 id와 선택한 id, 즐겨찾기 버튼 값을 보냄
 
-		/*
-		 * View단에서 즐겨찾기 버튼 누르면 user, owner, bookmark값 다 잘 넘어와서 insert는 되는데, 다시 누르면 삭제는
-		 * 안되고 똑같은 값이 또 다시 추가되요. 아무도, View단의 bookmark값을 누름과 동시에 1로 갱신해줘야하는데, 누르면 컨트롤러로
-		 * 넘어오는 bookmark값은 계속 0이여서 그런거 같아요. 어떻게 하면 View단의 bookmark값을 db의 값과 일치시킬 수 있을까요?
-		 */
 		List<bookmark> bminf = memberservice.bookmarklist(owner);
 		n.addAttribute("page", "Search/SearchEmp.jsp");
 		mv.setViewName("home");
 		mv.addObject("bminf", bminf);
-		/*
-		 * System.out.println("bminf의 bookmark값은 " + bminf.get(0).getM_BOOKMARK());
-		 * System.out.println("bminf의 user값은 " + bminf.get(0).getM_CODE());
-		 * System.out.println("bminf의 owner값은 " + bminf.get(0).getM_OWNER());
-		 */
 		return bminf;
 
 	}

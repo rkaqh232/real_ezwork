@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-
-<link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4" rel="stylesheet" type="text/css" />
 <style>
 a{
 font-size:12px !important;
@@ -12,7 +11,9 @@ font-size:12px !important;
 #kt_content {
 	padding-top: 0px;
 }
+
 </style>
+<link href="resources/assets/css/pages/wizard/wizard-4.css?v=7.0.4" rel="stylesheet" type="text/css" />
 
 <body>
 <div class="content d-flex flex-column flex-column-fluid"
@@ -33,10 +34,10 @@ font-size:12px !important;
 					<div class="d-flex align-items-baseline mr-5">
 						<!--begin::Page Title-->
 						<h5 class="text-dark font-weight-bold my-2 mr-5">
-							<i class="flaticon-users-1 text-info"></i> &nbsp;사원등록
+							<i class="flaticon-users-1 text-info"></i> &nbsp;사원 기본 정보 관리
 						</h5>
 						<!--end::Page Title-->
-						<small style="color: gray;">사원관리</small>
+						<small style="color: gray;">정보관리</small>
 					</div>
 					<!--end::Page Heading-->
 				</div>
@@ -44,21 +45,22 @@ font-size:12px !important;
 
 			</div>
 		</div>
+<!--begin::Entry-->	
 
-
-
-	<!--begin::Entry-->
-	
 	<div class="d-flex flex-column-fluid">
+	
 		<!--begin::Container-->
 		<div class="container" style="margin-top: 23px;">
+		
 			<!--begin::Card-->
 			<div class="card card-custom card-transparent">
 				<div class="card-body p-0">
+				
 					<!--begin::Wizard-->
 					<div class="wizard wizard-4" id="kt_wizard"
 						data-wizard-state="step-first" data-wizard-clickable="true">
 						<!--begin::Wizard Nav-->
+						
 						
 						
 						<!-- 탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  탭메뉴  -->
@@ -109,7 +111,7 @@ font-size:12px !important;
 						<!--end::Wizard Nav-->
 						<!--begin::Card-->
 
-                       <form class="form" id="kt_form" action="joinProcess.net" method="post" enctype="multipart/form-data">
+                       <form class="form" id="kt_form" action="admin_updateProcess.net" method="post">
 
 						<!--  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작  STEP 시작 -->
 						<div class="card card-custom card-shadowless rounded-top-0">
@@ -132,7 +134,7 @@ font-size:12px !important;
 													<div class="my-5 step" data-wizard-type="step-content"
 														data-wizard-state="current">
 														<h3 class="text-dark font-weight-bold mb-10"
-															font-weight="bold";>신규 사원 등록<a style="color:red">   * 필수항목입니다. </a> </h3>
+															font-weight="bold";>나의 정보 수정<a style="color:#BF00FF">   ▶  해당 정보만 수정가능합니다. 이 외의 수정사항은 인사팀(내선번호 : 2114)으로 문의부탁드립니다.</a></h3>
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label text-left">
@@ -140,9 +142,13 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<div class="image-input image-input-outline"
 																	id="kt_user_add_avatar">
+																	<div class="image-input image-input-outline"
+																	id="kt_user_add_avatar">
 																	<div class="image-input-wrapper"
-																		style="background-image: url(resources/assets/media/users/LEE.PNG)"></div>
-																	<label
+																			style="background-image: url('resources/memberupload/${info.m_FILE}')" readonly></div>
+																	
+																</div>
+																				<label
 																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
 																		data-action="change" data-toggle="tooltip" title=""
 																		data-original-title="Change avatar"> <i
@@ -151,7 +157,7 @@ font-size:12px !important;
 																		<input type="file" id="upfile" name="profile_avatar" accept=".png, .jpg, .jpeg" /> 
 																		
 																		<input type="hidden" name="profile_avatar_remove" />
-																		<!-- <input type="file" id="upfile" name="uploadfile"> -->
+																		<input type="file" id="upfile" name="uploadfile">
 																		
 																	</label> <span
 																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -171,156 +177,59 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_CODE" id="M_CODE" type="text" placeholder="EMP202010" 
-																	onclick="empcode_error()" readonly /><span class="form-text text-muted">참고 : 사원번호는 자동으로 생성됩니다. 
+																	name="M_CODE" id="M_CODE" type="text" value="${info.m_CODE}" 
+																	readonly /><span class="form-text text-muted">참고 : 수정불가
 																	</span>
 															</div>
 														</div>
 														<!--  비밀번호  -->
 														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호<a style="color:red"> * </a></label>
+															<label class="col-xl-3 col-lg-3 col-form-label">비밀번호<a style="color:#BF00FF">  ▶</a></label>
 															<div class="col-lg-9 col-xl-9">
 																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="M_PASS" type="text" id="password" value="" placeholder="840817" /> <span
-																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
+																	class="form-control"
+																	name="M_PASS" type="text" id="password" value="${info.m_PASS}" /> <span
+																	class="form-text text-muted"> 참고 : 비밀번호는 반드시 숫자 6자리로 입력해주세요. </span>
 															</div>
 														</div>
 														<!--end::Group-->
 														<!--begin::Group-->
 														
-														
-														
-														
-														
-														
-								
-														
-
-														<!-- <div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
-																<div class="col-lg-9 col-xl-9">
-																	<div class="dropdown">
-    																	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       																		&nbsp;&nbsp;&nbsp;선택해주세요.&nbsp;&nbsp;&nbsp;&nbsp;</button>
-  													  <div class="dropdown-menu" >
-      														  <a class="dropdown-item" href="#" value="A1">A1   총무</a>
-        													  <a class="dropdown-item" href="#" value="A2">A2   재무</a>
-     													      <a class="dropdown-item" href="#" value="A3">A3   인사</a>
-     													      <a class="dropdown-item" href="#" value="B1">B1   경영지원</a>
-     													      <a class="dropdown-item" href="#" value="B2">B2  S/W지원</a>
-     													      <a class="dropdown-item" href="#" value="B3">B3   기술지원</a>
-     													      <a class="dropdown-item" href="#" value="C1">C1   영업1팀</a>
-     													      <a class="dropdown-item" href="#" value="C2">C2   영업2팀</a>
-     													      <a class="dropdown-item" href="#" value="Q">Q  임원</a>
-   															 </div>
-															</div>
-															<span
-																	class="form-text text-muted">참고 : 기타 부서의 경우 A1으로 선택해주세요.</span>
-															</div>
-														</div> -->
-														
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
-																<div class="col-lg-9 col-xl-9">
-																	<label class="radio radio-rounded radio-info">															
-																<input type="radio" name="M_PART_C" id="M_PART_C" checked="checked" value="총무팀" />총무팀 <span></span>
-																	&nbsp;&nbsp;</label> 
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="인사팀" />인사팀<span></span>
-																&nbsp;&nbsp;</label>
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="법무팀" />법무팀<span></span>
-																&nbsp;&nbsp;</label>
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="정보시스템팀" />정보시스템팀<span></span>
-																&nbsp;&nbsp;</label>
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="IT 지원팀"/>IT 지원팀<span></span>
-																&nbsp;&nbsp;</label>
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="마케팅 지원팀"/>마케팅 지원팀<span></span>
-																&nbsp;&nbsp;</label> 
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="상품 개발팀"/>상품 개발팀<span></span>
-																&nbsp;&nbsp;</label>
-															
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="영업관리팀"/>영업 관리팀<span></span>
-																&nbsp;&nbsp;</label> 
-																 
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="영업 1팀"/>영업 1팀<span></span>
-																&nbsp;&nbsp;</label>
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_PART_C" id="M_PART_C" value="영업 2팀"/>영업 2팀<span></span>
-																</label> 
-																
-																
-																
-																
-																</label><span
-																	class="form-text text-muted">
-																	참고 : 기타 부서의 경우 으로 선택해주세요. </span>
+															<div class="col-lg-9 col-xl-9">
+																<input
+																	class="form-control form-control-solid form-control-lg"
+																	name="M_PART_C" type="text" id="M_PART_C" value="${info.m_PART_C}" readonly/> <span
+																	class="form-text text-muted"> 참고 : 수정불가 </span>
 															</div>
 														</div>
-														
-														
-														
-														
-														
+											
 														
 													<!-- 직급코드 -->
-														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">
-																직급코드 </label>
+													
+													<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">직급코드(level)</label>
 															<div class="col-lg-9 col-xl-9">
-																<label class="radio radio-rounded radio-info">															
-																<input type="radio" name="M_LEVEL" id="M_LEVEL" checked="checked" value="1" /> Level 1 <span></span>
-																	&nbsp;&nbsp;</label> 
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_LEVEL" value="2" /> Level 2 <span></span>
-																&nbsp;&nbsp;</label>
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_LEVEL" value="3" /> Level 3 <span></span>
-																&nbsp;&nbsp;</label> 
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_LEVEL" value="4" /> Level 4 <span></span>
-																&nbsp;&nbsp;</label>
-																
-																<label class="radio radio-rounded radio-info">
-																<input type="radio" name="M_LEVEL" value="5"/> Level 5 <span></span>
-																&nbsp;&nbsp;</label> 
-																
-																
-																
-																</label><span
-																	class="form-text text-muted">
-																	참고 : 사원(Level-1) , 대리(Level-2), 과장(Level-3), 차장(Level-4), 임원(Level-5) </span>
+																<input
+																	class="form-control form-control-solid form-control-lg"
+																	name="M_LEVEL" type="text" id="M_LEVEL" value="${info.m_LEVEL}" readonly/><span
+																	class="form-text text-muted"> 참고 : 수정불가 </span>
 															</div>
 														</div>
 														
-														<!-- 직급코드  -->
+														
+														
 					
 
 
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
-																성명<a style="color:red"> *</a> </label>
+																성명 </label>
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_NAME" type="text" id="M_NAME"  value="" placeholder="사원명"/>
+																	name="M_NAME" type="text" id="M_NAME"  value="${info.m_NAME}" readonly/>
 															</div>
 														</div>
 
@@ -331,7 +240,7 @@ font-size:12px !important;
 															<div class="col-lg-4 col-md-9 col-sm-12">
 																<div class="input-group date">
 																	<input type="text" class="form-control"
-																		value="1984/07/05" id="kt_datepicker_3" name="M_BIRTH"/>
+																		placeholder="${info.m_BIRTH}" name="M_BIRTH" readonly/>
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>
@@ -340,20 +249,8 @@ font-size:12px !important;
 																</div>
 															</div>
 														</div>
-														
-														<div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">
-																입사날짜<a style="color:red"> *</a> </label>
-															<div class="col-lg-9 col-xl-9">
-																<input
-																	class="form-control form-control-solid form-control-lg"
-																	name="M_JOIN_DATE" type="text" placeholder="2020-01-01 형식으로 입력해주세요"/>
-															</div>
-														</div>
-														
-													
 
-														<div class="form-group row">
+													<!-- 	<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
 																성별 </label>
 															<div class="col-lg-9 col-xl-9">
@@ -372,11 +269,11 @@ font-size:12px !important;
 																결혼여부 </label>
 															<div class="col-lg-9 col-xl-9">
 																<label class="radio radio-rounded radio-info"> <input
-																	type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="Y" checked="checked"/> 기혼 <span></span>
+																	type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="Y" /> 기혼 <span></span>
 																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																
 																</label> <label class="radio radio-rounded radio-info">
-																	<input type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="N"/> 미혼 <span></span>
+																	<input type="radio" name="M_MARRIAGE" id="M_MARRIAGE" value="N" checked="checked" /> 미혼 <span></span>
 																</label>
 															</div>
 														</div>
@@ -396,22 +293,13 @@ font-size:12px !important;
 																	<input type="radio" name="M_ARMY" id="M_ARMY" value="NA"/> 해당없음 <span></span>
 																</label>
 															</div>
-														</div>
-
-
-
-
-
-
-
-
-
-
+														</div> -->
+														
 
 														<!--begin::Group-->
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">
-																핸드폰<a style="color:red"> *</a> </label>
+																핸드폰<a style="color:#BF00FF">  ▶</a></label>
 															<div class="col-lg-9 col-xl-9">
 																<div
 																	class="input-group input-group-solid input-group-lg">
@@ -420,9 +308,8 @@ font-size:12px !important;
 																			class="la la-phone"></i>
 																		</span>
 																	</div>
-																	<input type="text"
-																		class="form-control form-control-solid form-control-lg"
-																		name="M_MOBILE_TEL" id="M_MOBILE_TEL" placeholder="010-1234-5678" />
+																	<input class="form-control form-control-solid form-control-lg" type="text"
+																		name="M_MOBILE_TEL" id="M_MOBILE_TEL" value="${info.m_MOBILE_TEL}" />
 																</div>
 																<span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
 																	(ex: 010-1234-5678)</span>
@@ -431,17 +318,15 @@ font-size:12px !important;
 
 
 														<div class="form-group row">
-															<label class="col-3"> 이메일 (Email)<a style="color:red"> *</a> </label>
+															<label class="col-3"> 이메일 (Email)<a style="color:#BF00FF">  ▶</a> </label>
 															<div class="col-9">
 																<div class="input-group input-group-solid">
 																	<div class="input-group-prepend">
 																		<span class="input-group-text"><i
 																			class="la la-at"></i></span>
 																	</div>
-																	<input type="text"
-																		class="form-control form-control-solid"
-																		name="M_EMAIL" id="email" placeholder="sample@Ezwork.com" />
-																</div><span class="form-text text-muted" placeholder="sample@Ezwork.com">참고 : 해당 양식으로 작성해주세요.
+																	<input class="form-control" type="email" name="M_EMAIL" id="M_EMAIL"  value="${info.m_EMAIL}" />
+																</div><span class="form-text text-muted">참고 : 해당 양식으로 작성해주세요.
 																	(ex: sample@Ezwork.com)</span>
 															</div>
 														</div>
@@ -481,11 +366,11 @@ font-size:12px !important;
 															<div class="col-xl-6">
 																<!--begin::Group-->
 																<div class="form-group">
-																	<label>우편번호</label> <input type="text"
+																	<label>우편번호<a style="color:#BF00FF">  ▶</a></label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
 																		name="M_POSTCODE" placeholder="우편번호"
 																		id="sample6_postcode"
-																		onclick="sample6_execDaumPostcode()" /> <span
+																		onclick="sample6_execDaumPostcode()" value="${info.m_POSTCODE}"/> <span
 																		class="form-text text-muted"> 참고 : 버튼을 눌러 검색해주세요.</span>
 																</div>
 															</div>
@@ -506,7 +391,7 @@ font-size:12px !important;
 														<div class="form-group">
 															<label> 주소 </label> <input type="text"
 																class="form-control form-control-solid form-control-lg"
-																name="M_ADDRESS" placeholder="서울특별시 마포구 성미산로 157-3"
+																name="M_ADDRESS" value="${info.m_ADDRESS}"
 																 id="M_ADDRESS" /> 
 														</div>
 
@@ -520,8 +405,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 상세주소 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="M_ADDRESS2" placeholder="4층"
-																		id="sample6_detailAddress" />
+																		name="M_ADDRESS2" 
+																		id="sample6_detailAddress" value="${info.m_ADDRESS2}"/>
 
 																</div>
 															</div>
@@ -531,8 +416,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label>상세주소 2 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="M_ADDRESS3" placeholder="기타"
-																		id="sample6_extraAddress" />
+																		
+																		id="sample6_extraAddress" placeholder=""/>
 																</div>
 															</div>
 															<!--end::Group-->
@@ -551,8 +436,9 @@ font-size:12px !important;
 												
 												
 												<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">학력정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">학력정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀(내선번호 :2114)으로 문의해주세요. </a></h5>
 														<!--begin::Group-->
+														
 
 
 														<div class="row">
@@ -561,8 +447,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 학교명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="SC_NAME" placeholder="중앙대학교"
-																		id="SC_NAME" /><span
+																		name="SC_NAME" value="${info.SC_NAME}"
+																		id="SC_NAME" readonly /><span
 																	class="form-text text-muted">
 																	참고 : OO대학, OO대학교 </span>
 
@@ -574,7 +460,7 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 전공 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="SC_MAJOR" placeholder="경영학과" id="SC_MAJOR" />
+																		name="SC_MAJOR" value="${info.SC_MAJOR}" id="SC_MAJOR" readonly/>
 																		<span
 																	class="form-text text-muted">
 																	참고 : 경제금융학과 등 </span>
@@ -592,8 +478,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 학위 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="SC_DEGREE" placeholder="학위"
-																		id="SC_DEGREE" /><span
+																		name="SC_DEGREE" value="${info.SC_DEGREE}" 
+																		id="SC_DEGREE" readonly/><span
 																	class="form-text text-muted">
 																	참고 : 학사, 석사, 전문석사, 박사 </span>
 
@@ -605,7 +491,7 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 소재지 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="SC_ADDRESS" placeholder="서울특별시 동작구" id="SC_ADDRESS" />
+																		name="SC_ADDRESS" value="${info.SC_ADDRESS}"  id="SC_ADDRESS" readonly/>
 																		<span
 																	class="form-text text-muted">
 																	참고 : 서울시 종로구, 전라북도 전주시 완산구<br>(해당 소재지의 시,구까지 입력해주세요.) </span>
@@ -613,18 +499,15 @@ font-size:12px !important;
 															</div>
 															<!--end::Group-->
 														</div>
-														
-													
+
 
 
 														<div class="form-group row">
 															<label class="col-xl-6 col-form-label"> 졸업일자 </label>
 															<div class="col-xl-6">
 																<div class="input-group date">
-																	
 																	<input type="text" class="form-control" readonly
-																		value="29/70/2020" name="SC_GRAD_DAY" id="kt_datepicker_3" />
-																
+																		value="${info.SC_GRAD_DAY}" name="SC_GRAD_DAY" id=kt_datepicker_3" readonly/>
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>
@@ -651,7 +534,7 @@ font-size:12px !important;
 													<!--begin::Wizard Step 3-->
 													<!--  step 3 시작  step 3 시작  step 3 시작 step 3 시작 step 3 시작 step 3 시작 -->
 														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">어학정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">어학정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀(내선번호 :2114)으로 문의해주세요. </a></h5>
 														<!--begin::Group-->
 
 
@@ -661,8 +544,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 외국어명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="LG_NAME" placeholder="외국어"
-																		id="LG_NAME" />
+																		name="LG_NAME" value="${info.LG_NAME}"
+																		id="LG_NAME" readonly/>
 																		<span
 																	class="form-text text-muted">
 																	참고 : 영어, 일본어, 이탈리아어 등 </span>
@@ -675,7 +558,7 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 시험명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="LG_TEST" placeholder="시험명" id="LG_TEST" />
+																		name="LG_TEST" value="${info.LG_TEST}" id="LG_TEST" readonly/>
 																		<span
 																	class="form-text text-muted">
 																	참고 : TOEIC, TOEFL, IELTS 등 </span>
@@ -693,8 +576,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 시험점수 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="LG_GRADE" placeholder="시험점수"
-																		id="LG_GRADE" />
+																		name="LG_GRADE" value="${info.LG_TEST}"
+																		id="LG_GRADE" readonly/>
 
 																</div>
 															</div>
@@ -704,7 +587,7 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 발급기관 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="LG_ORGAN" placeholder="발급기관" id="LG_ORGAN" />
+																		name="LG_ORGAN" value="${info.LG_ORGAN}" id="LG_ORGAN" readonly/>
 																		<span
 																	class="form-text text-muted">
 																	참고 : 한국TOEIC위원회, 일본국제교육지원협회 등 </span>
@@ -718,7 +601,7 @@ font-size:12px !important;
 															<div class="col-xl-6">
 																<div class="input-group date">
 																	<input type="text" class="form-control" readonly
-																		value="29/70/2020" name="LG_DATE" id="kt_datepicker_3" />
+																		value="${info.LG_DATE}" name="LG_DATE"/>
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>
@@ -746,7 +629,7 @@ font-size:12px !important;
 													
 													
 														<div class="my-5 step" data-wizard-type="step-content">
-														<h5 class="mb-10 font-weight-bold text-dark">자격증정보<a style="color:#BF00FF"> * 해당 정보란은 생략가능합니다. </a></h5>
+														<h5 class="mb-10 font-weight-bold text-dark">자격증정보<a style="color:RED"> * 해당 정보란의 수정사항은 인사팀(내선번호 :2114)으로 문의해주세요. </a></h5>
 														<!--begin::Group-->
 
 
@@ -756,8 +639,8 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 자격증명 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="LI_NAME" placeholder="정보처리기사" 
-																		id="LI_NAME" /><span
+																		name="LI_NAME" value="${info.LI_NAME}" 
+																		id="LI_NAME" readonly/><span
 																	class="form-text text-muted">
 																	참고 : 정보처리기사, 컴퓨터활용능력 1급 등</span>
 
@@ -769,7 +652,7 @@ font-size:12px !important;
 																<div class="form-group">
 																	<label> 발급기관 </label> <input type="text"
 																		class="form-control form-control-solid form-control-lg"
-																		name="LI_ORGAN" placeholder="대한상공회의소" id="LI_ORGAN" />
+																		name="LI_ORGAN" value="${info.LI_ORGAN}"  id="LI_ORGAN" readonly/>
 																		<span
 																	class="form-text text-muted">
 																	참고 : 대한상공회의소, 한국산업인력공단 등</span>
@@ -783,7 +666,7 @@ font-size:12px !important;
 															<div class="col-xl-6">
 																<div class="input-group date">
 																	<input type="text" class="form-control" readonly
-																		value="29/70/2020" name="LI_DATE" id="kt_datepicker_3" />
+																		value="${info.LI_DATE}" name="LI_DATE" />
 																	<div class="input-group-append">
 																		<span class="input-group-text"> <i
 																			class="la la-calendar"></i>
@@ -812,7 +695,7 @@ font-size:12px !important;
 														<div>
 															<button type="submit" 
 																class="btn btn-success font-weight-bolder px-9 py-4"
-																data-wizard-type="action-submit">저장</button>
+																>저장</button>
 															
 															<button type="button" id="next-step"
 																class="btn btn-info font-weight-bolder px-9 py-4"
@@ -849,24 +732,8 @@ font-size:12px !important;
 
 	<!--end::Entry-->
 	<!--begin::Global Theme Bundle(used by all pages)-->
-	<script type="text/javascript">
-                           var today = new Date();
-                           var dd = today.getDate();
-                           var mm = today.getMonth() + 1;
-                           var yyyy = today.getFullYear();
-                           if (dd < 10) {
-                              dd = '0' + dd
-                           }
-                           if (mm < 10) {
-                              mm = '0' + mm
-                           }
-
-                           today = yyyy + '-' + mm + '-' + dd;
-                           document.getElementById("kt_datepicker_3")
-                                 .setAttribute("max", today);
-                        </script>
 	<script src="resources/js/jquery-3.5.0.js"></script>
-	<script src="resources/js/join.js"></script>
+	<script src="resources/js/update.js"></script>
 	<script src="resources/assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
 	<script
 		src="resources/assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>

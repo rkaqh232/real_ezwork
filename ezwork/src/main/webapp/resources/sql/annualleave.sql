@@ -1,3 +1,7 @@
+drop table REQUEST_AL;
+drop table LIST_AL;
+
+
 create table REQUEST_AL( --연차신청 table
 AL_DATE date, --등록일
 AL_M_NAME varchar2(20), --등록자 이름

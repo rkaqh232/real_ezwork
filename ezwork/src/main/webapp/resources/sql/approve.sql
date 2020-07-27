@@ -24,8 +24,9 @@ create table approve(
 	APPR_STAT		NUMBER,							--결재 상태
 	APPR_DATE		date,							--제출 날짜
 	APPR_COMP_DATE	date,							--완료 날짜
-	APPR_VAL		NUMBER							--??
-
+	APPR_VAL		NUMBER,							--??
+	APPR_COUNT		NUMBER default 0,							--결재자 인원수
+	APPR_CUR_COUNT	NUMBER							--결재 진행 상태
 );
 
 insert into approve(

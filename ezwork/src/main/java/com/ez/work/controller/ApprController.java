@@ -108,6 +108,7 @@ public class ApprController {
 	
 	@RequestMapping(value="/Apprinsert.appr")
 	public void appradd(Appr appr, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int ap_count=0;
 		MultipartFile uploadfile = appr.getUploadfile();
 		if(!uploadfile.isEmpty()) {
 			String fileName = uploadfile.getOriginalFilename();
@@ -147,7 +148,8 @@ public class ApprController {
 		
 		if(str1.length==2) {
 			appr.setM_PART_F(str1[0]);
-			appr.setFIRST_CODE(str1[1]);		
+			appr.setFIRST_CODE(str1[1]);	
+			ap_count++;
 		}else {
 			appr.setM_PART_F("");
 			appr.setFIRST_CODE("");	
@@ -156,6 +158,7 @@ public class ApprController {
 		if(str2.length==2) {
 			appr.setM_PART_S(str2[0]);
 			appr.setSECOND_CODE(str2[1]);
+			ap_count++;
 		}else {
 			appr.setM_PART_S("");
 			appr.setSECOND_CODE("");
@@ -164,13 +167,17 @@ public class ApprController {
 		if(str3.length==2) {
 			appr.setM_PART_T(str3[0]);
 			appr.setTHIRD_CODE(str3[1]);
+			ap_count++;
 		}else {
 			appr.setM_PART_T("");
 			appr.setTHIRD_CODE("");
 		}
-		
+		System.out.println("총 결재자 수 : "+ap_count);
 		System.out.println("insert appr : "+ appr);
+		appr.setAPPR_COUNT(ap_count);
+		appr.setAPPR_CUR_COUNT(0);
 		apprservice.insertappr(appr);
+		
 		PrintWriter out = response.getWriter();
 		out.println("<script>history.back();</script>");
 		out.close();
@@ -184,16 +191,38 @@ public class ApprController {
 		String part = apprservice.getPart(m_code);
 		String name = apprservice.getName(m_code);
 		
-		if(appr == null) {
-			System.out.println("appr detail view");
-			mv.setViewName("error/error");
-		}else {
+		if(appr != null) {
+		int curCount = appr.getAPPR_CUR_COUNT(); //진행된 결재
+		int count = 0;	//결재 순서
+		int chkCode=-1;
+		
+		if(appr.getFIRST_CODE().equals(m_code)) {
+			count=0;
+		}else if(appr.getSECOND_CODE().equals(m_code)) {
+			count=1;
+		}else if(appr.getTHIRD_CODE().equals(m_code)) {
+			count=2;
+		}
+		
+		//진행된 결재와 현재 결재 순서가 같으면
+		if(curCount==count) 
+			chkCode=0; //결재할 순서
+		else
+			chkCode=1; //결재할 순서 아님
+		
+		
+		
 			System.out.println("appr detail view");
 			mv.addObject("page", "appr/apprdetail.jsp");
 			mv.addObject("apprdata", appr);
 			mv.addObject("part",part);
 			mv.addObject("name",name);
+			mv.addObject("chkCode",chkCode);
 			mv.setViewName("home");
+			
+		}else {
+			System.out.println("appr detail view");
+			mv.setViewName("error/error");
 		}		
 		return mv;
 	}

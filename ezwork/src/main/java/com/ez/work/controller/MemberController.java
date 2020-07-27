@@ -291,7 +291,7 @@ public class MemberController {
 		      if(endpage > maxpage)
 		         endpage = maxpage;
 			
-			m.addAttribute("page", "member/member_list2.jsp");
+			m.addAttribute("page", "member/member_list.jsp");
 			m.addAttribute("mem_info", list);
 			mv.addObject("maxpage", maxpage);
 			m.addAttribute("startpage", startpage);

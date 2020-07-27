@@ -11,8 +11,30 @@
 #memo::-webkit-scrollbar {
 	display: none; /* Chrome, Safari, Opera*/
 }
+#kt_content>div>div>div:nth-child(1)>div:nth-child(4)>div>div.card-body.pt-3.pb-0>div>table>tbody>tr>td:nth-child(4)
+	{
+	width: 200px;
+	margin: 0 auto;
+}
 
-p{margin-bottom:0}
+#kt_content>div>div>div:nth-child(1)>div:nth-child(4)>div>div.card-body.pt-3.pb-0>div>table>tbody>tr>td:nth-child(5)
+	{
+	width: 200px;
+	margin: 0 auto;
+}
+
+#kt_content>div>div>div:nth-child(1)>div:nth-child(4)>div>div.card-body.pt-3.pb-0>div>table>tbody>tr>td:nth-child(6)
+	{
+	width: 200px;
+}
+
+ {
+	margin-left: 30px;
+}
+
+p {
+	margin-bottom: 0
+}
 </style>
 
 <script src="resources/js/mail/maininbox.js"></script>
@@ -80,47 +102,47 @@ p{margin-bottom:0}
 										class="label label-light-info label-inline font-weight-bold label-lg">${memberinfo.m_PART_C }</div>
 								</div>
 
-								<input type="hidden" name="CM_MCODE" value="${memberinfo.m_CODE }"> 
-								<input type="hidden" name="CM_TEAMNAME" value="${memberinfo.m_PART_C }">
-								 <input type="hidden" name="CM_NAME" value="${memberinfo.m_NAME }">
+								<input type="hidden" name="CM_MCODE"
+									value="${memberinfo.m_CODE }"> <input type="hidden"
+									name="CM_TEAMNAME" value="${memberinfo.m_PART_C }"> <input
+									type="hidden" name="CM_NAME" value="${memberinfo.m_NAME }">
 								<input type="hidden" name="M_CODE" value="${memberinfo.m_CODE }">
 								<span class="mr-4"> </span>
 
-									<button type="submit" style="width: 150px"
-										class="btn btn-info btn-shadow-hover font-weight-bolder py-3 px-6 mb-2 "
-										id="start" formaction="OnTimeMain.cm">출근 등록</button>
+								<button type="submit" style="width: 150px"
+									class="btn btn-info btn-shadow-hover font-weight-bolder py-3 px-6 mb-2 "
+									id="start" formaction="OnTimeMain.cm">출근 등록</button>
 
-									<button type="submit" style="width: 150px"
-										class="btn btn-outline-info btn-shadow-hover font-weight-bolder py-3 px-6 mb-2 "
-										id="end" formaction="OffTime.main" disabled="">퇴근 등록</button>
+								<button type="submit" style="width: 150px"
+									class="btn btn-outline-info btn-shadow-hover font-weight-bolder py-3 px-6 mb-2 "
+									id="end" formaction="OffTime.main" disabled="">퇴근 등록</button>
 
-									<div class="py-9" style="font-size: 15px;">
-										<div
-											class="d-flex align-items-center justify-content-between mb-2">
-											<span class="font-weight-bold mr-2">현재시간 : </span> <span
-												class="text-dark-50 "></span><span id="clock"> </span>
-								</span>
-							</div>
-							<div
-								class="d-flex align-items-center justify-content-between mb-2">
-								<span class="font-weight-bold mr-2">근무시작시간 :</span>
-								<c:if test="${!empty memberinfo2.CM_ONTIME }">
+								<div class="py-9" style="font-size: 15px;">
+									<div
+										class="d-flex align-items-center justify-content-between mb-2">
+										<span class="font-weight-bold mr-2">현재시간 : </span> <span
+											class="text-dark-50 "></span><span id="clock"> </span> </span>
+									</div>
+									<div
+										class="d-flex align-items-center justify-content-between mb-2">
+										<span class="font-weight-bold mr-2">근무시작시간 :</span>
+										<c:if test="${!empty memberinfo2.CM_ONTIME }">
 										${memberinfo2.CM_ONTIME }</c:if>
-								<c:if test="${empty memberinfo2.CM_ONTIME }">
+										<c:if test="${empty memberinfo2.CM_ONTIME }">
 										미등록
 										</c:if>
-								</span>
-							</div>
+										</span>
+									</div>
 
-							<div
-								class="d-flex align-items-center justify-content-between mb-2">
-								<span class="font-weight-bold mr-2">근무종료시간 :</span>
-								<c:if test="${!empty memberinfo2.CM_OFFTIME }">
+									<div
+										class="d-flex align-items-center justify-content-between mb-2">
+										<span class="font-weight-bold mr-2">근무종료시간 :</span>
+										<c:if test="${!empty memberinfo2.CM_OFFTIME }">
 										${memberinfo2.CM_OFFTIME }</c:if>
-								<c:if test="${empty memberinfo2.CM_OFFTIME }">
+										<c:if test="${empty memberinfo2.CM_OFFTIME }">
 										미등록
 										</c:if>
-							</div>
+									</div>
 					</form>
 				</div>
 				<!--end::Row-->
@@ -167,7 +189,7 @@ p{margin-bottom:0}
 			<div class="table-responsive">
 				<table class="table table-hover table-vertical-center">
 					<tbody id="mailtable">
-						
+
 					</tbody>
 				</table>
 			</div>
@@ -221,15 +243,8 @@ p{margin-bottom:0}
 					<a href="Personallist.al" type="button" class="btn btn-info btn-lg"
 						style="margin-top: 34px; margin-left: 121px;">상세보기</a>
 				</div>
-
-
-
-
 			</div>
-
-
 		</div>
-
 		<!--end::Body-->
 	</div>
 
@@ -241,11 +256,6 @@ p{margin-bottom:0}
 <!--end::List Widget 1-->
 
 <!--[html-partial:end:{"id":"demo1/dist/inc/view/partials/content/widgets/lists/widget-1","page":"index"}]/-->
-
-<!--  공지  공지  공지  공지  공지  공지  공지  -->
-
-
-
 <div class="col-xxl-8 order-2 order-xxl-1">
 
 	<!--[html-partial:begin:{"id":"demo1/dist/inc/view/partials/content/widgets/advance-tables/widget-2","page":"index"}]/-->
@@ -256,139 +266,65 @@ p{margin-bottom:0}
 		<!--begin::Header-->
 		<div class="card-header border-0 pt-5">
 			<h3 class="card-title align-items-start flex-column">
-				<span class="card-label font-weight-bolder text-dark">공지게시판</span>
+				<span class="card-label font-weight-bolder text-dark">공지사항</span>
 			</h3>
-			
 		</div>
 
+			<table>
+				<tr>
+					<td width=61px;></td>
+					<td width=250px;>#</td>
+					<td width=195px; >제목</td>
+					<td width=145px;>작성자</td>
+					<td>날짜</td>
+				</tr>
+			</table>
+		
 		<!--end::Header-->
+		<c:forEach var="m" items="${boardlist}">
+			<!--begin::Body-->
+			<div class="card-body pt-3 pb-0">
 
-		<!--begin::Body-->
-		<div class="card-body pt-3 pb-0">
-
-			<!--begin::Table-->
-			<div class="table-responsive">
-				<table class="table table-hover" style="text-align: center; font-size: 13px;">
-					<thead>
-						<tr>
-						<th scope="col">글번호</th>
-							<th scope="col">말머리</th>
-							<th scope="col">글제목</th>
-							<th scope="col">작성자</th>
-							<th scope="col">작성날짜</th>
-							<th scope="col">조회수</th>
-							
-						</tr>
-					</thead>
-					<tbody>
-						<c:set var="num" value="${listcount-(page1-1)*limit}" />
-						<c:forEach var="b" items="${boardlist}">
+				<!--begin::Table-->
+				<div class="table-responsive">
+					<table class="table table-hover table-vertical-center">
+						<tbody>
 							<tr>
-								<th scope="row">
-									<%--글번호--%> <c:out value="${num}" />
-									<%--num 출력 --%> <c:set var="num" value="${num-1}" /> <%--num = num-1; 의미 --%>
-								</th>
-								<td>
-									<%-- 말머리 --%>
-									<div>${b.NO_SORT}</div>
-								</td>
-								<td>
-									<%--제목 --%>
-									<div>
-										<c:if test="${b.NO_RE_LEV != 0}">
-											<!-- 답글인 경우 -->
-											<c:forEach var="a" begin="0" end="${b.NO_RE_LEV *2}" step="1">
-                   				  &nbsp;
-                    		  </c:forEach>
-											<img src='resources/image/answerLine.gif'>
-										</c:if>
-
-										<c:if test="${b.NO_RE_LEV == 0}">
-											<!-- 원문인 경우 -->
-                   		  &nbsp;
-                  		</c:if>
-										<a href="./BoardDetailAction.no?num=${b.NO_NO}" style="color:#1B283F;">
-											${b.NO_TITLE} </a>
-									</div>
-								</td>
-								<td><div>
-										<span
-											class="label label-inline label-light-info font-weight-bold">
-											인사팀 </span>
-									</div></td>
-								<td><div>${b.NO_DATE }</div></td>
-								<%--작성날짜 --%>
-								<td><div>${b.NO_READCOUNT}</div></td>
-								<%--조회수 --%>
+								<td class="pl-0 py-4"></td>
+								<td class="pl-0">${m.NO_NO}</td>
+								<td class="text-right"><span
+									class="text-muted font-weight-500"> <a
+										href="./BoardDetailAction.no?num=${m.NO_NO}">
+											${m.NO_TITLE} </a>
+								</span></td>
+								<td class="text-right"><span
+									class="label label-lg label-light-warning label-inline">${m.NO_NAME}</span></td>
+								<td class="text-right"><span
+									class="text-muted font-weight-500">${m.NO_DATE}</span></td>
 							</tr>
-						</c:forEach>
-						
-						
-						
-						
-					</tbody>
-				</table>
-				<!-- 레코드가 없으면 -->
-				<c:if test="${listcount == 0}">
-					<font size=5>등록된 글이 없습니다.</font>
-				</c:if>
-			</div>
-			<div class="card-footer d-flex justify-content-between">
-			
-				<!--begin::Pagination-->
-				<div
-					class="d-flex justify-content-between align-items-center flex-wrap"
-					style="margin: auto;">
-					<div class="d-flex flex-wrap py-2 mr-3">
-					<c:if test="${page1 <= 1 }">
-               				<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
-							class="ki ki-bold-arrow-back icon-xs"></i></a> 
-            	   </c:if>
-						  <c:if test="${page1 > 1}">
-						<a href="./BoardList.no?page=${page1 - 1}"
-							class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
-							class="ki ki-bold-arrow-back icon-xs"></i></a> 
-							</c:if>
-							
-					<c:forEach var="a" begin="${startpage}" end="${endpage}">
-							  <c:if test="${a == page1 }">
-							<a class="btn btn-icon btn-sm border-0 btn-hover-info active mr-2 my-1">${a }</a> 
-							</c:if>
-					          <c:if test="${a != page1}">  <!-- 같지 않으면, 이동할 수 있다 -->				
-						<a href="./BoardList.no?page=${a}"
-							class="btn btn-icon btn-sm border-0 btn-light mr-2 my-1">${a }</a> 
-							</c:if>
-					</c:forEach>
-							
-							  <c:if test="${page1 >= maxpage}">
-						<a class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
-							class="ki ki-bold-arrow-next icon-xs"></i></a>
-							</c:if>
-							  <c:if test="${page1 < maxpage}">
-							<a href="./BoardList.no?page=${page1 + 1 }" class="btn btn-icon btn-sm btn-light mr-2 my-1"><i
-							class="ki ki-bold-arrow-next icon-xs"></i></a>
-							</c:if>
-					</div>
+						</tbody>
+					</table>
 				</div>
+				<!--end::Table-->
 			</div>
-
-			<!--end::Table-->
-		</div>
-
+		</c:forEach>
 		<!--end::Body-->
 	</div>
 
 	<!--end::Advance Table Widget 2-->
 
 	<!--[html-partial:end:{"id":"demo1/dist/inc/view/partials/content/widgets/advance-tables/widget-2","page":"index"}]/-->
-
-
 </div>
-
-
-<!--  notice  notice  notice  notice  notice  notice  -->
 <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
 
+	<!--[html-partial:begin:{"id":"demo1/dist/inc/view/partials/content/widgets/lists/widget-3","page":"index"}]/-->
+
+	<!--begin::List Widget 3-->
+
+
+	<!--end::List Widget 3-->
+
+	<!--[html-partial:end:{"id":"demo1/dist/inc/view/partials/content/widgets/lists/widget-3","page":"index"}]/-->
 </div>
 <div class="col-lg-6 col-xxl-4 order-1 order-xxl-2">
 

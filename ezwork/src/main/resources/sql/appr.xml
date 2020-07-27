@@ -25,12 +25,12 @@
 		insert into approve
 		(APPR_CODE, M_CODE,APPR_NAME, M_PART, APPR_TITLE, APPR_CONTENT, FIRST_CODE, M_PART_F, SECOND_CODE, M_PART_S,
 		 THIRD_CODE, M_PART_T, APPR_FILE, APPR_ORIGIN, APPR_STAT, APPR_DATE, APPR_COMP_DATE, APPR_VAL,
-		 FIRST_VAL, SECOND_VAL,THIRD_VAL
+		 FIRST_VAL, SECOND_VAL,THIRD_VAL, APPR_COUNT, APPR_CUR_COUNT
 		 )values(	
 		 appr_seq.nextval, #{M_CODE}, #{APPR_NAME}, #{M_PART}, #{APPR_TITLE}, #{APPR_CONTENT}, #{FIRST_CODE}, #{M_PART_F},
 		 #{SECOND_CODE, jdbcType=VARCHAR}, #{M_PART_S, jdbcType=VARCHAR}, #{THIRD_CODE, jdbcType=VARCHAR}, #{M_PART_T, jdbcType=VARCHAR}, #{APPR_FILE, jdbcType=VARCHAR},
 		 #{APPR_ORIGIN, jdbcType=VARCHAR}, #{APPR_STAT}, sysdate, #{APPR_COMP_DATE, jdbcType=VARCHAR}, 0,
-		 0, 0, 0
+		 0, 0, 0, #{APPR_COUNT}, #{APPR_CUR_COUNT}
 		 )
 	</insert>
 	
@@ -63,7 +63,8 @@
 	<select id="getdetail" resultType="appr" parameterType="int">
 		select * from approve
 		where APPR_CODE = #{num}
-	</select>
+	</select>	
+	
 	
 	
 	

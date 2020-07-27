@@ -185,7 +185,7 @@ p{margin-top:1rem}
 								</span>
 								</button>
 								
-								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="보낸 편지함으로 이동">
+								<span class="btn btn-default btn-icon btn-sm mr-2" data-toggle="tooltip" title="메일 복원">
 									<span class="svg-icon svg-icon-md">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/General/Duplicate.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

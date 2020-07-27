@@ -201,7 +201,7 @@ font-size:12px !important;
 										<!-- <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
 										 --><!--end: Datatable-->
 										 
-										 <div class="datatable datatable-bordered datatable-head-custom"
+										 <div class="datatable datatable-bordered datatable-head-custom"></div>
 										 
 										 
 										 

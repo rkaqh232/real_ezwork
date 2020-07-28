@@ -77,15 +77,17 @@ $(function(){
 		<div class="card card-custom shadow-sm">
 			<div class="card-body p-0">
 				<!--begin::Form-->
-				<form id="kt_inbox_reply_form" name="mailform" action="MailAddaction.mail" enctype="multipart/form-data" method="post">
+				<form id="kt_inbox_reply_form" name="mailform" action="TempAddaction.mail" enctype="multipart/form-data" method="post">
 					<!--begin::Body-->
 					<div class="d-block">
 						<!--begin::To-->
 						<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-50px">
-						<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
+						<input type="hidden" name="num" value="${param.num}" id="mail_num">
+						<input type="text" name="MAIL_SENDER" id="SENDER" value="${M_CODE}" style="display:none"/><!-- ㅇ -->
+						<input type="text" name="M_FILE" id="MFILE" value="${M_FILE}" style="display:none"/>
 							<div class="text-dark-50 w-25px">To:</div>
 							<div class="d-flex align-items-center flex-grow-1">
-								<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" value="${maildata.MAIL_SENDER}" />
+								<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" value="${maildata.MAIL_RECIPIENT}" />
 							</div>
 						</div>
 						<!--end::To-->

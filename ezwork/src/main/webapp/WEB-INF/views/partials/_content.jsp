@@ -40,7 +40,10 @@ p {
 #kt_content {
 	padding-top: 0px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/rkaqh232/real_ezwork.git
 #kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td.pl-0.py-4 {
 	width: 35px;
 }
@@ -57,7 +60,11 @@ p {
 	width: 100px;
 }
 
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of https://github.com/rkaqh232/real_ezwork.git
 </style>
 
 <script src="resources/js/mail/maininbox.js"></script>

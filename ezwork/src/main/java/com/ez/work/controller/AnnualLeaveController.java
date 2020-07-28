@@ -49,8 +49,8 @@ public class AnnualLeaveController {
 		int result = annualLeaveSerivice.insertAL(alrequest);
 		System.out.println("start : " + alrequest.getAL_STARTDATE());
 		System.out.println("end : " +alrequest.getAL_ENDDATE() );
-		System.out.println("sort " + alrequest.getAL_SORT());
-		annualLeaveSerivice.calUsedHour(id,alrequest.getAL_STARTDATE() ,alrequest.getAL_ENDDATE(),alrequest.getAL_SORT());
+		System.out.println("sort : " + alrequest.getAL_SORT());
+		annualLeaveSerivice.calUsedHour(id, alrequest.getAL_STARTDATE(), alrequest.getAL_ENDDATE(), alrequest.getAL_SORT());
 
 		if (result == 1) {
 			System.out.println("휴가 신청 등록 완료");

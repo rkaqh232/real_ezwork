@@ -15,6 +15,7 @@
 		<typeAlias alias ="allist" type="com.ez.work.domain.ALList" />
 		<typeAlias alias="alrequest" type="com.ez.work.domain.ALRequest" />
 		<typeAlias alias="bookmark" type="com.ez.work.domain.bookmark" />
+		<typeAlias alias="Pds" type="com.ez.work.domain.Pds" />
 	</typeAliases>
 
 	<mappers>
@@ -28,6 +29,7 @@
 		<mapper resource="sql/schedule.xml"/>
 		<mapper resource="sql/ALlist.xml"/>
 		<mapper resource="sql/ALrequest.xml"/>
+		<mapper resource="sql/Pds.xml"/>
 	</mappers>
 
 </configuration>

@@ -86,30 +86,14 @@
       from member 
       WHERE RES_DATE IS NOT NULL
     </select>
-    
-     <!--<select id="getresignList" parameterType="map" resultType="member"> 
-     select M_CODE, M_NAME, M_PART_C, M_LEVEL, RES_DATE, M_EMAIL, M_MOBILE_TEL 
-     from member where RES_DATE IS NOT NULL
-                  <if test="search_field!=null">
-        				 and
-     				<choose>
-               		<when test="search_field=='M_NAME'">M_NAME</when>
-                   <when test="search_field=='M_PART_C'">M_PART_C</when>
-                   <when test="search_field=='M_MOBILE_TEL'">M_MOBILE_TEL</when>
-         </choose>
-         like #{search_word}        
-      </if>   
-      )
-   </select>-->
+  
    
-   
-    
-   
-    <!--  혜정 - 사원 조회 --> 
+    <!--  혜정 - 사원 조회 (퇴사자 제외)--> 
     
    <select id="getSearchList2" parameterType="map" resultType="member"> 
      select M_FILE, M_CODE, M_NAME, M_PART_C, M_LEVEL,  M_EMAIL, M_MOBILE_TEL
-      from (select * from member where M_CODE != 'admin'
+      from member 
+      where RES_DATE IS NULL
                   <if test="search_field!=null">
          and
          <choose>
@@ -118,10 +102,10 @@
                    <when test="search_field=='M_MOBILE_TEL'">M_MOBILE_TEL</when>
          </choose>
          like #{search_word}
-         
+        
          
       </if>
-     )
+     
    </select>
    
    <!-- 혜정 - 사원 수 검색 -->

@@ -82,10 +82,11 @@ $(function(){
 					<div class="d-block">
 						<!--begin::To-->
 						<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-50px">
-						<input type="text" name="MAIL_SENDER" id="SENDER" value="${id}" style="display:none"/>
+						<input type="text" name="MAIL_SENDER" id="SENDER" value="${M_CODE}" style="display:none"/>
+						<input type="text" name="M_FILE" id="MFILE" value="${M_FILE}" style="display:none"/>
 							<div class="text-dark-50 w-25px">To:</div>
 							<div class="d-flex align-items-center flex-grow-1">
-								<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" value="${maildata.MAIL_SENDER}" />
+								<input type="text" class="form-control border-0" name="MAIL_RECIPIENT" value="${maildata.MAIL_RECIPIENT}" />
 							</div>
 						</div>
 						<!--end::To-->

@@ -59,7 +59,7 @@
 									</span>
 									<span class="navi-text font-weight-bolder font-size-lg">받은 메일함</span>
 									<span class="navi-label">
-										<span class="label label-rounded label-light-success font-weight-bolder">3</span>
+										<!-- <span class="label label-rounded label-light-success font-weight-bolder">3</span> -->
 									</span>
 								</a>
 							</div>

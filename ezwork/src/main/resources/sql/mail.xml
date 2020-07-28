@@ -113,10 +113,10 @@
 				(select* 
 				from 
 					(select* from SENTMAIL
-				 	 where MAIL_SENDER='admin' and MAIL_TYPE='sbin'
+				 	 where MAIL_SENDER=#{id} and MAIL_TYPE='sbin'
 				 	 union 
 					 select* from RECEIPTMAIL
-				 	 where MAIL_RECIPIENT='admin' and MAIL_TYPE='rbin') 
+				 	 where MAIL_RECIPIENT=#{id} and MAIL_TYPE='rbin') 
 				order by MAIL_DATE desc) u)
 		where rnum &gt;=#{start} and rnum &lt;=#{end}
 	</select>	

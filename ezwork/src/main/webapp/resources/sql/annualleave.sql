@@ -15,6 +15,7 @@ AL_REASON varchar(500) --휴가사유
 
 select * from request_al;
 
+
 create table LIST_AL(
 AL_M_CODE varchar2(20), --사번
 AL_M_NAME varchar2(20), --등록자 이름
@@ -28,3 +29,4 @@ AL_UNUSED number -- 남은연차
 );
 
 select * from list_al;
+

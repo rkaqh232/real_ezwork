@@ -71,3 +71,4 @@ select* from
 		 	 where MAIL_RECIPIENT='admin' and MAIL_TYPE='bin') 
 		order by MAIL_DATE desc) u)
 where rnum>=1 and rnum<=10
+

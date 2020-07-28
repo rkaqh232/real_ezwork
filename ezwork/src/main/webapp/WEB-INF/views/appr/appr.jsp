@@ -65,65 +65,62 @@ tr>th:nth-child(6){width:10%}
 	</div>
 	<div class="card-body">
 		<!--begin: Search Form-->
-		<form class="kt-form kt-form--fit mb-15">
+		<form class="kt-form kt-form--fit mb-15" >
 			<div class="row mb-6">
 				<div class="col-lg-3 mb-lg-0 mb-6">
 					<label>번호</label>
-					<input type="text" class="form-control datatable-input" placeholder="E.g: 4590" data-col-index="0" />
+					<input type="text" id="search_number" class="form-control datatable-input" placeholder="결재 고유 번호" data-col-index="0" />
 				</div>
 				<div class="col-lg-3 mb-lg-0 mb-6">
 					<label>제출자</label>
-					<input type="text" class="form-control datatable-input" placeholder="E.g: 37000-300" data-col-index="1" />
+					<input type="text" id="search_name" class="form-control datatable-input" placeholder="제출자 이름" data-col-index="1" />
 				</div>
 				<div class="col-lg-3 mb-lg-0 mb-6">
-					<label>Country:</label>
-					<select class="form-control datatable-input" data-col-index="2">
-						<option value="">Select</option>
-					</select>
-				</div>
-				<div class="col-lg-3 mb-lg-0 mb-6">
-					<label>Agent:</label>
-					<input type="text" class="form-control datatable-input" placeholder="Agent ID or name" data-col-index="4" />
-				</div>
+					<label>제목 및 내용</label>
+					<input type="text" id="search_contentitle" class="form-control datatable-input" placeholder="제목 및 내용" data-col-index="1" />
+				</div>			
 			</div>
 			<div class="row mb-8">
 				<div class="col-lg-3 mb-lg-0 mb-6">
 					<label>기간</label>
 					<div class="input-daterange input-group" id="kt_datepicker_5">
-						<input type="text" class="form-control datatable-input" name="start" placeholder="From" data-col-index="5" />
+						<input type="text" class="form-control datatable-input" id="search_start" placeholder="From" data-col-index="5" />
 						<div class="input-group-append">
 							<span class="input-group-text">
 								<i class="la la-ellipsis-h"></i>
 							</span>
 						</div>
-						<input type="text" class="form-control datatable-input" name="end" placeholder="To" data-col-index="5" />
+						<input type="text" class="form-control datatable-input" id="search_end" placeholder="To" data-col-index="5" />
 					</div>
 				</div>
 				<div class="col-lg-3 mb-lg-0 mb-6">
-					<label>상태</label>
-					<select class="form-control datatable-input" data-col-index="6">
-						<option value="">Select</option>
+					<label>결재 구분</label>
+					<select class="form-control datatable-input" id="search_appr_stat" data-col-index="6">
+						<option value="" > </option>
+						<option value="0">업무</option>
+						<option value="1">휴가</option>
 					</select>
 				</div>
 				<div class="col-lg-3 mb-lg-0 mb-6">
-					<label>Type:</label>
-					<select class="form-control datatable-input" data-col-index="7">
-						<option value="">Select</option>
-						<option value="">Select</option>
-						<option value="">Select</option>
-						<option value="">Select</option>
-					</select>
+					<label>결재 상태</label>
+					<select class="form-control datatable-input" id="search_appr_val" data-col-index="7">
+						<option value=""> </option>
+						<option value="0">승인대기</option>
+						<option value="1">승인(1차)</option>
+						<option value="2">승인(2차)</option>
+						<option value="3">승인(최종)</option>
+					</select> 
 				</div>
 			</div>
 			<div class="row mt-8">
 				<div class="col-lg-12">
-				<button class="btn btn-primary btn-primary--icon" id="kt_search">
+				<button type="button" class="btn btn-primary btn-primary--icon" id="search_btn">
 					<span>
 						<i class="la la-search"></i>
 						<span>Search</span>
 					</span>
 				</button>&#160;&#160;
-				<button class="btn btn-secondary btn-secondary--icon" id="kt_reset">
+				<button type="reset" class="btn btn-secondary btn-secondary--icon" id="kt_reset">
 					<span>
 						<i class="la la-close"></i>
 						<span>Reset</span>
@@ -145,27 +142,45 @@ tr>th:nth-child(6){width:10%}
 					<th>진행상황</th>
 				</tr>
 			</thead>
-		<%-- 	<tbody>
-        <c:set var="num" value="${listcount-(nowpage-1)*limit}"/>
-        <c:forEach var="b" items="${apprlist}">
-        <tr>
-           <td>번호
-              <c:out value="${num}"/>num 출력
-              <c:set var="num" value="${num-1}"/> num = num-1; 의미
-           </td>
-           <td>제목
-              <div>
-                  <a href="./ApprDetailAction.bo?num=${b.APPR_CODE}">
-                     ${b.APPR_TITLE}
-                  </a>
-              </div>
-              </td>
-              <td><div>${b.M_CODE}</div></td>
-              <td><div>${b.APPR_DATE}</div></td>              
-              <td><div>${b.APPR_COMP_DATE}</div></td>
-           </tr>
-           </c:forEach>
-       </tbody> --%>
+			<%-- <tbody>
+				<c:set var="num" value="${listcount-(page-1)*limit }" />
+				<c:forEach var="b" items="${boardlist}">
+				<tr>
+				<td>번호
+				<c:out value="${num}"/>번호 출력
+				<c:set var = "num" value = "${num-1 }"/> num=num-1;
+				</td>
+				<td>제목
+					<div>
+						답변글 제목앞에 여백 처리 부분 
+								BOARD_RE_LEV, BOARD_NUM
+								BOARD_SUBJECT, BOARD_NAME, BOARD_DATE,
+								BOARD_READCOUNT :property 이름
+						<c:if test="${b.BOARD_RE_LEV != 0 }"> <!-- 답글인 경우 --> 
+							<c:forEach var = "a" begin="0"
+										end = "${b.BOARD_RE_LEV*2 }" step="1">
+							&nbsp;			
+							</c:forEach>
+							<img src='resources/image/line.gif'>
+						</c:if>
+						
+						<c:if test="${b.BOARD_RE_LEV == 0 }"><!-- 원문인 경우 -->
+							&nbsp;
+						</c:if>
+						
+						<a href="./BoardDetailAction.bo?num=${b.BOARD_NUM}">
+							${b.BOARD_SUBJECT}
+						</a>
+					</div>
+					<td><div>${b.BOARD_NAME}</div></td>
+					<td><div>${b.BOARD_DATE}</div></td>
+					<td><div>${b.BOARD_READCOUNT}</div></td>
+					</tr>	
+				</c:forEach>
+			</tbody>	
+		 --%>
+		
+		
 		</table>
 		
 		
@@ -290,7 +305,7 @@ tr>th:nth-child(6){width:10%}
 						<div class="col-lg-3"></div>
 						<div class="col-lg-9">
 							<button type="submit" class="btn btn-info">등록</button>
-							<button type="reset" class="btn btn-outline-secondary">취소</button>
+							<button type="reset" class="btn btn-outline-secondary"  data-dismiss="modal">취소</button>
 						</div>
 					</div>
 				</div>

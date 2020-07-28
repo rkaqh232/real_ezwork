@@ -93,7 +93,7 @@ function hideRe(){
 		<div class="cursor-pointer toggle-on" data-inbox="message">
 			<div class="d-flex align-items-center card-spacer-x py-6">
 				<span class="symbol symbol-50 mr-4">
-					<span class="symbol-label" style="background-image: url('assets/media/users/100_13.jpg')"></span>
+					<span class="symbol-label" style="background-image: url('resources/memberupload${maildata.m_FILE}')"></span>
 				</span>
 				<div class="d-flex flex-column flex-grow-1 flex-wrap mr-2">
 					<div class="d-flex">

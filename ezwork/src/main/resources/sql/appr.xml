@@ -17,6 +17,44 @@
 		&gt;=#{start} and rnum &lt;= #{end}
 	</select>
 	
+	<select id="getSearchList" parameterType="java.util.Map" resultType="appr">
+		select * from
+		(select rownum rnum, b.*
+		from
+		(select * from
+		approve
+		<where>
+			<trim prefixOverrides="and | or">
+				<if test="number != '' ">
+					AND APPR_CODE = #{number}
+				</if>
+				<if test="m_name != '' ">
+					AND APPR_NAME = #{m_name}
+				</if>
+				<if test="contentitle != '%%' ">
+					AND
+					(APPR_TITLE LIKE #{contentitle}
+					OR
+					APPR_CONTENT LIKE #{contentitle})
+				</if>
+				<if test="start != '' and end != '' ">
+					AND	to_char(APPR_DATE,'YYYY/MM/DD') between #{start} and #{end}
+				</if>
+				<if test="appr_stat != '' ">
+					AND APPR_STAT = #{appr_stat}
+				</if>
+				<if test="appr_val != '' ">
+					AND APPR_VAL = #{appr_val}
+				</if>
+			</trim>
+		</where>
+		order by APPR_CODE desc) b
+		)
+		where rnum
+		&gt;=#{startrow} and rnum &lt;= #{endrow}		
+	</select>
+	
+	
 	<select id="count" resultType="int">
 		select count(*) from approve
 	</select>
@@ -65,7 +103,36 @@
 		where APPR_CODE = #{num}
 	</select>	
 	
+	<update id="updateAp" parameterType="java.util.Map">
+		update approve
+		set		 
+		${valcol} = #{approve_val},
+		${commcol} = #{comment},
+		
+		(APPR_VAL, APPR_COUNT, APPR_CUR_COUNT) = (
+		SELECT DECODE(APPR_CUR_COUNT+1 , APPR_COUNT, 3 , APPR_VAL+1 ) AS APPR_VAL, APPR_COUNT, APPR_CUR_COUNT+1
+		FROM APPROVE
+		WHERE APPR_CODE= #{apnum})
+		
+		where APPR_CODE = #{apnum}
+	</update>
 	
+	<update id="updateR" parameterType="java.util.Map">
+		update approve
+		set
+		${valcol} = #{approve_val},
+		${commcol} = #{comment},
+		
+		APPR_VAL = 4,
+		APPR_CUR_COUNT = APPR_COUNT
+		where APPR_CODE = #{apnum}
+	</update>	
 	
+	<update id="writeComp" parameterType="int">
+		update approve
+		set
+		APPR_COMP_DATE = sysdate
+		where APPR_CODE = #{apnum}
+	</update>
 	
 </mapper>

@@ -97,9 +97,9 @@ td:nth-child(1) {
 							.parent().parent().parent().find("input").eq(1)
 							.val();
 					t = $(this);
-					if (senddata2 == 0) { //노란색
+					if (senddata2 == 0) { // 즐겨찾기 버튼 클릭 당시 버튼 값이 0이면 버튼 색깔을 노란색으로 바꿔줍니다.
 						t.addClass('flaticon-star text-warning');
-					} else {  //회색
+					} else {  // 즐겨찾기 버튼 클릭 당시 버튼 값이 1이면 버튼 색깔을 회색으로 바꿔줍니다.
 						t.removeClass('flaticon-star text-warning');
 						t.addClass('flaticon-star');
 					}
@@ -111,14 +111,13 @@ td:nth-child(1) {
 							"bookmark" : senddata2
 						},
 						success : function(data) {
-							console.log(data);
-							//[{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"},{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"},{"m_BOOKMARK":1,"m_CODE":"park","m_OWNER":"park"}]
 							after = 0 ;
 							if(senddata2==0)
 								after = 1 
-								
+								// 즐겨찾기 버튼 값이 0이면 1로 바꿔주고, 1이면 0으로 바꿔줍니다.
+							t.parent().parent().parent().parent().parent()
+							.parent().parent().find("input").eq(1).val(after);
 							
-							t.parent().parent().parent().parent().parent().parent().parent().find("input").eq(1).val(after);
 							
 							/*
 							지금까지 success에서 시도하다 오류 났던 것(시행 착오)
@@ -263,7 +262,7 @@ td:nth-child(1) {
 										</div>
 										<!--end::User-->
 										<!--begin::Desc-->
-										<p class="mb-7">안녕하세요. ${m.m_PART_C}의 ${m.m_NAME} 입니다.</p>
+										
 										<!--end::Desc-->
 										<!--begin::Info-->
 										<div class="mb-7">
@@ -295,24 +294,19 @@ td:nth-child(1) {
 													<input type="hidden" name="bookmark"
 													value="${m.m_BOOKMARK}" />
 													<p>
-														
-														<!-- 즐겨찾기 버튼을 눌렀을때 로그인 되어있던 id값 -->
-														<c:set var="sessionOwner" value="${owner}" />
 														<!-- session에 저장된 로그인 id값 -->
+														<c:set var="sessionOwner" value="${owner}" />
 														
-														
+														<!-- 자신이 즐겨찾기 추가한 사람들에만 노란별로 나타내게 해주는 부분입니다. -->
+														<!-- 현재 로그인 되어있는 ID값과 즐겨찾기 버튼을 누른 ID값이 같은 부분만 노란별로 나타내줍니다. -->
 														<c:if test="${sessionOwner == m.m_OWNER}">
-																<!-- <button class="bookmarkbutton"> -->
-																	<i class="bookmarkbutton flaticon-star text-warning"></i>
-																
+															<!-- <button class="bookmarkbutton"> -->
+															<i class="bookmarkbutton flaticon-star text-warning"></i>
 														</c:if>
 														<c:if test="${m.m_OWNER == null}">
 															<!-- <button class="bookmarkbutton"> -->
-																<i class="bookmarkbutton flaticon-star"></i>
-															
+															<i class="bookmarkbutton flaticon-star"></i>
 														</c:if>
-														
-														<!-- session의 로그인 id값과 즐겨찾기 버튼 누른 사람의 값이 같으면 노란별 표시 -->
 													</p>
 												</span>
 											</div>

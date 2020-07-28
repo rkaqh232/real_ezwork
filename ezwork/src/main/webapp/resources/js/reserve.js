@@ -33,7 +33,6 @@ $(function(){
 									info + "'>"
 							output += item.USER_NAME + '</span>'
 							$('#f'+item.MTIME).append(output);
-							$('[data-toggle="tooltip"]').tooltip();
 						} else if(item.RNAME=="Ocean"){
 							var output = "<span class='label label-light-dark label-inline mr-2'" +
 							"data-container='body' data-toggle=" +
@@ -63,6 +62,7 @@ $(function(){
 							output += item.USER_NAME + '</span>'
 							$('#s'+item.MTIME).append(output);
 						}
+						$('[data-toggle="tooltip"]').tooltip();
 					})
 			},
 			error : function(request, error){

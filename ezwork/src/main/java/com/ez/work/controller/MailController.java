@@ -40,9 +40,6 @@ public class MailController {
 	@Autowired
 	private MailService mailService;
 	
-	@Autowired
-	private CmtManageService cmtManageService;
-	
 	@Value("${mailsavefoldername}")
 	private String mailsaveFolder;	
 	
@@ -374,6 +371,21 @@ public class MailController {
 	
 	@GetMapping(value="DetailOut.mail")
 	public ModelAndView outDetail(int num, ModelAndView mv, HttpServletRequest request) {
+		Mail mail = mailService.outDetail(num);
+		if(mail == null) {
+			System.out.println("mail view failed");
+			mv.setViewName("error/error");
+		}else {
+			System.out.println("mail view start");
+			mv.addObject("page", "mail/out_view.jsp");
+			mv.addObject("maildata", mail);
+			mv.setViewName("home");
+		}		
+		return mv;
+	}
+	
+	@GetMapping(value="DetailBin.mail")
+	public ModelAndView binDetail(int num, ModelAndView mv, HttpServletRequest request) {
 		Mail mail = mailService.outDetail(num);
 		if(mail == null) {
 			System.out.println("mail view failed");

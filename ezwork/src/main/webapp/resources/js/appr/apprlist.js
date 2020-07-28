@@ -392,7 +392,7 @@ function ajax(sdata){
 				$('.pagination').append(output)
 			}//if(data.listcount) end
 			else if(totalData==0){
-				output = "<tr><th colspan='4'><h3>등록된 결재가 없습니다.</h3></th></tr>";
+				output = "<tbody><tr><th colspan='7'><h3>등록된 결재가 없습니다.</h3></th></tr></tbody>";
 				$('table').append(output)
 			}			
 		}, //success end

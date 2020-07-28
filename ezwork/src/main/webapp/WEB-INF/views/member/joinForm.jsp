@@ -141,7 +141,7 @@ font-size:12px !important;
 																<div class="image-input image-input-outline"
 																	id="kt_user_add_avatar">
 																	<div class="image-input-wrapper"
-																		style="background-image: url(resources/assets/media/users/LEE.PNG)"></div>
+																		style="background-image: url(resources/assets/media/users/blank.png)"></div>
 																	<label
 																		class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
 																		data-action="change" data-toggle="tooltip" title=""
@@ -189,36 +189,6 @@ font-size:12px !important;
 														<!--end::Group-->
 														<!--begin::Group-->
 														
-														
-														
-														
-														
-														
-								
-														
-
-														<!-- <div class="form-group row">
-															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
-																<div class="col-lg-9 col-xl-9">
-																	<div class="dropdown">
-    																	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       																		&nbsp;&nbsp;&nbsp;선택해주세요.&nbsp;&nbsp;&nbsp;&nbsp;</button>
-  													  <div class="dropdown-menu" >
-      														  <a class="dropdown-item" href="#" value="A1">A1   총무</a>
-        													  <a class="dropdown-item" href="#" value="A2">A2   재무</a>
-     													      <a class="dropdown-item" href="#" value="A3">A3   인사</a>
-     													      <a class="dropdown-item" href="#" value="B1">B1   경영지원</a>
-     													      <a class="dropdown-item" href="#" value="B2">B2  S/W지원</a>
-     													      <a class="dropdown-item" href="#" value="B3">B3   기술지원</a>
-     													      <a class="dropdown-item" href="#" value="C1">C1   영업1팀</a>
-     													      <a class="dropdown-item" href="#" value="C2">C2   영업2팀</a>
-     													      <a class="dropdown-item" href="#" value="Q">Q  임원</a>
-   															 </div>
-															</div>
-															<span
-																	class="form-text text-muted">참고 : 기타 부서의 경우 A1으로 선택해주세요.</span>
-															</div>
-														</div> -->
 														
 														<div class="form-group row">
 															<label class="col-xl-3 col-lg-3 col-form-label">부서코드</label>
@@ -320,7 +290,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_NAME" type="text" id="M_NAME"  value="" placeholder="사원명"/>
+																	name="M_NAME" type="text" id="M_NAME"  value="사원명" placeholder="사원명"/>
 															</div>
 														</div>
 

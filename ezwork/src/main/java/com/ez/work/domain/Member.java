@@ -37,6 +37,15 @@ public class Member {
 	private MultipartFile profile_avatar;
 	private String M_POSTCODE;
 	private String M_ADDRESS2;
+	private String RES_DATE;
+
+	public String getRES_DATE() {
+		return RES_DATE;
+	}
+
+	public void setRES_DATE(String rES_DATE) {
+		RES_DATE = rES_DATE;
+	}
 
 	public String getM_OWNER() {
 		return M_OWNER;

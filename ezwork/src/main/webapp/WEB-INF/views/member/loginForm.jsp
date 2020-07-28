@@ -106,7 +106,7 @@ body {
 							<div class="form-group">
 								<input
 									class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5"
-									type="text" placeholder="사원번호" name="M_CODE" id="M_CODE" autocomplete="off"
+									type="text" value="EMP" name="M_CODE" id="M_CODE" autocomplete="off"
 									 <c:if test="${!empty saveid }">
      									 value="${saveid }"
      									 </c:if>
@@ -131,6 +131,7 @@ body {
 							</div>
 							<div class="form-group text-center mt-10">
 								<button id="kt_login_signin_submit" class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">
+								<a href="loginProcess.net"></a>
 									Login</button>
 							</div>
 						</form>
@@ -230,6 +231,7 @@ body {
 	</script>
 	<!--begin::Global Config(global config for global JS scripts)-->
 	<script>
+	
 		var KTAppSettings = {
 			"breakpoints" : {
 				"sm" : 576,
@@ -297,8 +299,8 @@ body {
 	<script src="resources/assets/js/scripts.bundle.js"></script>
 	<!--end::Global Theme Bundle-->
 	<!--begin::Page Scripts(used by this page)-->
-	<!--  <script
-		src="resources/assets/js/pages/custom/login/login-general.js"></script> -->
+<!--	<script
+		src="resources/assets/js/pages/custom/login/login-general.js"></script>-->
 		<!--  로그인 자바스크립트  -->
 	<!--end::Page Scripts-->
 

@@ -33,14 +33,6 @@ p{margin-top:0rem;
 .commentinput{
 	width:300px;
 }
-
-.modal {
-	display: none;
-    width: 700px;
-    position: relative;
-    top: -500px;
-    left: 15%;	
-}
 .radio-inline{
 	line-height:37px;
 }
@@ -75,6 +67,88 @@ p{margin-top:0rem;
 				<!--end::Svg Icon-->
 			</span>의견 </button>
 			<!--end::Button-->
+			<div class="modal fade" id="myModal" tabindex="-1"
+	role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="exampleModalLabel"
+					style="font-weight: bold;">결재 제출</h3>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<i aria-hidden="true" class="ki ki-close"></i>
+				</button>
+			</div>
+			<div class="card card-custom">
+				<!--begin::Form-->
+				<form action="Approve.appr" method="post" name="appr"
+					enctype="multipart/form-data">
+					<div class="card-body">
+						<input type="hidden" value="${part}" name="M_PART"> <input
+							type="hidden" value="${code}" name="M_CODE"> <input
+							type="hidden" value="${name}" name="APPR_NAME"> <input
+							type="hidden" value="${apprdata.APPR_CODE}" name="APPR_CODE">
+						<div class="form-group row appr">
+							<label class="col-lg-3 col-form-label text-lg-right">결재자</label>
+							<div class="col-lg-4 writer">
+								<!-- <input name="EV_NAME" id="board_name" value="인사팀" readOnly
+								type="text" size="10" maxlength="30" class="form-control"> -->
+								<span
+									class="label label-lg font-weight-bold label-light-info label-inline">
+									${part} </span> <span> ${name} </span>
+							</div>
+						</div>
+
+
+						<c:if test="${apprdata.APPR_CUR_COUNT == 0}">
+							<c:set var="nowname" value="FIRST_VAL" />
+							<c:set var="nowcomm" value="FIRST_COMMENT" />
+						</c:if>
+						<c:if test="${apprdata.APPR_CUR_COUNT == 1}">
+							<c:set var="nowname" value="SECOND_VAL" />
+							<c:set var="nowcomm" value="SECOND_COMMENT" />
+						</c:if>
+						<c:if test="${apprdata.APPR_CUR_COUNT == 2}">
+							<c:set var="nowname" value="THIRD_VAL" />
+							<c:set var="nowcomm" value="THIRD_COMMENT" />
+						</c:if>
+
+						<input type="hidden" name="val" value="${nowname}"> <input
+							type="hidden" name="commname" value="${nowcomm}">
+						<div class="form-group row appr">
+							<label class="col-lg-3 col-form-label text-lg-right">라디오</label>
+							<div class="radio-inline">
+								<label class="radio"> <input type="radio"
+									name="approve_val" value="1" /> 승인 <span></span>
+								</label> <label class="radio"> <input type="radio"
+									name="approve_val" value="2" /> 반려 <span></span>
+								</label>
+							</div>
+						</div>
+						<div class="form-group row appr">
+							<label class="col-lg-3 col-form-label text-lg-right">내용</label>
+							<div class="col-lg-7">
+								<textarea name="comment" style="height: 160px"
+									class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<div class="row">
+							<div class="col-lg-3"></div>
+							<div class="col-lg-9">
+								<button type="submit" class="btn btn-info">등록</button>
+								<button class="btn btn-outline-secondary" data-dismiss="modal">취소</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<!--end::Form-->
+				<!-- form 끝 -->
+			</div>
+		</div>
+	</div>
+</div>
 		</div>
 	</div>
 	
@@ -235,95 +309,7 @@ p{margin-top:0rem;
 					</div>
 					</c:if>
 				</div>				
-			<!--end::Form-->
-		<div class="modal" id="myModal">
-		<div class="modal-content">
-		<!--begin::Card-->
-		<div class="card card-custom">
-			<div class="card-header">
-				<div class="card-title">
-					<i class="flaticon2-chat-1 text-info"></i>
-					<h3 class="card-label">&nbsp;글 등록</h3>
-					<small>전자 결재</small>
-				</div>
-			</div>
-			
-			
-			
-			<!--begin::Form-->
-			<form action="Approve.appr" method="post" name="appr" enctype="multipart/form-data">
-				<div class="card-body">					
-					<input type="hidden" value="${part}" name="M_PART">
-					<input type="hidden" value="${code}" name="M_CODE">
-					<input type="hidden" value="${name}" name="APPR_NAME">
-					<input type="hidden" value="${apprdata.APPR_CODE}" name="APPR_CODE">
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">결재자</label>
-						<div class="col-lg-4 writer">
-							<!-- <input name="EV_NAME" id="board_name" value="인사팀" readOnly
-								type="text" size="10" maxlength="30" class="form-control"> -->
-							<span class="label label-lg font-weight-bold label-light-info label-inline">
-								${part}
-							</span>
-							<span>
-							${name}
-							</span>
-						</div>
-					</div>					
-					
-					
-					<c:if test="${apprdata.APPR_CUR_COUNT == 0}">
-						<c:set var="nowname" value="FIRST_VAL"/>
-						<c:set var="nowcomm" value="FIRST_COMMENT"/>
-					</c:if>
-					<c:if test="${apprdata.APPR_CUR_COUNT == 1}">
-						<c:set var="nowname" value="SECOND_VAL"/>
-						<c:set var="nowcomm" value="SECOND_COMMENT"/>
-					</c:if>
-					<c:if test="${apprdata.APPR_CUR_COUNT == 2}">
-						<c:set var="nowname" value="THIRD_VAL"/>
-						<c:set var="nowcomm" value="THIRD_COMMENT"/>
-					</c:if>
-					
-					<input type="hidden" name="val" value="${nowname}">
-					<input type="hidden" name="commname"value="${nowcomm}">
-					<div class="form-group row appr">
-			        	<label class="col-lg-3 col-form-label text-lg-right">라디오</label>
-			        	<div class="radio-inline">
-			            <label class="radio">
-			                <input type="radio" name="approve_val" value="1"/> 승인
-			                <span></span>
-			            </label>
-			            <label class="radio">
-			                <input type="radio" name="approve_val" value="2"/> 반려
-			                <span></span>
-			            </label>
-			        </div>
-					</div>
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
-						<div class="col-lg-7">
-							<textarea name ="comment" style="height: 160px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
-						</div>
-					</div>					
-
-					
-				</div>
-				<div class="card-footer">
-					<div class="row">
-						<div class="col-lg-3"></div>
-						<div class="col-lg-9">
-							<button type="submit" class="btn btn-info">등록</button>
-							<button class="btn btn-outline-secondary" data-dismiss="modal">취소</button>
-						</div>
-					</div>
-				</div>			  
-			</form>
-			<!--end::Form-->
-		</div>
-		<!--end::Card-->
-		</div>
-		</div>	
+		
 			
 		</div>
 		<!--end::Card-->

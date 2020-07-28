@@ -16,13 +16,13 @@ tr>th:nth-child(3){width:40%;}
 tr>th:nth-child(4){width:7%}
 tr>th:nth-child(5){width:10%}
 tr>th:nth-child(6){width:10%}
-.modal {
+/* .modal {
 	display: none;
     width: 850px;
     position: relative;
     top: -500px;
     left: 15%;	
-}
+} */
 .appr{
 	margin-bottom:1rem;
 }
@@ -61,6 +61,137 @@ tr>th:nth-child(6){width:10%}
 				<!--end::Svg Icon-->
 			</span>결재 작성</button>
 			<!--end::Button-->
+		<div class="modal fade" id="myModal" tabindex="-1"
+	role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="exampleModalLabel"
+					style="font-weight: bold;">결재 제출</h3>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<i aria-hidden="true" class="ki ki-close"></i>
+				</button>
+			</div>
+			<div class="card card-custom">
+				<!--begin::Form-->
+				<form action="Apprinsert.appr" method="post" name="appr"
+				enctype="multipart/form-data">
+				<div class="card-body">
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">업무 구분</label>
+						<div class="col-lg-2">
+							<div class="rows">
+								<select name="APPR_STAT" class="form-control" id="viewcount">
+									<option value="0" selected>업무</option>
+									<option value="1">휴가</option>
+									<option value="2">업무2</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" value="${part}" name="M_PART"> <input
+						type="hidden" value="${code}" name="M_CODE"> <input
+						type="hidden" value="${name}" name="APPR_NAME">
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">제출자</label>
+						<div class="col-lg-4 writer">
+							<!-- <input name="EV_NAME" id="board_name" value="인사팀" readOnly
+								type="text" size="10" maxlength="30" class="form-control"> -->
+							<span
+								class="label label-lg font-weight-bold label-light-info label-inline">
+								${part} </span> <span> ${name} </span>
+						</div>
+					</div>
+
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
+						<div class="col-lg-7">
+							<input name="APPR_TITLE" id="appr_title" type="text" size="50"
+								maxlength="100" class="form-control" placeholder="제목을 입력하세요">
+						</div>
+					</div>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
+						<div class="col-lg-7">
+							<textarea name="APPR_CONTENT" style="height: 160px"
+								class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group row appr fileup">
+						<label class="col-lg-3 col-form-label text-lg-right">파일첨부</label>
+						<div class="col-lg-9">
+							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
+								<div class="dropzone-panel mb-lg-0 mb-2">
+									<input type="file" id="upfile" name="uploadfile"
+										class="custom-file-input"> <label
+										class="custom-file-label filelabel" for="upfile">Choose
+										file</label>
+								</div>
+								<div class="dropzone-items"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">1차
+							결재자</label>
+						<div class="col-lg-4">
+							<input type="text" name="FIRST_CODE" list="fmemlist"
+								class="form-control fmem" autocomplete=off>
+							<datalist id="fmemlist">
+								<c:forEach var="m" items="${memberlist}">
+									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
+								</c:forEach>
+							</datalist>
+						</div>
+					</div>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">2차
+							결재자</label>
+						<div class="col-lg-4">
+							<input type="text" name="SECOND_CODE" list="smemlist"
+								class="form-control smem" autocomplete=off>
+							<datalist id="smemlist">
+								<c:forEach var="m" items="${memberlist}">
+									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
+								</c:forEach>
+							</datalist>
+						</div>
+					</div>
+					<div class="form-group row appr">
+						<label class="col-lg-3 col-form-label text-lg-right">3차
+							결재자</label>
+						<div class="col-lg-4">
+							<input type="text" name="THIRD_CODE" list="tmemlist"
+								class="form-control tmem" autocomplete=off>
+							<datalist id="tmemlist">
+								<c:forEach var="m" items="${memberlist}">
+									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
+								</c:forEach>
+							</datalist>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						<div class="col-lg-3"></div>
+						<div class="col-lg-9">
+							<button type="submit" class="btn btn-info">등록</button>
+							<button type="reset" class="btn btn-outline-secondary"
+								data-dismiss="modal">취소</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!--end::Form-->
+				<!-- form 끝 -->
+			</div>
+		</div>
+	</div>
+</div>
+		<!--end: Datatable-->
 		</div>
 	</div>
 	<div class="card-body">
@@ -192,130 +323,7 @@ tr>th:nth-child(6){width:10%}
 	    </div>
 		<!-- pagination 끝 -->
 		
-		<div class="modal" id="myModal">
-		<div class="modal-content">
-		<!--begin::Card-->
-		<div class="card card-custom">
-			<div class="card-header">
-				<div class="card-title">
-					<i class="flaticon2-chat-1 text-info"></i>
-					<h3 class="card-label">&nbsp;글 등록</h3>
-					<small>전자 결재</small>
-				</div>
-			</div>
-			<!--begin::Form-->
-			<form action="Apprinsert.appr" method="post" name="appr" enctype="multipart/form-data">
-				<div class="card-body">
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">업무 구분</label>
-						<div class="col-lg-2">
-							<div class="rows">
-								<select name ="APPR_STAT" class="form-control" id="viewcount">
-									<option value="0" selected>업무</option>
-									<option value="1">휴가</option>
-									<option value="2">업무2</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<input type="hidden" value="${part}" name="M_PART">
-					<input type="hidden" value="${code}" name="M_CODE">
-					<input type="hidden" value="${name}" name="APPR_NAME">
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">제출자</label>
-						<div class="col-lg-4 writer">
-							<!-- <input name="EV_NAME" id="board_name" value="인사팀" readOnly
-								type="text" size="10" maxlength="30" class="form-control"> -->
-							<span class="label label-lg font-weight-bold label-light-info label-inline">
-								${part}
-							</span>
-							<span>
-							${name}
-							</span>
-						</div>
-					</div>
-					
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">제목</label>
-						<div class="col-lg-7">
-							<input name="APPR_TITLE" id="appr_title" type="text"
-								size="50" maxlength="100" class="form-control"
-								placeholder="제목을 입력하세요">
-						</div>
-					</div>
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">내용</label>
-						<div class="col-lg-7">
-							<textarea name ="APPR_CONTENT" style="height: 160px" class="form-control" rows="3" placeholder="내용을 입력하세요"></textarea>
-						</div>
-					</div>
-
-					<div class="form-group row appr fileup">
-						<label class="col-lg-3 col-form-label text-lg-right">파일첨부</label>
-						<div class="col-lg-9">
-							<div class="dropzone dropzone-multi" id="kt_dropzone_4">
-								<div class="dropzone-panel mb-lg-0 mb-2">
-									<input type="file" id="upfile" name="uploadfile" class="custom-file-input">
-									 <label class="custom-file-label filelabel" for="upfile">Choose file</label>
-								</div>
-								<div class="dropzone-items"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">1차 결재자</label>
-						<div class="col-lg-4">
-							<input type="text" name = "FIRST_CODE" list="fmemlist" 
-									class="form-control fmem" autocomplete=off>
-								<datalist id="fmemlist">
-								<c:forEach var="m" items="${memberlist}">
-									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
-								</c:forEach>
-								</datalist>			
-						</div>
-					</div>
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">2차 결재자</label>
-						<div class="col-lg-4">
-							<input type="text" name = "SECOND_CODE" list="smemlist" 
-									class="form-control smem" autocomplete=off>
-								<datalist id="smemlist">
-									<c:forEach var="m" items="${memberlist}">
-									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
-								</c:forEach>
-								</datalist>			
-						</div>
-					</div>
-					<div class="form-group row appr">
-						<label class="col-lg-3 col-form-label text-lg-right">3차 결재자</label>
-						<div class="col-lg-4">
-							<input type="text" name = "THIRD_CODE" list="tmemlist" 
-									class="form-control tmem" autocomplete=off>
-								<datalist id="tmemlist">
-									<c:forEach var="m" items="${memberlist}">
-									<option value="${m.m_PART_C} ${m.m_NAME}"></option>
-								</c:forEach>
-								</datalist>			
-						</div>
-					</div>
-				</div>
-				<div class="card-footer">
-					<div class="row">
-						<div class="col-lg-3"></div>
-						<div class="col-lg-9">
-							<button type="submit" class="btn btn-info">등록</button>
-							<button type="reset" class="btn btn-outline-secondary"  data-dismiss="modal">취소</button>
-						</div>
-					</div>
-				</div>
-			</form>
-			<!--end::Form-->
-		</div>
-		<!--end::Card-->
-		</div>
-		</div>		
-		<!--end: Datatable-->
+		
 	</div>
 </div>
 </div>

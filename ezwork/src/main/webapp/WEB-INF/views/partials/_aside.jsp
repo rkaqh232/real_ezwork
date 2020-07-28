@@ -409,39 +409,26 @@
                                  fill="#000000" opacity="0.3" />
                                     </g>
                                  </svg> <!--end::Svg Icon-->
-                     </span> <span class="menu-text">조직도</span> <i class="menu-arrow"></i>
+                     </span> <span class="menu-text">주소록</span> <i class="menu-arrow"></i>
                   </a> 
    
                <!----------------------------------     하위 탭     ------------------------------------------>
                      <div class="menu-submenu">
                         <i class="menu-arrow"></i>
                         <ul class="menu-subnav">
-                           <li class="menu-item menu-item-parent" aria-haspopup="true">
-                              <span class="menu-link"> <span class="menu-text">Applications</span>
-                           </span>
-                           </li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="javascript:;"
+                              data-menu-toggle="hover"><a href="member_list"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
-                              </i> <span class="menu-text">조직도</span> <i class="menu-arrow"></i>
+                              </i> <span class="menu-text">직원 검색</span> <i class="menu-arrow"></i>
                            </a>
-                              <div class="menu-submenu">
-                                 <i class="menu-arrow"></i>
-                                 <ul class="menu-subnav">
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="member_list" class="menu-link">
-                                          <i class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">직원검색</span>
-                                    </a></li>
-                                    <li class="menu-item" aria-haspopup="true"><a
-                                       href="EmpWishlist" class="menu-link"> <i
-                                          class="menu-bullet menu-bullet-dot"> <span></span>
-                                       </i> <span class="menu-text">사원 즐겨찾기 목록</span>
-                                    </a></li>
-
-                                 </ul>
-                              </div></li>
+                           <li class="menu-item menu-item-submenu" aria-haspopup="true"
+                              data-menu-toggle="hover"><a href="EmpWishlist"
+                              class="menu-link menu-toggle"> <i
+                                 class="menu-bullet menu-bullet-line"> <span></span>
+                              </i> <span class="menu-text">사원 즐겨찾기 목록</span> <i class="menu-arrow"></i>
+                           </a>
+                          </li>
                         </ul>
                      </div></li>
 
@@ -488,7 +475,7 @@
                               </i> <span class="menu-text">공지사항</span> <i class="menu-arrow"></i>
                            </a></li>
                            <li class="menu-item menu-item-submenu" aria-haspopup="true"
-                              data-menu-toggle="hover"><a href="material.bo"
+                              data-menu-toggle="hover"><a href="Pdslist"
                               class="menu-link menu-toggle"> <i
                                  class="menu-bullet menu-bullet-line"> <span></span>
                               </i> <span class="menu-text">자료실</span> <i class="menu-arrow"></i>

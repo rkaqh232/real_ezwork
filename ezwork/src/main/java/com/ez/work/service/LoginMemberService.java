@@ -11,11 +11,12 @@ public interface LoginMemberService {
 	public int insert(Member m);
 	public int isId(String id);
 	public Member member_info(String id);
-	public void delete(String id);
 	public int update(Member m);
 	public int update_admin(Member m);
+	public int update_res(Member member);
 
 	public List<Member> getSearchList2(int index, String search_word, int page, int limit);
+	public List<Member> resSearchList(int index, String search_word, int page, int limit);
 	public int getSearchListCount(int index, String search_word);
 
 }

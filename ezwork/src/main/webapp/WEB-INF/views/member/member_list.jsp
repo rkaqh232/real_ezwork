@@ -61,48 +61,27 @@ a {
 					<div class="card-header flex-wrap border-0 pt-6 pb-0">
 						<div class="card-title">
 							<h3 class="card-label">
-								전체 임직원 목록 <span class="d-block text-muted pt-2 font-size-sm">인사팀에서만 수정, 퇴사처리가 가능합니다.</span>
+								전체 임직원 목록 <span class="d-block text-muted pt-2 font-size-sm"> 전체 사원 검색이 가능합니다 </span>
 							</h3>
 						</div>
+						
 						<div class="card-toolbar">
+						
+						
 							<div class="dropdown dropdown-inline mr-2">
+							<% String u_id1 = (String)session.getAttribute("M_CODE");
+												if ("admin".equals(u_id1)){%>
 
 								<button type="button"
-									class="btn btn-light-primary font-weight-bolder dropdown-toggle"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									<i class="la la-download"></i>Export
-								</button>
-								<!--begin::Dropdown Menu-->
-								<div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-									<ul class="nav flex-column nav-hover">
-										<li
-											class="nav-header font-weight-bolder text-uppercase text-primary pb-2">Choose
-											an option:</li>
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="nav-icon la la-print"></i> <span class="nav-text">Print</span>
-										</a></li>
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="nav-icon la la-copy"></i> <span class="nav-text">Copy</span>
-										</a></li>
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="nav-icon la la-file-excel-o"></i> <span
-												class="nav-text">Excel</span>
-										</a></li>
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="nav-icon la la-file-text-o"></i> <span
-												class="nav-text">CSV</span>
-										</a></li>
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="nav-icon la la-file-pdf-o"></i> <span
-												class="nav-text">PDF</span>
-										</a></li>
-									</ul>
-								</div>
-								<!--end::Dropdown Menu-->
+									class="btn btn-secondary font-weight-bolder"><a href="res_list.hr">퇴사 사원 목록
+								</button><% }%>
+								
+								
 							</div>
 
 							<!--begin::신규 사원 등록신규 사원 등록신규 사원 등록Button-->
+							<% String u_id2 = (String)session.getAttribute("M_CODE");
+												if ("admin".equals(u_id2)){%>
 							<a href="insert.hr" class="btn btn-primary font-weight-bolder">
 								<span class="svg-icon svg-icon-md"> <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
 									<svg xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +97,7 @@ a {
 													</g>
 												</svg> <!--end::Svg Icon-->
 							</span>신규 사원 등록
-							</a>
+							</a><% }%>
 							<!--end::신규 사원 등록 신규 사원 등록신규 사원 등록Button-->
 
 
@@ -184,13 +163,13 @@ a {
 				<table class="datatable" id="kt_datatable">
 					<thead>
 						<tr>
+							<th class="Field #1"> # </th>
+							<th class="Field #2">사원번호</th>
+							<th class="Field #3">이름</th>
+							<th title="Field #4">부서</th>
+							<th title="Field #5">직급</th>
 
-							<th class="Field #1">사원번호</th>
-							<th class="Field #2">이름</th>
-							<th title="Field #3" id="kt_datatable_search_status">부서</th>
-							<th title="Field #4">직급</th>
-
-							<th data-field="date">입사일</th>
+							
 							<th title="Field #6">이메일</th>
 							<th title="Field #7">연락처</th>
 							<th title="Field #8">설정 :</th>
@@ -201,12 +180,16 @@ a {
 					<tbody>
 						<c:forEach var="m" items="${mem_info}">
 							<tr>
+								<td><div class="symbol">
+										<div class="symbol-label"
+											style="background-image: url('resources/memberupload/${m.m_FILE}')"></div>
+									</div></td>
 								<td>${m.m_CODE}</td>
 								<td>${m.m_NAME}</td>
 								<td>${m.m_PART_C}</td>
 								<td>level ${m.m_LEVEL}</td>
 
-								<td>${m.m_JOIN_DATE}</td>
+								
 								<td>${m.m_EMAIL}</td>
 								<td>${m.m_MOBILE_TEL}</td>
 								
@@ -216,7 +199,8 @@ a {
 										class="svg-icon">관리자설정</span>
 								</a>
 									<div class="dropdown-menu dropdown-menu-md py-5" style="">
-										<ul class="navi navi-hover navi-link-rounded-lg">
+									
+									<ul class="navi navi-hover navi-link-rounded-lg">
 
 											<% String u_id = (String)session.getAttribute("M_CODE");
 												if ("admin".equals(u_id)){%>
@@ -224,17 +208,16 @@ a {
 												href="update_admin.hr?code=${m.m_CODE }">  <span class="navi-icon"></i></span>
 													<span class="navi-text">정보수정</span>
 											</a></li>
-											<li class="navi-item"><a class="navi-link" href="#">
+											<li class="navi-item"><a class="navi-link" href="update_resignation.hr?code=${m.m_CODE }">
 													<span class="navi-icon"></span> <span class="navi-text">퇴사절차</span></span>
 													</span>
-											</a></li><% }%>
-											
+											</a></li>
+											<% } else {%>
 											<li class="navi-item"><a class="navi-link" href="#">
 													<span class="navi-icon"></span> <span class="navi-text">권한없음</span></span>
 													</span>
-											</a></li>
-
-										</ul>
+											</a></li><% } %>
+</ul>
 									</div>
 									</div></td>
 

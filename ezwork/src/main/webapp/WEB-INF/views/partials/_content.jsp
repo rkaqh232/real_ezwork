@@ -36,6 +36,12 @@ p {
 	margin-bottom: 0
 }
 
+<<<<<<< HEAD
+
+#kt_content {
+	padding-top: 0px;
+}
+=======
 #kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td.pl-0.py-4 {
 	width: 35px;
 }
@@ -53,6 +59,7 @@ p {
 }
 
 
+>>>>>>> branch 'master' of https://github.com/rkaqh232/real_ezwork.git
 </style>
 
 <script src="resources/js/mail/maininbox.js"></script>
@@ -73,10 +80,39 @@ p {
 </script>
 
 <!--begin::Entry-->
+	<div class="content d-flex flex-column flex-column-fluid"
+		id="kt_content">
+<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+			<div
+				class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+				<!--begin::Info-->
+				<div class="d-flex align-items-center flex-wrap mr-1">
+					<!--begin::Mobile Toggle-->
+					<button
+						class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none"
+						id="kt_subheader_mobile_toggle">
+						<span></span>
+					</button>
+					<!--end::Mobile Toggle-->
+					<!--begin::Page Heading-->
+					<div class="d-flex align-items-baseline mr-5">
+						<!--begin::Page Title-->
+						<h5 class="text-dark font-weight-bold my-2 mr-5">
+							<i class="flaticon-users-1 text-info"></i> &nbsp;그룹웨어
+						</h5>
+						<!--end::Page Title-->
+						<small style="color: gray;"></small>
+					</div>
+					<!--end::Page Heading-->
+				</div>
+				<!--end::Info-->
+
+			</div>
+		</div>
 <div class="d-flex flex-column-fluid">
 
 	<!--begin::Container-->
-	<div class="container">
+	<div class="container" style="margin-top: 23px;">
 
 		<!--[html-partial:begin:{"id":"demo1/dist/inc/view/demos/pages/index","page":"index"}]/-->
 
@@ -418,6 +454,7 @@ p {
 
 <!--[html-partial:end:{"id":"demo1/dist/inc/view/demos/pages/index","page":"index"}]/-->
 </div>
+
 
 <!--end::Container-->
 <!--end::Entry-->

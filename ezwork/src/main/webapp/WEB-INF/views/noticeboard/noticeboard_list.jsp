@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+#kt_content {
+	padding-top: 0px;
+}
 #kt_content>div>div>div.card-body>table>thead>tr>th:nth-child(1) {
 	width: 8%
 }
@@ -33,7 +37,40 @@
 </style>
 </head>
 <body>
-	<div class="container">
+	<div class="content d-flex flex-column flex-column-fluid"
+		id="kt_content">
+		<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+			<div
+				class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+				<!--begin::Info-->
+				<div class="d-flex align-items-center flex-wrap mr-1">
+					<!--begin::Mobile Toggle-->
+					<button
+						class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none"
+						id="kt_subheader_mobile_toggle">
+						<span></span>
+					</button>
+					<!--end::Mobile Toggle-->
+					<!--begin::Page Heading-->
+					<div class="d-flex align-items-baseline mr-5">
+						<!--begin::Page Title-->
+						<h5 class="text-dark font-weight-bold my-2 mr-5">
+							<i class="flaticon-users-1 text-info"></i> &nbsp;사원 명부/조회
+						</h5>
+						<!--end::Page Title-->
+						<small style="color: gray;">사원조회</small>
+					</div>
+					<!--end::Page Heading-->
+				</div>
+				<!--end::Info-->
+
+			</div>
+		</div>
+		<!--end::Head-->
+		<!--begin::Body-->
+
+		<div class="d-flex flex-column-fluid">
+		<div class="container" style="margin-top: 23px;">
 		<div class="card card-custom">
 			<div class="card-header">
 				<div class="card-title">
@@ -164,6 +201,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	</div>
+		<!--end::Card-->
 	</div>
 	<!--end:: Pagination-->
 

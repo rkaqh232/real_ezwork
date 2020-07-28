@@ -57,6 +57,20 @@ public class MemberDAO {
 		return sqlSession.update("Members.update",m);
 	}
 	
+	//관리자 업데이트
+	public int update_admin(Member m) {
+		return sqlSession.update("Members.update_admin",m);
+	}
+	
+	
+	//퇴사일 업데이트
+	public int update_res(Member m) {
+		return sqlSession.update("Members.update_res",m);
+	}
+	
+	
+	
+	//사원 조회 페이지
 	//사원 검색 페이지2
 	public List<Member> getSearchList2(Map<String, Object> map) {
 		return sqlSession.selectList("Members.getSearchList2", map);
@@ -72,9 +86,14 @@ public class MemberDAO {
 		return sqlSession.selectOne("Members.searchcount2", map);
 	}
 
-	public int updateadmin(Member m) {
-		return sqlSession.update("Members.update_admin",m);
+	
+	//퇴사 사원 조회 페이지	
+	public List<Member> getresignList(Map<String, Object> map) {
+		return sqlSession.selectList("Members.getresignList", map);
 	}
+
+
+
 	
 	
 

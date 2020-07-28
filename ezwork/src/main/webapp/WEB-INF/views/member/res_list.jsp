@@ -71,7 +71,7 @@ a {
 							
 
 								<button type="button"
-									class="btn btn-secondary" href="history.back()"> 이전
+									class="btn btn-secondary"><a href="javascript:history.back();"> 이전</a>
 								</button>
 								<!--begin::Dropdown Menu-->
 								

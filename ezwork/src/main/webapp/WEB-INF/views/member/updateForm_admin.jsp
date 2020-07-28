@@ -34,7 +34,7 @@ font-size:12px !important;
 					<div class="d-flex align-items-baseline mr-5">
 						<!--begin::Page Title-->
 						<h5 class="text-dark font-weight-bold my-2 mr-5">
-							<i class="flaticon-users-1 text-info"></i> &nbsp;사원 기본 정보 관리
+							<i class="flaticon-users-1 text-info"></i> &nbsp;인사팀 정보 관리
 						</h5>
 						<!--end::Page Title-->
 						<small style="color: gray;">정보관리</small>

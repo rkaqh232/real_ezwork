@@ -34,10 +34,10 @@ font-size:12px !important;
 					<div class="d-flex align-items-baseline mr-5">
 						<!--begin::Page Title-->
 						<h5 class="text-dark font-weight-bold my-2 mr-5">
-							<i class="flaticon-users-1 text-info"></i> &nbsp;퇴사 정보 입력
+							<i class="flaticon-users-1 text-info"></i> &nbsp;퇴사관리
 						</h5>
 						<!--end::Page Title-->
-						<small style="color: gray;">퇴사</small>
+						<small style="color: gray;">퇴사정보입력</small>
 					</div>
 					<!--end::Page Heading-->
 				</div>

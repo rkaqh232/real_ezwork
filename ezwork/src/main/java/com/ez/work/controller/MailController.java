@@ -529,5 +529,4 @@ public class MailController {
 		System.out.println(result + "개 메일 영구삭제");
 		return "redirect:bin.mail";
 	}
-	
 }

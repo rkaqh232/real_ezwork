@@ -182,7 +182,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_PASS" type="text" id="password" value="" placeholder="840817" /> <span
+																	name="M_PASS" type="text" id="password" placeholder="840817" /> <span
 																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
 															</div>
 														</div>
@@ -290,7 +290,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_NAME" type="text" id="M_NAME"  value="사원명" placeholder="사원명"/>
+																	name="M_NAME" type="text" id="M_NAME" placeholder="사원명"/>
 															</div>
 														</div>
 
@@ -508,6 +508,19 @@ font-size:12px !important;
 															<!--end::Group-->
 														</div>
 													</div>
+													<div class="form-group row">
+															<label class="col-xl-3 col-lg-3 col-form-label">
+																개인정보 처리방침 제 2 조. </label>
+															<div class="col-lg-9 col-xl-9"> 
+															① 회사는 관련 법령이 규정한 절차에 따라 개인정보를 보유·이용하는 경우, 정보주체로부터 개인정보를 제공받을 때에 동의를 얻은 범위 내에서 개인정보를 보유·이용하며, 보유·이용기간, 이용범위 등의 제한을 명확히 준수합니다.
+															<br><br>② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.<br>
+															<br>
+															
+															개인정보의 처리 및 보유기간
+소속 직원의 개인정보 : 별도의 동의가 없는 한, 퇴사시로부터 3년 회사는 개인정보의 보유·이용 기간이 경과하거나, 이용 목적이 달성되면 지체없이 개인정보를 파기하나, 
+<br><br>"다른 법령에 따라 보존하여야 하는 경우" 또는 "정보주체로부터 개별 동의를 받은 경우"에는 보유 및 이용 기간이 경과한 개인정보를 파기하지 아니하고 보존할 수 있습니다.
+																	</div>
+																	</div>
 
 													<!--  Step 1 사원등록 종료 Step 1 사원등록 종료 Step 1 사원등록 종료 Step 1 사원등록 종료 Step 1 사원등록 종료-->
 

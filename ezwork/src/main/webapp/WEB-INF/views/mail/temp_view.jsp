@@ -83,7 +83,7 @@ $(function(){
 						<!--begin::To-->
 						<div class="d-flex align-items-center border-bottom inbox-to px-8 min-h-50px">
 						<input type="hidden" name="num" value="${param.num}" id="mail_num">
-						<input type="text" name="MAIL_SENDER" id="SENDER" value="${M_CODE}" style="display:none"/>
+						<input type="text" name="MAIL_SENDER" id="SENDER" value="${M_CODE}" style="display:none"/><!-- 수정 -->
 						<input type="text" name="M_FILE" id="MFILE" value="${M_FILE}" style="display:none"/>
 							<div class="text-dark-50 w-25px">To:</div>
 							<div class="d-flex align-items-center flex-grow-1">

@@ -119,7 +119,7 @@ public class MailController {
 		out.close();
 	}
 	
-	@PostMapping("/TempAddaction.mail")
+	@PostMapping("/TempAddaction.mail")//추가
 	public String tmailadd(Mail mail, int num, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		System.out.println("file : "+mail.getM_FILE());
 		MultipartFile uploadfile=mail.getUploadfile();

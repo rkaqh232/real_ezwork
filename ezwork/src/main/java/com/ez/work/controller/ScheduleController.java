@@ -174,7 +174,7 @@ public class ScheduleController {
 				out.println("</script>");
 				out.close();
 			}
-			mv.addObject("name",name);
+			mv.addObject("name", name);
 			mv.addObject("searchList", searchList);
 			mv.addObject("page","schedule/calendar.jsp");
 			mv.setViewName("home");

@@ -53,7 +53,7 @@
 
 	<update id="calUsedHour" parameterType="java.util.Map">
 	update list_al
-	set al_used = (#{finaldays} + 1) * #{hour},
+	set al_used = al_used + ((#{finaldays} + 1) * #{hour}),
 	al_unused = al_totalhour - ((#{finaldays} + 1) * #{hour})
 	where al_m_code = #{id}
 	</update>

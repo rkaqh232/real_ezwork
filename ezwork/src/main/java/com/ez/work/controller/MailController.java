@@ -103,10 +103,10 @@ public class MailController {
 			int index = fileName.lastIndexOf(".");
 			System.out.println("index = " + index);
 			String fileExtension = fileName.substring(index+1);
-			//새로운 파일명
+			//濡 쇰
 			String refileName = "bbs"+year+month+date+random+"."+fileExtension;
 			
-			//오라클 DB에 저장될 파일명
+			//ㅻ쇳 DB �λ 쇰
 			String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
 			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
 			mail.setMAIL_FILE(fileDBName);
@@ -119,7 +119,7 @@ public class MailController {
 		out.close();
 	}
 	
-	@PostMapping("/TempAddaction.mail")//추가
+	@PostMapping("/TempAddaction.mail")//異媛
 	public String tmailadd(Mail mail, int num, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		System.out.println("file : "+mail.getM_FILE());
 		MultipartFile uploadfile=mail.getUploadfile();
@@ -143,10 +143,10 @@ public class MailController {
 			int index = fileName.lastIndexOf(".");
 			System.out.println("index = " + index);
 			String fileExtension = fileName.substring(index+1);
-			//새로운 파일명
+			//濡 쇰
 			String refileName = "bbs"+year+month+date+random+"."+fileExtension;
 			
-			//오라클 DB에 저장될 파일명
+			//ㅻ쇳 DB �λ 쇰
 			String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
 			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
 			mail.setMAIL_FILE(fileDBName);
@@ -164,18 +164,18 @@ public class MailController {
 			 HttpServletResponse response) throws Exception {
 		 String savePath = "resources/mailupload";
 		 
-		 //서블릿의 실행 환경 정보를 담고 있는 객체를 리턴한다.
+		 //釉由우 ㅽ 寃 �蹂대� 닿�  媛泥대� 由ы댄.
 		 ServletContext context = request.getSession().getServletContext();
 		 String sDownloadPath = context.getRealPath(savePath);
 		 
 		 //String sFilePath = sDownloadPath + "\\" + fileName;
-		 //"\" 추가하기 위해 "\\" 사용한다.
+		 //"\" 異媛湲  "\\" ъ⑺.
 		 String sFilePath = sDownloadPath + "/" + filename;
 		 System.out.println(sFilePath);
 		 
 		 byte b[] = new byte[4096];
 		 
-		 //sFilePath에 있는 파일의 MimeType을 구해온다.
+		 //sFilePath  쇱 MimeType 援ы댁⑤.
 		 String sMimeType = context.getMimeType(sFilePath);
 		 System.out.println("sMimeType>>>" + sMimeType);
 		 
@@ -184,22 +184,22 @@ public class MailController {
 		 
 		 response.setContentType(sMimeType);
 		 
-		 // 한글 파일명 깨지는 것 방지
+		 // 湲 쇰 源⑥ 寃 諛⑹
 		 String sEncoding = new String(original.getBytes("utf-8"), "ISO-8859-1");
 		 System.out.println(sEncoding);
 		 
-		 //Content-Disposition : attachment : 브라우저는 해당 Content를 처리하지 않고 다운로드하게 된다.
+		 //Content-Disposition : attachment : 釉쇱곗 대 Content瑜 泥由ы吏 怨 ㅼ대寃 .
 		 response.setHeader("Content-Disposition", "attachment; filename= "+ sEncoding);
 		 try (
-				 //웹 브라우저로의 출력 스트림 생성한다.
+				 // 釉쇱곗濡 異� ㅽ몃┝ 깊.
 				 BufferedOutputStream out2 = new BufferedOutputStream(response.getOutputStream());
-				 //sFilePath로 지정한 파일에 대한 입력 스트림을 생성한다.
+				 //sFilePath濡 吏� 쇱  � ㅽ몃┝ 깊.
 				 BufferedInputStream in = new BufferedInputStream(new FileInputStream(sFilePath));
 				 ) {
 			 int numRead;
-			 //read (b, 0, b.length) : 바이트 배열 b의 0번 부터 b.length 크기만큼 읽어온다.
-			 while ((numRead=in.read(b,0,b.length)) != -1) { //읽을 데이터가 존재하는 경우
-				 //바이트 배열 b의 0번부터 numRead크기 만큼 브라우저로 출력
+			 //read (b, 0, b.length) : 諛댄 諛곗 b 0踰 遺 b.length ш린留 쎌댁⑤.
+			 while ((numRead=in.read(b,0,b.length)) != -1) { //쎌 곗댄곌 議댁ы 寃쎌
+				 //諛댄 諛곗 b 0踰遺 numReadш린 留 釉쇱곗濡 異�
 				 out2.write(b,0,numRead);
 			 }
 		 } catch (Exception e) {
@@ -231,10 +231,10 @@ public class MailController {
 			int index = fileName.lastIndexOf(".");
 			System.out.println("index = " + index);
 			String fileExtension = fileName.substring(index+1);
-			//새로운 파일명
+			//濡 쇰
 			String refileName = "bbs"+year+month+date+random+"."+fileExtension;
 			
-			//오라클 DB에 저장될 파일명
+			//ㅻ쇳 DB �λ 쇰
 			String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
 			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
 			mail.setMAIL_FILE(fileDBName);
@@ -451,10 +451,10 @@ public class MailController {
 	public String IntoBin(int num) {
 		int result = mailService.InToBin(num);
 		if(result == 0) {
-			System.out.println("메일 삭제 실패");
+			System.out.println("硫 � ㅽ");
 			return "redirect:error";
 		}else {
-			System.out.println("휴지통 이동 성공");
+			System.out.println("댁 대 깃났");
 			return "redirect:inbox.mail";
 		}
 	}
@@ -463,10 +463,10 @@ public class MailController {
 	public String OuttoBin(int num) {
 		int result = mailService.OutToBin(num);
 		if(result == 0) {
-			System.out.println("메일 삭제 실패");
+			System.out.println("硫 � ㅽ");
 			return "redirect:error";
 		}else {
-			System.out.println("휴지통 이동 성공");
+			System.out.println("댁 대 깃났");
 			return "redirect:outbox.mail";
 		}
 	}
@@ -477,7 +477,7 @@ public class MailController {
 		for (int i = 0; i < num.length; i++) {
 			result += mailService.InToBin(Integer.parseInt(num[i]));
 		}
-		System.out.println(result + "개 메일 휴지통으로 이동");
+		System.out.println(result + "媛 硫 댁듭쇰 대");
 		return "redirect:inbox.mail";
 	}
 	
@@ -487,7 +487,7 @@ public class MailController {
 		for (int i = 0; i < num.length; i++) {
 			result += mailService.OutToBin(Integer.parseInt(num[i]));
 		}
-		System.out.println(result + "개 메일 휴지통으로 이동");
+		System.out.println(result + "媛 硫 댁듭쇰 대");
 		return "redirect:outbox.mail";
 	}
 	
@@ -496,10 +496,10 @@ public class MailController {
 			HttpServletResponse response, HttpServletRequest request) throws Exception {
 		int result = mailService.tempDelete(num);
 		if (result==0) {
-			System.out.println("temp 삭제 실패");
+			System.out.println("temp � ㅽ");
 			return "redirect:error";
 		}
-		System.out.println("temp 삭제 성공");
+		System.out.println("temp � 깃났");
 		return "redirect:temp.mail";
 	}
 	
@@ -509,7 +509,7 @@ public class MailController {
 		for (int i = 0; i < num.length; i++) {
 			result += mailService.tempDelete(Integer.parseInt(num[i]));
 		}
-		System.out.println(result + "개 메일 영구삭제");
+		System.out.println(result + "媛 硫 援ъ�");
 		return "redirect:temp.mail";
 	}
 	
@@ -526,7 +526,7 @@ public class MailController {
 				result += mailService.receiptDelete(mailn);
 			}
 		}
-		System.out.println(result + "개 메일 영구삭제");
+		System.out.println(result + "媛 硫 援ъ�");
 		return "redirect:bin.mail";
 	}
 	

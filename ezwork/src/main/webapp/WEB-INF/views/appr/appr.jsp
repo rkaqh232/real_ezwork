@@ -114,7 +114,7 @@ tr>th:nth-child(6){width:10%}
 			</div>
 			<div class="row mt-8">
 				<div class="col-lg-12">
-				<button class="btn btn-primary btn-primary--icon" id="search_btn">
+				<button type="button" class="btn btn-primary btn-primary--icon" id="search_btn">
 					<span>
 						<i class="la la-search"></i>
 						<span>Search</span>

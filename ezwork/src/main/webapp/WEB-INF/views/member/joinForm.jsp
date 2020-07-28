@@ -182,7 +182,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_PASS" type="text" id="password" value="" placeholder="840817" /> <span
+																	name="M_PASS" type="text" id="password" placeholder="840817" /> <span
 																	class="form-text text-muted"> 참고 : 초기 비밀번호는 생년월일로 설정해주세요. </span>
 															</div>
 														</div>
@@ -290,7 +290,7 @@ font-size:12px !important;
 															<div class="col-lg-9 col-xl-9">
 																<input
 																	class="form-control form-control-solid form-control-lg"
-																	name="M_NAME" type="text" id="M_NAME"  value="사원명" placeholder="사원명"/>
+																	name="M_NAME" type="text" id="M_NAME" placeholder="사원명"/>
 															</div>
 														</div>
 

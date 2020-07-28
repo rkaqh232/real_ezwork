@@ -36,12 +36,11 @@ p {
 	margin-bottom: 0
 }
 
-<<<<<<< HEAD
 
 #kt_content {
 	padding-top: 0px;
 }
-=======
+
 #kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td.pl-0.py-4 {
 	width: 35px;
 }
@@ -59,7 +58,6 @@ p {
 }
 
 
->>>>>>> branch 'master' of https://github.com/rkaqh232/real_ezwork.git
 </style>
 
 <script src="resources/js/mail/maininbox.js"></script>
@@ -80,9 +78,9 @@ p {
 </script>
 
 <!--begin::Entry-->
-	<div class="content d-flex flex-column flex-column-fluid"
+<div class="content d-flex flex-column flex-column-fluid"
 		id="kt_content">
-<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+	<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
 			<div
 				class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
 				<!--begin::Info-->

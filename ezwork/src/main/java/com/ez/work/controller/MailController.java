@@ -119,6 +119,46 @@ public class MailController {
 		out.close();
 	}
 	
+	@PostMapping("/TempAddaction.mail")
+	public String tmailadd(Mail mail, int num, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		System.out.println("file : "+mail.getM_FILE());
+		MultipartFile uploadfile=mail.getUploadfile();
+		if(!uploadfile.isEmpty()) {
+			String fileName = uploadfile.getOriginalFilename();
+			mail.setMAIL_ORIGINAL(fileName);
+			
+			Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH)+1;
+			int date = c.get(Calendar.DATE);
+			String homedir = mailsaveFolder + year + "-" +  month + "-" + date;
+			System.out.println(homedir);
+			File path1 = new File(homedir);
+			if(!(path1.exists())) {
+				path1.mkdir();
+			}
+			
+			Random r = new Random();
+			int random = r.nextInt(100000000);
+			int index = fileName.lastIndexOf(".");
+			System.out.println("index = " + index);
+			String fileExtension = fileName.substring(index+1);
+			//새로운 파일명
+			String refileName = "bbs"+year+month+date+random+"."+fileExtension;
+			
+			//오라클 DB에 저장될 파일명
+			String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
+			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
+			mail.setMAIL_FILE(fileDBName);
+		}
+		mailService.insertMail(mail);
+		mailService.tempDelete(num);
+		System.out.println("temp mailnumber : " + num);
+		System.out.println("sender: " + mail.getMAIL_SENDER());
+		System.out.println("subject: " + mail.getMAIL_SUBJECT());
+		return "redirect:temp.mail";
+	}
+	
 	@GetMapping("MailFileDown.mail")
 	 public void BoardFileDown(String filename, HttpServletRequest request, String original,
 			 HttpServletResponse response) throws Exception {

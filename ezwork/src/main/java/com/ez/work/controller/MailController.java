@@ -33,461 +33,501 @@ import com.ez.work.domain.Member;
 import com.ez.work.service.CmtManageService;
 import com.ez.work.service.MailService;
 
-/*ìˆ˜ì§„*/
+/*¼öÁø*/
 
 @Controller
 public class MailController {
-	@Autowired
-	private MailService mailService;
-	
-	@Value("${mailsavefoldername}")
-	private String mailsaveFolder;	
-	
-	@GetMapping(value="/inbox.mail")
-	public String inbox(HttpServletRequest request, HttpSession session, Model m) {
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getTempListCount(id);
-		m.addAttribute("tcount", listcount);
-		m.addAttribute("page","mail/inbox.jsp");
-		return "home";
-	}
-	
-	@GetMapping(value="/outbox.mail")
-	public String outbox(HttpServletRequest request, HttpSession session, Model m) {
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getTempListCount(id);
-		m.addAttribute("tcount", listcount);
-		m.addAttribute("page","mail/outbox.jsp");
-		return "home";
-	}
-	
-	@GetMapping(value="/temp.mail")
-	public String temp(HttpServletRequest request, HttpSession session, Model m) {
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getTempListCount(id);
-		m.addAttribute("tcount", listcount);
-		m.addAttribute("page","mail/temp.jsp");
-		return "home";
-	}
-	
-	@GetMapping(value="/bin.mail")
-	public String bin(HttpServletRequest request, HttpSession session, Model m) {
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getTempListCount(id);
-		m.addAttribute("tcount", listcount);
-		m.addAttribute("page","mail/bin.jsp");
-		return "home";
-	}
-	
-	@PostMapping("/MailAddaction.mail")
-	public void mailadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println("file : "+mail.getM_FILE());
-		MultipartFile uploadfile=mail.getUploadfile();
-		if(!uploadfile.isEmpty()) {
-			String fileName = uploadfile.getOriginalFilename();
-			mail.setMAIL_ORIGINAL(fileName);
-			
-			Calendar c = Calendar.getInstance();
-			int year = c.get(Calendar.YEAR);
-			int month = c.get(Calendar.MONTH)+1;
-			int date = c.get(Calendar.DATE);
-			String homedir = mailsaveFolder + year + "-" +  month + "-" + date;
-			System.out.println(homedir);
-			File path1 = new File(homedir);
-			if(!(path1.exists())) {
-				path1.mkdir();
-			}
-			
-			Random r = new Random();
-			int random = r.nextInt(100000000);
-			int index = fileName.lastIndexOf(".");
-			System.out.println("index = " + index);
-			String fileExtension = fileName.substring(index+1);
-			//ìƒˆë¡œìš´ íŒŒì¼ëª…
-			String refileName = "bbs"+year+month+date+random+"."+fileExtension;
-			
-			//ì˜¤ë¼í´ DBì— ì €ì¥ë  íŒŒì¼ëª…
-			String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
-			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
-			mail.setMAIL_FILE(fileDBName);
-		}
-		mailService.insertMail(mail);
-		System.out.println("sender: " + mail.getMAIL_SENDER());
-		System.out.println("subject: " + mail.getMAIL_SUBJECT());
-		PrintWriter out = response.getWriter();
-		out.println("<script>history.back();</script>");
-		out.close();
-	}
-	
-	@GetMapping("MailFileDown.mail")
-	 public void BoardFileDown(String filename, HttpServletRequest request, String original,
-			 HttpServletResponse response) throws Exception {
-		 String savePath = "resources/mailupload";
-		 
-		 //ì„œë¸”ë¦¿ì˜ ì‹¤í–‰ í™˜ê²½ ì •ë³´ë¥¼ ë‹´ê³  ìˆëŠ” ê°ì²´ë¥¼ ë¦¬í„´í•œë‹¤.
-		 ServletContext context = request.getSession().getServletContext();
-		 String sDownloadPath = context.getRealPath(savePath);
-		 
-		 //String sFilePath = sDownloadPath + "\\" + fileName;
-		 //"\" ì¶”ê°€í•˜ê¸° ìœ„í•´ "\\" ì‚¬ìš©í•œë‹¤.
-		 String sFilePath = sDownloadPath + "/" + filename;
-		 System.out.println(sFilePath);
-		 
-		 byte b[] = new byte[4096];
-		 
-		 //sFilePathì— ìˆëŠ” íŒŒì¼ì˜ MimeTypeì„ êµ¬í•´ì˜¨ë‹¤.
-		 String sMimeType = context.getMimeType(sFilePath);
-		 System.out.println("sMimeType>>>" + sMimeType);
-		 
-		 if(sMimeType == null)
-			 sMimeType = "application/octet-stream";
-		 
-		 response.setContentType(sMimeType);
-		 
-		 // í•œê¸€ íŒŒì¼ëª… ê¹¨ì§€ëŠ” ê²ƒ ë°©ì§€
-		 String sEncoding = new String(original.getBytes("utf-8"), "ISO-8859-1");
-		 System.out.println(sEncoding);
-		 
-		 //Content-Disposition : attachment : ë¸Œë¼ìš°ì €ëŠ” í•´ë‹¹ Contentë¥¼ ì²˜ë¦¬í•˜ì§€ ì•Šê³  ë‹¤ìš´ë¡œë“œí•˜ê²Œ ëœë‹¤.
-		 response.setHeader("Content-Disposition", "attachment; filename= "+ sEncoding);
-		 try (
-				 //ì›¹ ë¸Œë¼ìš°ì €ë¡œì˜ ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ ìƒì„±í•œë‹¤.
-				 BufferedOutputStream out2 = new BufferedOutputStream(response.getOutputStream());
-				 //sFilePathë¡œ ì§€ì •í•œ íŒŒì¼ì— ëŒ€í•œ ì…ë ¥ ìŠ¤íŠ¸ë¦¼ì„ ìƒì„±í•œë‹¤.
-				 BufferedInputStream in = new BufferedInputStream(new FileInputStream(sFilePath));
-				 ) {
-			 int numRead;
-			 //read (b, 0, b.length) : ë°”ì´íŠ¸ ë°°ì—´ bì˜ 0ë²ˆ ë¶€í„° b.length í¬ê¸°ë§Œí¼ ì½ì–´ì˜¨ë‹¤.
-			 while ((numRead=in.read(b,0,b.length)) != -1) { //ì½ì„ ë°ì´í„°ê°€ ì¡´ì¬í•˜ëŠ” ê²½ìš°
-				 //ë°”ì´íŠ¸ ë°°ì—´ bì˜ 0ë²ˆë¶€í„° numReadí¬ê¸° ë§Œí¼ ë¸Œë¼ìš°ì €ë¡œ ì¶œë ¥
-				 out2.write(b,0,numRead);
-			 }
-		 } catch (Exception e) {
-			 e.printStackTrace();
-		 }
-	 }
-	
-	@PostMapping("/Tempaction.mail")
-	public void tempadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println("tempaction");
-		MultipartFile uploadfile=mail.getUploadfile();
-		if(!uploadfile.isEmpty()) {
-			String fileName = uploadfile.getOriginalFilename();
-			mail.setMAIL_ORIGINAL(fileName);
-			
-			Calendar c = Calendar.getInstance();
-			int year = c.get(Calendar.YEAR);
-			int month = c.get(Calendar.MONTH)+1;
-			int date = c.get(Calendar.DATE);
-			String homedir = mailsaveFolder + year + "-" + "-" + date;
-			System.out.println(homedir);
-			File path1 = new File(homedir);
-			if(!(path1.exists())) {
-				path1.mkdir();
-			}
-			
-			Random r = new Random();
-			int random = r.nextInt(100000000);
-			int index = fileName.lastIndexOf(".");
-			System.out.println("index = " + index);
-			String fileExtension = fileName.substring(index+1);
-			//ìƒˆë¡œìš´ íŒŒì¼ëª…
-			String refileName = "bbs"+year+month+date+random+"."+fileExtension;
-			
-			//ì˜¤ë¼í´ DBì— ì €ì¥ë  íŒŒì¼ëª…
-			String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
-			uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
-			mail.setMAIL_FILE(fileDBName);
-		}
-		mailService.tempMail(mail);
-		PrintWriter out = response.getWriter();
-		out.println("<script>history.back();</script>");
-		out.close();
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/MailInboxAjax.mail")
-	public Map<String, Object> InboxListAjax(
-			@RequestParam(value="page", defaultValue="1", required=false) int page,
-			@RequestParam(value="limit", defaultValue="10", required=false) int limit, HttpSession session)
-	{
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getListCount(id);
-		int maxpage = (listcount+limit-1)/limit;
-		int startpage = ((page-1)/10)*10+1;
-		int endpage = startpage+10-1;
-		
-		if(endpage>maxpage)
-			endpage = maxpage;
-		
-		List<Mail> maillist = mailService.getInboxList(page, limit, id);
-		
-		System.out.println("sender:"+id);
-		System.out.println("listcount:" + listcount);
-		System.out.println("listcount:" + listcount);
-		//System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("sender",id);
-		map.put("page",page);
-		map.put("maxpage",maxpage);
-		map.put("startpage",startpage);
-		map.put("endpage",endpage);
-		map.put("listcount",listcount);
-		map.put("maillist",maillist);
-		map.put("limit",limit);
-		return map;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/MailOutboxAjax.mail")
-	public Map<String, Object> OutboxListAjax(
-			@RequestParam(value="page", defaultValue="1", required=false) int page,
-			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
-			HttpSession session)
-	{
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getOutListCount(id);
-		int maxpage = (listcount+limit-1)/limit;
-		int startpage = ((page-1)/10)*10+1;
-		int endpage = startpage+10-1;
-		
-		if(endpage>maxpage)
-			endpage = maxpage;
-		
-		List<Mail> maillist = mailService.getOutboxList(page, limit, id);
-		
-		System.out.println("sender:"+id);
-		System.out.println("listcount:" + listcount);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("sender",id);
-		map.put("page",page);
-		map.put("maxpage",maxpage);
-		map.put("startpage",startpage);
-		map.put("endpage",endpage);
-		map.put("listcount",listcount);
-		map.put("maillist",maillist);
-		map.put("limit",limit);
-		return map;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/MailBinAjax.mail")
-	public Map<String, Object> BinListAjax(
-			@RequestParam(value="page", defaultValue="1", required=false) int page,
-			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
-			HttpSession session)
-	{
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getBinListCount(id);
-		int maxpage = (listcount+limit-1)/limit;
-		int startpage = ((page-1)/10)*10+1;
-		int endpage = startpage+10-1;
-		
-		if(endpage>maxpage)
-			endpage = maxpage;
-		
-		List<Mail> maillist = mailService.getBinList(page, limit, id);
-		
-		System.out.println("sender:"+id);
-		System.out.println("listcount:" + listcount);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("sender",id);
-		map.put("page",page);
-		map.put("maxpage",maxpage);
-		map.put("startpage",startpage);
-		map.put("endpage",endpage);
-		map.put("listcount",listcount);
-		map.put("maillist",maillist);
-		map.put("limit",limit);
-		return map;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/MailTempAjax.mail")
-	public Map<String, Object> TempListAjax(
-			@RequestParam(value="page", defaultValue="1", required=false) int page,
-			@RequestParam(value="limit", defaultValue="10", required=false) int limit,
-			HttpSession session)
-	{
-		String id = (String) session.getAttribute("M_CODE");
-		int listcount=mailService.getTempListCount(id);
-		int maxpage = (listcount+limit-1)/limit;
-		int startpage = ((page-1)/10)*10+1;
-		int endpage = startpage+10-1;
-		
-		if(endpage>maxpage)
-			endpage = maxpage;
-		
-		List<Mail> maillist = mailService.getTempboxList(page, limit, id);
-		
-		System.out.println("sender:"+id);
-		System.out.println("listcount:" + listcount);
-		//System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("sender",id);
-		map.put("page",page);
-		map.put("maxpage",maxpage);
-		map.put("startpage",startpage);
-		map.put("endpage",endpage);
-		map.put("listcount",listcount);
-		map.put("maillist",maillist);
-		map.put("limit",limit);
-		return map;
-	}
-	
-	@GetMapping(value="DetailAction.mail")
-	public ModelAndView inDetail(int num, ModelAndView mv, HttpServletRequest request) {
-		Mail mail = mailService.getDetail(num);
-		if(mail == null) {
-			System.out.println("mail view failed");
-			mv.setViewName("error/error");
-		}else {
-			System.out.println("mail view start");
-			mv.addObject("page", "mail/in_view.jsp");
-			mv.addObject("maildata", mail);
-			mv.setViewName("home");
-		}		
-		return mv;
-	}
-	
-	@GetMapping(value="DetailTemp.mail")
-	public ModelAndView tempDetail(int num, ModelAndView mv, HttpServletRequest request) {
-		Mail mail = mailService.outDetail(num);
-		if(mail == null) {
-			System.out.println("mail view failed");
-			mv.setViewName("error/error");
-		}else {
-			System.out.println("mail view start");
-			mv.addObject("page", "mail/temp_view.jsp");
-			mv.addObject("maildata", mail);
-			mv.setViewName("home");
-		}		
-		return mv;
-	}
-	
-	@GetMapping(value="DetailOut.mail")
-	public ModelAndView outDetail(int num, ModelAndView mv, HttpServletRequest request) {
-		Mail mail = mailService.outDetail(num);
-		if(mail == null) {
-			System.out.println("mail view failed");
-			mv.setViewName("error/error");
-		}else {
-			System.out.println("mail view start");
-			mv.addObject("page", "mail/out_view.jsp");
-			mv.addObject("maildata", mail);
-			mv.setViewName("home");
-		}		
-		return mv;
-	}
-	
-	@GetMapping(value="DetailBin.mail")
-	public ModelAndView binDetail(int num, ModelAndView mv, HttpServletRequest request) {
-		Mail mail = mailService.outDetail(num);
-		if(mail == null) {
-			System.out.println("mail view failed");
-			mv.setViewName("error/error");
-		}else {
-			System.out.println("mail view start");
-			mv.addObject("page", "mail/out_view.jsp");
-			mv.addObject("maildata", mail);
-			mv.setViewName("home");
-		}		
-		return mv;
-	}
-	/*@PostMapping("Delete.mail")
-	public ModelAndView MailDeleteAction(Mail mail, String before_file, int num, ModelAndView mv) {
-		int result = mailService.mailDelete(num);
-		if(result==0) {
-			System.out.println();
-			
-		}
-	}*/
-	
-	@PostMapping("InToBin.mail")
-	public String IntoBin(int num) {
-		int result = mailService.InToBin(num);
-		if(result == 0) {
-			System.out.println("ë©”ì¼ ì‚­ì œ ì‹¤íŒ¨");
-			return "redirect:error";
-		}else {
-			System.out.println("íœ´ì§€í†µ ì´ë™ ì„±ê³µ");
-			return "redirect:inbox.mail";
-		}
-	}
-	
-	@PostMapping("OutToBin.mail")
-	public String OuttoBin(int num) {
-		int result = mailService.OutToBin(num);
-		if(result == 0) {
-			System.out.println("ë©”ì¼ ì‚­ì œ ì‹¤íŒ¨");
-			return "redirect:error";
-		}else {
-			System.out.println("íœ´ì§€í†µ ì´ë™ ì„±ê³µ");
-			return "redirect:outbox.mail";
-		}
-	}
-	
-	@PostMapping("IntoBinAll.mail")
-	public String IntoBinAll(String[] num, String before_file) {
-		int result = 0;
-		for (int i = 0; i < num.length; i++) {
-			result += mailService.InToBin(Integer.parseInt(num[i]));
-		}
-		System.out.println(result + "ê°œ ë©”ì¼ íœ´ì§€í†µìœ¼ë¡œ ì´ë™");
-		return "redirect:inbox.mail";
-	}
-	
-	@PostMapping("OuttoBinAll.mail")
-	public String OuttoBinAll(String[] num, String before_file) {
-		int result = 0;
-		for (int i = 0; i < num.length; i++) {
-			result += mailService.OutToBin(Integer.parseInt(num[i]));
-		}
-		System.out.println(result + "ê°œ ë©”ì¼ íœ´ì§€í†µìœ¼ë¡œ ì´ë™");
-		return "redirect:outbox.mail";
-	}
-	
-	@PostMapping("TempDelete.mail")
-	public String TempDelete(Mail mail, String before_file, int num,
-			HttpServletResponse response, HttpServletRequest request) throws Exception {
-		int result = mailService.tempDelete(num);
-		if (result==0) {
-			System.out.println("temp ì‚­ì œ ì‹¤íŒ¨");
-			return "redirect:error";
-		}
-		System.out.println("temp ì‚­ì œ ì„±ê³µ");
-		return "redirect:temp.mail";
-	}
-	
-	@PostMapping("DeleteAll.mail")
-	public String DeleteAll(String[] num, String before_file) {
-		int result = 0;
-		for (int i = 0; i < num.length; i++) {
-			result += mailService.tempDelete(Integer.parseInt(num[i]));
-		}
-		System.out.println(result + "ê°œ ë©”ì¼ ì˜êµ¬ì‚­ì œ");
-		return "redirect:temp.mail";
-	}
-	
-	@PostMapping("BinDeleteAll.mail")
-	public String BinDeleteAll(String[] num, String before_file) {
-		int result = 0;
-		for (int i = 0; i < num.length; i++) {
-			String mailt = num[i].substring(num[i].length()-4, num[i].length());
-			int mailn = Integer.parseInt(num[i].substring(0, num[i].length()-4));
-			System.out.println(mailt + "/" + mailn); 
-			if(mailt.equals("sbin")){
-				result += mailService.sentDelete(mailn);
-			}else if(mailt.equals("rbin")) {
-				result += mailService.receiptDelete(mailn);
-			}
-		}
-		System.out.println(result + "ê°œ ë©”ì¼ ì˜êµ¬ì‚­ì œ");
-		return "redirect:bin.mail";
-	}
-	
+   @Autowired
+   private MailService mailService;
+   
+   @Value("${mailsavefoldername}")
+   private String mailsaveFolder;   
+   
+   @GetMapping(value="/inbox.mail")
+   public String inbox(HttpServletRequest request, HttpSession session, Model m) {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getTempListCount(id);
+      m.addAttribute("tcount", listcount);
+      m.addAttribute("page","mail/inbox.jsp");
+      return "home";
+   }
+   
+   @GetMapping(value="/outbox.mail")
+   public String outbox(HttpServletRequest request, HttpSession session, Model m) {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getTempListCount(id);
+      m.addAttribute("tcount", listcount);
+      m.addAttribute("page","mail/outbox.jsp");
+      return "home";
+   }
+   
+   @GetMapping(value="/temp.mail")
+   public String temp(HttpServletRequest request, HttpSession session, Model m) {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getTempListCount(id);
+      m.addAttribute("tcount", listcount);
+      m.addAttribute("page","mail/temp.jsp");
+      return "home";
+   }
+   
+   @GetMapping(value="/bin.mail")
+   public String bin(HttpServletRequest request, HttpSession session, Model m) {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getTempListCount(id);
+      m.addAttribute("tcount", listcount);
+      m.addAttribute("page","mail/bin.jsp");
+      return "home";
+   }
+   
+   @PostMapping("/MailAddaction.mail")
+   public void mailadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{
+      System.out.println("file : "+mail.getM_FILE());
+      MultipartFile uploadfile=mail.getUploadfile();
+      if(!uploadfile.isEmpty()) {
+         String fileName = uploadfile.getOriginalFilename();
+         mail.setMAIL_ORIGINAL(fileName);
+         
+         Calendar c = Calendar.getInstance();
+         int year = c.get(Calendar.YEAR);
+         int month = c.get(Calendar.MONTH)+1;
+         int date = c.get(Calendar.DATE);
+         String homedir = mailsaveFolder + year + "-" +  month + "-" + date;
+         System.out.println(homedir);
+         File path1 = new File(homedir);
+         if(!(path1.exists())) {
+            path1.mkdir();
+         }
+         
+         Random r = new Random();
+         int random = r.nextInt(100000000);
+         int index = fileName.lastIndexOf(".");
+         System.out.println("index = " + index);
+         String fileExtension = fileName.substring(index+1);
+         //»õ·Î¿î ÆÄÀÏ¸í
+         String refileName = "bbs"+year+month+date+random+"."+fileExtension;
+         
+         //¿À¶óÅ¬ DB¿¡ ÀúÀåµÉ ÆÄÀÏ¸í
+         String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
+         uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
+         mail.setMAIL_FILE(fileDBName);
+      }
+      mailService.insertMail(mail);
+      System.out.println("sender: " + mail.getMAIL_SENDER());
+      System.out.println("subject: " + mail.getMAIL_SUBJECT());
+      PrintWriter out = response.getWriter();
+      out.println("<script>history.back();</script>");
+      out.close();
+   }
+   
+   @PostMapping("/TempAddaction.mail")
+   public String tmailadd(Mail mail, int num, HttpServletRequest request, HttpServletResponse response) throws Exception{
+      System.out.println("file : "+mail.getM_FILE());
+      MultipartFile uploadfile=mail.getUploadfile();
+      if(!uploadfile.isEmpty()) {
+         String fileName = uploadfile.getOriginalFilename();
+         mail.setMAIL_ORIGINAL(fileName);
+         
+         Calendar c = Calendar.getInstance();
+         int year = c.get(Calendar.YEAR);
+         int month = c.get(Calendar.MONTH)+1;
+         int date = c.get(Calendar.DATE);
+         String homedir = mailsaveFolder + year + "-" +  month + "-" + date;
+         System.out.println(homedir);
+         File path1 = new File(homedir);
+         if(!(path1.exists())) {
+            path1.mkdir();
+         }
+         
+         Random r = new Random();
+         int random = r.nextInt(100000000);
+         int index = fileName.lastIndexOf(".");
+         System.out.println("index = " + index);
+         String fileExtension = fileName.substring(index+1);
+         //»õ·Î¿î ÆÄÀÏ¸í
+         String refileName = "bbs"+year+month+date+random+"."+fileExtension;
+         
+         //¿À¶óÅ¬ DB¿¡ ÀúÀåµÉ ÆÄÀÏ¸í
+         String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
+         uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
+         mail.setMAIL_FILE(fileDBName);
+      }
+      mailService.insertMail(mail);
+      mailService.tempDelete(num);
+      System.out.println("temp mailnumber : " + num);
+      System.out.println("sender: " + mail.getMAIL_SENDER());
+      System.out.println("subject: " + mail.getMAIL_SUBJECT());
+      return "redirect:temp.mail";
+   }
+   
+   @GetMapping("MailFileDown.mail")
+    public void BoardFileDown(String filename, HttpServletRequest request, String original,
+          HttpServletResponse response) throws Exception {
+       String savePath = "resources/mailupload";
+       
+       //¼­ºí¸´ÀÇ ½ÇÇà È¯°æ Á¤º¸¸¦ ´ã°í ÀÖ´Â °´Ã¼¸¦ ¸®ÅÏÇÑ´Ù.
+       ServletContext context = request.getSession().getServletContext();
+       String sDownloadPath = context.getRealPath(savePath);
+       
+       //String sFilePath = sDownloadPath + "\\" + fileName;
+       //"\" Ãß°¡ÇÏ±â À§ÇØ "\\" »ç¿ëÇÑ´Ù.
+       String sFilePath = sDownloadPath + "/" + filename;
+       System.out.println(sFilePath);
+       
+       byte b[] = new byte[4096];
+       
+       //sFilePath¿¡ ÀÖ´Â ÆÄÀÏÀÇ MimeTypeÀ» ±¸ÇØ¿Â´Ù.
+       String sMimeType = context.getMimeType(sFilePath);
+       System.out.println("sMimeType>>>" + sMimeType);
+       
+       if(sMimeType == null)
+          sMimeType = "application/octet-stream";
+       
+       response.setContentType(sMimeType);
+       
+       // ÇÑ±Û ÆÄÀÏ¸í ±úÁö´Â °Í ¹æÁö
+       String sEncoding = new String(original.getBytes("utf-8"), "ISO-8859-1");
+       System.out.println(sEncoding);
+       
+       //Content-Disposition : attachment : ºê¶ó¿ìÀú´Â ÇØ´ç Content¸¦ Ã³¸®ÇÏÁö ¾Ê°í ´Ù¿î·ÎµåÇÏ°Ô µÈ´Ù.
+       response.setHeader("Content-Disposition", "attachment; filename= "+ sEncoding);
+       try (
+             //À¥ ºê¶ó¿ìÀú·ÎÀÇ Ãâ·Â ½ºÆ®¸² »ı¼ºÇÑ´Ù.
+             BufferedOutputStream out2 = new BufferedOutputStream(response.getOutputStream());
+             //sFilePath·Î ÁöÁ¤ÇÑ ÆÄÀÏ¿¡ ´ëÇÑ ÀÔ·Â ½ºÆ®¸²À» »ı¼ºÇÑ´Ù.
+             BufferedInputStream in = new BufferedInputStream(new FileInputStream(sFilePath));
+             ) {
+          int numRead;
+          //read (b, 0, b.length) : ¹ÙÀÌÆ® ¹è¿­ bÀÇ 0¹ø ºÎÅÍ b.length Å©±â¸¸Å­ ÀĞ¾î¿Â´Ù.
+          while ((numRead=in.read(b,0,b.length)) != -1) { //ÀĞÀ» µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏ´Â °æ¿ì
+             //¹ÙÀÌÆ® ¹è¿­ bÀÇ 0¹øºÎÅÍ numReadÅ©±â ¸¸Å­ ºê¶ó¿ìÀú·Î Ãâ·Â
+             out2.write(b,0,numRead);
+          }
+       } catch (Exception e) {
+          e.printStackTrace();
+       }
+    }
+   
+   @PostMapping("/Tempaction.mail")
+   public void tempadd(Mail mail, HttpServletRequest request, HttpServletResponse response) throws Exception{
+      System.out.println("tempaction");
+      MultipartFile uploadfile=mail.getUploadfile();
+      if(!uploadfile.isEmpty()) {
+         String fileName = uploadfile.getOriginalFilename();
+         mail.setMAIL_ORIGINAL(fileName);
+         
+         Calendar c = Calendar.getInstance();
+         int year = c.get(Calendar.YEAR);
+         int month = c.get(Calendar.MONTH)+1;
+         int date = c.get(Calendar.DATE);
+         String homedir = mailsaveFolder + year + "-" + "-" + date;
+         System.out.println(homedir);
+         File path1 = new File(homedir);
+         if(!(path1.exists())) {
+            path1.mkdir();
+         }
+         
+         Random r = new Random();
+         int random = r.nextInt(100000000);
+         int index = fileName.lastIndexOf(".");
+         System.out.println("index = " + index);
+         String fileExtension = fileName.substring(index+1);
+         //»õ·Î¿î ÆÄÀÏ¸í
+         String refileName = "bbs"+year+month+date+random+"."+fileExtension;
+         
+         //¿À¶óÅ¬ DB¿¡ ÀúÀåµÉ ÆÄÀÏ¸í
+         String fileDBName = "/" + year +"-" + month + "-" + date + "/" + refileName;
+         uploadfile.transferTo(new File(mailsaveFolder + fileDBName));
+         mail.setMAIL_FILE(fileDBName);
+      }
+      mailService.tempMail(mail);
+      PrintWriter out = response.getWriter();
+      out.println("<script>history.back();</script>");
+      out.close();
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="/MailInboxAjax.mail")
+   public Map<String, Object> InboxListAjax(
+         @RequestParam(value="page", defaultValue="1", required=false) int page,
+         @RequestParam(value="limit", defaultValue="10", required=false) int limit, HttpSession session)
+   {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getListCount(id);
+      int maxpage = (listcount+limit-1)/limit;
+      int startpage = ((page-1)/10)*10+1;
+      int endpage = startpage+10-1;
+      
+      if(endpage>maxpage)
+         endpage = maxpage;
+      
+      List<Mail> maillist = mailService.getInboxList(page, limit, id);
+      
+      System.out.println("sender:"+id);
+      System.out.println("listcount:" + listcount);
+      System.out.println("listcount:" + listcount);
+      //System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
+      
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("sender",id);
+      map.put("page",page);
+      map.put("maxpage",maxpage);
+      map.put("startpage",startpage);
+      map.put("endpage",endpage);
+      map.put("listcount",listcount);
+      map.put("maillist",maillist);
+      map.put("limit",limit);
+      return map;
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="/MailOutboxAjax.mail")
+   public Map<String, Object> OutboxListAjax(
+         @RequestParam(value="page", defaultValue="1", required=false) int page,
+         @RequestParam(value="limit", defaultValue="10", required=false) int limit,
+         HttpSession session)
+   {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getOutListCount(id);
+      int maxpage = (listcount+limit-1)/limit;
+      int startpage = ((page-1)/10)*10+1;
+      int endpage = startpage+10-1;
+      
+      if(endpage>maxpage)
+         endpage = maxpage;
+      
+      List<Mail> maillist = mailService.getOutboxList(page, limit, id);
+      
+      System.out.println("sender:"+id);
+      System.out.println("listcount:" + listcount);
+      
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("sender",id);
+      map.put("page",page);
+      map.put("maxpage",maxpage);
+      map.put("startpage",startpage);
+      map.put("endpage",endpage);
+      map.put("listcount",listcount);
+      map.put("maillist",maillist);
+      map.put("limit",limit);
+      return map;
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="/MailBinAjax.mail")
+   public Map<String, Object> BinListAjax(
+         @RequestParam(value="page", defaultValue="1", required=false) int page,
+         @RequestParam(value="limit", defaultValue="10", required=false) int limit,
+         HttpSession session)
+   {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getBinListCount(id);
+      int maxpage = (listcount+limit-1)/limit;
+      int startpage = ((page-1)/10)*10+1;
+      int endpage = startpage+10-1;
+      
+      if(endpage>maxpage)
+         endpage = maxpage;
+      
+      List<Mail> maillist = mailService.getBinList(page, limit, id);
+      
+      System.out.println("sender:"+id);
+      System.out.println("listcount:" + listcount);
+      
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("sender",id);
+      map.put("page",page);
+      map.put("maxpage",maxpage);
+      map.put("startpage",startpage);
+      map.put("endpage",endpage);
+      map.put("listcount",listcount);
+      map.put("maillist",maillist);
+      map.put("limit",limit);
+      return map;
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="/MailTempAjax.mail")
+   public Map<String, Object> TempListAjax(
+         @RequestParam(value="page", defaultValue="1", required=false) int page,
+         @RequestParam(value="limit", defaultValue="10", required=false) int limit,
+         HttpSession session)
+   {
+      String id = (String) session.getAttribute("M_CODE");
+      int listcount=mailService.getTempListCount(id);
+      int maxpage = (listcount+limit-1)/limit;
+      int startpage = ((page-1)/10)*10+1;
+      int endpage = startpage+10-1;
+      
+      if(endpage>maxpage)
+         endpage = maxpage;
+      
+      List<Mail> maillist = mailService.getTempboxList(page, limit, id);
+      
+      System.out.println("sender:"+id);
+      System.out.println("listcount:" + listcount);
+      //System.out.println("mailsubject : "+ maillist.get(0).getMAIL_SUBJECT());
+      
+      Map<String, Object> map = new HashMap<String, Object>();
+      map.put("sender",id);
+      map.put("page",page);
+      map.put("maxpage",maxpage);
+      map.put("startpage",startpage);
+      map.put("endpage",endpage);
+      map.put("listcount",listcount);
+      map.put("maillist",maillist);
+      map.put("limit",limit);
+      return map;
+   }
+   
+   @GetMapping(value="DetailAction.mail")
+   public ModelAndView inDetail(int num, ModelAndView mv, HttpServletRequest request) {
+      Mail mail = mailService.getDetail(num);
+      if(mail == null) {
+         System.out.println("mail view failed");
+         mv.setViewName("error/error");
+      }else {
+         System.out.println("mail view start");
+         mv.addObject("page", "mail/in_view.jsp");
+         mv.addObject("maildata", mail);
+         mv.setViewName("home");
+      }      
+      return mv;
+   }
+   
+   @GetMapping(value="DetailTemp.mail")
+   public ModelAndView tempDetail(int num, ModelAndView mv, HttpServletRequest request) {
+      Mail mail = mailService.outDetail(num);
+      if(mail == null) {
+         System.out.println("mail view failed");
+         mv.setViewName("error/error");
+      }else {
+         System.out.println("mail view start");
+         mv.addObject("page", "mail/temp_view.jsp");
+         mv.addObject("maildata", mail);
+         mv.setViewName("home");
+      }      
+      return mv;
+   }
+   
+   @GetMapping(value="DetailOut.mail")
+   public ModelAndView outDetail(int num, ModelAndView mv, HttpServletRequest request) {
+      Mail mail = mailService.outDetail(num);
+      if(mail == null) {
+         System.out.println("mail view failed");
+         mv.setViewName("error/error");
+      }else {
+         System.out.println("mail view start");
+         mv.addObject("page", "mail/out_view.jsp");
+         mv.addObject("maildata", mail);
+         mv.setViewName("home");
+      }      
+      return mv;
+   }
+   
+   @GetMapping(value="DetailBin.mail")
+   public ModelAndView binDetail(int num, ModelAndView mv, HttpServletRequest request) {
+      Mail mail = mailService.outDetail(num);
+      if(mail == null) {
+         System.out.println("mail view failed");
+         mv.setViewName("error/error");
+      }else {
+         System.out.println("mail view start");
+         mv.addObject("page", "mail/out_view.jsp");
+         mv.addObject("maildata", mail);
+         mv.setViewName("home");
+      }      
+      return mv;
+   }
+   /*@PostMapping("Delete.mail")
+   public ModelAndView MailDeleteAction(Mail mail, String before_file, int num, ModelAndView mv) {
+      int result = mailService.mailDelete(num);
+      if(result==0) {
+         System.out.println();
+         
+      }
+   }*/
+   
+   @PostMapping("InToBin.mail")
+   public String IntoBin(int num) {
+      int result = mailService.InToBin(num);
+      if(result == 0) {
+         System.out.println("¸ŞÀÏ »èÁ¦ ½ÇÆĞ");
+         return "redirect:error";
+      }else {
+         System.out.println("ÈŞÁöÅë ÀÌµ¿ ¼º°ø");
+         return "redirect:inbox.mail";
+      }
+   }
+   
+   @PostMapping("OutToBin.mail")
+   public String OuttoBin(int num) {
+      int result = mailService.OutToBin(num);
+      if(result == 0) {
+         System.out.println("¸ŞÀÏ »èÁ¦ ½ÇÆĞ");
+         return "redirect:error";
+      }else {
+         System.out.println("ÈŞÁöÅë ÀÌµ¿ ¼º°ø");
+         return "redirect:outbox.mail";
+      }
+   }
+   
+   @PostMapping("IntoBinAll.mail")
+   public String IntoBinAll(String[] num, String before_file) {
+      int result = 0;
+      for (int i = 0; i < num.length; i++) {
+         result += mailService.InToBin(Integer.parseInt(num[i]));
+      }
+      System.out.println(result + "°³ ¸ŞÀÏ ÈŞÁöÅëÀ¸·Î ÀÌµ¿");
+      return "redirect:inbox.mail";
+   }
+   
+   @PostMapping("OuttoBinAll.mail")
+   public String OuttoBinAll(String[] num, String before_file) {
+      int result = 0;
+      for (int i = 0; i < num.length; i++) {
+         result += mailService.OutToBin(Integer.parseInt(num[i]));
+      }
+      System.out.println(result + "°³ ¸ŞÀÏ ÈŞÁöÅëÀ¸·Î ÀÌµ¿");
+      return "redirect:outbox.mail";
+   }
+   
+   @PostMapping("TempDelete.mail")
+   public String TempDelete(Mail mail, String before_file, int num,
+         HttpServletResponse response, HttpServletRequest request) throws Exception {
+      int result = mailService.tempDelete(num);
+      if (result==0) {
+         System.out.println("temp »èÁ¦ ½ÇÆĞ");
+         return "redirect:error";
+      }
+      System.out.println("temp »èÁ¦ ¼º°ø");
+      return "redirect:temp.mail";
+   }
+   
+   @PostMapping("DeleteAll.mail")
+   public String DeleteAll(String[] num, String before_file) {
+      int result = 0;
+      for (int i = 0; i < num.length; i++) {
+         result += mailService.tempDelete(Integer.parseInt(num[i]));
+      }
+      System.out.println(result + "°³ ¸ŞÀÏ ¿µ±¸»èÁ¦");
+      return "redirect:temp.mail";
+   }
+   
+   @PostMapping("BinDeleteAll.mail")
+   public String BinDeleteAll(String[] num, String before_file) {
+      int result = 0;
+      for (int i = 0; i < num.length; i++) {
+         String mailt = num[i].substring(num[i].length()-4, num[i].length());
+         int mailn = Integer.parseInt(num[i].substring(0, num[i].length()-4));
+         System.out.println(mailt + "/" + mailn); 
+         if(mailt.equals("sbin")){
+            result += mailService.sentDelete(mailn);
+         }else if(mailt.equals("rbin")) {
+            result += mailService.receiptDelete(mailn);
+         }
+      }
+      System.out.println(result + "°³ ¸ŞÀÏ ¿µ±¸»èÁ¦");
+      return "redirect:bin.mail";
+   }
+   
 }

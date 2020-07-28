@@ -276,10 +276,11 @@ public class ApprController {
 		return "redirect:wait.appr";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="Search.appr")
 	public Map<String, Object> ApprSearch(
 			ModelAndView mv, HttpSession session,
-			@RequestParam(value = "number", defaultValue = "", required = false) int number,
+			@RequestParam(value = "number", defaultValue = "", required = false) String number,
 			@RequestParam(value = "name", defaultValue = "", required = false) String m_name,
 			@RequestParam(value = "contentitle", defaultValue = "", required = false) String contentitle,
 			@RequestParam(value = "start", defaultValue = "", required = false) String start,
@@ -288,22 +289,33 @@ public class ApprController {
 			@RequestParam(value = "appr_val", defaultValue = "", required = false) String appr_val,
 			@RequestParam(value = "page", defaultValue="1", required = false) int page
 			){	
-
+		System.out.println("SearchController ~~~~ "+
+					"number : "+number+"m_name : "+m_name+
+					"contentitle : "+contentitle+"start : "+start+
+					"end : "+end+appr_stat+appr_val);
+		if(m_name==null) {
+			System.out.println("null임");
+		}
+		if(m_name.equals("")) {
+			System.out.println("abcd");
+		}
+		
+		int limit = 10;
 		String id = (String) session.getAttribute("id");
 
-		int limit = 10;
-		int listcount = apprservice.getListCount();
+	
+		List<Appr> apprlist = apprservice.getSearchList(number,m_name,contentitle,start,end,appr_stat,appr_val, page,limit,id);
+		int listcount = apprlist.size();
+		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println(apprlist.size());
+		
+		
 		int maxpage = (listcount + limit - 1) / limit;
 		int startpage = ((page - 1) / 10) * 10 + 1; 
 		int endpage = startpage + 10 - 1;
 
 		if (endpage > maxpage)
 			endpage = maxpage;
-		
-		List<Appr> apprlist = apprservice.getSearchList(number,m_name,contentitle,start,end,appr_stat,appr_val, page,limit,id);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println(apprlist);
 
 		map.put("nowpage", page);
 		map.put("maxpage", maxpage);

@@ -48,7 +48,7 @@ $(function(){
 	})
 	
 	$("#search_btn").on('click',function(){
-		console.log();
+		search(1);
 		
 	});
 	
@@ -75,9 +75,10 @@ function search(page){
 	var appr_stat = $("#search_appr_stat").val();
 	var appr_val = $("#search_appr_val").val();
 	
-	var data = "limit=" + limit + "&start=ajax&page=" + page + "&number="+number+"&name="
+	var data = "limit=" + limit + "&page=" + page + "&number="+number+"&name="
 				+name+"&contentitle="+contentitle+"&start="+start+"&end="+end
 				+"&appr_stat="+appr_stat+"&appr_val="+appr_val  ;
+	console.log(data);
 	searchajax(data);
 }
 
@@ -202,7 +203,9 @@ function searchajax(sdata){
 		dataType : "json",
 		cache : false,
 		success : function(data){
-			var totalData = data.listcount;			
+			var totalData = data.listcount;	
+			console.log(totalData);
+			$("tbody").remove();
 			if(totalData > 0){
 				var num = totalData - (data.nowpage -1) * data.limit;
 				output = "<tbody>";
@@ -285,7 +288,7 @@ function searchajax(sdata){
 				$('.pagination').append(output)
 			}//if(data.listcount) end
 			else if(totalData==0){
-				output = "<tr><th colspan='4'><h3>등록된 결재가 없습니다.</h3></th></tr>";
+				output = "<tbody><tr><th colspan='7'><h3>검색된 결재가 없습니다.</h3></th></tr></tbody>";
 				$('table').append(output)
 			}			
 		}, //success end
@@ -305,7 +308,8 @@ function ajax(sdata){
 		dataType : "json",
 		cache : false,
 		success : function(data){
-			var totalData = data.listcount;			
+			var totalData = data.listcount;		
+			$("tbody").remove();
 			if(totalData > 0){
 				var num = totalData - (data.nowpage -1) * data.limit;
 				output = "<tbody>";
@@ -388,7 +392,7 @@ function ajax(sdata){
 				$('.pagination').append(output)
 			}//if(data.listcount) end
 			else if(totalData==0){
-				output = "<tr><th colspan='4'><h3>받은 메일이 없습니다.</h3></th></tr>";
+				output = "<tr><th colspan='4'><h3>등록된 결재가 없습니다.</h3></th></tr>";
 				$('table').append(output)
 			}			
 		}, //success end

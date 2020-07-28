@@ -23,35 +23,37 @@
 		from
 		(select * from
 		approve
-		where 
-		<if test="number != null ">
-			APPR_CODE = #{number},
-		</if>
-		<if test="m_name != null">
-			APPR_NAME = #{m_name},
-		</if>
-		<if test="contentitle != null">
-			(APPR_TITLE LIKE #{contentitle}
-			OR
-			APPR_CONTENT LIKE #{contentitle}),
-		</if>
-		<if test="start != null and end != null">
-			(to_char(APPR_DATE,'YYYY-MM-DD') > #{start}
-			AND
-			#{start} > to_char(APPR_DATE,'YYYY-MM-DD') ),
-		</if>
-		<if test="appr_stat != null">
-			APPR_STAT = #{appr_stat},
-		</if>
-		<if test="appr_val != null">
-			APPR_VAL = #{VAL},
-		</if>
-		
+		<where>
+			<trim prefixOverrides="and | or">
+				<if test="number != '' ">
+					AND APPR_CODE = #{number}
+				</if>
+				<if test="m_name != '' ">
+					AND APPR_NAME = #{m_name}
+				</if>
+				<if test="contentitle != '%%' ">
+					AND
+					(APPR_TITLE LIKE #{contentitle}
+					OR
+					APPR_CONTENT LIKE #{contentitle})
+				</if>
+				<if test="start != '' and end != '' ">
+					AND	to_char(APPR_DATE,'YYYY/MM/DD') between #{start} and #{end}
+				</if>
+				<if test="appr_stat != '' ">
+					AND APPR_STAT = #{appr_stat}
+				</if>
+				<if test="appr_val != '' ">
+					AND APPR_VAL = #{appr_val}
+				</if>
+			</trim>
+		</where>
 		order by APPR_CODE desc) b
 		)
 		where rnum
 		&gt;=#{startrow} and rnum &lt;= #{endrow}		
 	</select>
+	
 	
 	<select id="count" resultType="int">
 		select count(*) from approve
@@ -110,7 +112,7 @@
 		(APPR_VAL, APPR_COUNT, APPR_CUR_COUNT) = (
 		SELECT DECODE(APPR_CUR_COUNT+1 , APPR_COUNT, 3 , APPR_VAL+1 ) AS APPR_VAL, APPR_COUNT, APPR_CUR_COUNT+1
 		FROM APPROVE
-		WHERE APPR_CODE= 2)
+		WHERE APPR_CODE= #{apnum})
 		
 		where APPR_CODE = #{apnum}
 	</update>

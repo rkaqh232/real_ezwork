@@ -82,7 +82,7 @@ public class ApprServiceImpl implements ApprService {
 		
 	}
 
-	public List<Appr> getSearchList(int number, String m_name, String contentitle, String start, String end,
+	public List<Appr> getSearchList(String number, String m_name, String contentitle, String start, String end,
 			String appr_stat, String appr_val, int page, int limit, String id) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		int startrow = (page-1)*limit + 1;

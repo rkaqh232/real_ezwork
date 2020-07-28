@@ -32,14 +32,5 @@ create table approve(
 	APPR_CUR_COUNT	NUMBER							--결재 진행 상태
 );
 
-insert into approve(
-appr_code, m_code,  m_part ,appr_name , appr_title, appr_content, first_code, second_code, third_code,
-appr_file, appr_origin, appr_stat, appr_date,appr_comp_date, appr_val
-)
-values(
-appr_seq.nextval , 'test', 'team','name', 'title','content','test1','test2','test3',
-null,null,0,sysdate,null,0
-);
-
 select * from approve;
 

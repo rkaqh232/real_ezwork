@@ -144,7 +144,8 @@ td:nth-child(1) {
 				});//click
 	});
 	
-
+	
+	
 </script>
 
 </head>
@@ -314,7 +315,7 @@ td:nth-child(1) {
 											</div>
 										</div>
 										<!--end::Info-->
-										<input type="hidden" id="emailid" value="${m.m_EMAIL}"/>
+										<input type="hidden" id="emailid"/>
 										<button type="button" onclick="location.href='inbox.mail'" id="copyemail" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</button>
 									</div>
 								</div>

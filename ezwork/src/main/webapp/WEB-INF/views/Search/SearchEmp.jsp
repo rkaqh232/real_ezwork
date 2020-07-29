@@ -142,6 +142,7 @@ td:nth-child(1) {
 						}//success
 					});//ajax
 				});//click
+	});
 			
 	/*
 		$('.emailbutton').click(function() {
@@ -154,7 +155,7 @@ td:nth-child(1) {
 			document.execCommand('copy');
 			console.log("복사됨");
 		});
-	});
+	
 	*/
 	
 

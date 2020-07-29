@@ -106,7 +106,7 @@ body {
 							<div class="form-group">
 								<input
 									class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5"
-									type="text" value="EMP" name="M_CODE" id="M_CODE" autocomplete="off"
+									type="text" placeholder="EMP202000" name="M_CODE" id="M_CODE" autocomplete="off"
 									 <c:if test="${!empty saveid }">
      									 value="${saveid }"
      									 </c:if>

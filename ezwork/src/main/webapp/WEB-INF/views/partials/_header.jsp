@@ -34,9 +34,7 @@
 																<!--end::Svg Icon-->
 															</span>
 															<span class="menu-text" onclick="location.href='inbox.mail'">받은 메일함</span>
-															<span class="menu-label">
-																<span class="label label-success label-rounded">2</span>
-															</span>
+															
 														</a>
 													</li>
 													<li class="menu-item" aria-haspopup="true">
@@ -53,9 +51,6 @@
 																<!--end::Svg Icon-->
 															</span>
 															<span class="menu-text" onclick="location.href='outbox.mail'">보낸 메일함</span>
-															<span class="menu-label">
-																<span class="label label-success label-rounded">2</span>
-															</span>
 														</a>
 													</li>
 													<li class="menu-item" aria-haspopup="true">
@@ -72,9 +67,6 @@
 																<!--end::Svg Icon-->
 															</span>
 															<span class="menu-text" onclick="location.href='temp.mail'">임시보관함</span>
-															<span class="menu-label">
-																<span class="label label-success label-rounded">2</span>
-															</span>
 														</a>
 													</li>
 														

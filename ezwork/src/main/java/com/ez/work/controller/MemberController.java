@@ -90,7 +90,7 @@ public class MemberController {
 			session.setAttribute("M_FILE", memberinfo.getM_FILE());
 			Cookie savecookie = new Cookie("saveid", id);
 			if (!remember.equals("")) {
-				savecookie.setMaxAge(60 * 60);
+				savecookie.setMaxAge(60 * 60 * 24);
 				System.out.println("쿠키저장 : 60*60"); // 저장한 경우입니다.
 
 			} else {

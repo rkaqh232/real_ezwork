@@ -1,7 +1,8 @@
 drop table approve;
 
 drop sequence appr_seq;
-create sequence appr_seq;
+create sequence appr_seq
+start with 5;
 
 create table approve(
 	APPR_CODE		NUMBER			PRIMARY KEY,	--결재 번호
@@ -33,4 +34,3 @@ create table approve(
 );
 
 select * from approve;
-

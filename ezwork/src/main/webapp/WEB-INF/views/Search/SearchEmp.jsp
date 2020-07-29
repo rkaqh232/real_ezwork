@@ -142,7 +142,20 @@ td:nth-child(1) {
 						}//success
 					});//ajax
 				});//click
+			
+	/*
+		$('.emailbutton').click(function() {
+			var copycopy = $(this).prev().val();
+			console.log(copycopy);
+			//console.log(copycopy.select());
+			
+			var copycopy = $(this).prev()
+			console.log("2=" +  copycopy.select());
+			document.execCommand('copy');
+			console.log("복사됨");
+		});
 	});
+	*/
 	
 
 </script>
@@ -314,8 +327,11 @@ td:nth-child(1) {
 											</div>
 										</div>
 										<!--end::Info-->
-										<input type="hidden" id="emailid" value="${m.m_EMAIL}"/>
-										<button type="button" onclick="location.href='inbox.mail'" id="copyemail" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</button>
+										<input type="hidden" id="emailid" value="${m.m_CODE}">
+										<!-- <button type="button" onclick="location.href='inbox.mail'" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center emailbutton" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</button> -->
+										<div class="px-4 mt-4 mb-10">
+							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
+						</div><jsp:include page="../mail/composeModal.jsp"/>
 									</div>
 								</div>
 							</div>

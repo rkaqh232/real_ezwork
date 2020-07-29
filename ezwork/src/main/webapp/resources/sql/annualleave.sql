@@ -35,3 +35,5 @@ select * from list_al;
 update list_al
 set al_unused = 0, al_used = 0;
 
+
+delete from REQUEST_AL;

@@ -130,7 +130,7 @@
     
     <!--  민혁 - 사원 즐겨찾기 목록  -->
    <select id="EmpWishlist" resultType="member" parameterType="String">
-      select member.m_code, member.m_name, member.m_part_c, member.m_level, member.m_email, member.m_mobile_tel, member.m_address, member.m_join_date, member.m_gender, member.m_file, bookmark.m_owner
+      select member.*, bookmark.m_owner
       from member
       inner join bookmark on member.m_code = bookmark.m_code
       where bookmark.m_owner = #{m_owner}
@@ -139,11 +139,11 @@
    <!-- 민혁 - 사원 검색 / 즐겨찾기 -->
    <select id="getSearchList" parameterType="map"
       resultType="member">
-      select mem.M_CODE, mem.M_PART_C, mem.M_NAME, mem.M_LEVEL, mem.M_EMAIL, mem.M_MOBILE_TEL, mem.M_FILE, bookmark.M_BOOKMARK, bookmark.M_OWNER   
+      select mem.*, bookmark.M_BOOKMARK, bookmark.M_OWNER   
       from bookmark right join (select *
       from ( select rownum rnum, b.*
       from (select * from member where
-      M_CODE != 'admin'
+      M_CODE != 'admin' AND RES_DATE IS NULL
       <if test="search_field!=null">
          and
          <choose>

@@ -46,10 +46,12 @@ p {
 >>>>>>> branch 'master' of https://github.com/rkaqh232/real_ezwork.git
 #kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td.pl-0.py-4 {
 	width: 35px;
+	
 }
 
 #kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td:nth-child(2) {
 	width: 50px;
+	
 }
 
 #kt_content > div > div > div:nth-child(1) > div:nth-child(4) > div > div.card-body.pt-3.pb-0 > div > table > tbody > tr > td:nth-child(3) {
@@ -329,34 +331,33 @@ p {
 			</h3>
 		</div>
 
-			<table>
+			<table style="text-align:center;">
 				<tr>
-					<td width=61px;></td>
-					<td width=250px;>#</td>
-					<td width=150px; >제목</td>
-					<td width=145px;>작성자</td>
-					<td>날짜</td>
+					<td width=7%;></td>
+					<td width=4%;>#</td>
+					<td width=46%;>제목</td>
+					<td width=15%;>작성자</td>
+					<td width=40%;>날짜</td>
 				</tr>
 			</table>
 		
 		<!--end::Header-->
 		<c:forEach var="m" items="${boardlist}">
 			<!--begin::Body-->
-			<div class="card-body pt-3 pb-0">
-
+			<div class="card-body pt-3 pb-0" style="height:20px;">
 				<!--begin::Table-->
-				<div class="table-responsive">
-					<table class="table table-hover table-vertical-center">
+				<div>
+					<table class="table table-hover" >
 						<tbody>
 							<tr>
-								<td class="pl-0 py-4"></td>
+								<td width=5%;></td>
 									<td class="pl-0">${m.NO_NO}</td>
-										<td class="text-center">
+										<td width=50%; style="font-size:14px;">
 											<span class="text-muted font-weight-500">
 												<a href="./BoardDetailAction.no?num=${m.NO_NO}">${m.NO_TITLE}</a>
 											</span>
 										</td>
-									<td class="text-right">
+									<td width=15%;>
 										<span class="label label-lg label-light-warning label-inline">${m.NO_NAME}</span></td>
 									<td class="text-right">
 										<span class="text-muted font-weight-500">${m.NO_DATE}</span>

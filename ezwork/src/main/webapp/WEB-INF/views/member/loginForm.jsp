@@ -106,7 +106,7 @@ body {
 							<div class="form-group">
 								<input
 									class="form-control h-auto text-white placeholder-white opacity-70 bg-dark-o-70 rounded-pill border-0 py-4 px-8 mb-5"
-									type="text" value="EMP" name="M_CODE" id="M_CODE" autocomplete="off"
+									type="text" placeholder="EMP202021" name="M_CODE" id="M_CODE" autocomplete="off"
 									 <c:if test="${!empty saveid }">
      									 value="${saveid }"
      									 </c:if>
@@ -126,8 +126,8 @@ body {
     								  checked
      								 </c:if>/> 사번 저장 <span></span>
 								</label> 
-								<a href="javascript:;" id="kt_login_forgot"
-									class="text-white font-weight-bold"> ▶ 비밀번호 찾기 </a>
+								<!-- <a href="javascript:;" id="kt_login_forgot"
+									class="text-white font-weight-bold"> ▶ 비밀번호 찾기 </a> -->
 							</div>
 							<div class="form-group text-center mt-10">
 								<button id="kt_login_signin_submit" class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">

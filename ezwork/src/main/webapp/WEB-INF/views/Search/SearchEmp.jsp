@@ -277,7 +277,7 @@ td:nth-child(1) {
 												class="d-flex justify-content-between align-items-center">
 												<span class="text-dark-75 font-weight-bolder mr-2">사원번호:</span>
 												<a href="#" class="text-muted text-hover-primary">${m.m_CODE}</a>
-												<input type="hidden" value="${m.m_CODE}">
+												
 											</div>
 											<div
 												class="d-flex justify-content-between align-items-center">
@@ -320,11 +320,11 @@ td:nth-child(1) {
 											</div>
 										</div>
 										<!--end::Info-->
-										<input type="hidden" id="emailid" value="${m.m_CODE}">
-										<!-- <button type="button" onclick="location.href='inbox.mail'" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center emailbutton" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</button> -->
 										<div class="px-4 mt-4 mb-10">
-							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center mailmodal" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
-						</div><jsp:include page="../mail/m_composeModal.jsp"/>
+										<input type="hidden" value="${m.m_CODE}">
+											<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center mailmodal" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
+										</div>
+										<jsp:include page="../mail/m_composeModal.jsp"/>
 									</div>
 								</div>
 							</div>

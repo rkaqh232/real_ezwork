@@ -240,7 +240,7 @@ td:nth-child(1) {
 												<!--begin::Pic-->
 												<div class="flex-shrink-0 mr-4 mt-lg-0 mt-3">
 													<div class="symbol symbol-circle symbol-lg-75">
-														<img src="resources/assets/media/users/NINIZ.jpg"
+														<img src="resources/memberupload/${m.m_FILE}"
 															alt="image">
 													</div>
 													<div

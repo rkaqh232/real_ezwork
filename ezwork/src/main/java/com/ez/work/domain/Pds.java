@@ -98,9 +98,9 @@ public class Pds {
 		PDS_ORIGINAL = pDS_ORIGINAL;
 	}
 	public String getPDS_DATE() {
-		return PDS_DATE;
+		return PDS_DATE.substring(0,10);
 	}
 	public void setPDS_DATE(String pDS_DATE) {
 		PDS_DATE = pDS_DATE;
 	}
-	}
+}

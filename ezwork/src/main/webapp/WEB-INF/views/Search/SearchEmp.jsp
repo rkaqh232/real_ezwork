@@ -143,20 +143,6 @@ td:nth-child(1) {
 					});//ajax
 				});//click
 	});
-			
-	/*
-		$('.emailbutton').click(function() {
-			var copycopy = $(this).prev().val();
-			console.log(copycopy);
-			//console.log(copycopy.select());
-			
-			var copycopy = $(this).prev()
-			console.log("2=" +  copycopy.select());
-			document.execCommand('copy');
-			console.log("복사됨");
-		});
-	
-	*/
 	
 
 </script>

@@ -65,7 +65,9 @@
 								<div class="flex-shrink-0 mr-7">
 									<div
 										class="symbol symbol-50 symbol-lg-120 symbol-light-primary">
-										<span class="font-size-h3 symbol-label font-weight-boldest">${wish.m_NAME}</span>
+										<span class="font-size-h3 symbol-label font-weight-boldest">
+											<img src="resources/memberupload/${wish.m_FILE}" alt="image">
+										</span>
 									</div>
 								</div>
 								<!--end::Pic-->

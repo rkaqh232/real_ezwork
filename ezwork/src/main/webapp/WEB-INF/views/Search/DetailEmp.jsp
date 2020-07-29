@@ -133,27 +133,27 @@ input[type=text] {
 			<label>입사날짜</label>
 			<input type="text" disabled="disabled"
 					class="form-control form-control-lg"
-					value="" /><br>
+					value="${m.m_JOIN_DATE}" /><br>
 			
 			<label>학교명</label>
 			<input type="text" disabled="disabled"
 					class="form-control form-control-lg"
-					value="" /><br>
+					value="${m.SC_NAME}" /><br>
 			
 			<label>전공</label>
 			<input type="text" disabled="disabled"
 					class="form-control form-control-lg"
-					value="" /><br>
+					value="${m.SC_MAJOR}" /><br>
 			
 			<label>어학 정보</label>
 			<input type="text" disabled="disabled"
 					class="form-control form-control-lg"
-					value="" /><br>
+					value="${m.LG_TEST}" /><br>
 			
 			<label>자격증</label>
 			<input type="text" disabled="disabled"
 					class="form-control form-control-lg"
-					value="" /><br>
+					value="${m.LI_NAME}" /><br>
 			</div>
 		</div>
 	</div>

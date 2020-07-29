@@ -57,7 +57,7 @@ li .current {
 .yellow {
 	background: yellow;
 }
-form {
+#memberlist {
 	margin: 0 auto;
 	width: 80%;
 	text-align: center;
@@ -142,6 +142,10 @@ td:nth-child(1) {
 						}//success
 					});//ajax
 				});//click
+				
+				$('.mailmodal').click(function() {
+					console.log($(this).val());
+				})
 	});
 	
 	
@@ -192,7 +196,7 @@ td:nth-child(1) {
 				<!--end::Separator-->
 				<!--begin::Search Form-->
 				<div class="d-flex align-items-center" id="kt_subheader_search">
-					<form action="member_list">
+					<form action="member_list" id="memberlist">
 						<div class="input-group">
 							<select id="viewcount" name="search_field">
 								<option value="0" selected>사원번호</option>
@@ -273,6 +277,7 @@ td:nth-child(1) {
 												class="d-flex justify-content-between align-items-center">
 												<span class="text-dark-75 font-weight-bolder mr-2">사원번호:</span>
 												<a href="#" class="text-muted text-hover-primary">${m.m_CODE}</a>
+												<input type="hidden" value="${m.m_CODE}">
 											</div>
 											<div
 												class="d-flex justify-content-between align-items-center">
@@ -315,16 +320,11 @@ td:nth-child(1) {
 											</div>
 										</div>
 										<!--end::Info-->
-<<<<<<< HEAD
 										<input type="hidden" id="emailid" value="${m.m_CODE}">
 										<!-- <button type="button" onclick="location.href='inbox.mail'" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center emailbutton" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</button> -->
 										<div class="px-4 mt-4 mb-10">
-							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
-						</div><jsp:include page="../mail/composeModal.jsp"/>
-=======
-										<input type="hidden" id="emailid"/>
-										<button type="button" onclick="location.href='inbox.mail'" id="copyemail" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</button>
->>>>>>> branch 'master' of https://github.com/rkaqh232/real_ezwork.git
+							<a href="#" class="btn btn-block btn-info font-weight-bold text-uppercase py-4 px-6 text-center mailmodal" data-toggle="modal" data-target="#kt_inbox_compose">메일 쓰기</a>
+						</div><jsp:include page="../mail/m_composeModal.jsp"/>
 									</div>
 								</div>
 							</div>

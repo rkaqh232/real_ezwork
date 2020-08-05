@@ -192,7 +192,7 @@ public class Member {
 	}
 
 	public String getM_JOIN_DATE() {
-		return M_JOIN_DATE;
+		return M_JOIN_DATE.substring(0,10);
 	}
 
 	public void setM_JOIN_DATE(String m_JOIN_DATE) {
